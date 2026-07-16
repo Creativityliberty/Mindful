@@ -8,6 +8,7 @@ import {
     LayoutDashboard,
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Link } from '@inertiajs/react';
 
 const services = [
     {
@@ -15,36 +16,42 @@ const services = [
         title: 'Mindfulness & Méditation',
         description:
             'Apaiser le tumulte mental et vivre pleinement l’instant présent grâce à des méditations quotidiennes guidées.',
+        href: '/courses?category=Mindfulness',
     },
     {
         icon: Flame,
         title: 'Équilibrage des chakras',
         description:
             'Harmoniser vos centres énergétiques pour libérer vos blocages et revitaliser votre corps et votre esprit.',
+        href: '/courses?category=Chakras',
     },
     {
         icon: Leaf,
         title: 'Yoga & mouvement conscient',
         description:
             'Des pratiques fluides et conscientes pour habiter votre corps, développer votre souplesse et relâcher les tensions.',
+        href: '/courses?category=Yoga',
     },
     {
         icon: HeartPulse,
         title: 'Bien-être holistique',
         description:
             'Prendre soin de vous au quotidien avec la sophrologie, la nutrition consciente et les rituels de soin de soi.',
+        href: '/courses?category=Sophrologie',
     },
     {
         icon: GraduationCap,
         title: 'Formations certifiantes',
         description:
             'Des parcours structurés et validés pour approfondir vos connaissances ou acquérir de nouvelles compétences.',
+        href: '/courses',
     },
     {
         icon: LayoutDashboard,
         title: 'Espace Transmission',
         description:
             'Partagez votre lumière. Publiez vos cours et gérez votre communauté de praticiens en toute simplicité.',
+        href: '/become-trainer',
     },
 ] as const;
 
@@ -111,24 +118,26 @@ export function Services() {
                                 key={service.title}
                                 variants={itemVariants}
                             >
-                                <Card className="group h-full border-border/40 bg-background/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-lg dark:border-border/50 dark:bg-background/50">
-                                    <CardContent className="p-7">
-                                        <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
-                                            <Icon
-                                                className="h-6 w-6"
-                                                aria-hidden="true"
-                                            />
-                                        </div>
+                                <Link href={service.href} className="block h-full">
+                                    <Card className="group h-full border-border/40 bg-background/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-lg dark:border-border/50 dark:bg-background/50 cursor-pointer">
+                                        <CardContent className="p-7">
+                                            <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
+                                                <Icon
+                                                    className="h-6 w-6"
+                                                    aria-hidden="true"
+                                                />
+                                            </div>
 
-                                        <h3 className="mb-2 text-lg font-semibold text-foreground">
-                                            {service.title}
-                                        </h3>
+                                            <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
+                                                {service.title}
+                                            </h3>
 
-                                        <p className="text-sm leading-relaxed text-foreground/60">
-                                            {service.description}
-                                        </p>
-                                    </CardContent>
-                                </Card>
+                                            <p className="text-sm leading-relaxed text-foreground/60">
+                                                {service.description}
+                                            </p>
+                                        </CardContent>
+                                    </Card>
+                                </Link>
                             </motion.div>
                         );
                     })}

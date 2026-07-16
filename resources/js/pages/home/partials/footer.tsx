@@ -10,25 +10,46 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Link } from '@inertiajs/react';
 import Logo from './logo';
 
 // Footer Block
 const footerLinks = [
     {
         title: 'Formations',
-        links: ['Mindfulness', 'Chakras', 'Yoga', 'Bien-être holistique'],
+        links: [
+            { label: 'Mindfulness', href: '/courses?category=Mindfulness' },
+            { label: 'Chakras', href: '/courses?category=Chakras' },
+            { label: 'Yoga', href: '/courses?category=Yoga' },
+            { label: 'Bien-être holistique', href: '/courses?category=Sophrologie' },
+        ],
     },
     {
         title: 'Plateforme',
-        links: ['Comment ça marche', 'Devenir formateur', 'Tarifs', 'Blog'],
+        links: [
+            { label: 'Comment ça marche', href: '/comment-ca-marche' },
+            { label: 'Devenir formateur', href: '/become-trainer' },
+            { label: 'Tarifs', href: '/tarifs' },
+            { label: 'Blog', href: '/blog' },
+        ],
     },
     {
         title: 'Communauté',
-        links: ['Forum', 'Événements', 'Témoignages', 'Newsletter'],
+        links: [
+            { label: 'Forum', href: '/communaute/forum' },
+            { label: 'Événements', href: '/communaute/evenements' },
+            { label: 'Témoignages', href: '/#testimonials' },
+            { label: 'Newsletter', href: '#newsletter' },
+        ],
     },
     {
         title: 'Légal',
-        links: ['Confidentialité', 'CGU', 'Cookies', 'Mentions légales'],
+        links: [
+            { label: 'Confidentialité', href: '/legal/confidentialite' },
+            { label: 'CGU', href: '/legal/cgu' },
+            { label: 'Cookies', href: '/legal/cookies' },
+            { label: 'Mentions légales', href: '/legal/mentions-legales' },
+        ],
     },
 ];
 
@@ -178,7 +199,7 @@ export function Footer() {
                                 className="flex items-center gap-2"
                             >
                                 <Mail className="h-4 w-4" aria-hidden />
-                                <span>contact@pmindfull.com</span>
+                                <span>hello@mindfulness.com</span>
                             </motion.div>
                         </div>
                     </motion.div>
@@ -202,7 +223,7 @@ export function Footer() {
                                 <ul className="space-y-2">
                                     {section.links.map((link, linkIndex) => (
                                         <motion.li
-                                            key={link}
+                                            key={link.label}
                                             initial={{ opacity: 0, x: -10 }}
                                             whileInView={{ opacity: 1, x: 0 }}
                                             viewport={{ once: true }}
@@ -210,20 +231,24 @@ export function Footer() {
                                                 delay: linkIndex * 0.05,
                                             }}
                                         >
-                                            <motion.a
-                                                href="#"
-                                                whileHover={
-                                                    shouldReduceMotion
-                                                        ? undefined
-                                                        : {
-                                                              x: 5,
-                                                              color: 'hsl(var(--primary))',
-                                                          }
-                                                }
-                                                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                                            <Link
+                                                href={link.href}
+                                                className="text-sm text-muted-foreground transition-colors hover:text-foreground block"
                                             >
-                                                {link}
-                                            </motion.a>
+                                                <motion.span
+                                                    whileHover={
+                                                        shouldReduceMotion
+                                                            ? undefined
+                                                            : {
+                                                                  x: 5,
+                                                                  color: 'hsl(var(--primary))',
+                                                              }
+                                                    }
+                                                    className="inline-block"
+                                                >
+                                                    {link.label}
+                                                </motion.span>
+                                            </Link>
                                         </motion.li>
                                     ))}
                                 </ul>

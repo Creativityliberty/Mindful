@@ -16,6 +16,18 @@ Route::inertia('blog', 'home/blog/index')->name('blog');
 Route::inertia('contact', 'home/contact')->name('contact');
 Route::inertia('realisations', 'home/realisations/index')->name('realisations');
 
+// Plateforme & Communauté
+Route::inertia('comment-ca-marche', 'home/how-it-works')->name('how-it-works');
+Route::inertia('tarifs', 'home/pricing')->name('pricing');
+Route::inertia('communaute/forum', 'home/community/forum')->name('community.forum');
+Route::inertia('communaute/evenements', 'home/community/events')->name('community.events');
+
+// Légal
+Route::inertia('legal/confidentialite', 'home/legal/privacy')->name('legal.privacy');
+Route::inertia('legal/cgu', 'home/legal/cgu')->name('legal.cgu');
+Route::inertia('legal/cookies', 'home/legal/cookies')->name('legal.cookies');
+Route::inertia('legal/mentions-legales', 'home/legal/terms')->name('legal.terms');
+
 // Courses
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 Route::get('courses/{id}', [CourseController::class, 'show'])->name('courses.show');
