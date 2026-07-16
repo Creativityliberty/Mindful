@@ -36,7 +36,7 @@ export function Courses() {
     if (!featuredCourses?.length) return null;
 
     const featured = featuredCourses[0];
-    const others = featuredCourses.slice(1, 4);
+    const others = featuredCourses.slice(1, 5);
 
     return (
         <section className="relative py-24 md:py-32">
@@ -92,11 +92,11 @@ export function Courses() {
                 >
                     <div className="grid lg:grid-cols-[1.5fr_1fr]">
                         {/* Image */}
-                        <div className="group relative min-h-[300px] overflow-hidden lg:min-h-[420px]">
+                        <div className="group relative min-h-[300px] overflow-hidden lg:min-h-[420px] bg-[#030206] flex items-center justify-center">
                             <img
                                 src={featured.image}
                                 alt={featured.title}
-                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/10 dark:to-background/20" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent lg:hidden" />
@@ -195,7 +195,7 @@ export function Courses() {
                     whileInView="visible"
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ staggerChildren: 0.1 }}
-                    className="grid gap-5 sm:grid-cols-3"
+                    className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
                 >
                     {others.map((course) => (
                         <motion.article
@@ -203,7 +203,7 @@ export function Courses() {
                             variants={itemVariants}
                             className="group overflow-hidden rounded-2xl border border-border/40 bg-background/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-md dark:border-border/50 dark:bg-background/50"
                         >
-                            <div className="relative h-48 overflow-hidden">
+                            <div className="relative aspect-video w-full overflow-hidden">
                                 <img
                                     src={course.image}
                                     alt={course.title}
