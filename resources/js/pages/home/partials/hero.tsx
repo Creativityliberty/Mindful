@@ -337,7 +337,7 @@ export function Hero() {
                             className="h-4 w-4 text-primary"
                             aria-hidden="true"
                         />
-                        ✨ Votre havre de paix en ligne
+                        Votre havre de paix en ligne
                     </motion.div>
 
                     <motion.h1

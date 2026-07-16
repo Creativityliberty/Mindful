@@ -116,7 +116,7 @@ export function Header() {
             >
                 <nav className="flex h-12 w-full items-center justify-between px-2 lg:px-4">
                     {/* logo — gauche écran */}
-                    <div className="flex items-center justify-start shrink-0">
+                    <div className="flex items-center justify-start shrink-0 lg:w-[200px]">
                         <div className="rounded-md p-1.5 hover:bg-transparent">
                             <Link href="/">
                                 <Logo className="h-6 w-auto" />
@@ -125,7 +125,7 @@ export function Header() {
                     </div>
 
                     {/* liens — centre flex */}
-                    <div className="hidden lg:flex items-center justify-center gap-1 xl:gap-2">
+                    <div className="hidden lg:flex items-center justify-center gap-1 xl:gap-2 flex-1">
                         {simpleLinks.map((link) => (
                             <Link
                                 key={link.label}
@@ -138,7 +138,7 @@ export function Header() {
                     </div>
 
                     {/* CTA — droite écran */}
-                    <div className="ml-auto hidden items-center justify-end gap-2 lg:flex shrink-0">
+                    <div className="hidden lg:flex items-center justify-end gap-2 shrink-0 lg:w-[250px]">
                         {auth.user ? (
                             hasRole ? (
                                 <Button
