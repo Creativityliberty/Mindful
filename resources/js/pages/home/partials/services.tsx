@@ -14,37 +14,37 @@ const services = [
         icon: Brain,
         title: 'Mindfulness & Méditation',
         description:
-            'Des cours guidés pour apprendre à apaiser l’esprit, cultiver la pleine conscience et réduire le stress au quotidien.',
+            'Apaiser le tumulte mental et vivre pleinement l’instant présent grâce à des méditations quotidiennes guidées.',
     },
     {
         icon: Flame,
         title: 'Équilibrage des chakras',
         description:
-            'Découvrez comment aligner vos centres énergétiques pour retrouver harmonie, vitalité et équilibre intérieur.',
+            'Harmoniser vos centres énergétiques pour libérer vos blocages et revitaliser votre corps et votre esprit.',
     },
     {
         icon: Leaf,
         title: 'Yoga & mouvement conscient',
         description:
-            'Des séances de yoga adaptées à tous les niveaux, alliant postures, respiration et reconnexion au corps.',
+            'Des pratiques fluides et conscientes pour habiter votre corps, développer votre souplesse et relâcher les tensions.',
     },
     {
         icon: HeartPulse,
         title: 'Bien-être holistique',
         description:
-            'Nutrition, hygiène de vie et pratiques ancestrales pour prendre soin de vous dans votre globalité corps-esprit.',
+            'Prendre soin de vous au quotidien avec la sophrologie, la nutrition consciente et les rituels de soin de soi.',
     },
     {
         icon: GraduationCap,
         title: 'Formations certifiantes',
         description:
-            'Approfondissez votre pratique avec des programmes structurés dispensés par des formateurs reconnus et passionnés.',
+            'Des parcours structurés et validés pour approfondir vos connaissances ou acquérir de nouvelles compétences.',
     },
     {
         icon: LayoutDashboard,
-        title: 'Espace formateur dédié',
+        title: 'Espace Transmission',
         description:
-            'Les formateurs publient leurs cours, gèrent leurs apprenants et suivent leurs revenus depuis un dashboard intuitif.',
+            'Partagez votre lumière. Publiez vos cours et gérez votre communauté de praticiens en toute simplicité.',
     },
 ] as const;
 

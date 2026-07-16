@@ -5,30 +5,30 @@ const steps = [
     {
         number: '01',
         icon: ClipboardCheck,
-        title: 'Candidature',
+        title: 'Rencontre',
         description:
-            'Soumettez votre demande pour rejoindre la plateforme en tant que formateur. Notre équipe évalue votre profil et votre expertise.',
+            'Déposez votre candidature en quelques clics. Nous choisissons des praticiens guidés par l’éthique et la passion.',
     },
     {
         number: '02',
         icon: BookOpen,
-        title: 'Création du cours',
+        title: 'Création libre',
         description:
-            'Une fois accepté, créez et structurez vos formations bien-être depuis votre espace dédié, à votre rythme.',
+            'Donnez vie à vos enseignements. Structurez vos vidéos, supports et méditations dans un espace auteur fluide.',
     },
     {
         number: '03',
         icon: Users,
-        title: 'Publication & audience',
+        title: 'Partage & Connexion',
         description:
-            "Vos cours sont publiés et accessibles à notre communauté d'apprenants. Gérez vos inscriptions et interagissez avec vos élèves.",
+            'Vos cours rejoignent notre catalogue. Échangez avec vos apprenants et accompagnez-les dans leur cheminement.',
     },
     {
         number: '04',
         icon: TrendingUp,
-        title: 'Revenus & croissance',
+        title: 'Abondance & Épanouissement',
         description:
-            'Suivez vos performances, vos revenus générés et faites grandir votre activité au sein de notre écosystème.',
+            'Percevez vos revenus en toute transparence et faites grandir votre studio en ligne sans barrière technique.',
     },
 ] as const;
 
@@ -52,7 +52,7 @@ export function Methode() {
                         Rejoindre en tant que formateur
                     </div>
                     <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        Partagez votre expertise, développez votre activité
+                        Transmettez votre art, inspirez notre communauté
                     </h2>
                     <p className="mx-auto max-w-2xl text-lg text-foreground/60">
                         Vous êtes coach, thérapeute ou praticien du bien-être ?

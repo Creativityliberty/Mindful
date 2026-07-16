@@ -25,13 +25,12 @@ export function Cta() {
                     </div>
 
                     <h2 className="mb-5 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        Votre voyage vers le bien-être commence ici
+                        Offrez-vous une parenthèse de sérénité
                     </h2>
 
                     <p className="mx-auto mb-10 max-w-xl text-lg text-foreground/60">
-                        Rejoignez notre communauté d’apprenants ou partagez
-                        votre expertise comme formateur. Mindfulness & Bien-être Studio est l’espace
-                        qu’il vous fallait pour grandir et vous épanouir.
+                        Que vous cherchiez un refuge pour méditer ou un espace pour enseigner vos pratiques,
+                        Mindfulness & Bien-être Studio vous accompagne pas à pas vers un quotidien plus aligné et épanoui.
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">

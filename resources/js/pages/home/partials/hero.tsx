@@ -337,25 +337,25 @@ export function Hero() {
                             className="h-4 w-4 text-primary"
                             aria-hidden="true"
                         />
-                        Plateforme bien-être & développement personnel
+                        ✨ Votre havre de paix en ligne
                     </motion.div>
 
                     <motion.h1
                         variants={itemVariants}
                         className="mb-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl lg:text-7xl"
                     >
-                        Éveillez votre conscience.
+                        Ralentissez. Respirez.
                         <br />
-                        Transformez votre vie.
+                        Cultivez votre équilibre.
                     </motion.h1>
 
                     <motion.p
                         variants={itemVariants}
                         className="mx-auto mb-10 max-w-2xl text-lg text-foreground/70 md:text-2xl"
                     >
-                        Accédez à des formations en mindfulness, méditation,
-                        chakras et bien-être, animées par des formateurs
-                        certifiés et passionnés.
+                        Découvrez un espace d'apprentissage dédié à la sérénité.
+                        Rejoignez des programmes immersifs en méditation, yoga
+                        et développement holistique, guidés par les meilleurs experts certifiés.
                     </motion.p>
 
                     <motion.div
