@@ -339,14 +339,26 @@ export function Hero() {
                         Votre havre de paix en ligne
                     </motion.div>
 
-                    <motion.h1
+                    <motion.div
                         variants={itemVariants}
-                        className="mb-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl lg:text-7xl"
                     >
-                        Ralentissez. Respirez.
-                        <br />
-                        Cultivez votre équilibre.
-                    </motion.h1>
+                        <motion.h1
+                            animate={{
+                                y: [0, -6, 0],
+                            }}
+                            transition={{
+                                duration: 8,
+                                ease: 'easeInOut',
+                                repeat: Infinity,
+                                repeatType: 'reverse',
+                            }}
+                            className="mb-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl lg:text-7xl"
+                        >
+                            Ralentissez. Respirez.
+                            <br />
+                            Cultivez votre équilibre.
+                        </motion.h1>
+                    </motion.div>
 
                     <motion.p
                         variants={itemVariants}
