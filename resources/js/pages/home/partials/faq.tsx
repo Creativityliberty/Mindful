@@ -4,7 +4,7 @@ import { Plus } from 'lucide-react';
 
 const questions = [
     {
-        question: 'Comment accéder aux cours sur pMindfull ?',
+        question: 'Comment accéder aux cours sur Mindfulness & Bien-être Studio ?',
         reponse:
             'Créez un compte gratuit, parcourez notre catalogue de formations et achetez le cours de votre choix. Vous y accédez immédiatement depuis votre espace personnel, à vie.',
     },
@@ -14,7 +14,7 @@ const questions = [
             'Oui, la plateforme est entièrement responsive. Vous pouvez suivre vos formations depuis n’importe quel appareil : smartphone, tablette ou ordinateur, à n’importe quelle heure.',
     },
     {
-        question: 'Comment devenir formateur sur pMindfull ?',
+        question: 'Comment devenir formateur sur Mindfulness & Bien-être Studio ?',
         reponse:
             'Soumettez votre candidature depuis la page "Devenir formateur". Notre équipe évalue votre profil et expertise. Une fois accepté, vous activez votre abonnement formateur et publiez vos cours.',
     },

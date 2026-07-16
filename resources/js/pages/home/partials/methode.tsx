@@ -56,7 +56,7 @@ export function Methode() {
                     </h2>
                     <p className="mx-auto max-w-2xl text-lg text-foreground/60">
                         Vous êtes coach, thérapeute ou praticien du bien-être ?
-                        Rejoignez pMindfull et publiez vos formations sur notre
+                        Rejoignez Mindfulness & Bien-être Studio et publiez vos formations sur notre
                         plateforme pour toucher une communauté engagée.
                     </p>
                 </motion.div>

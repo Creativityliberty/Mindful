@@ -30,7 +30,7 @@ export function Cta() {
 
                     <p className="mx-auto mb-10 max-w-xl text-lg text-foreground/60">
                         Rejoignez notre communauté d’apprenants ou partagez
-                        votre expertise comme formateur. pMindfull est l’espace
+                        votre expertise comme formateur. Mindfulness & Bien-être Studio est l’espace
                         qu’il vous fallait pour grandir et vous épanouir.
                     </p>
 

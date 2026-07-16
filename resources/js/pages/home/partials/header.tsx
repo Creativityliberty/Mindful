@@ -114,9 +114,9 @@ export function Header() {
                     },
                 )}
             >
-                <nav className="relative flex h-12 w-full items-center px-2 lg:px-4">
+                <nav className="flex h-12 w-full items-center justify-between px-2 lg:px-4">
                     {/* logo — gauche écran */}
-                    <div className="flex items-center justify-start">
+                    <div className="flex items-center justify-start shrink-0">
                         <div className="rounded-md p-1.5 hover:bg-transparent">
                             <Link href="/">
                                 <Logo className="h-6 w-auto" />
@@ -124,26 +124,21 @@ export function Header() {
                         </div>
                     </div>
 
-                    {/* liens — centre exact */}
-                    <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
-                        <NavigationMenu>
-                            <NavigationMenuList>
-                                {simpleLinks.map((link) => (
-                                    <NavigationMenuItem key={link.label}>
-                                        <NavigationMenuLink
-                                            href={link.href}
-                                            className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground focus:outline-none"
-                                        >
-                                            {link.label}
-                                        </NavigationMenuLink>
-                                    </NavigationMenuItem>
-                                ))}
-                            </NavigationMenuList>
-                        </NavigationMenu>
+                    {/* liens — centre flex */}
+                    <div className="hidden lg:flex items-center justify-center gap-1 xl:gap-2">
+                        {simpleLinks.map((link) => (
+                            <Link
+                                key={link.label}
+                                href={link.href}
+                                className="inline-flex h-9 items-center justify-center px-3 text-xs xl:text-sm font-medium text-foreground/70 transition-colors hover:text-foreground rounded-full hover:bg-muted/40"
+                            >
+                                {link.label}
+                            </Link>
+                        ))}
                     </div>
 
                     {/* CTA — droite écran */}
-                    <div className="ml-auto hidden items-center justify-end gap-2 lg:flex">
+                    <div className="ml-auto hidden items-center justify-end gap-2 lg:flex shrink-0">
                         {auth.user ? (
                             hasRole ? (
                                 <Button

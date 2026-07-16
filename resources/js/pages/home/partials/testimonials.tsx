@@ -8,7 +8,7 @@ const avis = [
         role: 'Étudiante',
         entreprise: 'Cours de méditation',
         contenu:
-            'Grâce aux cours de mindfulness sur pMindfull, j’ai appris à gérer mon anxiété au quotidien. La qualité des formateurs est vraiment remarquable.',
+            'Grâce aux cours de mindfulness sur Mindfulness & Bien-être Studio, j’ai appris à gérer mon anxiété au quotidien. La qualité des formateurs est vraiment remarquable.',
     },
     {
         initiales: 'KD',
@@ -16,7 +16,7 @@ const avis = [
         role: 'Formateur certifié',
         entreprise: 'Coach bien-être',
         contenu:
-            'J’ai rejoint pMindfull comme formateur et en quelques semaines, j’ai pu toucher des centaines d’apprenants motivés. La plateforme est intuitive et l’équipe très réactive.',
+            'J’ai rejoint Mindfulness & Bien-être Studio comme formateur et en quelques semaines, j’ai pu toucher des centaines d’apprenants motivés. La plateforme est intuitive et l’équipe très réactive.',
     },
     {
         initiales: 'AL',
@@ -48,7 +48,7 @@ const avis = [
         role: 'Formatrice',
         entreprise: 'Sophrologue certifiée',
         contenu:
-            'Publier mes formations sur pMindfull m’a permis de développer ma clientèle en ligne sans contrainte technique. Le support est disponible et la communauté est bienveillante.',
+            'Publier mes formations sur Mindfulness & Bien-être Studio m’a permis de développer ma clientèle en ligne sans contrainte technique. Le support est disponible et la communauté est bienveillante.',
     },
 ] as const;
 
@@ -74,7 +74,7 @@ export default function Testimonials() {
                     <p className="mx-auto max-w-xl text-lg text-foreground/60">
                         Des apprenants qui se transforment, des formateurs qui
                         développent leur activité. Découvrez leurs expériences
-                        sur pMindfull.
+                        sur Mindfulness & Bien-être Studio.
                     </p>
                 </div>
             </div>

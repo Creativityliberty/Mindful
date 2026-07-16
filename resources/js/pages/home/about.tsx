@@ -17,9 +17,9 @@ import {
 const timeline = [
     {
         annee: '2021',
-        titre: 'Naissance de pMindfull',
+        titre: 'Naissance de Mindfulness & Bien-être Studio',
         description:
-            "Fondée à Paris par une équipe de praticiens du bien-être et de passionnés du digital, pMindfull naît d'une conviction : rendre le mindfulness et les pratiques de bien-être accessibles à tous.",
+            "Fondée à Paris par une équipe de praticiens du bien-être et de passionnés du digital, Mindfulness & Bien-être Studio naît d'une conviction : rendre le mindfulness et les pratiques de bien-être accessibles à tous.",
     },
     {
         annee: '2022',
@@ -64,7 +64,7 @@ const equipe = [
         initiales: 'AB',
         nom: 'Antoine Bonneau',
         role: 'Responsable communauté',
-        bio: 'Ancien sophrologue reconverti dans le numérique. Antoine anime notre communauté d\'apprenants et veille à ce que chacun trouve sa place sur pMindfull.',
+        bio: 'Ancien sophrologue reconverti dans le numérique. Antoine anime notre communauté d\'apprenants et veille à ce que chacun trouve sa place sur Mindfulness & Bien-être Studio.',
     },
 ];
 
@@ -73,7 +73,7 @@ const valeurs = [
         icon: Heart,
         titre: 'Bienveillance',
         description:
-            "Chaque interaction sur pMindfull est guidée par la douceur et le respect. Nous croyons que la transformation durable naît dans un espace sûr et bienveillant.",
+            "Chaque interaction sur Mindfulness & Bien-être Studio est guidée par la douceur et le respect. Nous croyons que la transformation durable naît dans un espace sûr et bienveillant.",
     },
     {
         icon: Sparkles,
@@ -145,7 +145,7 @@ export default function About() {
                             </span>
                         </h1>
                         <p className="mx-auto max-w-2xl text-lg leading-relaxed text-foreground/60">
-                            pMindfull est une plateforme dédiée au bien-être, à
+                            Mindfulness & Bien-être Studio est une plateforme dédiée au bien-être, à
                             la pleine conscience et au développement personnel —
                             où formateurs certifiés et apprenants motivés se
                             retrouvent pour une transformation durable.
@@ -382,7 +382,7 @@ export default function About() {
                     className="mx-auto max-w-3xl px-4 text-center md:px-6"
                 >
                     <h2 className="mb-5 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                        Rejoignez l'aventure pMindfull
+                        Rejoignez l'aventure Mindfulness & Bien-être Studio
                     </h2>
                     <p className="mb-10 text-lg text-foreground/55">
                         Que vous souhaitiez apprendre, partager votre expertise

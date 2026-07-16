@@ -111,8 +111,8 @@ export function Footer() {
                             transition={{ duration: 0.2 }}
                             className="mb-4 inline-flex items-center gap-3"
                         >
-                            <Card className="rounded-2xl border border-border/60 bg-card/80 px-3 py-1 text-xs tracking-[0.32em] text-muted-foreground uppercase shadow-[0_10px_30px_-20px_rgba(15,23,42,0.8)]">
-                                pMindfull
+                            <Card className="rounded-2xl border border-border/60 bg-card/80 px-3 py-1 text-xs tracking-[0.2em] text-muted-foreground uppercase shadow-[0_10px_30px_-20px_rgba(15,23,42,0.8)]">
+                                Mindfulness & Bien-être Studio
                             </Card>
                             <Badge
                                 variant="outline"
@@ -123,7 +123,7 @@ export function Footer() {
                         </motion.div>
 
                         <p className="mb-4 max-w-md text-sm text-muted-foreground">
-                            pMindfull réunit apprenants et formateurs autour du
+                            Mindfulness & Bien-être Studio réunit apprenants et formateurs autour du
                             bien-être, de la méditation et du développement
                             personnel. Éveillez votre conscience, transformez
                             votre vie.
@@ -296,7 +296,7 @@ export function Footer() {
                         transition={{ delay: 0.6 }}
                         className="flex items-center gap-2 text-sm text-muted-foreground"
                     >
-                        <span>© 2025 pMindfull. Tous droits réservés.</span>
+                        <span>© 2025 Mindfulness & Bien-être Studio. Tous droits réservés.</span>
                         <Badge variant="outline" className="text-xs">
                             v1.0.0
                         </Badge>

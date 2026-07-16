@@ -61,7 +61,7 @@ export default function Blog() {
                         Ressources & Bien-être
                     </div>
                     <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        Blog pMindfull
+                        Blog Mindfulness & Bien-être Studio
                     </h1>
                     <p className="mx-auto mt-4 max-w-xl text-foreground/55">
                         Articles, guides pratiques et réflexions sur le

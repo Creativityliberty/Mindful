@@ -14,7 +14,7 @@ export function BecomeTrainerHeader() {
                 Programme formateur
             </div>
             <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                Devenez formateur sur pMindfull
+                Devenez formateur sur Mindfulness & Bien-être Studio
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-foreground/60">
                 Partagez votre expertise en mindfulness, chakras, yoga ou bien-être avec une communauté

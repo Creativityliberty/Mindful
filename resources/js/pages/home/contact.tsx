@@ -45,7 +45,7 @@ const quickCards = [
         icon: Building2,
         titre: 'Devenir formateur',
         description:
-            'Vous êtes praticien du bien-être et souhaitez publier vos cours sur pMindfull.',
+            'Vous êtes praticien du bien-être et souhaitez publier vos cours sur Mindfulness & Bien-être Studio.',
         cta: 'Déposer ma candidature',
     },
     {

@@ -78,7 +78,7 @@ const steps = [
         number: '04',
         title: 'Publiez et développez',
         description:
-            'Publiez vos formations, accueillez vos premiers étudiants et développez votre activité sur pMindfull.',
+            'Publiez vos formations, accueillez vos premiers étudiants et développez votre activité sur Mindfulness & Bien-être Studio.',
     },
 ];
 
@@ -185,7 +185,7 @@ export default function BecomeTrainer() {
                             Pourquoi nous rejoindre
                         </div>
                         <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            Les avantages d'enseigner sur pMindfull
+                            Les avantages d'enseigner sur Mindfulness & Bien-être Studio
                         </h2>
                     </motion.div>
 
@@ -370,7 +370,7 @@ export default function BecomeTrainer() {
                             Nos formateurs
                         </div>
                         <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            Ils ont rejoint pMindfull
+                            Ils ont rejoint Mindfulness & Bien-être Studio
                         </h2>
                     </motion.div>
 
