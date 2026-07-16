@@ -103,98 +103,101 @@ export function Header() {
     }, [open]);
 
     return (
-        <header
-            className={cn(
-                'sticky top-0 z-50 w-full border-b border-transparent',
-                {
-                    'border-border bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50':
-                        scrolled,
-                },
-            )}
-        >
-            <nav className="relative flex h-14 w-full items-center px-4 lg:px-6">
-                {/* logo — gauche écran */}
-                <div className="flex items-center justify-start">
-                    <div className="rounded-md p-2 hover:bg-transparent">
-                        <Link href="/">
-                            <Logo className="h-8 w-auto" />
-                        </Link>
+        <header className="sticky top-0 z-50 w-full px-4 pt-4 lg:px-8">
+            <div
+                className={cn(
+                    'mx-auto max-w-7xl rounded-full border transition-all duration-300 px-2 md:px-4',
+                    {
+                        'border-border bg-background/85 backdrop-blur-md shadow-lg shadow-primary/[0.02] dark:bg-background/40':
+                            scrolled,
+                        'border-border/20 bg-background/40 backdrop-blur-sm': !scrolled,
+                    },
+                )}
+            >
+                <nav className="relative flex h-12 w-full items-center px-2 lg:px-4">
+                    {/* logo — gauche écran */}
+                    <div className="flex items-center justify-start">
+                        <div className="rounded-md p-1.5 hover:bg-transparent">
+                            <Link href="/">
+                                <Logo className="h-6 w-auto" />
+                            </Link>
+                        </div>
                     </div>
-                </div>
 
-                {/* liens — centre exact */}
-                <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
-                    <NavigationMenu>
-                        <NavigationMenuList>
-                            {simpleLinks.map((link) => (
-                                <NavigationMenuItem key={link.label}>
-                                    <NavigationMenuLink
-                                        href={link.href}
-                                        className="inline-flex h-10 items-center justify-center px-4 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground focus:outline-none"
-                                    >
-                                        {link.label}
-                                    </NavigationMenuLink>
-                                </NavigationMenuItem>
-                            ))}
-                        </NavigationMenuList>
-                    </NavigationMenu>
-                </div>
+                    {/* liens — centre exact */}
+                    <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
+                        <NavigationMenu>
+                            <NavigationMenuList>
+                                {simpleLinks.map((link) => (
+                                    <NavigationMenuItem key={link.label}>
+                                        <NavigationMenuLink
+                                            href={link.href}
+                                            className="inline-flex h-9 items-center justify-center px-4 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground focus:outline-none"
+                                        >
+                                            {link.label}
+                                        </NavigationMenuLink>
+                                    </NavigationMenuItem>
+                                ))}
+                            </NavigationMenuList>
+                        </NavigationMenu>
+                    </div>
 
-                {/* CTA — droite écran */}
-                <div className="ml-auto hidden items-center justify-end gap-2 lg:flex">
-                    {auth.user ? (
-                        hasRole ? (
-                            <Button
-                                variant="secondary"
-                                className="shrink-0 rounded-full"
-                                asChild
-                            >
-                                <Link href={dashboardHrefFor(auth.user)}>Dashboard</Link>
-                            </Button>
-                        ) : (
-                            <UserMenu user={auth.user} />
-                        )
-                    ) : (
-                        <>
-                            <Button
-                                variant="secondary"
-                                className="shrink-0 rounded-full"
-                                asChild
-                            >
-                                <Link href={login()}>Connexion</Link>
-                            </Button>
-                            {canRegister !== false && (
+                    {/* CTA — droite écran */}
+                    <div className="ml-auto hidden items-center justify-end gap-2 lg:flex">
+                        {auth.user ? (
+                            hasRole ? (
                                 <Button
-                                    className="shrink-0 rounded-full"
+                                    variant="secondary"
+                                    className="shrink-0 rounded-full h-8 px-4 text-xs font-medium"
                                     asChild
                                 >
-                                    <Link href={register()}>S'inscrire</Link>
+                                    <Link href={dashboardHrefFor(auth.user)}>Dashboard</Link>
                                 </Button>
-                            )}
-                        </>
-                    )}
-                    <ThemeToggle />
-                </div>
+                            ) : (
+                                <UserMenu user={auth.user} />
+                            )
+                        ) : (
+                            <>
+                                <Button
+                                    variant="secondary"
+                                    className="shrink-0 rounded-full h-8 px-4 text-xs font-medium"
+                                    asChild
+                                >
+                                    <Link href={login()}>Connexion</Link>
+                                </Button>
+                                {canRegister !== false && (
+                                    <Button
+                                        className="shrink-0 rounded-full h-8 px-4 text-xs font-medium"
+                                        asChild
+                                    >
+                                        <Link href={register()}>S'inscrire</Link>
+                                    </Button>
+                                )}
+                            </>
+                        )}
+                        <ThemeToggle />
+                    </div>
 
-                {/* burger mobile */}
-                <Button
-                    size="icon"
-                    variant="outline"
-                    onClick={() => setOpen(!open)}
-                    className="ml-auto lg:hidden"
-                    aria-expanded={open}
-                    aria-controls="mobile-menu"
-                    aria-label="Toggle menu"
-                >
-                    <MenuToggleIcon
-                        open={open}
-                        className="size-5"
-                        duration={300}
-                    />
-                </Button>
-            </nav>
+                    {/* burger mobile */}
+                    <Button
+                        size="icon"
+                        variant="outline"
+                        onClick={() => setOpen(!open)}
+                        className="ml-auto lg:hidden h-8 w-8 rounded-full"
+                        aria-expanded={open}
+                        aria-controls="mobile-menu"
+                        aria-label="Toggle menu"
+                    >
+                        <MenuToggleIcon
+                            open={open}
+                            className="size-4"
+                            duration={300}
+                        />
+                    </Button>
+                </nav>
 
-            <MobileMenu open={open} auth={auth} canRegister={canRegister} />
+                <MobileMenu open={open} auth={auth} canRegister={canRegister} />
+            </div>
         </header>
     );
 }
@@ -219,7 +222,7 @@ function MobileMenu({
     return createPortal(
         <div
             id="mobile-menu"
-            className="fixed top-14 right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-y border-border/30 bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50 lg:hidden"
+            className="fixed top-[80px] right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-y border-border/30 bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50 lg:hidden"
         >
             <div
                 data-slot={open ? 'open' : 'closed'}

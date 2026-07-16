@@ -14,8 +14,8 @@ const Logo: React.FC<LogoProps> = ({
     style = {},
     width = 200.75,
     height = 36.4,
-    mindClassName = 'fill-sky-600 dark:fill-sky-300 transition-colors duration-300',
-    fulnessClassName = 'fill-orange-500 dark:fill-orange-300 transition-colors duration-300',
+    mindClassName = 'fill-primary transition-colors duration-300',
+    fulnessClassName = 'fill-secondary transition-colors duration-300',
     ...props
 }) => {
     return (
