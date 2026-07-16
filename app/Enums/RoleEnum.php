@@ -6,14 +6,14 @@ namespace App\Enums;
 
 enum RoleEnum: string
 {
-    case Admin   = 'admin';
+    case Admin = 'admin';
     case Trainer = 'trainer';
     case Student = 'student';
 
     public function label(): string
     {
         return match ($this) {
-            self::Admin   => 'Administrateur',
+            self::Admin => 'Administrateur',
             self::Trainer => 'Formateur',
             self::Student => 'Étudiant',
         };

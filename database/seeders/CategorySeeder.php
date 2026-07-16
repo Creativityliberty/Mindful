@@ -25,7 +25,7 @@ class CategorySeeder extends Seeder
             Category::firstOrCreate(
                 ['name' => $name],
                 [
-                    'slug'  => Str::slug($name),
+                    'slug' => Str::slug($name),
                     'order' => $index + 1,
                 ],
             );

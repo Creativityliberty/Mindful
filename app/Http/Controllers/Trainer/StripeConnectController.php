@@ -18,7 +18,7 @@ class StripeConnectController extends Controller
         $user = $request->user();
 
         return Inertia::render('settings/stripe-connect', [
-            'has_account'                 => (bool) $user->stripe_account_id,
+            'has_account' => (bool) $user->stripe_account_id,
             'stripe_onboarding_completed' => (bool) $user->stripe_onboarding_completed,
         ]);
     }
@@ -31,16 +31,16 @@ class StripeConnectController extends Controller
 
         if (! $user->stripe_account_id) {
             $account = Account::create([
-                'type'             => 'express',
-                'country'          => 'FR',
-                'email'            => $user->email,
-                'business_type'    => 'individual',
+                'type' => 'express',
+                'country' => 'FR',
+                'email' => $user->email,
+                'business_type' => 'individual',
                 'business_profile' => [
                     'product_description' => 'Vente de formations en ligne sur la plateforme pmindfull.',
                 ],
                 'capabilities' => [
                     'card_payments' => ['requested' => true],
-                    'transfers'     => ['requested' => true],
+                    'transfers' => ['requested' => true],
                 ],
             ]);
 
@@ -48,10 +48,10 @@ class StripeConnectController extends Controller
         }
 
         $accountLink = AccountLink::create([
-            'account'     => $user->stripe_account_id,
+            'account' => $user->stripe_account_id,
             'refresh_url' => route('trainer.stripe-connect.onboard'),
-            'return_url'  => route('trainer.stripe-connect.return'),
-            'type'        => 'account_onboarding',
+            'return_url' => route('trainer.stripe-connect.return'),
+            'type' => 'account_onboarding',
         ]);
 
         return redirect($accountLink->url);

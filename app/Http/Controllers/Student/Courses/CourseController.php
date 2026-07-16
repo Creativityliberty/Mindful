@@ -67,9 +67,9 @@ class CourseController extends Controller
     {
         $user = $request->user();
 
-        Enrollment::where('user_id', $user->id)
+        $isEnrolled = Enrollment::where('user_id', $user->id)
             ->where('course_id', $courseId)
-            ->firstOrFail();
+            ->exists();
 
         $course = Course::with(['trainer', 'modules.lessons'])
             ->published()
@@ -93,6 +93,7 @@ class CourseController extends Controller
                 'id' => $course->id,
                 'title' => $course->title,
                 'image' => $course->image,
+                'price' => number_format((float) $course->price, 0, ',', ' ').' €',
                 'trainer' => $course->trainer->name,
                 'modules' => ModuleResource::collection($course->modules)->resolve(),
             ],
@@ -100,6 +101,7 @@ class CourseController extends Controller
             'progressPercentage' => $progressPercentage,
             'completedCount' => $completedCount,
             'totalLessons' => $totalLessons,
+            'isEnrolled' => $isEnrolled,
         ]);
     }
 }

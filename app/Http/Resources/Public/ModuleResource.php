@@ -15,11 +15,11 @@ class ModuleResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id'       => $this->id,
-            'title'    => $this->title,
+            'id' => $this->id,
+            'title' => $this->title,
             'duration' => $this->duration,
-            'order'    => $this->order,
-            'lessons'  => $this->whenLoaded('lessons', fn() => LessonResource::collection($this->lessons)->resolve()),
+            'order' => $this->order,
+            'lessons' => $this->whenLoaded('lessons', fn () => LessonResource::collection($this->lessons)->resolve()),
         ];
     }
 }

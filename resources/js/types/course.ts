@@ -6,6 +6,7 @@ export type StudentCourse = {
     id: number;
     title: string;
     image: string | null;
+    price?: string;
     trainer: string;
     modules: Module[];
 };

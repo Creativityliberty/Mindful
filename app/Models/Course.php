@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Support\Facades\Auth;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
 
@@ -40,12 +39,12 @@ class Course extends Model
     protected function casts(): array
     {
         return [
-            'price'        => 'decimal:2',
-            'featured'     => 'boolean',
-            'benefits'     => 'array',
-            'objectives'   => 'array',
+            'price' => 'decimal:2',
+            'featured' => 'boolean',
+            'benefits' => 'array',
+            'objectives' => 'array',
             'prerequisites' => 'array',
-            'status'       => CourseStatus::class,
+            'status' => CourseStatus::class,
             'published_at' => 'datetime',
         ];
     }

@@ -555,7 +555,7 @@ export function CourseDetail({ course }: { course: Course }) {
 
                                     {course.is_enrolled ? (
                                         <Button size="lg" className="w-full gap-2 rounded-full" asChild>
-                                            <Link href={`/courses/${course.id}/learn`}>
+                                            <Link href={`/student/courses/${course.id}`}>
                                                 Accéder au cours
                                                 <ArrowRight className="h-4 w-4" />
                                             </Link>
@@ -598,7 +598,7 @@ export function CourseDetail({ course }: { course: Course }) {
                     </div>
                     {course.is_enrolled ? (
                         <Button size="lg" className="gap-2 rounded-full px-8" asChild>
-                            <Link href={`/courses/${course.id}/learn`}>
+                            <Link href={`/student/courses/${course.id}`}>
                                 Accéder <ArrowRight className="h-4 w-4" />
                             </Link>
                         </Button>

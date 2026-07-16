@@ -2,7 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Enums\TrainerApplicationStatus;
 use App\Models\TrainerApplication;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,31 +20,31 @@ class TrainerApplicationFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id'     => null,
-            'name'        => fake()->name(),
-            'email'       => fake()->unique()->safeEmail(),
-            'status'      => \App\Enums\TrainerApplicationStatus::Pending,
-            'motivation'  => fake()->paragraphs(2, true),
-            'experience'  => fake()->paragraph(),
+            'user_id' => null,
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'status' => TrainerApplicationStatus::Pending,
+            'motivation' => fake()->paragraphs(2, true),
+            'experience' => fake()->paragraph(),
             'specialties' => fake()->randomElements(['Méditation', 'Yoga', 'Pleine conscience', 'Respiration', 'Relaxation']),
         ];
     }
 
     public function approved(): static
     {
-        return $this->state(fn() => [
-            'status'      => \App\Enums\TrainerApplicationStatus::Approved,
-            'reviewed_by' => \App\Models\User::factory(),
+        return $this->state(fn () => [
+            'status' => TrainerApplicationStatus::Approved,
+            'reviewed_by' => User::factory(),
             'reviewed_at' => now(),
         ]);
     }
 
     public function rejected(): static
     {
-        return $this->state(fn() => [
-            'status'           => \App\Enums\TrainerApplicationStatus::Rejected,
-            'reviewed_by'      => \App\Models\User::factory(),
-            'reviewed_at'      => now(),
+        return $this->state(fn () => [
+            'status' => TrainerApplicationStatus::Rejected,
+            'reviewed_by' => User::factory(),
+            'reviewed_at' => now(),
             'rejection_reason' => fake()->sentence(),
         ]);
     }

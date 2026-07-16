@@ -23,8 +23,8 @@ final class UsersSeeder extends Seeder
             $user = User::firstOrCreate(
                 ['email' => $entry['email']],
                 [
-                    'name'              => $entry['name'],
-                    'password'          => Hash::make('password'),
+                    'name' => $entry['name'],
+                    'password' => Hash::make('password'),
                     'email_verified_at' => now(),
                 ],
             );

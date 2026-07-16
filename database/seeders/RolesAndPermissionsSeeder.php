@@ -32,7 +32,7 @@ final class RolesAndPermissionsSeeder extends Seeder
         */
         foreach (PermissionEnum::cases() as $permissionEnum) {
             Permission::firstOrCreate([
-                'name'       => $permissionEnum->value,
+                'name' => $permissionEnum->value,
                 'guard_name' => 'web',
             ]);
         }
@@ -44,7 +44,7 @@ final class RolesAndPermissionsSeeder extends Seeder
         */
         foreach (RoleEnum::cases() as $roleEnum) {
             $role = Role::firstOrCreate([
-                'name'       => $roleEnum->value,
+                'name' => $roleEnum->value,
                 'guard_name' => 'web',
             ]);
 

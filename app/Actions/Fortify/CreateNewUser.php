@@ -4,9 +4,12 @@ namespace App\Actions\Fortify;
 
 use App\Concerns\PasswordValidationRules;
 use App\Concerns\ProfileValidationRules;
+use App\Enums\RoleEnum;
 use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
+use Spatie\Permission\Exceptions\RoleDoesNotExist;
+use Spatie\Permission\Models\Role;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -24,10 +27,22 @@ class CreateNewUser implements CreatesNewUsers
             'password' => $this->passwordRules(),
         ])->validate();
 
-        return User::create([
+        $user = User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => $input['password'],
         ]);
+
+        try {
+            $user->assignRole(RoleEnum::Student->value);
+        } catch (RoleDoesNotExist $e) {
+            Role::create([
+                'name' => RoleEnum::Student->value,
+                'guard_name' => 'web',
+            ]);
+            $user->assignRole(RoleEnum::Student->value);
+        }
+
+        return $user;
     }
 }

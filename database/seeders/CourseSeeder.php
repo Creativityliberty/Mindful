@@ -25,7 +25,7 @@ class CourseSeeder extends Seeder
                 Course::factory()
                     ->published()
                     ->create([
-                        'trainer_id'  => $trainer->id,
+                        'trainer_id' => $trainer->id,
                         'category_id' => $categories->random()->id,
                     ]);
             });

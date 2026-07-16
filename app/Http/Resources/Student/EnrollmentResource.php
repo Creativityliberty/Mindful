@@ -20,7 +20,7 @@ class EnrollmentResource extends JsonResource
             'trainer_initials' => $this->trainerInitials(),
             'category' => $this->course->category?->name,
             'module_count' => $this->course->modules_count ?? $this->course->modules->count(),
-            'lesson_count' => $this->course->modules->sum(fn($m) => $m->lessons_count ?? $m->lessons->count()),
+            'lesson_count' => $this->course->modules->sum(fn ($m) => $m->lessons_count ?? $m->lessons->count()),
             'enrolled_at' => $this->enrolled_at?->translatedFormat('d M Y'),
         ];
     }
@@ -28,7 +28,7 @@ class EnrollmentResource extends JsonResource
     private function trainerInitials(): string
     {
         return collect(explode(' ', $this->course->trainer->name))
-            ->map(fn(string $word) => mb_strtoupper(mb_substr($word, 0, 1)))
+            ->map(fn (string $word) => mb_strtoupper(mb_substr($word, 0, 1)))
             ->take(2)
             ->implode('');
     }

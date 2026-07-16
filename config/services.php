@@ -29,9 +29,9 @@ return [
     ],
 
     'stripe' => [
-        'client_id'         => env('STRIPE_CLIENT_ID'),
-        'secret'            => env('STRIPE_SECRET'),
-        'trainer_price_id'  => env('STRIPE_TRAINER_PRICE_ID'),
+        'client_id' => env('STRIPE_CLIENT_ID'),
+        'secret' => env('STRIPE_SECRET'),
+        'trainer_price_id' => env('STRIPE_TRAINER_PRICE_ID'),
     ],
 
     'slack' => [

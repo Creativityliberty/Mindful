@@ -21,8 +21,8 @@ class CategoryFactory extends Factory
         $name = fake()->unique()->word();
 
         return [
-            'name'  => $name,
-            'slug'  => Str::slug($name),
+            'name' => $name,
+            'slug' => Str::slug($name),
             'order' => fake()->numberBetween(1, 100),
         ];
     }

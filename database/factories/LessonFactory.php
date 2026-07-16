@@ -15,10 +15,10 @@ class LessonFactory extends Factory
     {
         return [
             'module_id' => Module::factory(),
-            'title'     => fake()->sentence(4),
-            'duration'  => fake()->numberBetween(5, 60),
-            'is_free'   => false,
-            'order'     => fake()->numberBetween(1, 20),
+            'title' => fake()->sentence(4),
+            'duration' => fake()->numberBetween(5, 60),
+            'is_free' => false,
+            'order' => fake()->numberBetween(1, 20),
         ];
     }
 

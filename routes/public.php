@@ -5,10 +5,9 @@ use App\Http\Controllers\Public\BecomeTrainer\PaymentController;
 use App\Http\Controllers\Public\BecomeTrainer\TrainerPlanController;
 use App\Http\Controllers\Public\Courses\CheckoutController as CourseCheckoutController;
 use App\Http\Controllers\Public\Courses\CourseController;
-use App\Http\Controllers\Public\WebhookController;
 use App\Http\Controllers\Public\Home\HomeController;
+use App\Http\Controllers\Public\WebhookController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 

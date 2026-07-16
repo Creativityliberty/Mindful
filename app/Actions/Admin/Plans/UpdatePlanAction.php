@@ -33,10 +33,10 @@ class UpdatePlanAction
             }
 
             $newPrice = Price::create([
-                'product'     => $plan->stripe_product_id,
+                'product' => $plan->stripe_product_id,
                 'unit_amount' => $priceInCents,
-                'currency'    => $data['currency'],
-                'recurring'   => ['interval' => $data['interval']],
+                'currency' => $data['currency'],
+                'recurring' => ['interval' => $data['interval']],
             ]);
 
             $data['stripe_price_id'] = $newPrice->id;

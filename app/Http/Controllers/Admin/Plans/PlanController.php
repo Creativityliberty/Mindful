@@ -23,7 +23,7 @@ use Inertia\Response;
 class PlanController extends Controller
 {
     public function __construct(
-        private readonly PlanRepository   $repository,
+        private readonly PlanRepository $repository,
         private readonly CreatePlanAction $createAction,
         private readonly UpdatePlanAction $updateAction,
         private readonly DeletePlanAction $deleteAction,
@@ -44,7 +44,7 @@ class PlanController extends Controller
     {
         return Inertia::render('admin/plans/create', [
             'currencies' => array_map(fn (PlanCurrencyEnum $c) => ['value' => $c->value, 'label' => $c->label()], PlanCurrencyEnum::cases()),
-            'intervals'  => array_map(fn (PlanIntervalEnum $i) => ['value' => $i->value, 'label' => $i->label()], PlanIntervalEnum::cases()),
+            'intervals' => array_map(fn (PlanIntervalEnum $i) => ['value' => $i->value, 'label' => $i->label()], PlanIntervalEnum::cases()),
         ]);
     }
 
@@ -60,9 +60,9 @@ class PlanController extends Controller
     public function edit(Plan $plan): Response
     {
         return Inertia::render('admin/plans/edit', [
-            'plan'       => PlanResource::make($plan)->resolve(),
+            'plan' => PlanResource::make($plan)->resolve(),
             'currencies' => array_map(fn (PlanCurrencyEnum $c) => ['value' => $c->value, 'label' => $c->label()], PlanCurrencyEnum::cases()),
-            'intervals'  => array_map(fn (PlanIntervalEnum $i) => ['value' => $i->value, 'label' => $i->label()], PlanIntervalEnum::cases()),
+            'intervals' => array_map(fn (PlanIntervalEnum $i) => ['value' => $i->value, 'label' => $i->label()], PlanIntervalEnum::cases()),
         ]);
     }
 

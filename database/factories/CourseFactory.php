@@ -19,27 +19,27 @@ class CourseFactory extends Factory
         $title = fake()->sentence(4);
 
         return [
-            'trainer_id'    => User::factory(),
-            'category_id'   => Category::factory(),
-            'title'         => $title,
-            'slug'          => Str::slug($title),
-            'description'   => fake()->paragraph(3),
-            'price'         => fake()->randomFloat(2, 19, 199),
-            'duration'      => fake()->numberBetween(60, 600),
-            'image'         => fake()->imageUrl(800, 600, 'nature'),
-            'featured'      => false,
-            'benefits'      => ['Accès à vie', 'Attestation de complétion'],
-            'objectives'    => null,
+            'trainer_id' => User::factory(),
+            'category_id' => Category::factory(),
+            'title' => $title,
+            'slug' => Str::slug($title),
+            'description' => fake()->paragraph(3),
+            'price' => fake()->randomFloat(2, 19, 199),
+            'duration' => fake()->numberBetween(60, 600),
+            'image' => fake()->imageUrl(800, 600, 'nature'),
+            'featured' => false,
+            'benefits' => ['Accès à vie', 'Attestation de complétion'],
+            'objectives' => null,
             'prerequisites' => null,
-            'status'        => CourseStatus::Draft->value,
-            'published_at'  => null,
+            'status' => CourseStatus::Draft->value,
+            'published_at' => null,
         ];
     }
 
     public function published(): static
     {
         return $this->state(fn () => [
-            'status'       => CourseStatus::Published->value,
+            'status' => CourseStatus::Published->value,
             'published_at' => now(),
         ]);
     }

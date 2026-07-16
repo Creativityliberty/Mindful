@@ -21,24 +21,24 @@ class CreatePlanAction
         Stripe::setApiKey(config('cashier.secret'));
 
         $product = Product::create([
-            'name'     => $data['name'],
+            'name' => $data['name'],
             'metadata' => ['type' => 'trainer_plan'],
         ]);
 
         $priceInCents = (int) round($data['price'] * 100);
 
         $price = Price::create([
-            'product'     => $product->id,
+            'product' => $product->id,
             'unit_amount' => $priceInCents,
-            'currency'    => $data['currency'],
-            'recurring'   => ['interval' => $data['interval']],
+            'currency' => $data['currency'],
+            'recurring' => ['interval' => $data['interval']],
         ]);
 
         return $this->repository->create([
             ...$data,
-            'price'             => $priceInCents,
+            'price' => $priceInCents,
             'stripe_product_id' => $product->id,
-            'stripe_price_id'   => $price->id,
+            'stripe_price_id' => $price->id,
         ]);
     }
 }

@@ -48,9 +48,9 @@ return [
         ],
 
         'imagekit' => [
-            'driver'       => 'imagekit',
-            'public_key'   => env('IMAGEKIT_PUBLIC_KEY'),
-            'private_key'  => env('IMAGEKIT_PRIVATE_KEY'),
+            'driver' => 'imagekit',
+            'public_key' => env('IMAGEKIT_PUBLIC_KEY'),
+            'private_key' => env('IMAGEKIT_PRIVATE_KEY'),
             'endpoint_url' => env('IMAGEKIT_ENDPOINT_URL'),
         ],
 

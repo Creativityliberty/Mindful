@@ -6,13 +6,13 @@ namespace App\Enums;
 
 enum CourseStatus: string
 {
-    case Draft     = 'draft';
+    case Draft = 'draft';
     case Published = 'published';
 
     public function label(): string
     {
         return match ($this) {
-            self::Draft     => 'Brouillon',
+            self::Draft => 'Brouillon',
             self::Published => 'Publié',
         };
     }
