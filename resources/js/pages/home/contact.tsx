@@ -363,7 +363,7 @@ export default function Contact() {
                         <Card className="overflow-hidden border-border/40 bg-background/60 backdrop-blur-sm dark:border-border/50 dark:bg-background/50">
                             <div className="relative h-48 overflow-hidden bg-muted/30">
                                 <img
-                                    src="https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&w=900&q=80"
+                                    src="/assets/images/contact_zen.jpg"
                                     alt="Localisation"
                                     className="h-full w-full object-cover opacity-60"
                                 />

@@ -301,10 +301,9 @@ export function Hero() {
                 <div className="absolute top-1/2 left-1/4 h-[400px] w-[400px] rounded-full bg-primary/[0.02] blur-[150px] dark:bg-primary/[0.05]" />
             </div>
 
-            {/* image droite */}
             <div className="absolute inset-y-0 right-0 z-[5] hidden w-[52%] lg:block">
                 <img
-                    src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1400&q=80"
+                    src="/assets/images/hero_meditation.jpg"
                     alt=""
                     aria-hidden="true"
                     fetchPriority="high"

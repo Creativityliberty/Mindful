@@ -121,7 +121,7 @@ export default function About() {
                 {/* background image */}
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1800&q=80"
+                        src="/assets/images/about_studio.jpg"
                         alt=""
                         aria-hidden="true"
                         className="h-full w-full object-cover"
