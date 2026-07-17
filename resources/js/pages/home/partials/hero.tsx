@@ -2,6 +2,7 @@ import { Button } from '@/components/ui/button';
 import { motion, type Variants } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { useEffect, useRef } from 'react';
+import { Link } from '@inertiajs/react';
 
 type Point = {
     x: number;
@@ -376,20 +377,26 @@ export function Hero() {
                         <Button
                             size="lg"
                             className="group gap-2 rounded-full px-8 text-base tracking-[0.2em] uppercase"
+                            asChild
                         >
-                            Explorer les formations
-                            <ArrowRight
-                                className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                                aria-hidden="true"
-                            />
+                            <Link href="/courses">
+                                Explorer les formations
+                                <ArrowRight
+                                    className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                                    aria-hidden="true"
+                                />
+                            </Link>
                         </Button>
 
                         <Button
                             variant="secondary"
                             size="lg"
                             className="rounded-full"
+                            asChild
                         >
-                            Devenir formateur
+                            <Link href="/become-trainer">
+                                Devenir formateur
+                            </Link>
                         </Button>
                     </motion.div>
 

@@ -39,7 +39,7 @@ export function Cta() {
                             className="group gap-2 rounded-full px-8 text-base tracking-[0.2em] uppercase"
                             asChild
                         >
-                            <Link href="/events" preserveState prefetch>
+                            <Link href="/courses" preserveState prefetch>
                                 Explorer les formations
                                 <ArrowRight
                                     className="h-4 w-4 transition-transform group-hover:translate-x-1"
@@ -54,8 +54,7 @@ export function Cta() {
                             className="gap-2 rounded-full"
                             asChild
                         >
-                            <Link href="/contact" preserveState prefetch>
-                                <Phone className="h-4 w-4" aria-hidden="true" />
+                            <Link href="/become-trainer" preserveState prefetch>
                                 Devenir formateur
                             </Link>
                         </Button>
