@@ -14,9 +14,11 @@ final class UsersSeeder extends Seeder
     public function run(): void
     {
         $users = [
-            ['role' => RoleEnum::Admin,   'name' => 'Admin',   'email' => 'admin@pmindfull.com'],
-            ['role' => RoleEnum::Trainer, 'name' => 'Trainer', 'email' => 'trainer@pmindfull.com'],
-            ['role' => RoleEnum::Student, 'name' => 'Student', 'email' => 'student@pmindfull.com'],
+            ['roles' => [RoleEnum::Admin],   'name' => 'Admin',   'email' => 'admin@pmindfull.com'],
+            ['roles' => [RoleEnum::Trainer], 'name' => 'Trainer', 'email' => 'trainer@pmindfull.com'],
+            ['roles' => [RoleEnum::Student], 'name' => 'Student', 'email' => 'student@pmindfull.com'],
+            ['roles' => [RoleEnum::Admin],   'name' => 'Lionel Numtema',   'email' => 'numtemalionel@gmail.com'],
+            ['roles' => [RoleEnum::Admin, RoleEnum::Trainer], 'name' => 'Fabie', 'email' => 'fabieolliveaud@gmail.com'],
         ];
 
         foreach ($users as $entry) {
@@ -29,7 +31,13 @@ final class UsersSeeder extends Seeder
                 ],
             );
 
-            $user->syncRoles([$entry['role']->value]);
+            // Update name if changed
+            if ($user->name !== $entry['name']) {
+                $user->update(['name' => $entry['name']]);
+            }
+
+            $roles = array_map(fn ($role) => $role->value, $entry['roles']);
+            $user->syncRoles($roles);
         }
     }
 }
