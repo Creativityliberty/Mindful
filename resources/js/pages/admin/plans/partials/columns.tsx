@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { type ColumnDef } from '@tanstack/react-table';
 import { Link, router } from '@inertiajs/react';
+import type {ColumnDef} from '@tanstack/react-table';
 import { PencilIcon, Trash2Icon, MoreHorizontalIcon, StarIcon } from 'lucide-react';
+import { useState } from 'react';
 import { DataTableColumnHeader } from '@/components/data-table-column-header';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -20,8 +20,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import PlanController from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
 import type { Plan } from '@/types/plan';
+import PlanController from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
 
 function RowActions({ plan }: { plan: Plan }) {
     const [deleteOpen, setDeleteOpen] = useState(false);
@@ -92,6 +92,7 @@ export const createColumns = (): ColumnDef<Plan>[] => [
         header: ({ column }) => <DataTableColumnHeader column={column} title="Nom" />,
         cell: ({ row }) => {
             const plan = row.original;
+
             return (
                 <div className="flex items-center gap-2">
                     <span className="font-medium">{plan.name}</span>

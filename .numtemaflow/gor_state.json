@@ -1,0 +1,7 @@
+{
+  "goal": "Rebrand Mindful → FormationSession with SEO infrastructure + homepage content",
+  "current": "Phase 1 complete",
+  "tasks": ["SEO config + SeoData VO", "Frontend SEO components", "Controller wiring", "Header + Hero", "Services + Process", "Courses + Themes", "Trainer + Engagements", "FAQ + CTA + Newsletter", "Footer + Cleanup", "Final verification"],
+  "gates": [{"name": "completeness", "result": "PASS"}],
+  "risks": ["Course pages not yet rebranded (Phase 2)"]
+}

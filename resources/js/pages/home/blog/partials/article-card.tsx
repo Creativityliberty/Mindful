@@ -1,4 +1,5 @@
-import { motion, type Variants } from 'framer-motion'
+import { motion  } from 'framer-motion'
+import type {Variants} from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react'
 import type { Article } from '../blog-data'
 

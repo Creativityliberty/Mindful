@@ -1,13 +1,13 @@
 import { Head, Link, router, usePage } from '@inertiajs/react';
-import student from '@/routes/student';
-import { cn } from '@/lib/utils';
-import { useEffect, useRef, useState, useMemo } from 'react';
 import { CheckCircle2, ChevronDown, ChevronLeft, ChevronUp, Circle, PlayCircle, Lock, ArrowRight } from 'lucide-react';
+import { useEffect, useRef, useState, useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
+import { cn } from '@/lib/utils';
 import type { Lesson, LessonType, Module, StudentCourse } from '@/types';
 import { getLessonTypeLabel, LessonMedia } from './partials/lesson-media';
+import student from '@/routes/student';
 
 const COURSE_SIDEBAR_WIDTH = 320;
 
@@ -17,7 +17,9 @@ function useDynamicPageLeft() {
 
     useEffect(() => {
         const measure = () => {
-            if (!pageRef.current) return;
+            if (!pageRef.current) {
+return;
+}
 
             const nextLeft = pageRef.current.getBoundingClientRect().left;
 
@@ -94,7 +96,9 @@ function useDynamicPageLeft() {
 }
 
 function formatDuration(duration?: string | number | null) {
-    if (!duration) return '';
+    if (!duration) {
+return '';
+}
 
     const value = String(duration);
 
@@ -296,8 +300,12 @@ export default function StudentCourseShow() {
     const defaultActiveLesson = useMemo(() => {
         if (!isEnrolled) {
             const firstFree = allLessons.find((l) => l.free || l.is_free);
-            if (firstFree) return firstFree;
+
+            if (firstFree) {
+return firstFree;
+}
         }
+
         return allLessons[0] ?? null;
     }, [allLessons, isEnrolled]);
 
@@ -330,7 +338,9 @@ export default function StudentCourseShow() {
     const isCurrentLessonLocked = !isEnrolled && activeLesson && !(activeLesson.free || activeLesson.is_free);
 
     function toggleLessonComplete() {
-        if (!activeLesson || activeLesson.id === undefined || isTogglingProgress || !isEnrolled) return;
+        if (!activeLesson || activeLesson.id === undefined || isTogglingProgress || !isEnrolled) {
+return;
+}
 
         const lessonId = activeLesson.id;
         setIsTogglingProgress(true);

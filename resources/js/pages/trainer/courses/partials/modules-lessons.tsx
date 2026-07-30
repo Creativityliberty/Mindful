@@ -1,9 +1,9 @@
 import { FileAudioIcon, FileTextIcon, Link2Icon, PlusIcon, Trash2Icon } from 'lucide-react';
+import { MediaUpload } from '@/components/media-upload';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { MediaUpload } from '@/components/media-upload';
 import {
     Select,
     SelectContent,

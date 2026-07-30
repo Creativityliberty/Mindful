@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Enums\CourseStatus;
 use App\Enums\RoleEnum;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\User;
-use App\Enums\CourseStatus;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -21,7 +21,7 @@ class CourseSeeder extends Seeder
         // 1. Trouver ou créer des formateurs pour ces formations
         // Sophie Lefèvre (Mindfulness, Pendule)
         $sophie = User::where('email', 'sophie@mindful.com')->first();
-        if (!$sophie) {
+        if (! $sophie) {
             $sophie = User::factory()->create([
                 'name' => 'Sophie Lefèvre',
                 'email' => 'sophie@mindful.com',
@@ -32,7 +32,7 @@ class CourseSeeder extends Seeder
 
         // Kiran Mehta (Chakras, Lahochi)
         $kiran = User::where('email', 'kiran@mindful.com')->first();
-        if (!$kiran) {
+        if (! $kiran) {
             $kiran = User::factory()->create([
                 'name' => 'Kiran Mehta',
                 'email' => 'kiran@mindful.com',
@@ -43,7 +43,7 @@ class CourseSeeder extends Seeder
 
         // Valérie Renaud (Lumière Intérieure)
         $valerie = User::where('email', 'valerie@mindful.com')->first();
-        if (!$valerie) {
+        if (! $valerie) {
             $valerie = User::factory()->create([
                 'name' => 'Valérie Renaud',
                 'email' => 'valerie@mindful.com',

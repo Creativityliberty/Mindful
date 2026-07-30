@@ -1,7 +1,8 @@
-import { Button } from '@/components/ui/button'
-import { motion, type Variants } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
 import { Link } from '@inertiajs/react'
+import { motion  } from 'framer-motion'
+import type {Variants} from 'framer-motion';
+import { ArrowRight } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const containerVariants: Variants = {
   hidden: { opacity: 0, y: 24 },

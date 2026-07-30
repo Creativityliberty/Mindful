@@ -1,8 +1,8 @@
 import { Head, Link, usePage } from '@inertiajs/react';
 import { login, register } from '@/routes';
 import admin from '@/routes/admin';
-import trainer from '@/routes/trainer';
 import student from '@/routes/student';
+import trainer from '@/routes/trainer';
 
 export default function Welcome() {
     const { auth } = usePage().props;

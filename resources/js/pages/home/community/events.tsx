@@ -1,6 +1,6 @@
-import React from 'react';
 import { Head } from '@inertiajs/react';
 import { Calendar, Clock, Video, MapPin, Users, ArrowRight } from 'lucide-react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 

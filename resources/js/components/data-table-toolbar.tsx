@@ -1,11 +1,11 @@
-import { useState, useCallback } from 'react';
-import { type Table } from '@tanstack/react-table';
+import type {Table} from '@tanstack/react-table';
 import { X } from 'lucide-react';
+import { useState, useCallback } from 'react';
 import type React from 'react';
 
-import { DataTableFacetedFilter } from './data-table-faceted-filter';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { DataTableFacetedFilter } from './data-table-faceted-filter';
 import { DataTableViewOptions } from './data-table-view-options';
 
 export interface FacetedFilterConfig {
@@ -81,7 +81,11 @@ export function DataTableToolbar<TData>({
                 )}
                 {facetedFilters.map((filter) => {
                     const column = table.getColumn(filter.columnId);
-                    if (!column) return null;
+
+                    if (!column) {
+return null;
+}
+
                     return (
                         <DataTableFacetedFilter
                             key={`${filter.columnId}-${filterResetKey}`}

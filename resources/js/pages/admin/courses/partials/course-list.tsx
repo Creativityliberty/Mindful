@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
 import { router } from '@inertiajs/react';
+import { useMemo } from 'react';
 import { DataTable } from '@/components/data-table';
 import { Button } from '@/components/ui/button';
-import type { Paginated } from '@/types/pagination';
 import type { Course } from '@/types/course';
-import CourseController from '@/actions/App/Http/Controllers/Admin/Courses/CourseController';
+import type { Paginated } from '@/types/pagination';
 import { createColumns } from './columns';
+import CourseController from '@/actions/App/Http/Controllers/Admin/Courses/CourseController';
 
 const COURSE_STATUSES = [
     { label: 'Brouillon', value: 'draft' },

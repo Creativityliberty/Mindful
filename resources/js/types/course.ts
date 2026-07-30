@@ -1,6 +1,6 @@
 import type { Category } from './category';
-import type { Trainer } from './trainer';
 import type { Module } from './module';
+import type { Trainer } from './trainer';
 
 export type StudentCourse = {
     id: number;

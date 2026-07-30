@@ -1,10 +1,10 @@
+import { Link } from '@inertiajs/react'
 import { motion } from 'framer-motion'
 import { Star, Clock, Users, ArrowRight } from 'lucide-react'
-import type { Course } from '../types'
-import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Link } from '@inertiajs/react'
+import { Card, CardContent } from '@/components/ui/card'
+import type { Course } from '../types'
 
 export type { Course }
 

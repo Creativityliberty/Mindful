@@ -1,8 +1,3 @@
-import { useRef, useState } from 'react';
-import { useFileUpload } from '@/hooks/use-file-upload';
-import { Alert, AlertDescription, AlertTitle } from '@/components/reui/alert';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import {
     ImageIcon,
     UploadIcon,
@@ -10,6 +5,11 @@ import {
     CloudUploadIcon,
     CircleAlertIcon,
 } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/reui/alert';
+import { Button } from '@/components/ui/button';
+import { useFileUpload } from '@/hooks/use-file-upload';
+import { cn } from '@/lib/utils';
 
 interface ImageUploadProps {
     name: string;

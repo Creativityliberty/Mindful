@@ -1,13 +1,3 @@
-import { useState } from 'react';
-import {
-    useFileUpload,
-    type FileMetadata,
-    type FileWithPreview,
-} from '@/hooks/use-file-upload';
-import { Alert, AlertDescription, AlertTitle } from '@/components/reui/alert';
-
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
 import {
     ImageIcon,
     UploadIcon,
@@ -15,6 +5,17 @@ import {
     CloudUploadIcon,
     CircleAlertIcon,
 } from 'lucide-react';
+import { useState } from 'react';
+import { Alert, AlertDescription, AlertTitle } from '@/components/reui/alert';
+import { Button } from '@/components/ui/button';
+import {
+    useFileUpload
+    
+    
+} from '@/hooks/use-file-upload';
+import type {FileMetadata, FileWithPreview} from '@/hooks/use-file-upload';
+
+import { cn } from '@/lib/utils';
 
 interface CoverUploadProps {
     maxSize?: number;
@@ -90,6 +91,7 @@ export function Pattern({
                     // Simulate occasional upload failure (10% chance)
                     if (Math.random() < 0.1) {
                         setUploadError('Upload failed. Please try again.');
+
                         return 0;
                     }
 
@@ -98,6 +100,7 @@ export function Pattern({
 
                 // Random progress increment between 5-15%
                 const increment = Math.random() * 10 + 5;
+
                 return Math.min(prev + increment, 100);
             });
         }, 200);

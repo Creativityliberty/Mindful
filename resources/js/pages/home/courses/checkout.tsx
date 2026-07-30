@@ -1,13 +1,13 @@
-import { useState } from 'react'
+import { Link, router } from '@inertiajs/react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, Clock, ArrowRight, Check, User, Mail, Phone, Globe, Building2 } from 'lucide-react'
-import { Link, router } from '@inertiajs/react'
+import { useState } from 'react'
 import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Card, CardContent } from '@/components/ui/card'
-import { allCourses } from './courses-data'
 import { cn } from '@/lib/utils'
+import { allCourses } from './courses-data'
 
 type Props = { courseId: number }
 
@@ -22,12 +22,14 @@ type FormData = {
 
 function Steps({ current }: { current: 1 | 2 }) {
     const steps = ['Informations', 'Confirmation']
+
     return (
         <div className="flex items-center gap-2">
             {steps.map((label, i) => {
                 const step = i + 1
                 const done = step < current
                 const active = step === current
+
                 return (
                     <div key={label} className="flex items-center gap-2">
                         <div className="flex items-center gap-2">
@@ -92,21 +94,52 @@ export default function CheckoutPage({ courseId }: Props) {
 
     const validate = () => {
         const e: Partial<FormData> = {}
-        if (!form.firstName.trim()) e.firstName = 'Prénom requis'
-        if (!form.lastName.trim()) e.lastName = 'Nom requis'
-        if (!form.email.trim()) e.email = 'Email requis'
-        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = 'Email invalide'
-        if (!form.phone.trim()) e.phone = 'Téléphone requis'
-        if (!form.country.trim()) e.country = 'Pays requis'
-        if (!form.city.trim()) e.city = 'Ville requise'
+
+        if (!form.firstName.trim()) {
+e.firstName = 'Prénom requis'
+}
+
+        if (!form.lastName.trim()) {
+e.lastName = 'Nom requis'
+}
+
+        if (!form.email.trim()) {
+e.email = 'Email requis'
+} else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+e.email = 'Email invalide'
+}
+
+        if (!form.phone.trim()) {
+e.phone = 'Téléphone requis'
+}
+
+        if (!form.country.trim()) {
+e.country = 'Pays requis'
+}
+
+        if (!form.city.trim()) {
+e.city = 'Ville requise'
+}
+
         return e
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         const errs = validate()
-        if (Object.keys(errs).length) { setErrors(errs); return }
-        if (!cgv) { setSubmitted(true); return }
+
+        if (Object.keys(errs).length) {
+ setErrors(errs);
+
+ return 
+}
+
+        if (!cgv) {
+ setSubmitted(true);
+
+ return 
+}
+
         sessionStorage.setItem(`checkout_${courseId}`, JSON.stringify({ ...form, price: course.price, courseId }))
         router.visit(`/courses/${courseId}/confirmation`)
     }

@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import { Head, router, usePage } from '@inertiajs/react';
 import { usePoll } from '@inertiajs/react';
 import { CheckCircle2, Loader2 } from 'lucide-react';
+import { useEffect } from 'react';
 import student from '@/routes/student';
 
 export default function CoursePurchaseSuccess() {

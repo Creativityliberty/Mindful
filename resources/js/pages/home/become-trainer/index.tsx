@@ -1,3 +1,4 @@
+import { Link, router, usePage } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import {
     ArrowRight,
@@ -9,12 +10,12 @@ import {
     Globe,
     HeartHandshake,
 } from 'lucide-react';
-import { Link, router, usePage } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { BecomeTrainerHeader } from './partials/become-trainer-header';
-import { TrainerCard, type TrainerProfile } from './partials/trainer-card';
 import type { Plan } from '@/types';
+import { BecomeTrainerHeader } from './partials/become-trainer-header';
+import { TrainerCard  } from './partials/trainer-card';
+import type {TrainerProfile} from './partials/trainer-card';
 
 const benefits = [
     {
@@ -118,8 +119,10 @@ export default function BecomeTrainer() {
     function handleCheckout(slug: string) {
         if (!auth.user) {
             router.visit(`/become-trainer/checkout/${slug}`);
+
             return;
         }
+
         router.post('/become-trainer/checkout', { plan_slug: slug });
     }
 
@@ -192,6 +195,7 @@ export default function BecomeTrainer() {
                     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                         {benefits.map((benefit, i) => {
                             const Icon = benefit.icon;
+
                             return (
                                 <motion.div
                                     key={benefit.title}

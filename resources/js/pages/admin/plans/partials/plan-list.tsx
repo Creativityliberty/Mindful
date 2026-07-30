@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
 import { router } from '@inertiajs/react';
+import { useMemo } from 'react';
 import { DataTable } from '@/components/data-table';
 import { Button } from '@/components/ui/button';
 import type { Paginated } from '@/types/pagination';
 import type { Plan } from '@/types/plan';
-import PlanController from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
 import { createColumns } from './columns';
+import PlanController from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
 
 type Props = {
     plans: Paginated<Plan>;

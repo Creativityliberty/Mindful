@@ -13,13 +13,13 @@ import {
     SidebarMenuItem,
 } from '@/components/ui/sidebar';
 import type { NavItem } from '@/types';
-import admin from '@/routes/admin';
-import trainer from '@/routes/trainer';
-import student from '@/routes/student';
 import adminCourses from '@/actions/App/Http/Controllers/Admin/Courses/CourseController';
 import adminPlans from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
-import trainerCourses from '@/actions/App/Http/Controllers/Trainer/Courses/CourseController';
 import studentCourses from '@/actions/App/Http/Controllers/Student/Courses/CourseController';
+import trainerCourses from '@/actions/App/Http/Controllers/Trainer/Courses/CourseController';
+import admin from '@/routes/admin';
+import student from '@/routes/student';
+import trainer from '@/routes/trainer';
 
 
 

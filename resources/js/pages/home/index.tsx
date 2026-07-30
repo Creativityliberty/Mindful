@@ -1,14 +1,14 @@
 import { SEOHead } from '@/components/seo-head'
-import { Hero } from './partials/hero'
-import { Services } from './partials/services'
-import { Process } from './partials/process'
 import { Courses } from './partials/courses'
-import { Themes } from './partials/themes'
-import { Trainers } from './partials/trainers'
+import { Cta } from './partials/cta'
 import { Engagements } from './partials/engagements'
 import FAQ from './partials/faq'
-import { Cta } from './partials/cta'
+import { Hero } from './partials/hero'
 import { Newsletter } from './partials/newsletter'
+import { Process } from './partials/process'
+import { Services } from './partials/services'
+import { Themes } from './partials/themes'
+import { Trainers } from './partials/trainers'
 
 interface HomeProps {
   seo: {

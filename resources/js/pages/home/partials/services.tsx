@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { Link } from '@inertiajs/react'
+import { motion } from 'framer-motion'
 import { BookOpen, HelpCircle, ListChecks, Laptop, Target, GraduationCap } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const items = [
   { icon: BookOpen, text: 'le sujet abordé' },

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
 import { Head } from '@inertiajs/react';
 import { MessageSquare, Eye, Clock, Search, Filter, MessageCircle, Heart } from 'lucide-react';
+import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -77,6 +77,7 @@ export default function Forum() {
         const matchesCategory = selectedCategory === "Tous" || t.category === selectedCategory;
         const matchesSearch = t.title.toLowerCase().includes(search.toLowerCase()) || 
                               t.author.toLowerCase().includes(search.toLowerCase());
+
         return matchesCategory && matchesSearch;
     });
 

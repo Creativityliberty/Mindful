@@ -1,9 +1,9 @@
 import { Head, usePage } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
-import admin from '@/routes/admin';
-import CourseList from './partials/course-list';
-import type { Paginated } from '@/types/pagination';
 import type { Course } from '@/types/course';
+import type { Paginated } from '@/types/pagination';
+import CourseList from './partials/course-list';
+import admin from '@/routes/admin';
 
 type Props = {
     courses: Paginated<Course>;

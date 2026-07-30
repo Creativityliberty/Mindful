@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { type ColumnDef } from '@tanstack/react-table';
 import { Link, router } from '@inertiajs/react';
+import type {ColumnDef} from '@tanstack/react-table';
 import { ImageIcon, PencilIcon, Trash2Icon, MoreHorizontalIcon, EyeIcon, EyeOffIcon } from 'lucide-react';
+import { useState } from 'react';
 import { DataTableColumnHeader } from '@/components/data-table-column-header';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -20,8 +20,8 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import CourseController from '@/actions/App/Http/Controllers/Admin/Courses/CourseController';
 import type { Course } from '@/types/course';
+import CourseController from '@/actions/App/Http/Controllers/Admin/Courses/CourseController';
 
 const statusConfig: Record<string, { label: string; className: string }> = {
     draft: { label: 'Brouillon', className: 'bg-muted text-muted-foreground' },
@@ -129,6 +129,7 @@ export const createColumns = (): ColumnDef<Course>[] => [
         ),
         cell: ({ row }) => {
             const course = row.original;
+
             return (
                 <div className="flex items-center gap-3">
                     {course.image ? (
@@ -205,6 +206,7 @@ export const createColumns = (): ColumnDef<Course>[] => [
         cell: ({ row }) => {
             const status = row.getValue('status') as string;
             const config = statusConfig[status] ?? { label: status, className: '' };
+
             return (
                 <Badge className={config.className} variant="outline">
                     {config.label}

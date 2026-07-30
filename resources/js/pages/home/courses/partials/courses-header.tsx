@@ -1,11 +1,11 @@
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Search, Sparkles, ChevronsUpDown, Check, X, ChevronDown } from 'lucide-react'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
+import { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Button } from '@/components/ui/button'
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command'
+import { Input } from '@/components/ui/input'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
 
 const sortOptions = [
@@ -65,6 +65,7 @@ function MultiSelect({ label, options, selected, onChange, searchable = false }:
                         <CommandGroup>
                             {options.map((option) => {
                                 const active = selected.includes(option)
+
                                 return (
                                     <CommandItem key={option} value={option} onSelect={() => toggle(option)} className="gap-2 text-sm">
                                         <div className={cn('flex h-4 w-4 shrink-0 items-center justify-center rounded border transition-colors', active ? 'border-primary bg-primary' : 'border-border/60')}>
@@ -151,7 +152,9 @@ export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilte
                                         <CommandItem
                                             key={option.value}
                                             value={option.value}
-                                            onSelect={(val) => { onSort(val); setSortOpen(false) }}
+                                            onSelect={(val) => {
+ onSort(val); setSortOpen(false) 
+}}
                                             className="gap-2 text-sm"
                                         >
                                             <Check className={cn('h-4 w-4 text-primary', sort === option.value ? 'opacity-100' : 'opacity-0')} />

@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react'
+import { Menu, X, GraduationCap } from 'lucide-react'
 import { useState } from 'react'
 import { Button } from '@/components/ui/button'
-import { Menu, X, GraduationCap } from 'lucide-react'
 
 const navLinks = [
   { href: '/courses', label: 'Nos formations' },

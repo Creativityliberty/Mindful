@@ -1,12 +1,14 @@
-import { Button } from '@/components/ui/button'
 import { Link, usePage } from '@inertiajs/react'
 import { ArrowRight, Sparkles } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import type { Course } from '../courses/types'
 
 export function Courses() {
   const { featuredCourses } = usePage<{ featuredCourses: Course[] }>().props
 
-  if (!featuredCourses?.length) return null
+  if (!featuredCourses?.length) {
+return null
+}
 
   return (
     <section className="w-full bg-muted/30 py-24">
@@ -20,7 +22,10 @@ export function Courses() {
         <div className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-3">
           {featuredCourses.slice(0, 3).map((course) => {
             const tagParts = [course.category]
-            if (course.duration) tagParts.push(`${course.duration} min`)
+
+            if (course.duration) {
+tagParts.push(`${course.duration} min`)
+}
 
             return (
               <article

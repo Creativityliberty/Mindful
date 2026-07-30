@@ -1,15 +1,11 @@
-import { useState } from 'react';
 import { Form, Head, usePage } from '@inertiajs/react';
-import AppLayout from '@/layouts/app-layout';
-import { ModulesLessons } from './partials/modules-lessons';
-import trainer from '@/routes/trainer';
+import { PlusIcon, Trash2Icon } from 'lucide-react';
+import { useState } from 'react';
 import { ImageUpload } from '@/components/image-upload';
 import InputError from '@/components/input-error';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Separator } from '@/components/ui/separator';
-import { Spinner } from '@/components/ui/spinner';
 import {
     Select,
     SelectContent,
@@ -17,11 +13,15 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import { PlusIcon, Trash2Icon } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Spinner } from '@/components/ui/spinner';
+import AppLayout from '@/layouts/app-layout';
 import type { Category } from '@/types/category';
 import type { Course } from '@/types/course';
 import type { Module } from '@/types/module';
+import { ModulesLessons } from './partials/modules-lessons';
 import CourseController from '@/actions/App/Http/Controllers/Trainer/Courses/CourseController';
+import trainer from '@/routes/trainer';
 
 type PageProps = {
     course: Course;
@@ -589,6 +589,7 @@ export default function CourseEdit() {
 
 function CourseEditLayout({ children }: { children: React.ReactNode }) {
     const { course } = usePage<{ course: Course }>().props;
+
     return (
         <AppLayout
             breadcrumbs={[

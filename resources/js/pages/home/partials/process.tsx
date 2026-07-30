@@ -1,7 +1,7 @@
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
 import { Link } from '@inertiajs/react'
+import { motion } from 'framer-motion'
 import { Search, ClipboardList, UserPlus, Play } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 const steps = [
   {

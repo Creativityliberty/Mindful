@@ -1,7 +1,7 @@
-import React from 'react';
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import { Sparkles, BookOpen, UserCheck, GraduationCap, Video, Users, CheckCircle, ShieldCheck } from 'lucide-react';
+import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const studentSteps = [

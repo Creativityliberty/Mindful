@@ -1,7 +1,6 @@
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Link } from '@inertiajs/react';
-import { motion, type Variants } from 'framer-motion';
+import { motion  } from 'framer-motion';
+import type {Variants} from 'framer-motion';
 import {
     Heart,
     Sparkles,
@@ -11,6 +10,8 @@ import {
     ArrowRight,
     Globe,
 } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 /* ── données ─────────────────────────────────────────────── */
 
@@ -350,6 +351,7 @@ export default function About() {
                     >
                         {valeurs.map((val) => {
                             const Icon = val.icon;
+
                             return (
                                 <motion.div key={val.titre} variants={fadeUp}>
                                     <Card className="h-full border-border/40 bg-background/60 backdrop-blur-sm dark:border-border/50 dark:bg-background/50">

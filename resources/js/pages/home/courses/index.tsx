@@ -1,9 +1,10 @@
-import { useState, useMemo } from 'react'
 import { usePage } from '@inertiajs/react'
-import { CourseCard } from './partials/course-card'
-import { CoursesHeader, type CourseFilters } from './partials/courses-header'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { useState, useMemo } from 'react'
 import { Button } from '@/components/ui/button'
+import { CourseCard } from './partials/course-card'
+import { CoursesHeader  } from './partials/courses-header'
+import type {CourseFilters} from './partials/courses-header';
 import type { Course } from './types'
 
 const PER_PAGE = 6
@@ -27,23 +28,42 @@ export default function Courses() {
     const filtered = useMemo(() => {
         let list = [...courses]
 
-        if (filters.categories.length)
-            list = list.filter((c) => filters.categories.includes(c.category))
-        if (filters.trainers.length)
-            list = list.filter((c) => c.trainer?.name && filters.trainers.includes(c.trainer.name))
-        if (search.trim())
-            list = list.filter(
+        if (filters.categories.length) {
+list = list.filter((c) => filters.categories.includes(c.category))
+}
+
+        if (filters.trainers.length) {
+list = list.filter((c) => c.trainer?.name && filters.trainers.includes(c.trainer.name))
+}
+
+        if (search.trim()) {
+list = list.filter(
                 (c) =>
                     c.title.toLowerCase().includes(search.toLowerCase()) ||
                     c.category.toLowerCase().includes(search.toLowerCase()) ||
                     c.trainer?.name.toLowerCase().includes(search.toLowerCase()),
             )
+}
 
-        if (sort === 'popular') list.sort((a, b) => b.studentCount - a.studentCount)
-        if (sort === 'rating') list.sort((a, b) => b.rating - a.rating)
-        if (sort === 'price-asc') list.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
-        if (sort === 'price-desc') list.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
-        if (sort === 'trainer') list.sort((a, b) => (a.trainer?.name ?? '').localeCompare(b.trainer?.name ?? ''))
+        if (sort === 'popular') {
+list.sort((a, b) => b.studentCount - a.studentCount)
+}
+
+        if (sort === 'rating') {
+list.sort((a, b) => b.rating - a.rating)
+}
+
+        if (sort === 'price-asc') {
+list.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+}
+
+        if (sort === 'price-desc') {
+list.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+}
+
+        if (sort === 'trainer') {
+list.sort((a, b) => (a.trainer?.name ?? '').localeCompare(b.trainer?.name ?? ''))
+}
 
         return list
     }, [courses, filters, search, sort])
@@ -51,8 +71,12 @@ export default function Courses() {
     const totalPages = Math.max(1, Math.ceil(filtered.length / PER_PAGE))
     const paginated = filtered.slice((page - 1) * PER_PAGE, page * PER_PAGE)
 
-    const handleFilters = (f: CourseFilters) => { setFilters(f); setPage(1) }
-    const handleSearch = (v: string) => { setSearch(v); setPage(1) }
+    const handleFilters = (f: CourseFilters) => {
+ setFilters(f); setPage(1) 
+}
+    const handleSearch = (v: string) => {
+ setSearch(v); setPage(1) 
+}
 
     return (
         <div className="relative min-h-screen">
@@ -65,7 +89,9 @@ export default function Courses() {
                     search={search}
                     onSearch={handleSearch}
                     sort={sort}
-                    onSort={(v) => { setSort(v); setPage(1) }}
+                    onSort={(v) => {
+ setSort(v); setPage(1) 
+}}
                     filters={filters}
                     onFilters={handleFilters}
                     total={filtered.length}

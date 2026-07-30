@@ -69,6 +69,7 @@ export function Methode() {
                     <div className="grid gap-10 lg:grid-cols-4 lg:gap-8">
                         {steps.map((step, index) => {
                             const Icon = step.icon;
+
                             return (
                                 <motion.div
                                     key={step.number}

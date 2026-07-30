@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react'
+import { Link } from '@inertiajs/react'
 import { motion } from 'framer-motion'
 import { CheckCircle2, PlayCircle, ArrowRight, BookOpen, Copy, Check, MessageCircle, Facebook } from 'lucide-react'
-import { Link } from '@inertiajs/react'
+import { useEffect, useState } from 'react'
 import { Button } from '@/components/ui/button'
 import { allCourses } from './courses-data'
 
@@ -57,8 +57,11 @@ export default function CourseConfirmationPage({ courseId }: Props) {
 
     useEffect(() => {
         const stored = sessionStorage.getItem(`checkout_${courseId}`)
+
         if (stored) {
-            try { setCheckoutData(JSON.parse(stored)) } catch { /* fallback */ }
+            try {
+ setCheckoutData(JSON.parse(stored)) 
+} catch { /* fallback */ }
         }
     }, [courseId])
 

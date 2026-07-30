@@ -1,18 +1,18 @@
-import { useState } from 'react';
 import { Form, Head, usePage } from '@inertiajs/react';
-import AppLayout from '@/layouts/app-layout';
+import { PlusIcon, Trash2Icon } from 'lucide-react';
+import { useState } from 'react';
 import InputError from '@/components/input-error';
-import admin from '@/routes/admin';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { Spinner } from '@/components/ui/spinner';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { PlusIcon, Trash2Icon } from 'lucide-react';
-import PlanController from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
+import AppLayout from '@/layouts/app-layout';
 import type { Plan } from '@/types/plan';
+import PlanController from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
+import admin from '@/routes/admin';
 
 type Option = { value: string; label: string };
 
@@ -199,6 +199,7 @@ export default function PlanEdit() {
 
 function PlanEditLayout({ children }: { children: React.ReactNode }) {
     const { plan } = usePage<{ plan: Plan }>().props;
+
     return (
         <AppLayout
             breadcrumbs={[

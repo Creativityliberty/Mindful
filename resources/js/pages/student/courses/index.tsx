@@ -1,5 +1,4 @@
 import { Head, Link, usePage } from '@inertiajs/react';
-import student from '@/routes/student';
 import { motion } from 'framer-motion';
 import { BookOpen, Calendar, GraduationCap, PlayCircle } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
@@ -7,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Progress } from '@/components/ui/progress';
 import type { EnrolledCourse } from '@/types';
+import student from '@/routes/student';
 
 function EnrolledCourseCard({
     enrollment,

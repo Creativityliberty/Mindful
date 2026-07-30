@@ -13,11 +13,13 @@ function toEmbedUrl(url: string): string | null {
                 host === 'youtu.be'
                     ? u.pathname.slice(1)
                     : u.searchParams.get('v') ?? u.pathname.split('/').pop() ?? '';
+
             return videoId ? `https://www.youtube.com/embed/${videoId}?rel=0` : null;
         }
 
         if (host === 'vimeo.com') {
             const videoId = u.pathname.replace(/^\//, '').split('/')[0];
+
             return `https://player.vimeo.com/video/${videoId}`;
         }
 
@@ -26,16 +28,19 @@ function toEmbedUrl(url: string): string | null {
                 host === 'dai.ly'
                     ? u.pathname.slice(1)
                     : (u.pathname.split('/video/')[1] ?? '').split('_')[0];
+
             return videoId ? `https://www.dailymotion.com/embed/video/${videoId}` : null;
         }
 
         if (host === 'loom.com') {
             const id = u.pathname.split('/').pop();
+
             return id ? `https://www.loom.com/embed/${id}` : null;
         }
 
         if (host === 'streamable.com') {
             const id = u.pathname.replace('/e/', '').slice(1);
+
             return `https://streamable.com/e/${id}`;
         }
 

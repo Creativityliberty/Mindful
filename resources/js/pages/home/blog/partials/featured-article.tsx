@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react';
-import type { Article } from '../blog-data';
 import { Button } from '@/components/ui/button';
+import type { Article } from '../blog-data';
 
 export function FeaturedArticle({ article }: { article: Article }) {
     return (

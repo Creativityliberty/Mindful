@@ -1,23 +1,15 @@
-import { useState } from 'react';
 import { Form, Head, usePage } from '@inertiajs/react';
-import AppLayout from '@/layouts/app-layout';
-import { ModulesLessons } from './partials/modules-lessons';
-import admin from '@/routes/admin';
+import {
+    PlusIcon,
+    Trash2Icon,
+    ChevronsUpDownIcon,
+    CheckIcon,
+} from 'lucide-react';
+import { useState } from 'react';
 import { ImageUpload } from '@/components/image-upload';
 import InputError from '@/components/input-error';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Separator } from '@/components/ui/separator';
-import { Spinner } from '@/components/ui/spinner';
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from '@/components/ui/select';
 import {
     Command,
     CommandEmpty,
@@ -26,23 +18,31 @@ import {
     CommandItem,
     CommandList,
 } from '@/components/ui/command';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
     Popover,
     PopoverContent,
     PopoverTrigger,
 } from '@/components/ui/popover';
 import {
-    PlusIcon,
-    Trash2Icon,
-    ChevronsUpDownIcon,
-    CheckIcon,
-} from 'lucide-react';
+    Select,
+    SelectContent,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from '@/components/ui/select';
+import { Separator } from '@/components/ui/separator';
+import { Spinner } from '@/components/ui/spinner';
+import AppLayout from '@/layouts/app-layout';
 import { cn } from '@/lib/utils';
 import type { Category } from '@/types/category';
-import type { Trainer } from '@/types/trainer';
 import type { Course } from '@/types/course';
 import type { Module } from '@/types/module';
+import type { Trainer } from '@/types/trainer';
+import { ModulesLessons } from './partials/modules-lessons';
 import CourseController from '@/actions/App/Http/Controllers/Admin/Courses/CourseController';
+import admin from '@/routes/admin';
 
 type PageProps = {
     course: Course;
@@ -751,6 +751,7 @@ export default function CourseEdit() {
 
 function CourseEditLayout({ children }: { children: React.ReactNode }) {
     const { course } = usePage<{ course: Course }>().props;
+
     return (
         <AppLayout
             breadcrumbs={[

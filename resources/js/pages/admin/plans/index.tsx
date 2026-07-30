@@ -1,9 +1,9 @@
 import { Head, usePage } from '@inertiajs/react';
 import AppLayout from '@/layouts/app-layout';
-import admin from '@/routes/admin';
-import PlanList from './partials/plan-list';
 import type { Paginated } from '@/types/pagination';
 import type { Plan } from '@/types/plan';
+import PlanList from './partials/plan-list';
+import admin from '@/routes/admin';
 
 type Props = {
     plans: Paginated<Plan>;

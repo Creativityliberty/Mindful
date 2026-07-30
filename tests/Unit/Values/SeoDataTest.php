@@ -5,11 +5,19 @@ declare(strict_types=1);
 namespace Tests\Unit\Values;
 
 use App\Values\SeoData;
+use Illuminate\Support\Facades\Config;
 use PHPUnit\Framework\Attributes\Test;
 use Tests\TestCase;
 
 final class SeoDataTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        Config::set('seo.url', 'https://formationsession.com');
+    }
+
     #[Test]
     public function it_generates_correct_defaults_for_homepage(): void
     {

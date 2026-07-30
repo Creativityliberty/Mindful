@@ -1,11 +1,11 @@
-import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { FeaturedArticle } from './partials/featured-article';
+import { useState, useMemo } from 'react';
+import { Button } from '@/components/ui/button';
+import { allArticles } from './blog-data';
 import { ArticleCard } from './partials/article-card';
 import { BlogSidebar } from './partials/blog-sidebar';
-import { allArticles } from './blog-data';
-import { Button } from '@/components/ui/button';
+import { FeaturedArticle } from './partials/featured-article';
 
 const PER_PAGE = 4;
 
@@ -19,14 +19,19 @@ export default function Blog() {
 
     const filtered = useMemo(() => {
         let list = rest;
-        if (activeCategory)
-            list = list.filter((a) => a.categories.includes(activeCategory));
-        if (search.trim())
-            list = list.filter(
+
+        if (activeCategory) {
+list = list.filter((a) => a.categories.includes(activeCategory));
+}
+
+        if (search.trim()) {
+list = list.filter(
                 (a) =>
                     a.titre.toLowerCase().includes(search.toLowerCase()) ||
                     a.description.toLowerCase().includes(search.toLowerCase()),
             );
+}
+
         return list;
     }, [search, activeCategory]);
 

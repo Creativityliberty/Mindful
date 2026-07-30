@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { ChevronDown, Search } from 'lucide-react';
-import { sidebarSections, trendingArticles } from '../blog-data';
+import { useState } from 'react';
 import { cn } from '@/lib/utils';
+import { sidebarSections, trendingArticles } from '../blog-data';
 
 interface BlogSidebarProps {
     search: string;
@@ -22,6 +22,7 @@ export function BlogSidebar({
         setOpenGroups((prev) => {
             const next = new Set(prev);
             next.has(i) ? next.delete(i) : next.add(i);
+
             return next;
         });
     };

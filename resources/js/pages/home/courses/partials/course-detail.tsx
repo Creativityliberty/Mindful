@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Link, router, usePage } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import {
     Clock,
@@ -17,17 +17,17 @@ import {
     BookOpen,
     Award,
 } from 'lucide-react';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { useEffect, useState } from 'react';
 import {
     Accordion,
     AccordionContent,
     AccordionItem,
     AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { allCourses } from '../courses-data';
-import { Link, router, usePage } from '@inertiajs/react';
 import type { Course } from '../types';
 
 
@@ -110,8 +110,10 @@ export function CourseDetail({ course }: { course: Course }) {
     function handleCheckout() {
         if (!auth.user) {
             router.visit(`/courses/${course.id}/checkout`)
+
             return
         }
+
         router.post('/courses/checkout', { course_id: course.id }, { preserveScroll: true })
     }
 

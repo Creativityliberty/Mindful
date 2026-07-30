@@ -1,16 +1,12 @@
-import { useState } from 'react';
 import { Form, Head, usePage } from '@inertiajs/react';
-import AppLayout from '@/layouts/app-layout';
-import { ModulesLessons } from './partials/modules-lessons';
-import trainer from '@/routes/trainer';
+import { PlusIcon, Trash2Icon } from 'lucide-react';
+import { useState } from 'react';
 import { ImageUpload } from '@/components/image-upload';
 import InputError from '@/components/input-error';
-import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
-import { Separator } from '@/components/ui/separator';
-import { Spinner } from '@/components/ui/spinner';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import {
     Select,
     SelectContent,
@@ -18,10 +14,14 @@ import {
     SelectTrigger,
     SelectValue,
 } from '@/components/ui/select';
-import { PlusIcon, Trash2Icon } from 'lucide-react';
+import { Separator } from '@/components/ui/separator';
+import { Spinner } from '@/components/ui/spinner';
+import AppLayout from '@/layouts/app-layout';
 import type { Category } from '@/types/category';
 import type { Module } from '@/types/module';
+import { ModulesLessons } from './partials/modules-lessons';
 import CourseController from '@/actions/App/Http/Controllers/Trainer/Courses/CourseController';
+import trainer from '@/routes/trainer';
 
 type PageProps = {
     categories: Category[];

@@ -1,11 +1,11 @@
 import { Head, router, usePage } from '@inertiajs/react';
-import trainer from '@/routes/trainer';
+import { CheckCircle2Icon, AlertCircleIcon, ExternalLinkIcon } from 'lucide-react';
 import Heading from '@/components/heading';
-import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import StripeConnectController from '@/actions/App/Http/Controllers/Trainer/StripeConnectController';
-import { CheckCircle2Icon, AlertCircleIcon, ExternalLinkIcon } from 'lucide-react';
+import trainer from '@/routes/trainer';
 
 type PageProps = {
     has_account: boolean;

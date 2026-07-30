@@ -1,6 +1,6 @@
-import { Button } from '@/components/ui/button'
 import { Link } from '@inertiajs/react'
 import { ArrowRight, UserPlus } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export function Cta() {
   return (

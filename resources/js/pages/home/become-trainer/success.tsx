@@ -1,7 +1,7 @@
-import { useEffect } from 'react';
 import { Head, Link, router, usePage } from '@inertiajs/react';
 import { usePoll } from '@inertiajs/react';
 import { CheckCircle2, Loader2 } from 'lucide-react';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import trainer from '@/routes/trainer';
 
