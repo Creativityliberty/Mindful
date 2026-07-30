@@ -92,7 +92,7 @@ final readonly class SeoData
             'publisher' => ['@id' => "{$url}#organization"],
         ];
 
-        $graph[] = [
+        $webPage = [
             '@type' => 'WebPage',
             '@id' => "{$url}#webpage",
             'url' => $url,
@@ -100,12 +100,17 @@ final readonly class SeoData
             'description' => $this->description,
             'isPartOf' => ['@id' => "{$url}#website"],
             'about' => ['@id' => "{$url}#organization"],
-            'primaryImageOfPage' => [
-                '@type' => 'ImageObject',
-                'url' => $this->ogImage ? "{$url}{$this->ogImage}" : null,
-            ],
             'inLanguage' => $locale,
         ];
+
+        if ($this->ogImage) {
+            $webPage['primaryImageOfPage'] = [
+                '@type' => 'ImageObject',
+                'url' => "{$url}{$this->ogImage}",
+            ];
+        }
+
+        $graph[] = $webPage;
 
         if ($this->courses !== []) {
             $items = [];
