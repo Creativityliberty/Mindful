@@ -1,140 +1,92 @@
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
-import { Plus } from 'lucide-react';
+import { useState } from 'react'
+import { ChevronDown } from 'lucide-react'
 
-const questions = [
-    {
-        question: 'Comment accéder aux cours sur Mindfulness & Bien-être Studio ?',
-        reponse:
-            'Créez un compte gratuit, parcourez notre catalogue de formations et achetez le cours de votre choix. Vous y accédez immédiatement depuis votre espace personnel, à vie.',
-    },
-    {
-        question: 'Les cours sont-ils accessibles sur mobile ?',
-        reponse:
-            'Oui, la plateforme est entièrement responsive. Vous pouvez suivre vos formations depuis n’importe quel appareil : smartphone, tablette ou ordinateur, à n’importe quelle heure.',
-    },
-    {
-        question: 'Comment devenir formateur sur Mindfulness & Bien-être Studio ?',
-        reponse:
-            'Soumettez votre candidature depuis la page "Devenir formateur". Notre équipe évalue votre profil et expertise. Une fois accepté, vous activez votre abonnement formateur et publiez vos cours.',
-    },
-    {
-        question: 'Quel est le coût pour les formateurs ?',
-        reponse:
-            'Les formateurs paient un abonnement mensuel pour accéder à l’espace de création et de publication de cours. Cet abonnement vous donne accès à tous les outils pour gérer vos formations et vos apprenants.',
-    },
-    {
-        question: 'Quelle est la politique de remboursement ?',
-        reponse:
-            'Si vous n’êtes pas satisfait d’un cours dans les 7 jours suivant l’achat et que vous avez visionné moins de 30 % du contenu, vous pouvez demander un remboursement complet.',
-    },
-    {
-        question: 'Les formations sont-elles certifiantes ?',
-        reponse:
-            'Certains cours proposent une attestation de complétion délivrée par le formateur. La certification dépend du formateur et est précisée sur la page de chaque formation.',
-    },
-    {
-        question: 'Puis-je interagir avec mon formateur ?',
-        reponse:
-            'Oui. Selon les cours, vous pouvez poser des questions via l’espace commentaires, participer à des sessions live ou rejoindre un groupe communautaire dédié.',
-    },
-    {
-        question: 'Comment les formateurs sont-ils sélectionnés ?',
-        reponse:
-            'Chaque candidature formateur est examinée par notre équipe. Nous vérifions les qualifications, l’expérience et la qualité du contenu proposé pour garantir le meilleur niveau aux apprenants.',
-    },
-] as const;
+const faqs = [
+  {
+    q: "Qu'est-ce que FormationSession ?",
+    a: "FormationSession est une plateforme francophone consacrée aux formations dans les domaines du bien-être et du développement personnel. Elle propose des formations en ligne et des ateliers en présentiel animés par des formateurs et des praticiens identifiés.",
+  },
+  {
+    q: 'Quelles formations sont disponibles ?',
+    a: "Les premières formations portent notamment sur la radiesthésie, l'utilisation du pendule et l'exploration des chakras. D'autres thèmes pourront être proposés progressivement par les formateurs présents sur la plateforme.",
+  },
+  {
+    q: 'Les formations sont-elles accessibles aux débutants ?',
+    a: "Oui, plusieurs programmes sont spécialement conçus pour les personnes qui découvrent une pratique. Le niveau recommandé et les éventuels prérequis sont indiqués sur chaque page de formation.",
+  },
+  {
+    q: 'Comment accéder à une formation en ligne ?',
+    a: "Après votre inscription et la validation de votre commande, la formation apparaît dans votre espace personnel. Vous pouvez alors consulter les cours et les ressources incluses selon les modalités indiquées sur la page du programme.",
+  },
+  {
+    q: "Quelle est la différence entre un atelier et une formation en ligne ?",
+    a: "Un atelier se déroule à une date et dans un lieu définis, en présence du formateur. Une formation en ligne est accessible depuis votre espace personnel et peut généralement être suivie selon vos disponibilités.",
+  },
+  {
+    q: "Que contient une formation ?",
+    a: "Le contenu dépend du programme choisi. Une formation peut comprendre des vidéos, des textes, des exercices, des méditations guidées, des documents téléchargeables ou des sessions en direct. Les éléments inclus sont précisés sur chaque page.",
+  },
+  {
+    q: "Les formations sont-elles certifiantes ?",
+    a: "Une formation est présentée comme certifiante uniquement lorsqu'elle mène à une certification officielle clairement identifiée. Une attestation de participation ou de suivi ne constitue pas nécessairement une certification professionnelle.",
+  },
+  {
+    q: "Les formations peuvent-elles remplacer un suivi médical ?",
+    a: "Non. Les formations proposées sur FormationSession relèvent du bien-être et du développement personnel. Elles ne permettent pas d'établir un diagnostic et ne remplacent pas les conseils ou les traitements d'un professionnel de santé.",
+  },
+  {
+    q: "Puis-je poser des questions au formateur ?",
+    a: "Les possibilités d'échange dépendent de la formation choisie. La page du programme précise si un espace de discussion, une messagerie, une session en direct ou un accompagnement est inclus.",
+  },
+  {
+    q: "Comment devenir formateur ?",
+    a: "Consultez la page « Devenir formateur » et présentez votre parcours ainsi que votre projet de formation. Votre candidature sera étudiée avant la publication de votre profil et de vos contenus.",
+  },
+  {
+    q: "Comment demander un remboursement ?",
+    a: "Les conditions d'annulation et de remboursement dépendent du type de programme et de la date d'accès aux contenus. Elles sont précisées dans les conditions générales de vente et rappelées avant la validation de la commande.",
+  },
+]
 
 export default function FAQ() {
-    const [ouvert, setOuvert] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-    return (
-        <section className="relative bg-muted/30 py-24 md:py-32 dark:bg-foreground/[0.02]">
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute bottom-0 left-1/2 h-[380px] w-[380px] -translate-x-1/2 rounded-full bg-foreground/[0.02] blur-[130px] dark:bg-foreground/[0.04]" />
+  return (
+    <section className="w-full bg-muted/30 py-24">
+      <div className="mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <h2 className="mb-6 text-3xl font-semibold tracking-tight md:text-4xl">
+            Questions fréquentes
+          </h2>
+        </div>
+
+        <div className="mx-auto max-w-3xl">
+          {faqs.map((faq, i) => (
+            <div
+              key={i}
+              className="border-b border-border/30 dark:border-border/60"
+            >
+              <button
+                onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                className="flex w-full items-center justify-between py-5 text-left"
+                aria-expanded={openIndex === i}
+              >
+                <span className="pr-4 text-base font-medium">{faq.q}</span>
+                <ChevronDown
+                  className={`h-5 w-5 shrink-0 text-foreground/50 transition-transform ${
+                    openIndex === i ? 'rotate-180' : ''
+                  }`}
+                />
+              </button>
+              {openIndex === i && (
+                <div className="pb-5 text-sm leading-relaxed text-foreground/70">
+                  {faq.a}
+                </div>
+              )}
             </div>
-
-            <div className="relative mx-auto max-w-3xl px-6 md:px-8 lg:px-12">
-                {/* en-tête */}
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
-                    className="mb-14 text-center"
-                >
-                    <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                        Questions fréquentes
-                    </div>
-
-                    <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        Toutes vos questions, répondues
-                    </h2>
-
-                    <p className="mx-auto max-w-xl text-lg text-foreground/60">
-                        Étudiants ou formateurs, retrouvez les réponses aux
-                        questions les plus fréquentes sur les cours, les
-                        abonnements et le fonctionnement de la plateforme.
-                    </p>
-                </motion.div>
-
-                {/* accordéon */}
-                <motion.div
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6, delay: 0.15 }}
-                    className="flex flex-col gap-3"
-                >
-                    {questions.map((item, index) => (
-                        <div
-                            key={index}
-                            className="overflow-hidden rounded-2xl border border-border/40 bg-background/60 backdrop-blur-sm dark:border-border/50 dark:bg-background/50"
-                        >
-                            <button
-                                type="button"
-                                onClick={() =>
-                                    setOuvert(ouvert === index ? null : index)
-                                }
-                                className="flex w-full items-center justify-between gap-4 px-6 py-5 text-left"
-                                aria-expanded={ouvert === index}
-                            >
-                                <span className="text-sm font-semibold text-foreground md:text-base">
-                                    {item.question}
-                                </span>
-
-                                <span
-                                    className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-border/40 bg-background/60 text-foreground/60 transition-transform duration-300 dark:border-border/50 dark:bg-background/40 ${
-                                        ouvert === index ? 'rotate-45' : ''
-                                    }`}
-                                    aria-hidden="true"
-                                >
-                                    <Plus className="h-4 w-4" />
-                                </span>
-                            </button>
-
-                            <AnimatePresence initial={false}>
-                                {ouvert === index && (
-                                    <motion.div
-                                        key="content"
-                                        initial={{ height: 0, opacity: 0 }}
-                                        animate={{ height: 'auto', opacity: 1 }}
-                                        exit={{ height: 0, opacity: 0 }}
-                                        transition={{
-                                            duration: 0.3,
-                                            ease: 'easeInOut',
-                                        }}
-                                    >
-                                        <div className="border-t border-border/30 px-6 pt-4 pb-5 text-sm leading-relaxed text-foreground/60">
-                                            {item.reponse}
-                                        </div>
-                                    </motion.div>
-                                )}
-                            </AnimatePresence>
-                        </div>
-                    ))}
-                </motion.div>
-            </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  )
 }
