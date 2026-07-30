@@ -9,6 +9,8 @@ import { Process } from './partials/process'
 import { Services } from './partials/services'
 import { Themes } from './partials/themes'
 import { Trainers } from './partials/trainers'
+import { Chiffres } from './partials/chiffres'
+import Testimonials from './partials/testimonials'
 
 interface HomeProps {
   seo: {
@@ -38,6 +40,8 @@ export default function Home({ seo }: HomeProps) {
       <Courses />
       <Themes />
       <Trainers />
+      <Chiffres />
+      <Testimonials />
       <Engagements />
       <FAQ />
       <Cta />

@@ -14,11 +14,12 @@ export function BecomeTrainerHeader() {
                 Programme formateur
             </div>
             <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                Devenez formateur sur Mindfulness & Bien-être Studio
+                Devenez formateur sur FormationSession
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-foreground/60">
-                Partagez votre expertise en mindfulness, chakras, yoga ou bien-être avec une communauté
-                engagée. Publiez vos cours, développez votre activité et rejoignez nos formateurs certifiés.
+                Partagez votre expertise en radiesthésie, pendule ou équilibrage
+                des chakras avec une communauté engagée. Publiez vos formations,
+                développez votre activité et rejoignez nos formateurs experts.
             </p>
         </motion.div>
     )

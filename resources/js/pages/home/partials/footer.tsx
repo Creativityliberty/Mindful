@@ -1,97 +1,352 @@
-import { Link } from '@inertiajs/react'
-import { GraduationCap } from 'lucide-react'
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowUp, Mail, MapPin } from 'lucide-react';
+import {
+    SiFacebook,
+    SiGithub,
+    SiInstagram,
+    SiX,
+} from '@icons-pack/react-simple-icons';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Input } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+import { Link } from '@inertiajs/react';
+import Logo from './logo';
 
-const footerLinks = {
-  formations: {
-    title: 'Formations',
-    links: [
-      { href: '/courses', label: 'Toutes les formations' },
-      { href: '/courses?theme=radiesthesie', label: 'Radiesthésie et pendule' },
-      { href: '/courses?theme=chakras', label: 'Chakras et pratiques énergétiques' },
-      { href: '/courses?theme=meditation', label: 'Méditation et relaxation' },
-      { href: '/courses?theme=developpement-personnel', label: 'Développement personnel' },
-    ],
-  },
-  platform: {
-    title: 'FormationSession',
-    links: [
-      { href: '/how-it-works', label: 'Comment ça marche' },
-      { href: '/about', label: 'À propos' },
-      { href: '/become-trainer', label: 'Devenir formateur' },
-      { href: '/blog', label: 'Blog' },
-      { href: '/contact', label: 'Contact' },
-    ],
-  },
-  account: {
-    title: 'Mon compte',
-    links: [
-      { href: '/register', label: 'Créer un compte' },
-      { href: '/login', label: 'Se connecter' },
-      { href: '/student/dashboard', label: 'Mon espace' },
-      { href: '/student/courses', label: 'Mes formations' },
-    ],
-  },
-  legal: {
-    title: 'Informations légales',
-    links: [
-      { href: '/legal/mentions-legales', label: 'Mentions légales' },
-      { href: '/legal/cgu', label: "Conditions générales d'utilisation" },
-      { href: '/legal/terms', label: 'Conditions générales de vente' },
-      { href: '/legal/privacy', label: 'Politique de confidentialité' },
-      { href: '/legal/cookies', label: 'Gestion des cookies' },
-    ],
-  },
-}
+// Footer Block
+const footerLinks = [
+    {
+        title: 'Formations',
+        links: [
+            { label: 'Radiesthésie', href: '/courses?category=radiesthesie' },
+            { label: 'Pendule', href: '/courses?category=pendule' },
+            { label: 'Chakras', href: '/courses?category=chakras' },
+            { label: 'Énergétique', href: '/courses?category=energetique' },
+        ],
+    },
+    {
+        title: 'Plateforme',
+        links: [
+            { label: 'Comment ça marche', href: '/comment-ca-marche' },
+            { label: 'Devenir formateur', href: '/become-trainer' },
+            { label: 'Blog', href: '/blog' },
+            { label: 'Contact', href: '/contact' },
+        ],
+    },
+    {
+        title: 'Ressources',
+        links: [
+            { label: 'Guides pratiques', href: '/guides' },
+            { label: 'Glossaire', href: '/glossaire' },
+            { label: 'FAQ', href: '/#faq' },
+            { label: 'Newsletter', href: '#newsletter' },
+        ],
+    },
+    {
+        title: 'Légal',
+        links: [
+            { label: 'Confidentialité', href: '/legal/confidentialite' },
+            { label: 'CGU', href: '/legal/cgu' },
+            { label: 'Cookies', href: '/legal/cookies' },
+            { label: 'Mentions légales', href: '/legal/mentions-legales' },
+        ],
+    },
+];
+
+const socialLinks = [
+    { icon: SiX, label: 'Twitter', href: '#' },
+    { icon: SiFacebook, label: 'Facebook', href: '#' },
+    { icon: SiInstagram, label: 'Instagram', href: '#' },
+    { icon: SiGithub, label: 'GitHub', href: '#' },
+];
 
 export function Footer() {
-  return (
-    <footer className="w-full border-t border-border/30 bg-background dark:border-border/60">
-      <div className="mx-auto max-w-7xl px-6 py-16 md:px-8 lg:px-12">
-        <div className="mb-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {Object.values(footerLinks).map((group) => (
-            <div key={group.title}>
-              <h3 className="mb-4 text-sm font-semibold uppercase tracking-wider text-foreground/60">
-                {group.title}
-              </h3>
-              <ul className="space-y-3">
-                {group.links.map((link) => (
-                  <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-foreground/70 transition-colors hover:text-foreground"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
+    const shouldReduceMotion = useReducedMotion();
+
+    return (
+        <footer
+            aria-labelledby="footer-heading"
+            className="relative w-full overflow-hidden border-t border-border bg-card/90 backdrop-blur-xl"
+        >
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 -z-10"
+            >
+                <motion.div
+                    className="absolute -top-32 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-primary/20 blur-[160px]"
+                    animate={
+                        shouldReduceMotion
+                            ? undefined
+                            : {
+                                  opacity: [0.2, 0.45, 0.2],
+                                  scale: [0.9, 1.05, 0.95],
+                              }
+                    }
+                    transition={
+                        shouldReduceMotion
+                            ? undefined
+                            : {
+                                  duration: 12,
+                                  repeat: Infinity,
+                                  ease: 'easeInOut',
+                              }
+                    }
+                />
+                <motion.div
+                    className="absolute right-0 -bottom-36 h-96 w-96 rounded-full bg-[hsl(var(--primary)_/_0.18)] blur-[200px]"
+                    animate={
+                        shouldReduceMotion
+                            ? undefined
+                            : { opacity: [0.18, 0.4, 0.18], rotate: [0, 25, 0] }
+                    }
+                    transition={
+                        shouldReduceMotion
+                            ? undefined
+                            : { duration: 16, repeat: Infinity, ease: 'linear' }
+                    }
+                />
             </div>
-          ))}
-        </div>
 
-        <div className="mb-8 flex items-center gap-2 border-t border-border/20 pt-8 dark:border-border/40">
-          <GraduationCap className="h-5 w-5 text-primary" />
-          <span className="text-sm font-semibold">FormationSession</span>
-          <span className="text-sm text-foreground/50">
-            — Des formations en ligne et des ateliers pour découvrir la radiesthésie,
-            le pendule, les chakras et différentes pratiques de bien-être.
-          </span>
-        </div>
+            <h2 id="footer-heading" className="sr-only">
+                Site footer
+            </h2>
 
-        <div className="mb-6 text-center text-sm text-foreground/60">
-          <p>contact@formationsession.com — Paris, France</p>
-        </div>
+            {/* Main Footer Content */}
+            <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+                <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-6">
+                    {/* Brand & Newsletter */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="lg:col-span-2"
+                    >
+                        <motion.div
+                            whileHover={
+                                shouldReduceMotion ? undefined : { scale: 1.05 }
+                            }
+                            transition={{ duration: 0.2 }}
+                            className="mb-4 inline-flex items-center gap-3"
+                        >
+                            <Logo className="h-6 w-auto" />
+                            <Badge
+                                variant="outline"
+                                className="text-xs text-muted-foreground"
+                            >
+                                Radiesthésie & Pendule
+                            </Badge>
+                        </motion.div>
 
-        <div className="mb-6 rounded-xl border border-border/20 bg-muted/20 p-4 text-center text-xs leading-relaxed text-foreground/50 dark:border-border/40">
-          Les formations et contenus proposés sur FormationSession relèvent du bien-être
-          et du développement personnel. Ils ne remplacent pas les conseils, les diagnostics
-          ou les traitements d&apos;un professionnel de santé.
-        </div>
+                        <p className="mb-4 max-w-md text-sm text-muted-foreground">
+                            FormationSession réunit apprenants et formateurs autour de la
+                            radiesthésie, du pendule et de l'équilibrage
+                            des chakras. Une plateforme dédiée aux pratiques
+                            énergétiques.
+                        </p>
 
-        <div className="text-center text-xs text-foreground/40">
-          &copy; {new Date().getFullYear()} FormationSession. Tous droits réservés.
-        </div>
-      </div>
-    </footer>
-  )
+                        {/* Newsletter */}
+                        <div className="mb-4">
+                            <p className="mb-2 text-sm font-medium text-foreground">
+                                Recevez nos actualités formations
+                            </p>
+                            <div className="flex gap-2">
+                                <Input
+                                    type="email"
+                                    placeholder="Votre adresse email"
+                                    className="h-10 rounded-xl border-border/60 bg-background/60 backdrop-blur placeholder:text-muted-foreground"
+                                />
+                                <Button
+                                    size="sm"
+                                    className="h-10 rounded-xl border border-border/60 bg-primary/90 px-4 text-primary-foreground shadow-[0_12px_35px_-20px_rgba(15,23,42,0.7)] hover:bg-primary"
+                                    aria-label="Subscribe"
+                                >
+                                    <Mail className="h-4 w-4" aria-hidden />
+                                </Button>
+                            </div>
+                        </div>
+
+                        {/* Contact Info */}
+                        <div className="space-y-2 text-sm text-muted-foreground">
+                            <motion.div
+                                whileHover={
+                                    shouldReduceMotion ? undefined : { x: 5 }
+                                }
+                                className="flex items-center gap-2"
+                            >
+                                <MapPin className="h-4 w-4" aria-hidden />
+                                <span>Paris, France</span>
+                            </motion.div>
+
+                            <motion.div
+                                whileHover={
+                                    shouldReduceMotion ? undefined : { x: 5 }
+                                }
+                                className="flex items-center gap-2"
+                            >
+                                <Mail className="h-4 w-4" aria-hidden />
+                                <span>contact@formationsession.com</span>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+
+                    {/* Footer Links - 2 colonnes sur mobile seulement */}
+                    <div className="grid grid-cols-2 gap-8 md:contents">
+                        {footerLinks.map((section, sectionIndex) => (
+                            <motion.div
+                                key={section.title}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 0.5,
+                                    delay: sectionIndex * 0.1,
+                                }}
+                            >
+                                <h4 className="mb-4 text-sm font-semibold text-foreground/90">
+                                    {section.title}
+                                </h4>
+                                <ul className="space-y-2">
+                                    {section.links.map((link, linkIndex) => (
+                                        <motion.li
+                                            key={link.label}
+                                            initial={{ opacity: 0, x: -10 }}
+                                            whileInView={{ opacity: 1, x: 0 }}
+                                            viewport={{ once: true }}
+                                            transition={{
+                                                delay: linkIndex * 0.05,
+                                            }}
+                                        >
+                                            <Link
+                                                href={link.href}
+                                                className="text-sm text-muted-foreground transition-colors hover:text-foreground block"
+                                            >
+                                                <motion.span
+                                                    whileHover={
+                                                        shouldReduceMotion
+                                                            ? undefined
+                                                            : {
+                                                                  x: 5,
+                                                                  color: 'hsl(var(--primary))',
+                                                              }
+                                                    }
+                                                    className="inline-block"
+                                                >
+                                                    {link.label}
+                                                </motion.span>
+                                            </Link>
+                                        </motion.li>
+                                    ))}
+                                </ul>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+
+                {/* Divider */}
+                <motion.div
+                    initial={{ scaleX: 0 }}
+                    whileInView={{ scaleX: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.4 }}
+                    className="my-10 h-px bg-border/70"
+                />
+
+                {/* Bottom Bar */}
+                <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
+                    {/* Social Links */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.5 }}
+                        className="flex gap-2"
+                    >
+                        {socialLinks.map((social, index) => (
+                            <motion.div
+                                key={social.label}
+                                initial={{ scale: 0 }}
+                                whileInView={{ scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    type: 'spring',
+                                    stiffness: 300,
+                                    damping: 20,
+                                    delay: 0.6 + index * 0.05,
+                                }}
+                            >
+                                <Button
+                                    size="icon"
+                                    variant="ghost"
+                                    className="h-9 w-9 rounded-full border border-border/60 bg-white/5 text-muted-foreground transition-colors hover:bg-primary/10 hover:text-primary"
+                                    aria-label={social.label}
+                                >
+                                    <motion.div
+                                        transition={{
+                                            duration: shouldReduceMotion
+                                                ? 0.25
+                                                : 0.3,
+                                        }}
+                                    >
+                                        <social.icon
+                                            className="h-4 w-4"
+                                            aria-hidden
+                                        />
+                                    </motion.div>
+                                </Button>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+
+                    {/* Copyright */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6 }}
+                        className="flex items-center gap-2 text-sm text-muted-foreground"
+                    >
+                        <span>© 2025 FormationSession. Tous droits réservés.</span>
+                        <Badge variant="outline" className="text-xs">
+                            v1.0.0
+                        </Badge>
+                    </motion.div>
+
+                    {/* Scroll to Top */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.7 }}
+                    >
+                        <Button
+                            size="icon"
+                            variant="outline"
+                            className="h-9 w-9 rounded-full border-border/60"
+                            onClick={scrollToTop}
+                        >
+                            <motion.div
+                                animate={
+                                    shouldReduceMotion
+                                        ? undefined
+                                        : { y: [0, -3, 0] }
+                                }
+                                transition={
+                                    shouldReduceMotion
+                                        ? undefined
+                                        : { repeat: Infinity, duration: 1.5 }
+                                }
+                            >
+                                <ArrowUp className="h-4 w-4" aria-hidden />
+                            </motion.div>
+                        </Button>
+                    </motion.div>
+                </div>
+            </div>
+        </footer>
+    );
 }

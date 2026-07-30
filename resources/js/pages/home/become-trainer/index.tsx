@@ -28,7 +28,7 @@ const benefits = [
         icon: Users,
         title: 'Une communauté engagée',
         description:
-            'Rejoignez une plateforme dédiée au bien-être avec des étudiants réellement investis dans leur transformation.',
+            'Rejoignez une plateforme dédiée aux pratiques énergétiques avec des étudiants réellement investis dans leur apprentissage.',
     },
     {
         icon: Shield,
@@ -79,7 +79,7 @@ const steps = [
         number: '04',
         title: 'Publiez et développez',
         description:
-            'Publiez vos formations, accueillez vos premiers étudiants et développez votre activité sur Mindfulness & Bien-être Studio.',
+            'Publiez vos formations, accueillez vos premiers étudiants et développez votre activité sur FormationSession.',
     },
 ];
 
@@ -87,7 +87,7 @@ const featuredTrainers: TrainerProfile[] = [
     {
         initials: 'SL',
         name: 'Sophie Lefèvre',
-        specialty: 'Coach MBSR · Mindfulness',
+        specialty: 'Radiesthésie & Pendule',
         bio: 'Enseignante certifiée MBSR depuis 12 ans, Sophie a accompagné plus de 1 200 personnes dans leur pratique de la pleine conscience.',
         courseCount: 4,
         studentCount: '3 800+',
@@ -188,7 +188,7 @@ export default function BecomeTrainer() {
                             Pourquoi nous rejoindre
                         </div>
                         <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            Les avantages d'enseigner sur Mindfulness & Bien-être Studio
+                            Les avantages d'enseigner sur FormationSession
                         </h2>
                     </motion.div>
 
@@ -374,7 +374,7 @@ export default function BecomeTrainer() {
                             Nos formateurs
                         </div>
                         <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            Ils ont rejoint Mindfulness & Bien-être Studio
+                            Ils ont rejoint FormationSession
                         </h2>
                     </motion.div>
 

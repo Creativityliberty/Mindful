@@ -27,7 +27,7 @@ const Logo: React.FC<LogoProps> = ({
             viewBox="0 13.5 292.75 36.400001525878906"
             data-asc="0.984"
             xmlns="http://www.w3.org/2000/svg"
-            aria-label="Mindfulness"
+            aria-label="FormationSession"
             role="img"
             {...props}
         >
