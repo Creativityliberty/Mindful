@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Public\Home;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Public\CourseResource;
 use App\Repositories\Public\Courses\CourseRepository;
+use App\Values\SeoData;
 use Inertia\Inertia;
 use Inertia\Response;
 use Laravel\Fortify\Features;
@@ -19,9 +20,17 @@ class HomeController extends Controller
 
     public function index(): Response
     {
+        $courses = $this->courses->featuredPublished(4);
+        $courseEntries = $courses->map(fn ($c) => [
+            'name' => $c->title,
+            'description' => $c->description,
+            'url' => route('courses.show', $c->id),
+        ])->values()->toArray();
+
         return Inertia::render('home/index', [
             'canRegister' => Features::enabled(Features::registration()),
-            'featuredCourses' => CourseResource::collection($this->courses->featuredPublished(4))->resolve(),
+            'featuredCourses' => CourseResource::collection($courses)->resolve(),
+            'seo' => SeoData::forHomepage($courseEntries)->toArray(),
         ]);
     }
 }

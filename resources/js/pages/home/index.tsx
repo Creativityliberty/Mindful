@@ -1,27 +1,47 @@
-import { Head } from '@inertiajs/react';
-import { Hero } from './partials/hero';
-import { Process } from './partials/process';
-import { Services } from './partials/services';
-import { Courses } from './partials/courses';
-import { Chiffres } from './partials/chiffres';
-import Testimonials from './partials/testimonials';
-import FAQ from './partials/faq';
-import { Cta } from './partials/cta';
-import { Trainers } from './partials/trainers';
+import { SEOHead } from '@/components/seo-head'
+import { Hero } from './partials/hero'
+import { Services } from './partials/services'
+import { Process } from './partials/process'
+import { Courses } from './partials/courses'
+import { Themes } from './partials/themes'
+import { Trainers } from './partials/trainers'
+import { Engagements } from './partials/engagements'
+import FAQ from './partials/faq'
+import { Cta } from './partials/cta'
+import { Newsletter } from './partials/newsletter'
 
-export default function Home() {
-    return (
-        <>
-            <Head title="Home" />
-            <Hero />
-            <Services />
-            <Process />
-            <Courses />
-            <Trainers />
-            <Chiffres />
-            <Testimonials />
-            <FAQ />
-            <Cta />
-        </>
-    );
+interface HomeProps {
+  seo: {
+    title: string
+    description: string
+    canonical: string
+    ogImage: string | null
+    jsonLd: string
+  }
+  featuredCourses: unknown[]
+  canRegister: boolean
+}
+
+export default function Home({ seo }: HomeProps) {
+  return (
+    <>
+      <SEOHead
+        title={seo.title}
+        description={seo.description}
+        canonical={seo.canonical}
+        ogImage={seo.ogImage ?? undefined}
+        jsonLd={seo.jsonLd}
+      />
+      <Hero />
+      <Services />
+      <Process />
+      <Courses />
+      <Themes />
+      <Trainers />
+      <Engagements />
+      <FAQ />
+      <Cta />
+      <Newsletter />
+    </>
+  )
 }
