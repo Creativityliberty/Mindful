@@ -134,12 +134,6 @@ export function Footer() {
                             className="mb-4 inline-flex items-center gap-3"
                         >
                             <Logo className="h-6 w-auto" />
-                            <Badge
-                                variant="outline"
-                                className="text-xs text-muted-foreground"
-                            >
-                                Radiesthésie & Pendule
-                            </Badge>
                         </motion.div>
 
                         <p className="mb-4 max-w-md text-sm text-muted-foreground">

@@ -11,6 +11,16 @@ export type Article = {
 
 export const allArticles: Article[] = [
   {
+    id: 9,
+    image: '/images/blog/choisir-pendule-divinatoire.jpg',
+    categories: ['Radiesthésie', 'Pendule'],
+    titre: 'Comment Choisir et Utiliser son Premier Pendule Divinatoire ?',
+    description: 'Découvrez comment choisir votre premier pendule divinatoire (bois, laiton ou cristal), l\'activer en 4 étapes et éviter les pièges grâce à l\'effet idéomoteur.',
+    duree: '12 min',
+    date: '18 août 2026',
+    featured: true,
+  },
+  {
     id: 1,
     image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1400&q=80',
     categories: ['Mindfulness', 'Science'],
@@ -18,7 +28,7 @@ export const allArticles: Article[] = [
     description: 'Revue des études scientifiques récentes sur les effets du mindfulness sur le stress, l\'anxiété, la concentration et la qualité du sommeil. Ce que la neuroscience nous apprend sur la transformation du cerveau.',
     duree: '10 min',
     date: '3 juin 2025',
-    featured: true,
+    featured: false,
   },
   {
     id: 2,
@@ -109,8 +119,10 @@ export const sidebarSections: SidebarSection[] = [
   },
   {
     type: 'group',
-    label: 'Énergie & chakras',
+    label: 'Énergie & radiesthésie',
     items: [
+      { label: 'Radiesthésie',     value: 'Radiesthésie' },
+      { label: 'Pendule',          value: 'Pendule' },
       { label: 'Chakras',          value: 'Chakras' },
       { label: 'Énergie vitale',   value: 'Énergie' },
       { label: 'Pratiques',        value: 'Pratique' },
