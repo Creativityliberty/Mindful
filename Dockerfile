@@ -3,13 +3,10 @@
 # =============================================================================
 FROM php:8.4-cli-alpine AS composer-deps
 
-RUN apk add --no-cache \
-        git curl zip unzip \
-        libpng-dev libjpeg-turbo-dev freetype-dev \
-        icu-dev libzip-dev oniguruma-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) \
-        bcmath exif gd intl mbstring pcntl pdo pdo_mysql zip
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+
+RUN apk add --no-cache git curl zip unzip \
+    && install-php-extensions bcmath exif gd intl mbstring pcntl pdo_mysql zip
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -57,23 +54,11 @@ RUN apk add --no-cache \
         nginx \
         supervisor \
         curl \
-        libstdc++ \
-        libpng libjpeg-turbo freetype \
-        icu-libs libzip oniguruma \
+        nodejs npm \
     && rm -rf /var/cache/apk/*
 
-# PHP extensions (build deps removed after install to keep image lean)
-RUN apk add --no-cache --virtual .build-deps \
-        libpng-dev libjpeg-turbo-dev freetype-dev \
-        icu-dev libzip-dev oniguruma-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install -j$(nproc) \
-        bcmath exif gd intl mbstring pcntl pdo pdo_mysql opcache zip \
-    && apk del .build-deps \
-    && rm -rf /var/cache/apk/*
-
-# Node.js needed at runtime by `php artisan inertia:start-ssr`
-RUN apk add --no-cache nodejs npm
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+RUN install-php-extensions bcmath exif gd intl mbstring pcntl pdo_mysql opcache zip
 
 # PHP configuration
 COPY docker/php/php.ini        "$PHP_INI_DIR/conf.d/99-app.ini"
