@@ -30,8 +30,8 @@ Route::inertia('legal/mentions-legales', 'home/legal/terms')->name('legal.terms'
 
 // Courses
 Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
-Route::get('courses/{id}', [CourseController::class, 'show'])->name('courses.show');
-Route::get('courses/{id}/checkout', [CourseCheckoutController::class, 'show'])->middleware(['auth', 'verified'])->name('courses.checkout.show');
+Route::get('courses/{identifier}', [CourseController::class, 'show'])->name('courses.show');
+Route::get('courses/{identifier}/checkout', [CourseCheckoutController::class, 'show'])->middleware(['auth', 'verified'])->name('courses.checkout.show');
 Route::post('courses/checkout', [CourseCheckoutController::class, 'store'])->middleware(['auth', 'verified'])->name('courses.checkout');
 Route::inertia('courses/purchase/success', 'home/courses/success')->middleware(['auth', 'verified'])->name('courses.purchase.success');
 

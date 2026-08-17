@@ -31,13 +31,20 @@ class EloquentCourseRepository implements CourseRepository
             ->get();
     }
 
-    public function findPublishedWithRelations(int $id): Course
+    public function findPublishedWithRelations(string|int $identifier): Course
     {
         return Course::query()
             ->published()
             ->with(['category', 'trainer', 'modules.lessons'])
             ->withCount('modules')
-            ->findOrFail($id);
+            ->where(function ($query) use ($identifier) {
+                if (is_numeric($identifier)) {
+                    $query->where('id', (int) $identifier)->orWhere('slug', (string) $identifier);
+                } else {
+                    $query->where('slug', $identifier);
+                }
+            })
+            ->firstOrFail();
     }
 
     public function featuredPublished(int $limit = 4): Collection

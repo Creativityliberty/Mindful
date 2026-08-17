@@ -13,7 +13,7 @@ interface CourseRepository
 
     public function allPublishedWithModules(): Collection;
 
-    public function findPublishedWithRelations(int $id): Course;
+    public function findPublishedWithRelations(string|int $identifier): Course;
 
     public function featuredPublished(int $limit = 4): Collection;
 }

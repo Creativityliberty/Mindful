@@ -31,9 +31,9 @@ class CourseController extends Controller
         ]);
     }
 
-    public function show(int $id): Response
+    public function show(string|int $identifier): Response
     {
-        $course = $this->courses->findPublishedWithRelations($id);
+        $course = $this->courses->findPublishedWithRelations($identifier);
 
         return Inertia::render('home/courses/show', [
             'course' => (new CourseResource($course))->resolve(),

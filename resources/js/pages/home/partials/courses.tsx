@@ -92,11 +92,11 @@ export function Courses() {
                 >
                     <div className="grid lg:grid-cols-[1.5fr_1fr]">
                         {/* Image */}
-                        <div className="group relative min-h-[300px] overflow-hidden lg:min-h-[420px] bg-[#030206] flex items-center justify-center">
+                        <div className="group relative min-h-[260px] overflow-hidden lg:min-h-[360px] flex items-center justify-center bg-muted/30">
                             <img
                                 src={featured.image}
                                 alt={featured.title}
-                                className="absolute inset-0 h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
+                                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                             />
                             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/10 dark:to-background/20" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent lg:hidden" />
@@ -176,7 +176,7 @@ export function Courses() {
                                     </p>
                                 </div>
                                 <Button className="rounded-full" asChild>
-                                    <Link href={`/courses/${featured.id}`}>
+                                    <Link href={`/courses/${featured.slug}`}>
                                         Voir la formation
                                         <ArrowRight
                                             className="ml-2 h-4 w-4"
@@ -242,7 +242,7 @@ export function Courses() {
                                         className="rounded-full text-xs"
                                         asChild
                                     >
-                                        <Link href={`/courses/${course.id}`}>
+                                        <Link href={`/courses/${course.slug}`}>
                                             Voir
                                             <ArrowRight
                                                 className="ml-1 h-3.5 w-3.5"

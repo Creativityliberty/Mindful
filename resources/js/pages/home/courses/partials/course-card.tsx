@@ -129,7 +129,7 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                             <span className="text-sm font-semibold text-emerald-500">Gratuit</span>
                         )}
                         <Button variant="secondary" size="sm" className="rounded-full gap-1.5 font-medium transition-all group-hover:bg-primary group-hover:text-primary-foreground" asChild>
-                            <Link href={`/courses/${course.id}`}>
+                            <Link href={`/courses/${course.slug}`}>
                                 Découvrir
                                 <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
                             </Link>

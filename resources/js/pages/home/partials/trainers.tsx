@@ -131,7 +131,7 @@ export function Trainers() {
                     className="group mb-5 grid overflow-hidden rounded-3xl border border-border/40 bg-background/70 backdrop-blur-sm lg:grid-cols-[1.5fr_1fr] dark:border-border/50 dark:bg-background/50"
                 >
                     {/* Image */}
-                    <div className="relative min-h-[280px] overflow-hidden lg:min-h-[380px]">
+                    <div className="relative min-h-[200px] overflow-hidden lg:min-h-[280px]">
                         <img
                             src={featured.image}
                             alt={featured.name}
@@ -211,7 +211,7 @@ export function Trainers() {
                             variants={itemVariants}
                             className="group overflow-hidden rounded-2xl border border-border/40 bg-background/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-md dark:border-border/50 dark:bg-background/50"
                         >
-                            <div className="relative h-48 overflow-hidden">
+                            <div className="relative h-36 overflow-hidden">
                                 <img
                                     src={trainer.image}
                                     alt={trainer.name}
