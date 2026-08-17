@@ -14,7 +14,11 @@ WORKDIR /app
 
 # Install dependencies before copying source (layer cache optimization)
 COPY composer.json composer.lock ./
-RUN composer install \
+
+ARG GITHUB_TOKEN
+RUN if [ -n "$GITHUB_TOKEN" ]; then composer config --global github-oauth.github.com "$GITHUB_TOKEN"; fi \
+    && composer config --global process-timeout 2000 \
+    && composer install \
         --no-dev \
         --no-scripts \
         --no-interaction \
