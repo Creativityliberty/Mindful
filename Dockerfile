@@ -41,6 +41,9 @@ FROM composer-deps AS node-build
 RUN apk add --no-cache nodejs npm
 
 ENV NODE_OPTIONS="--max-old-space-size=1536"
+ENV APP_KEY="base64:lqEhaUrvtjm/GV98hP5ukj8jnQEh8XfJf3ZrNKl17GM="
+ENV DB_CONNECTION="sqlite"
+ENV DB_DATABASE=":memory:"
 
 RUN npm ci --prefer-offline
 
