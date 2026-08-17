@@ -16,6 +16,7 @@ WORKDIR /app
 COPY composer.json composer.lock ./
 
 ARG GITHUB_TOKEN
+ARG COMPOSER_AUTH
 RUN if [ -n "$GITHUB_TOKEN" ]; then composer config --global github-oauth.github.com "$GITHUB_TOKEN"; fi \
     && composer config --global process-timeout 2000 \
     && composer install \
@@ -23,7 +24,7 @@ RUN if [ -n "$GITHUB_TOKEN" ]; then composer config --global github-oauth.github
         --no-scripts \
         --no-interaction \
         --optimize-autoloader \
-        --prefer-dist
+        --prefer-source
 
 COPY . .
 
