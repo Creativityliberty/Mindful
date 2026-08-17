@@ -3,6 +3,7 @@
 use App\Http\Controllers\Public\BecomeTrainer\CheckoutController;
 use App\Http\Controllers\Public\BecomeTrainer\PaymentController;
 use App\Http\Controllers\Public\BecomeTrainer\TrainerPlanController;
+use App\Http\Controllers\Public\Blog\BlogController;
 use App\Http\Controllers\Public\Courses\CheckoutController as CourseCheckoutController;
 use App\Http\Controllers\Public\Courses\CourseController;
 use App\Http\Controllers\Public\Home\HomeController;
@@ -12,7 +13,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::inertia('about', 'home/about')->name('about');
-Route::inertia('blog', 'home/blog/index')->name('blog');
+Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::inertia('glossaire', 'home/glossary')->name('glossary');
+Route::inertia('guides', 'home/guides')->name('guides');
 Route::inertia('contact', 'home/contact')->name('contact');
 Route::inertia('realisations', 'home/realisations/index')->name('realisations');
 

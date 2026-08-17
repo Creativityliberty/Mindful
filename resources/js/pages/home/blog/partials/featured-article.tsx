@@ -1,3 +1,4 @@
+import { Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -42,9 +43,12 @@ export function FeaturedArticle({ article }: { article: Article }) {
                         <Button
                             size="lg"
                             className="gap-2 rounded-full bg-white px-7 text-black hover:bg-white/90"
+                            asChild
                         >
-                            Lire l'article
-                            <ArrowRight className="h-4 w-4" />
+                            <Link href={`/blog/${article.slug}`}>
+                                Lire l'article
+                                <ArrowRight className="h-4 w-4" />
+                            </Link>
                         </Button>
                         <span className="flex items-center gap-1.5 text-sm text-white/45">
                             <Clock className="h-3.5 w-3.5" />

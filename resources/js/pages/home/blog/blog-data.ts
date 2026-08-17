@@ -1,5 +1,6 @@
 export type Article = {
   id: number
+  slug: string
   image: string
   categories: string[]
   titre: string
@@ -12,6 +13,7 @@ export type Article = {
 export const allArticles: Article[] = [
   {
     id: 9,
+    slug: 'comment-choisir-premier-pendule-divinatoire',
     image: '/images/blog/choisir-pendule-divinatoire.jpg',
     categories: ['Radiesthésie', 'Pendule'],
     titre: 'Comment Choisir et Utiliser son Premier Pendule Divinatoire ?',
@@ -22,6 +24,7 @@ export const allArticles: Article[] = [
   },
   {
     id: 1,
+    slug: 'benefices-prouves-meditation-pleine-conscience',
     image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1400&q=80',
     categories: ['Mindfulness', 'Science'],
     titre: 'Les 8 bénéfices prouvés de la méditation de pleine conscience',
@@ -32,6 +35,7 @@ export const allArticles: Article[] = [
   },
   {
     id: 2,
+    slug: 'comment-equilibrer-chakra-racine',
     image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
     categories: ['Chakras', 'Énergie'],
     titre: 'Comment équilibrer le chakra racine quand vous vous sentez déstabilisé',
@@ -41,6 +45,7 @@ export const allArticles: Article[] = [
   },
   {
     id: 3,
+    slug: 'yoga-du-matin-sequence-15-minutes',
     image: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80',
     categories: ['Yoga', 'Corps'],
     titre: 'Yoga du matin : la séquence de 15 minutes pour bien démarrer la journée',
@@ -50,6 +55,7 @@ export const allArticles: Article[] = [
   },
   {
     id: 4,
+    slug: 'sophrologie-et-burnout-reconstruction',
     image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=900&q=80',
     categories: ['Sophrologie', 'Stress'],
     titre: 'Sophrologie et burnout : comment la pratiquer pour se reconstruire',
@@ -59,6 +65,7 @@ export const allArticles: Article[] = [
   },
   {
     id: 5,
+    slug: 'alimentation-et-conscience-energie-spirituelle',
     image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&q=80',
     categories: ['Nutrition', 'Bien-être'],
     titre: 'Alimentation et conscience : pourquoi ce que vous mangez affecte votre énergie spirituelle',
@@ -68,6 +75,7 @@ export const allArticles: Article[] = [
   },
   {
     id: 6,
+    slug: 'meditation-vipassana-10-jours-silence',
     image: 'https://images.unsplash.com/photo-1499209974431-9dddcece7f88?auto=format&fit=crop&w=900&q=80',
     categories: ['Spiritualité', 'Développement'],
     titre: 'Méditation Vipassana : ce que j\'ai appris lors de 10 jours de silence',
@@ -77,6 +85,7 @@ export const allArticles: Article[] = [
   },
   {
     id: 7,
+    slug: '5-micro-pratiques-pleine-conscience',
     image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=900&q=80',
     categories: ['Mindfulness', 'Quotidien'],
     titre: '5 micro-pratiques de pleine conscience pour les journées chargées',
@@ -86,6 +95,7 @@ export const allArticles: Article[] = [
   },
   {
     id: 8,
+    slug: 'bols-tibetains-equilibrer-chakras',
     image: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80',
     categories: ['Chakras', 'Pratique'],
     titre: 'Sons et vibrations : utiliser les bols tibétains pour équilibrer vos chakras',
