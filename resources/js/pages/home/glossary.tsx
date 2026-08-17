@@ -18,7 +18,7 @@ const terms: GlossaryTerm[] = [
     {
         term: 'Radiesthésie',
         category: 'Pratique Énergétique',
-        definition: 'Art et technique de détection des radiations et énergies émises par les corps, objets, êtres vivants ou lieux, principalement à l\'aide d'un pendule divinatoire ou d\'une baguette.',
+        definition: "Art et technique de détection des radiations et énergies émises par les corps, objets, êtres vivants ou lieux, principalement à l'aide d'un pendule divinatoire ou d'une baguette.",
         relatedCourse: 'Initiation au Pendule & Radiesthésie',
         courseUrl: '/courses/initiation-au-pendule-et-radiesthesie',
     },
