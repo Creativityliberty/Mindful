@@ -1,32 +1,40 @@
 #!/bin/sh
-set -e
+set -eu
 
 cd /var/www/html
 
-# Cache configs first (doesn't need DB)
+echo "Preparing Laravel..."
+
+# Rebuild Laravel caches from the runtime environment injected by Coolify.
+php artisan config:clear || true
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache
 
-# Wait for database to be available before running migrations
-max_attempts=30
+# Wait for the configured database connection before running migrations.
+max_attempts="${DB_WAIT_MAX_ATTEMPTS:-30}"
 attempt=1
 
 echo "Waiting for database connection..."
-until php artisan db:status --database=default 2>/dev/null || [ $attempt -ge $max_attempts ]; do
-    echo "Waiting for database... (attempt $attempt/$max_attempts)"
-    sleep 2
-    attempt=$((attempt+1))
-done
 
-if [ $attempt -ge $max_attempts ]; then
-    echo "Database connection failed after $max_attempts attempts"
-    exit 1
-fi
+until php artisan db:show >/dev/null 2>&1; do
+    if [ "$attempt" -ge "$max_attempts" ]; then
+        echo "ERROR: Database connection failed after $max_attempts attempts."
+        echo "Database diagnostic:"
+        php artisan db:show || true
+        exit 1
+    fi
+
+    echo "Database unavailable - attempt $attempt/$max_attempts"
+    attempt=$((attempt + 1))
+    sleep 2
+done
 
 echo "Database connected. Running migrations..."
 php artisan migrate --force
+
+# Keep storage link idempotent across deployments.
 php artisan storage:link --force 2>/dev/null || true
 
-echo "Starting services..."
+echo "Starting Supervisor / PHP-FPM / Nginx..."
 exec /usr/bin/supervisord -n -c /etc/supervisord.conf
