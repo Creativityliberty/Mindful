@@ -71,14 +71,19 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                     }}
                 />
 
-                {/* Image Container */}
-                <div className="relative h-52 overflow-hidden bg-muted/30">
+                {/* Image Container with Ambient Background (Zero Cropping, Zero Black Gaps) */}
+                <div className="relative h-52 overflow-hidden bg-black/40 flex items-center justify-center">
+                    <img
+                        src={course.image}
+                        alt=""
+                        className="absolute inset-0 h-full w-full object-cover blur-2xl scale-125 opacity-40 pointer-events-none"
+                    />
                     <img
                         src={course.image}
                         alt={course.title}
-                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                        className="relative z-10 max-h-full max-w-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent" />
+                    <div className="absolute inset-0 z-20 bg-gradient-to-t from-background/90 via-background/20 to-transparent pointer-events-none" />
 
                     <div className="absolute top-3.5 left-3.5">
                         <Badge variant="secondary" className="border-white/20 bg-background/70 px-3 py-1 text-[11px] font-semibold text-foreground backdrop-blur-md shadow-sm">
