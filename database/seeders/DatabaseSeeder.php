@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             CourseSeeder::class,
             ModuleSeeder::class,
             LessonSeeder::class,
+            ChakraRacineCourseSeeder::class,
         ]);
     }
 }

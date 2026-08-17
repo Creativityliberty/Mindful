@@ -19,6 +19,7 @@ final class UsersSeeder extends Seeder
             ['roles' => [RoleEnum::Student], 'name' => 'Student', 'email' => 'student@pmindfull.com'],
             ['roles' => [RoleEnum::Admin],   'name' => 'Lionel Numtema',   'email' => 'numtemalionel@gmail.com'],
             ['roles' => [RoleEnum::Admin, RoleEnum::Trainer], 'name' => 'Fabie', 'email' => 'fabieolliveaud@gmail.com'],
+            ['roles' => [RoleEnum::Trainer, RoleEnum::Admin], 'name' => 'Louise', 'email' => 'louise@formationsession.com'],
         ];
 
         foreach ($users as $entry) {
