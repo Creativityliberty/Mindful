@@ -8,7 +8,8 @@ import { Button, buttonVariants } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
 import { MenuToggleIcon } from './menu-toggle-icon';
 import Logo from './logo';
-import { login, logout, register, blog, about, contact } from '@/routes';
+import { login, logout, register, about, contact } from '@/routes';
+import blogController from '@/actions/App/Http/Controllers/Public/Blog/BlogController';
 import publicCourses from '@/actions/App/Http/Controllers/Public/Courses/CourseController';
 import becomeTrainer from '@/actions/App/Http/Controllers/Public/BecomeTrainer/TrainerPlanController';
 import admin from '@/routes/admin';
@@ -32,7 +33,7 @@ import {
 const simpleLinks = [
     { label: 'Nos Formations', href: publicCourses.index.url() },
     { label: 'Devenir Formateur', href: becomeTrainer.index.url() },
-    { label: 'Blog', href: blog.url() },
+    { label: 'Blog', href: '/blog' },
     { label: 'À propos', href: about.url() },
     { label: 'Contact', href: contact.url() },
 ];
