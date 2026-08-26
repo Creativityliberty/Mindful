@@ -13,6 +13,8 @@ class LessonSeeder extends Seeder
 {
     public function run(): void
     {
+        Lesson::query()->delete();
+
         Module::with('course')->get()->each(function (Module $module): void {
             $courseSlug = $module->course->slug;
 
@@ -109,36 +111,36 @@ class LessonSeeder extends Seeder
     private function getOrisugiLessons(string $moduleTitle): array
     {
         return match ($moduleTitle) {
-            '1. Présentation de l’Orisugi' => [
+            'Présentation de l’Orisugi' => [
                 ['title' => 'La naissance de la méthode', 'duration' => 10, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'L’intention de création', 'duration' => 10, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'La philosophie générale', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Ce que l’Orisugi n’est pas', 'duration' => 10, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '2. Le rôle du Tisseur du Fil d’Or' => [
+            'Le rôle du Tisseur du Fil d’Or' => [
                 ['title' => 'Sa posture', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Sa mission', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Sa charte de transmission', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Le Regard du Tisseur (posture d\'ouverture)', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '3. Les fondements de l’Orisugi' => [
+            'Les fondements de l’Orisugi' => [
                 ['title' => 'Le Galet', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Le Fil d’Or', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Les Trames', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'L’Ombre', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'La Lisière des Mots', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '4. L’Orisugi en pratique individuelle et en cercle' => [
+            'L’Orisugi en pratique individuelle et en cercle' => [
                 ['title' => 'L’Orisugi en Séance Individuelle : Accompagner le Consultant', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'L’Orisugi en Cercle Éphémère ou Communautaire', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '5. L’ouverture d’un atelier Orisugi' => [
+            'L’ouverture d’un atelier Orisugi' => [
                 ['title' => 'La préparation de l’environnement', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'L’accueil des participants', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Le passage entre le quotidien et la création', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'La méditation d’ancrage « Le Fil de Soi »', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '6. Le rituel de création Orisugi' => [
+            'Le rituel de création Orisugi' => [
                 ['title' => 'Façonner son Galet', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Révéler le Fil d\'Or', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Tisser les Trames (Le Répertoire Visuel des Motifs)', 'duration' => 25, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
@@ -147,20 +149,20 @@ class LessonSeeder extends Seeder
                 ['title' => 'Contempler le rendu', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Le Regard du Tisseur (l\'importance du silence)', 'duration' => 15, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '7. Accompagner les participants' => [
+            'Accompagner les participants' => [
                 ['title' => 'La posture pendant la création', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Les mots à utiliser (et ceux à éviter)', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'L’accueil des ressentis (Larmes et Émotions)', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '8. Organiser ses ateliers Orisugi' => [
+            'Organiser ses ateliers Orisugi' => [
                 ['title' => 'Le modèle économique et la tarification', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Le matériel nécessaire (Le Kit de l\'Animateur)', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
                 ['title' => 'Les formats possibles et la durée', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '9. Transmettre l’esprit de l’Orisugi' => [
+            'Transmettre l’esprit de l’Orisugi' => [
                 ['title' => 'Protection et Confidentialité de la Méthode', 'duration' => 20, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
-            '10. Les mots de la fin' => [
+            'Les mots de la fin' => [
                 ['title' => 'Intégration et préparation du premier atelier', 'duration' => 30, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/orisugi_manuel.pdf'],
             ],
             default => [

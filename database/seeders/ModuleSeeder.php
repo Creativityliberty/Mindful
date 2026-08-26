@@ -12,6 +12,8 @@ class ModuleSeeder extends Seeder
 {
     public function run(): void
     {
+        Module::query()->delete();
+
         Course::all()->each(function (Course $course): void {
             if ($course->slug === 'initiation-au-lahochi') {
                 $modules = [
@@ -37,16 +39,16 @@ class ModuleSeeder extends Seeder
                 }
             } elseif ($course->slug === 'formation-orisugi-devenir-tisseur-du-fil-dor') {
                 $modules = [
-                    '1. Présentation de l’Orisugi',
-                    '2. Le rôle du Tisseur du Fil d’Or',
-                    '3. Les fondements de l’Orisugi',
-                    '4. L’Orisugi en pratique individuelle et en cercle',
-                    '5. L’ouverture d’un atelier Orisugi',
-                    '6. Le rituel de création Orisugi',
-                    '7. Accompagner les participants',
-                    '8. Organiser ses ateliers Orisugi',
-                    '9. Transmettre l’esprit de l’Orisugi',
-                    '10. Les mots de la fin',
+                    'Présentation de l’Orisugi',
+                    'Le rôle du Tisseur du Fil d’Or',
+                    'Les fondements de l’Orisugi',
+                    'L’Orisugi en pratique individuelle et en cercle',
+                    'L’ouverture d’un atelier Orisugi',
+                    'Le rituel de création Orisugi',
+                    'Accompagner les participants',
+                    'Organiser ses ateliers Orisugi',
+                    'Transmettre l’esprit de l’Orisugi',
+                    'Les mots de la fin',
                 ];
 
                 foreach ($modules as $index => $title) {
@@ -60,9 +62,9 @@ class ModuleSeeder extends Seeder
             } else {
                 // Modules standards pour les autres cours
                 $modules = [
-                    'Module 1 : Introduction et bases',
-                    'Module 2 : Pratique et exercices',
-                    'Module 3 : Approfondissement et conclusion',
+                    'Introduction et bases',
+                    'Pratique et exercices',
+                    'Approfondissement et conclusion',
                 ];
 
                 foreach ($modules as $index => $title) {

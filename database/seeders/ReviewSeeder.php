@@ -16,6 +16,9 @@ class ReviewSeeder extends Seeder
 {
     public function run(): void
     {
+        Review::query()->delete();
+        Enrollment::query()->delete();
+
         // 1. Créer des utilisateurs étudiants pour laisser des avis
         $studentsData = [
             [
