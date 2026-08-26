@@ -13,45 +13,73 @@ import 'swiper/css/navigation';
 const items = [
     {
         title: 'Radiesthésie',
-        eyebrow: 'Formations disponibles',
-        description: 'Pendule, baguettes, géobiologie',
+        eyebrow: 'Pratique vibratoire',
+        description: 'Pendule, baguettes et mesure des énergies',
         href: '/courses?category=radiesthesie',
         image: '/assets/images/theme_radiesthesie.jpg',
     },
     {
-        title: 'Pendule',
-        eyebrow: 'Pratique divinatoire',
-        description: 'Techniques expertes et avancées',
-        href: '/courses?category=pendule',
-        image: '/assets/images/service_pendule.jpg',
-    },
-    {
         title: 'Chakras',
-        eyebrow: 'Équilibrage énergétique',
-        description: '7 centres, harmonisation complète',
+        eyebrow: 'Soins & Harmonisation',
+        description: 'LaHoChi, Reiki et 7 centres vitaux',
         href: '/courses?category=chakras',
         image: '/assets/images/theme_chakras.jpg',
     },
     {
-        title: 'Pratique',
-        eyebrow: 'Approche pédagogique',
-        description: 'Vidéos, exercices, mises en situation',
+        title: 'Bougies Artisanales',
+        eyebrow: 'Artisanat & Senteurs',
+        description: 'Cire végétale, fleurs séchées et cristaux',
         href: '/courses',
-        image: '/assets/images/theme_meditation.jpg',
+        image: '/assets/images/course_aromatherapie.jpg',
     },
     {
-        title: 'Énergétique',
-        eyebrow: 'Domaines couverts',
-        description: 'Soins à distance, nettoyage vibratoire',
-        href: '/courses?category=energetique',
+        title: 'Aromathérapie',
+        eyebrow: 'Santé naturelle & Plantes',
+        description: 'Huiles essentielles et herbalisme',
+        href: '/courses',
+        image: '/assets/images/course_elixirs_vibratoires.png',
+    },
+    {
+        title: 'Massages & Réflexologie',
+        eyebrow: 'Thérapies corporelles',
+        description: 'Soins du corps et points de pression',
+        href: '/courses',
         image: '/assets/images/service_energetique.jpg',
     },
     {
-        title: 'À vie',
-        eyebrow: 'Accès aux formations',
-        description: 'Après inscription, accès illimité',
+        title: 'IA & Digital',
+        eyebrow: 'Nouvelles Technologies',
+        description: 'Maîtriser l\'IA pour booster son activité',
         href: '/courses',
+        image: '/assets/images/service_certifiant.jpg',
+    },
+    {
+        title: 'Artisanat & Bois',
+        eyebrow: 'Savoir-faire & Création',
+        description: 'Métiers manuels et noblesse du geste',
+        href: '/courses',
+        image: '/assets/images/course_plexus_solaire.jpg',
+    },
+    {
+        title: 'Formations Certifiantes',
+        eyebrow: 'Parcours professionnels',
+        description: 'Cursus complets avec attestation',
+        href: '/courses',
+        image: '/assets/images/service_formateur.jpg',
+    },
+    {
+        title: 'Espace Formateur',
+        eyebrow: 'Transmission & Communauté',
+        description: 'Publiez et transmettez votre savoir',
+        href: '/become-trainer',
         image: '/assets/images/theme_developpement.jpg',
+    },
+    {
+        title: 'Accès à Vie',
+        eyebrow: 'Apprentissage autonome',
+        description: 'Accès illimité aux contenus en ligne',
+        href: '/courses',
+        image: '/assets/images/theme_meditation.jpg',
     },
 ] as const;
 
@@ -81,7 +109,7 @@ const trustPoints = [
 export function Chiffres() {
     return (
         <section className="relative py-24 md:py-32 overflow-hidden bg-background">
-            {/* Ambient Background Glow matching the platform theme */}
+            {/* Ambient Background Glow */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 h-[750px] w-[750px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.03] blur-[160px]" />
             </div>
@@ -101,11 +129,11 @@ export function Chiffres() {
                     </div>
 
                     <h2 className="mb-4 text-4xl md:text-6xl font-bold tracking-tight text-foreground">
-                        pratiques énergétiques
+                        pratiques & savoir-faire
                     </h2>
 
                     <p className="mx-auto max-w-2xl text-base md:text-lg text-foreground/60 font-light leading-relaxed">
-                        Des formateurs passionnés, des apprenants motivés et des contenus de qualité réunis sur une seule plateforme dédiée à la radiesthésie et à l'énergétique.
+                        Des formateurs passionnés, des apprenants motivés et des contenus de qualité réunis sur une seule plateforme dédiée au bien-être, à l'artisanat et au savoir-faire.
                     </p>
                 </motion.div>
 
@@ -116,7 +144,7 @@ export function Chiffres() {
                         grabCursor={true}
                         centeredSlides={true}
                         slidesPerView={'auto'}
-                        initialSlide={2} // Center on Chakras
+                        initialSlide={1}
                         coverflowEffect={{
                             rotate: 18,
                             stretch: 0,
@@ -125,7 +153,7 @@ export function Chiffres() {
                             slideShadows: false,
                         }}
                         autoplay={{
-                            delay: 4500,
+                            delay: 4000,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
@@ -155,7 +183,7 @@ export function Chiffres() {
                                         {/* Gradient Overlay for Text Legibility */}
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 z-0 pointer-events-none" />
 
-                                        {/* Top Subtle Emblem */}
+                                        {/* Top Emblem */}
                                         <div className="relative z-10 flex justify-center">
                                             <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white/90 backdrop-blur-md">
                                                 <Sparkles className="h-3.5 w-3.5" />
