@@ -24,8 +24,8 @@ class CourseResource extends JsonResource
             'category' => $this->whenLoaded('category', fn () => $this->category->name),
             'moduleCount' => $this->modules_count ?? $this->whenLoaded('modules', fn () => $this->modules->count(), 0),
             'lessonCount' => $this->whenLoaded('modules', fn () => $this->modules->sum(fn ($m) => $m->relationLoaded('lessons') ? $m->lessons->count() : 0), 0),
-            'studentCount' => 0,
-            'rating' => 0,
+            'studentCount' => $this->enrollments()->count(),
+            'rating' => round((float) ($this->reviews()->avg('rating') ?? 0), 1),
             'benefits' => $this->benefits,
             'objectives' => $this->when(
                 $this->objectives !== null,
@@ -45,6 +45,19 @@ class CourseResource extends JsonResource
             'is_enrolled' => Auth::check()
                 ? $this->enrollments()->where('user_id', Auth::id())->exists()
                 : false,
+            'reviews' => $this->whenLoaded('reviews', fn () => $this->reviews->map(fn ($r) => [
+                'id' => $r->id,
+                'name' => $r->user->name,
+                'avatar' => $r->user->trainer_avatar,
+                'initials' => collect(explode(' ', $r->user->name))
+                    ->map(fn (string $word) => mb_strtoupper(mb_substr($word, 0, 1)))
+                    ->take(2)
+                    ->implode(''),
+                'role' => 'Élève Certifié',
+                'rating' => $r->rating,
+                'text' => $r->comment,
+                'created_at' => $r->created_at->diffForHumans(),
+            ])->values()->toArray()),
         ];
     }
 

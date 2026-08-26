@@ -19,6 +19,7 @@ class CategorySeeder extends Seeder
             'Sophrologie',
             'Nutrition holiste',
             'Développement spirituel',
+            'Créativité et bien-être',
         ];
 
         foreach ($categories as $index => $name) {

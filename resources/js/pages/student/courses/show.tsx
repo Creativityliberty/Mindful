@@ -1,5 +1,5 @@
 import { Head, Link, router, usePage } from '@inertiajs/react';
-import { CheckCircle2, ChevronDown, ChevronLeft, ChevronUp, Circle, PlayCircle, Lock, ArrowRight } from 'lucide-react';
+import { CheckCircle2, ChevronDown, ChevronLeft, ChevronUp, Circle, PlayCircle, Lock, ArrowRight, Star } from 'lucide-react';
 import { useEffect, useRef, useState, useMemo } from 'react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -284,15 +284,21 @@ type PageProps = {
     completedCount: number;
     totalLessons: number;
     isEnrolled: boolean;
+    existingReview?: { rating: number; comment: string | null } | null;
 };
 
 export default function StudentCourseShow() {
-    const { course, completedLessonIds: initialCompleted, progressPercentage: initialProgress, completedCount: initialCount, totalLessons, isEnrolled } =
+    const { course, completedLessonIds: initialCompleted, progressPercentage: initialProgress, completedCount: initialCount, totalLessons, isEnrolled, existingReview } =
         usePage<PageProps>().props;
     const { pageRef, left } = useDynamicPageLeft();
 
     const [completedLessonIds, setCompletedLessonIds] = useState<number[]>(initialCompleted);
     const [isTogglingProgress, setIsTogglingProgress] = useState(false);
+
+    const [reviewRating, setReviewRating] = useState(existingReview?.rating ?? 0);
+    const [reviewComment, setReviewComment] = useState(existingReview?.comment ?? '');
+    const [isSubmittingReview, setIsSubmittingReview] = useState(false);
+    const [reviewSubmitted, setReviewSubmitted] = useState(!!existingReview);
 
     const allLessons = course.modules?.flatMap((m) => m.lessons ?? []) ?? [];
 
@@ -517,6 +523,82 @@ return;
                                     <LessonMedia lesson={activeLesson} />
                                 )}
                             </div>
+
+                            {isEnrolled && (completedCount === totalLessons || (!nextLesson && activeLessonCompleted)) && (
+                                <div className="mt-8 rounded-2xl border border-border/40 bg-card/50 p-6 backdrop-blur-md shadow-lg max-w-2xl mx-auto dark:bg-card/25 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                                    <h3 className="text-lg font-bold text-foreground mb-1">Félicitations pour avoir terminé cette formation ! 🎉</h3>
+                                    <p className="text-sm text-muted-foreground mb-4">Votre avis nous est précieux. Prenez un instant pour partager votre expérience et aider d'autres étudiants.</p>
+                                    
+                                    {reviewSubmitted ? (
+                                        <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-xl p-4">
+                                            <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400 mb-2 flex items-center gap-1.5">
+                                                <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                                                Merci pour votre retour !
+                                            </p>
+                                            <div className="flex gap-0.5 mb-2">
+                                                {Array.from({ length: 5 }, (_, i) => (
+                                                    <Star key={i} className={`h-4 w-4 ${i < reviewRating ? 'fill-amber-400 text-amber-400' : 'fill-foreground/10 text-foreground/10'}`} />
+                                                ))}
+                                            </div>
+                                            {reviewComment && (
+                                                <p className="text-sm text-foreground/80 italic">"{reviewComment}"</p>
+                                            )}
+                                        </div>
+                                    ) : (
+                                        <form onSubmit={(e) => {
+                                            e.preventDefault();
+                                            if (reviewRating === 0) return;
+                                            setIsSubmittingReview(true);
+                                            router.post(`/student/courses/${course.id}/reviews`, {
+                                                rating: reviewRating,
+                                                comment: reviewComment,
+                                            }, {
+                                                preserveScroll: true,
+                                                onSuccess: () => {
+                                                    setIsSubmittingReview(false);
+                                                    setReviewSubmitted(true);
+                                                },
+                                                onError: () => {
+                                                    setIsSubmittingReview(false);
+                                                }
+                                            });
+                                        }} className="space-y-4">
+                                            <div>
+                                                <label className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Votre note</label>
+                                                <div className="flex gap-1.5">
+                                                    {Array.from({ length: 5 }, (_, i) => {
+                                                        const starValue = i + 1;
+                                                        return (
+                                                            <button
+                                                                key={i}
+                                                                type="button"
+                                                                onClick={() => setReviewRating(starValue)}
+                                                                className="transition-transform hover:scale-110 active:scale-95"
+                                                            >
+                                                                <Star className={`h-7 w-7 ${starValue <= reviewRating ? 'fill-amber-400 text-amber-400' : 'fill-foreground/10 text-foreground/10'}`} />
+                                                            </button>
+                                                        );
+                                                    })}
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <label className="block text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">Votre commentaire (facultatif)</label>
+                                                <textarea
+                                                    value={reviewComment}
+                                                    onChange={(e) => setReviewComment(e.target.value)}
+                                                    placeholder="Racontez-nous ce que vous avez pensé de cette formation, du programme, de l'enseignante..."
+                                                    className="w-full min-h-[100px] rounded-xl border border-border bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                                />
+                                            </div>
+
+                                            <Button type="submit" disabled={reviewRating === 0 || isSubmittingReview} className="rounded-full shadow-md">
+                                                {isSubmittingReview ? 'Envoi en cours...' : 'Envoyer mon avis'}
+                                            </Button>
+                                        </form>
+                                    )}
+                                </div>
+                            )}
 
                             <div className="mt-8 flex items-center justify-between border-t border-border/40 pt-4">
                                 {prevLesson ? (

@@ -35,7 +35,7 @@ class EloquentCourseRepository implements CourseRepository
     {
         return Course::query()
             ->published()
-            ->with(['category', 'trainer', 'modules.lessons'])
+            ->with(['category', 'trainer', 'modules.lessons', 'reviews.user'])
             ->withCount('modules')
             ->where(function ($query) use ($identifier) {
                 if (is_numeric($identifier)) {

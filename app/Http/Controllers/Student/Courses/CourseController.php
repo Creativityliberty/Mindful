@@ -10,6 +10,7 @@ use App\Http\Resources\Student\EnrollmentResource;
 use App\Models\Course;
 use App\Models\Enrollment;
 use App\Models\LessonProgress;
+use App\Models\Review;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -88,6 +89,10 @@ class CourseController extends Controller
             ? (int) round($completedCount / $totalLessons * 100)
             : 0;
 
+        $existingReview = Review::where('user_id', $user->id)
+            ->where('course_id', $courseId)
+            ->first();
+
         return Inertia::render('student/courses/show', [
             'course' => [
                 'id' => $course->id,
@@ -102,6 +107,10 @@ class CourseController extends Controller
             'completedCount' => $completedCount,
             'totalLessons' => $totalLessons,
             'isEnrolled' => $isEnrolled,
+            'existingReview' => $existingReview ? [
+                'rating' => $existingReview->rating,
+                'comment' => $existingReview->comment,
+            ] : null,
         ]);
     }
 }

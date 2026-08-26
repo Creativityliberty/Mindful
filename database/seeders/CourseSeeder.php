@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Database\Seeders;
 
 use App\Enums\CourseStatus;
-use App\Enums\RoleEnum;
 use App\Models\Category;
 use App\Models\Course;
 use App\Models\User;
@@ -16,127 +15,171 @@ class CourseSeeder extends Seeder
 {
     public function run(): void
     {
-        $categories = Category::all();
+        // 1. Récupérer l'utilisatrice Louise (renommée en Fabienne Dizy-Olliveaud)
+        $louise = User::where('email', 'louise@formationsession.com')->first();
+        if (! $louise) {
+            $this->command->error("L'utilisatrice Louise est introuvable. Veuillez d'abord exécuter UsersSeeder.");
 
-        // 1. Trouver ou créer des formateurs pour ces formations
-        // Sophie Lefèvre (Mindfulness, Pendule)
-        $sophie = User::where('email', 'sophie@mindful.com')->first();
-        if (! $sophie) {
-            $sophie = User::factory()->create([
-                'name' => 'Sophie Lefèvre',
-                'email' => 'sophie@mindful.com',
-                'password' => bcrypt('password'),
-            ]);
-            $sophie->syncRoles([RoleEnum::Trainer->value]);
+            return;
         }
 
-        // Kiran Mehta (Chakras, Lahochi)
-        $kiran = User::where('email', 'kiran@mindful.com')->first();
-        if (! $kiran) {
-            $kiran = User::factory()->create([
-                'name' => 'Kiran Mehta',
-                'email' => 'kiran@mindful.com',
-                'password' => bcrypt('password'),
-            ]);
-            $kiran->syncRoles([RoleEnum::Trainer->value]);
+        // 2. Récupérer les catégories
+        $chakrasCategory = Category::where('slug', 'chakras')->first();
+        $spirituelCategory = Category::where('slug', 'developpement-spirituel')->first();
+        $creativityCategory = Category::where('slug', 'creativite-et-bien-etre')->first();
+
+        // 3. Définir le catalogue réel
+        $courses = [
+            [
+                'title' => 'Initiation au LaHoChi',
+                'category_id' => $chakrasCategory->id,
+                'description' => 'Découvrez le LaHoChi, une fréquence élevée de soin énergétique par les mains. Apprenez à pratiquer l\'auto-traitement et à transmettre cette énergie sous la supervision individuelle de Louise.',
+                'price' => 150.00,
+                'duration' => 300, // 5 heures
+                'image' => '/assets/images/course_lahochi.png',
+                'featured' => true,
+                'benefits' => [
+                    'Accompagnement individuel en visioconférence avec Louise',
+                    'Manuel pédagogique PDF original fourni',
+                    'Transmission énergétique à distance incluse',
+                    '21 jours d\'auto-soins intégrés',
+                    'Séance finale supervisée sur Louise pour validation',
+                ],
+            ],
+            [
+                'title' => 'Formation Orisugi — Devenir Tisseur du Fil d’Or',
+                'category_id' => $creativityCategory->id,
+                'description' => 'Découvrez la méthode originale de création contemplative conçue par Louise. Apprenez à animer des cercles et des ateliers autour du Galet, du Fil d\'Or, des Trames, de l\'Ombre et de la Lisière des Mots.',
+                'price' => 99.00, // Tarif d'attente à confirmer
+                'duration' => 240, // 4 heures
+                'image' => '/assets/images/course_orisugi.png',
+                'featured' => true,
+                'benefits' => [
+                    'Devenir Tisseur du Fil d\'Or et ouvrir des cercles de création',
+                    'Apprendre à guider la méditation "Le Fil de Soi"',
+                    'Charte éthique et livret de transmission inclus',
+                    'Validation par attestation de suivi de formation',
+                ],
+            ],
+            [
+                'title' => 'Atelier découverte de la radiesthésie',
+                'category_id' => $spirituelCategory->id,
+                'description' => 'Un atelier d\'initiation pratique de 3 heures en présentiel pour apprendre à utiliser votre premier pendule, établir vos conventions oui/non et maîtriser les bases des cadrans de radiesthésie.',
+                'price' => 50.00,
+                'duration' => 180, // 3 heures
+                'image' => '/assets/images/course_radiesthesie_decouverte.png',
+                'featured' => true,
+                'benefits' => [
+                    'Séance pratique de 3 heures en présentiel',
+                    'Prêt de pendule et de matériel pour la séance',
+                    'Cadrans de radiesthésie de base imprimables',
+                    'Boissons offertes',
+                ],
+            ],
+            [
+                'title' => 'Atelier pendule et radiesthésie',
+                'category_id' => $spirituelCategory->id,
+                'description' => 'Développez votre sensibilité énergétique lors de cet atelier complet d\'une demi-journée. Apprenez à formuler des questions précises et à utiliser des cadrans complexes en visioconférence ou en présentiel.',
+                'price' => 70.00,
+                'duration' => 240, // 4 heures
+                'image' => '/assets/images/course_pendule_radiesthesie.png',
+                'featured' => false,
+                'benefits' => [
+                    'Atelier approfondi d\'une demi-journée',
+                    'Techniques de formulation de questions',
+                    'Cadrans complexes de mesure énergétique',
+                ],
+            ],
+            [
+                'title' => 'Initiation complète à la radiesthésie',
+                'category_id' => $spirituelCategory->id,
+                'description' => 'Une formation approfondie pour maîtriser l\'art du pendule, l\'usage des baguettes de sourcier et les premiers repères de la géobiologie (réseaux Hartmann, Curry et ressentis de l\'aura).',
+                'price' => 120.00, // Tarif d'attente à confirmer
+                'duration' => 360, // 6 heures
+                'image' => '/assets/images/course_radiesthesie_complete.png',
+                'featured' => false,
+                'benefits' => [
+                    'Prise en main des baguettes de sourcier',
+                    'Introduction aux réseaux Hartmann et Curry',
+                    'Techniques de mesure de l\'aura et du taux vibratoire',
+                ],
+            ],
+            [
+                'title' => 'Harmonisez vos chakras',
+                'category_id' => $chakrasCategory->id,
+                'description' => 'Un programme complet en 7 modules pour comprendre, purifier et équilibrer vos sept centres énergétiques principaux à l\'aide de méditations guidées, de la lithothérapie et des huiles essentielles.',
+                'price' => 89.00, // Tarif d'attente à confirmer
+                'duration' => 420, // 7 heures
+                'image' => '/assets/images/course_chakras.png',
+                'featured' => false,
+                'benefits' => [
+                    '7 modules théoriques et pratiques',
+                    'Méditations guidées audio incluses',
+                    'Fiches pratiques d\'aromathérapie et de lithothérapie',
+                ],
+            ],
+            [
+                'title' => 'Réveille ton chakra sacré — Svadhisthana',
+                'category_id' => $chakrasCategory->id,
+                'description' => 'Libérez votre force créatrice, apprivoisez vos émotions et retrouvez un rapport sain à votre corps physique et votre sensualité. Un parcours de 21 séquences d\'exploration personnelle.',
+                'price' => 29.00, // Tarif d'attente à confirmer
+                'duration' => 150, // 2.5 heures
+                'image' => '/assets/images/course_chakra_racine.png',
+                'featured' => false,
+                'benefits' => [
+                    '21 séquences d\'exercices quotidiens',
+                    'Journal d\'introspection et de suivi',
+                    'Pratiques douces de yoga et de nutrition adaptées',
+                ],
+            ],
+            [
+                'title' => 'Le plexus solaire : pouvoir, confiance et transformation',
+                'category_id' => $chakrasCategory->id,
+                'description' => 'Retrouvez votre confiance personnelle, votre pouvoir d\'action et votre juste volonté. Un programme complet de 20 jours pour équilibrer Manipura.',
+                'price' => 29.00, // Tarif d'attente à confirmer
+                'duration' => 150, // 2.5 heures
+                'image' => '/assets/images/course_plexus_solaire.png',
+                'featured' => false,
+                'benefits' => [
+                    '20 jours d\'exercices guidés',
+                    'Techniques de respiration (Pranayama) dynamisantes',
+                    'Méditations de confiance en soi',
+                ],
+            ],
+            [
+                'title' => 'Atelier création d’élixirs vibratoires',
+                'category_id' => $creativityCategory->id,
+                'description' => 'Apprenez à co-créer vos propres élixirs de cristaux et de fleurs lors de cet atelier présentiel d\'une demi-journée. Repartez avec votre élixir personnalisé et le protocole complet de solarisation.',
+                'price' => 80.00,
+                'duration' => 240, // 4 heures
+                'image' => '/assets/images/course_elixirs_vibratoires.png',
+                'featured' => false,
+                'benefits' => [
+                    'Atelier pratique de 4 heures en présentiel',
+                    'Flacons et matières premières fournis',
+                    'Protocole de solarisation pas à pas',
+                    'Boissons offertes',
+                ],
+            ],
+        ];
+
+        foreach ($courses as $c) {
+            Course::updateOrCreate(
+                ['slug' => Str::slug($c['title'])],
+                [
+                    'trainer_id' => $louise->id,
+                    'category_id' => $c['category_id'],
+                    'title' => $c['title'],
+                    'description' => $c['description'],
+                    'price' => $c['price'],
+                    'duration' => $c['duration'],
+                    'image' => $c['image'],
+                    'featured' => $c['featured'],
+                    'benefits' => $c['benefits'],
+                    'status' => CourseStatus::Published->value,
+                    'published_at' => now(),
+                ]
+            );
         }
-
-        // Valérie Renaud (Lumière Intérieure)
-        $valerie = User::where('email', 'valerie@mindful.com')->first();
-        if (! $valerie) {
-            $valerie = User::factory()->create([
-                'name' => 'Valérie Renaud',
-                'email' => 'valerie@mindful.com',
-                'password' => bcrypt('password'),
-            ]);
-            $valerie->syncRoles([RoleEnum::Trainer->value]);
-        }
-
-        // Catégories correspondantes
-        $mindfulnessCategory = Category::where('slug', 'mindfulness')->first() ?? $categories->first();
-        $chakrasCategory = Category::where('slug', 'chakras')->first() ?? $categories->first();
-        $sophrologieCategory = Category::where('slug', 'sophrologie')->first() ?? $categories->first();
-        $spirituelCategory = Category::where('slug', 'developpement-spirituel')->first() ?? $categories->first();
-        $bienEtreCategory = Category::where('slug', 'nutrition-holiste')->first() ?? $categories->first();
-
-        // 1. Initiation au Pendule & Radiesthésie
-        Course::create([
-            'trainer_id' => $sophie->id,
-            'category_id' => $spirituelCategory->id,
-            'title' => 'Initiation au Pendule & Radiesthésie',
-            'slug' => Str::slug('Initiation au Pendule & Radiesthésie'),
-            'description' => 'Apprenez à utiliser le pendule divinatoire pour purifier vos énergies, harmoniser vos chakras et obtenir des réponses précises à vos questionnements profonds.',
-            'price' => 49.00,
-            'duration' => 240, // 4 heures
-            'image' => '/assets/images/course_pendule.jpg',
-            'featured' => true,
-            'benefits' => ['Accès à vie', 'Attestation de complétion', 'Cadrans de radiesthésie PDF imprimables', 'Exercices pratiques de connexion'],
-            'status' => CourseStatus::Published->value,
-            'published_at' => now(),
-        ]);
-
-        // 2. Méditation Pleine Conscience
-        Course::create([
-            'trainer_id' => $sophie->id,
-            'category_id' => $mindfulnessCategory->id,
-            'title' => 'Méditation Pleine Conscience',
-            'slug' => Str::slug('Méditation Pleine Conscience'),
-            'description' => 'Un programme complet pour apprendre à méditer, réduire le stress au quotidien et cultiver une présence attentive et bienveillante à chaque instant.',
-            'price' => 39.00,
-            'duration' => 180, // 3 heures
-            'image' => '/assets/images/course_pleine_conscience.jpg',
-            'featured' => true,
-            'benefits' => ['Accès à vie', 'Attestation de complétion', 'Support audio de méditation guidée', 'Guide de respiration consciente'],
-            'status' => CourseStatus::Published->value,
-            'published_at' => now(),
-        ]);
-
-        // 3. Lumière Intérieure & Soin de Soi
-        Course::create([
-            'trainer_id' => $valerie->id,
-            'category_id' => $bienEtreCategory->id,
-            'title' => 'Lumière Intérieure & Soin de Soi',
-            'slug' => Str::slug('Lumière Intérieure & Soin de Soi'),
-            'description' => 'Reconnectez-vous à votre essence profonde, apprenez à vous libérer de vos peurs et rayonnez votre véritable lumière au quotidien.',
-            'price' => 45.00,
-            'duration' => 200, // 3h20
-            'image' => '/assets/images/course_lumiere_interieure.jpg',
-            'featured' => true,
-            'benefits' => ['Accès à vie', 'Fiches d\'auto-analyse', 'Méditations de visualisation positive'],
-            'status' => CourseStatus::Published->value,
-            'published_at' => now(),
-        ]);
-
-        // 4. Harmonisation du Chakra Racine
-        Course::create([
-            'trainer_id' => $kiran->id,
-            'category_id' => $chakrasCategory->id,
-            'title' => 'Harmonisation du Chakra Racine',
-            'slug' => Str::slug('Harmonisation du Chakra Racine'),
-            'description' => 'Ancrez-vous et retrouvez sécurité et confiance. Un programme complet pour équilibrer Muladhara, votre premier centre énergétique.',
-            'price' => 35.00,
-            'duration' => 150, // 2h30
-            'image' => '/assets/images/course_chakra_racine.jpg',
-            'featured' => true,
-            'benefits' => ['Accès à vie', 'Postures d\'ancrage détaillées', 'Méditations guidées d\'enracinement'],
-            'status' => CourseStatus::Published->value,
-            'published_at' => now(),
-        ]);
-
-        // 5. Initiation au Soin Énergétique Lahochi
-        Course::create([
-            'trainer_id' => $kiran->id,
-            'category_id' => $chakrasCategory->id,
-            'title' => 'Soin Énergétique Lahochi',
-            'slug' => Str::slug('Soin Énergétique Lahochi'),
-            'description' => 'Découvrez le Lahochi, une fréquence élevée de guérison par les mains. Apprenez à canaliser et transmettre l\'énergie pour vous-même et pour autrui.',
-            'price' => 59.00,
-            'duration' => 300, // 5 heures
-            'image' => '/assets/images/course_lahochi.jpg',
-            'featured' => true,
-            'benefits' => ['Accès à vie', 'Livret de formation complet PDF', 'Vidéos de démonstration des positions de mains'],
-            'status' => CourseStatus::Published->value,
-            'published_at' => now(),
-        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Student\Courses\CourseController;
 use App\Http\Controllers\Student\Courses\LessonProgressController;
+use App\Http\Controllers\Student\Courses\ReviewController;
 use App\Http\Controllers\Student\DashboardController as StudentDashboardController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,4 +12,5 @@ Route::middleware(['auth', 'verified', 'role:student'])->prefix('student')->name
     Route::get('courses/{courseId}', [CourseController::class, 'show'])->name('courses.show');
     Route::post('lessons/{lesson}/progress', [LessonProgressController::class, 'store'])->name('lessons.progress.store');
     Route::delete('lessons/{lesson}/progress', [LessonProgressController::class, 'destroy'])->name('lessons.progress.destroy');
+    Route::post('courses/{course}/reviews', [ReviewController::class, 'store'])->name('courses.reviews.store');
 });

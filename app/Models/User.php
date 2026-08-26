@@ -84,4 +84,9 @@ class User extends Authenticatable implements PasskeyUser
     {
         return $this->hasMany(Course::class, 'trainer_id');
     }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
 }
