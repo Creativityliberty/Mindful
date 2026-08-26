@@ -107,7 +107,7 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                         {course.title}
                     </h3>
                     <p className="mb-5 line-clamp-2 flex-1 text-sm leading-relaxed text-muted-foreground">
-                        {course.description}
+                        {course.description.length > 140 ? course.description.slice(0, 140) + '...' : course.description}
                     </p>
 
                     <div className="mb-5 space-y-2.5 rounded-xl border border-border/30 bg-muted/20 p-3 backdrop-blur-xs">

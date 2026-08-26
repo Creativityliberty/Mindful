@@ -57,7 +57,7 @@ function EnrolledCourseCard({
                             {enrollment.title}
                         </h2>
                         <p className="line-clamp-2 text-xs leading-relaxed text-muted-foreground">
-                            {enrollment.description}
+                            {enrollment.description.length > 120 ? enrollment.description.slice(0, 120) + '...' : enrollment.description}
                         </p>
                     </div>
 
