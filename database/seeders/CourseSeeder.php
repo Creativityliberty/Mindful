@@ -167,8 +167,8 @@ class CourseSeeder extends Seeder
                 'description' => "Découvrez le pouvoir des huiles essentielles pour prendre soin de vous naturellement. Dans cette formation d'introduction entièrement gratuite, Louise vous guide pas à pas dans les bases de l'aromathérapie : comprendre les huiles essentielles, les choisir, les utiliser en toute sécurité et créer vos premières synergies bien-être.\n\nUne première étape accessible à tous, en complément parfait de vos pratiques énergétiques.",
                 'price' => 0.00,
                 'duration' => 70, // ~70 min
-                'image' => '/assets/images/course_elixirs_vibratoires.png',
-                'featured' => false,
+                'image' => '/assets/images/course_aromatherapie.jpg',
+                'featured' => true,
                 'benefits' => [
                     'Formation 100% gratuite — accès immédiat sans paiement',
                     'Comprendre ce qu\'est une huile essentielle et comment elle agit',
