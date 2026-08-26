@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from '@inertiajs/react';
+import { useState, useRef, MouseEvent } from 'react';
 
 const services = [
     {
@@ -17,6 +18,8 @@ const services = [
         description:
             'Apprenez à détecter et mesurer les vibrations énergétiques des lieux, objets et personnes à l\'aide de votre pendule et de vos baguettes.',
         href: '/courses?category=radiesthesie',
+        className: 'md:col-span-4 lg:col-span-4 min-h-[220px]',
+        glowColor: 'rgba(168, 85, 247, 0.15)', // Purple
     },
     {
         icon: Flame,
@@ -24,6 +27,8 @@ const services = [
         description:
             'Maîtrisez les techniques de questionnement, les graphiques et les protocoles avancés pour des consultations précises et fiables.',
         href: '/courses?category=pendule',
+        className: 'md:col-span-2 lg:col-span-2 min-h-[220px]',
+        glowColor: 'rgba(245, 158, 11, 0.15)', // Amber
     },
     {
         icon: Leaf,
@@ -31,6 +36,8 @@ const services = [
         description:
             'Harmonisez vos centres énergétiques pour libérer les blocages, revitaliser votre corps et retrouver un équilibre profond et durable.',
         href: '/courses?category=chakras',
+        className: 'md:col-span-2 lg:col-span-2 min-h-[220px]',
+        glowColor: 'rgba(16, 185, 129, 0.15)', // Emerald
     },
     {
         icon: HeartPulse,
@@ -38,6 +45,8 @@ const services = [
         description:
             'Découvrez les principes de l\'énergétique, les soins à distance et les techniques de nettoyage vibratoire pour votre bien-être.',
         href: '/courses?category=energetique',
+        className: 'md:col-span-4 lg:col-span-4 min-h-[220px]',
+        glowColor: 'rgba(239, 68, 68, 0.15)', // Red
     },
     {
         icon: GraduationCap,
@@ -45,6 +54,8 @@ const services = [
         description:
             'Des parcours structurés avec attestation de compétences pour approfondir vos connaissances et valider votre pratique.',
         href: '/courses',
+        className: 'md:col-span-3 lg:col-span-3 min-h-[220px]',
+        glowColor: 'rgba(59, 130, 246, 0.15)', // Blue
     },
     {
         icon: LayoutDashboard,
@@ -52,29 +63,87 @@ const services = [
         description:
             'Partagez votre savoir-faire. Publiez vos formations et gérez votre communauté d\'apprenants en toute simplicité.',
         href: '/become-trainer',
+        className: 'md:col-span-3 lg:col-span-3 min-h-[220px]',
+        glowColor: 'rgba(236, 72, 153, 0.15)', // Pink
     },
 ] as const;
 
 const containerVariants: Variants = {
     hidden: {},
-    visible: { transition: { staggerChildren: 0.1 } },
+    visible: { transition: { staggerChildren: 0.08 } },
 };
 
 const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
         opacity: 1,
         y: 0,
-        transition: { duration: 0.6, ease: 'easeOut' },
+        transition: { duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] },
     },
 };
 
+function BentoCard({ service }: { service: typeof services[number] }) {
+    const Icon = service.icon;
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
+
+    const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        setMousePosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top,
+        });
+    };
+
+    return (
+        <motion.div variants={itemVariants} className={service.className}>
+            <Link href={service.href} className="block h-full">
+                <div
+                    ref={cardRef}
+                    onMouseMove={handleMouseMove}
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                    className="group relative h-full overflow-hidden rounded-3xl border border-border/40 bg-background/60 backdrop-blur-md transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5 dark:border-border/50 dark:bg-background/40 cursor-pointer"
+                >
+                    {/* Spotlight glow effect */}
+                    <div
+                        className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                        style={{
+                            background: `radial-gradient(350px circle at ${mousePosition.x}px ${mousePosition.y}px, ${service.glowColor}, transparent 80%)`,
+                        }}
+                    />
+
+                    {/* Content container */}
+                    <CardContent className="relative z-10 flex h-full flex-col justify-between p-8">
+                        <div>
+                            <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/10 text-primary transition-transform duration-500 group-hover:scale-110">
+                                <Icon className="h-6 w-6" aria-hidden="true" />
+                            </div>
+
+                            <h3 className="mb-3 text-xl font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
+                                {service.title}
+                            </h3>
+
+                            <p className="text-sm leading-relaxed text-foreground/60 max-w-md">
+                                {service.description}
+                            </p>
+                        </div>
+                    </CardContent>
+                </div>
+            </Link>
+        </motion.div>
+    );
+}
+
 export function Services() {
     return (
-        <section className="relative py-24 md:py-32">
-            {/* blob décoratif */}
+        <section className="relative py-24 md:py-32 overflow-hidden">
+            {/* blobs décoratifs en arrière-plan */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-0 right-1/4 h-[400px] w-[400px] rounded-full bg-primary/[0.03] blur-[140px] dark:bg-primary/[0.06]" />
+                <div className="absolute top-1/4 right-1/4 h-[500px] w-[500px] rounded-full bg-primary/[0.03] blur-[150px] dark:bg-primary/[0.05]" />
+                <div className="absolute bottom-1/4 left-1/4 h-[400px] w-[400px] rounded-full bg-amber-500/[0.02] blur-[130px] dark:bg-amber-500/[0.04]" />
             </div>
 
             <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
@@ -102,45 +171,17 @@ export function Services() {
                     </p>
                 </motion.div>
 
-                {/* grille */}
+                {/* grille Bento */}
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: '-80px' }}
-                    className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3"
+                    className="grid gap-6 grid-cols-1 md:grid-cols-6"
                 >
-                    {services.map((service) => {
-                        const Icon = service.icon;
-
-                        return (
-                            <motion.div
-                                key={service.title}
-                                variants={itemVariants}
-                            >
-                                <Link href={service.href} className="block h-full">
-                                    <Card className="group h-full border-border/40 bg-background/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-lg dark:border-border/50 dark:bg-background/50 cursor-pointer">
-                                        <CardContent className="p-7">
-                                            <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary/15">
-                                                <Icon
-                                                    className="h-6 w-6"
-                                                    aria-hidden="true"
-                                                />
-                                            </div>
-
-                                            <h3 className="mb-2 text-lg font-semibold text-foreground group-hover:text-primary transition-colors">
-                                                {service.title}
-                                            </h3>
-
-                                            <p className="text-sm leading-relaxed text-foreground/60">
-                                                {service.description}
-                                            </p>
-                                        </CardContent>
-                                    </Card>
-                                </Link>
-                            </motion.div>
-                        );
-                    })}
+                    {services.map((service) => (
+                        <BentoCard key={service.title} service={service} />
+                    ))}
                 </motion.div>
             </div>
         </section>
