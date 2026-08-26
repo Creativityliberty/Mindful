@@ -71,32 +71,27 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                     }}
                 />
 
-                {/* Image Container with Ambient Background (Zero Cropping, Zero Black Gaps) */}
-                <div className="relative h-52 overflow-hidden bg-black/40 flex items-center justify-center">
-                    <img
-                        src={course.image}
-                        alt=""
-                        className="absolute inset-0 h-full w-full object-cover blur-2xl scale-125 opacity-40 pointer-events-none"
-                    />
+                {/* Image Container */}
+                <div className="relative h-52 w-full overflow-hidden bg-muted">
                     <img
                         src={course.image}
                         alt={course.title}
-                        className="relative z-10 max-h-full max-w-full object-contain p-2 transition-transform duration-700 ease-out group-hover:scale-105"
+                        className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
-                    <div className="absolute inset-0 z-20 bg-gradient-to-t from-background/90 via-background/20 to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 z-20 bg-gradient-to-t from-background/90 via-background/10 to-transparent pointer-events-none" />
 
-                    <div className="absolute top-3.5 left-3.5">
-                        <Badge variant="secondary" className="border-white/20 bg-background/70 px-3 py-1 text-[11px] font-semibold text-foreground backdrop-blur-md shadow-sm">
+                    <div className="absolute top-3.5 left-3.5 z-30">
+                        <Badge variant="secondary" className="border-white/20 bg-background/85 px-3 py-1 text-[11px] font-semibold text-foreground backdrop-blur-md shadow-sm whitespace-nowrap">
                             {course.category}
                         </Badge>
                     </div>
 
                     {course.trainer && (
-                        <div className="absolute bottom-3 left-4 flex items-center gap-2">
+                        <div className="absolute bottom-3 left-4 z-30 flex items-center gap-2">
                             <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-primary/90 text-[11px] font-bold text-primary-foreground shadow-sm">
                                 {course.trainer.initials}
                             </div>
-                            <span className="text-xs font-semibold text-foreground/90 drop-shadow-sm">{course.trainer.name}</span>
+                            <span className="text-xs font-semibold text-white drop-shadow-md">{course.trainer.name}</span>
                         </div>
                     )}
                 </div>

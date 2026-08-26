@@ -91,30 +91,23 @@ export function Courses() {
                     className="mb-5 overflow-hidden rounded-3xl border border-border/40 bg-background/70 backdrop-blur-sm dark:border-border/50 dark:bg-background/50"
                 >
                     <div className="grid lg:grid-cols-[1.5fr_1fr]">
-                        {/* Image Container with Ambient Background (Zero Cropping, Zero Black Gaps) */}
-                        <div className="group relative min-h-[260px] overflow-hidden lg:min-h-[360px] flex items-center justify-center bg-black/40">
-                            {/* Ambient blurred background copy */}
-                            <img
-                                src={featured.image}
-                                alt=""
-                                className="absolute inset-0 h-full w-full object-cover blur-2xl scale-125 opacity-40 pointer-events-none"
-                            />
-                            {/* Main uncropped full image */}
+                        {/* Image Container */}
+                        <div className="group relative min-h-[260px] overflow-hidden lg:min-h-[360px] w-full bg-muted">
                             <img
                                 src={featured.image}
                                 alt={featured.title}
-                                className="relative z-10 max-h-full max-w-full object-contain p-3 transition-transform duration-700 group-hover:scale-105"
+                                className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                             />
                             <div className="absolute inset-0 z-20 bg-gradient-to-r from-transparent via-transparent to-background/10 dark:to-background/20 pointer-events-none" />
-                            <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/50 via-black/10 to-transparent lg:hidden pointer-events-none" />
+                            <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/55 via-black/10 to-transparent lg:hidden pointer-events-none" />
 
-                            <div className="absolute top-5 left-5">
-                                <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-white uppercase backdrop-blur">
+                            <div className="absolute top-5 left-5 z-30">
+                                <span className="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-white uppercase backdrop-blur whitespace-nowrap">
                                     {featured.category}
                                 </span>
                             </div>
-                            <div className="absolute top-5 right-5">
-                                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/20 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur">
+                            <div className="absolute top-5 right-5 z-30">
+                                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/20 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur whitespace-nowrap">
                                     <Sparkles
                                         className="h-3 w-3"
                                         aria-hidden="true"
@@ -210,20 +203,15 @@ export function Courses() {
                             variants={itemVariants}
                             className="group overflow-hidden rounded-2xl border border-border/40 bg-background/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-md dark:border-border/50 dark:bg-background/50"
                         >
-                            <div className="relative aspect-video w-full overflow-hidden bg-black/40 flex items-center justify-center">
-                                <img
-                                    src={course.image}
-                                    alt=""
-                                    className="absolute inset-0 h-full w-full object-cover blur-2xl scale-125 opacity-40 pointer-events-none"
-                                />
+                            <div className="relative aspect-video w-full overflow-hidden bg-muted">
                                 <img
                                     src={course.image}
                                     alt={course.title}
-                                    className="relative z-10 max-h-full max-w-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
+                                    className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/65 via-black/15 to-transparent pointer-events-none" />
-                                <div className="absolute top-3 left-3">
-                                    <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[10px] font-semibold tracking-[0.15em] text-white/90 uppercase backdrop-blur">
+                                <div className="absolute top-3 left-3 z-30">
+                                    <span className="rounded-full border border-white/20 bg-black/60 px-2.5 py-0.5 text-[10px] font-semibold tracking-[0.15em] text-white/90 uppercase backdrop-blur whitespace-nowrap">
                                         {course.category}
                                     </span>
                                 </div>
