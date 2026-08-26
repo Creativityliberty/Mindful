@@ -3,52 +3,36 @@ import { Quote } from 'lucide-react';
 
 const avis = [
     {
-        initiales: 'RF',
-        nom: 'Radiesthésie',
-        role: 'Formation complète',
-        entreprise: 'Débutant à expert',
+        initiales: 'FD',
+        nom: 'Fabienne Dizy',
+        role: 'Accompagnatrice Holistique',
+        entreprise: 'Cabinet L\'Orisugi',
         contenu:
-            'Apprenez les fondamentaux de la radiesthésie : baguettes, pendule, graphiques. Une approche progressive adaptée à tous les niveaux.',
+            'La formation Orisugi a profondément enrichi mes accompagnements. Allier le Fil d\'Or et la création contemplative me permet de guider mes consultants vers des libérations intérieures douces et durables.',
     },
     {
-        initiales: 'PD',
-        nom: 'Pendule',
-        role: 'Techniques avancées',
-        entreprise: 'Consultations précises',
+        initiales: 'JR',
+        nom: 'Julien R.',
+        role: 'Praticien Énergétique',
+        entreprise: 'Soins à domicile',
         contenu:
-            'Maîtrisez les protocoles de questionnement, les diagrammes et les méthodes de validation pour des consultations fiables et reproductibles.',
+            'L\'initiation au LaHoChi avec Louise a été un tournant pour ma pratique. Le livret pédagogique est extrêmement clair et l\'accompagnement individuel m\'a donné la confiance nécessaire pour lancer mes premières séances.',
     },
     {
-        initiales: 'CH',
-        nom: 'Chakras',
-        role: 'Équilibrage énergétique',
-        entreprise: 'Harmonisation complète',
+        initiales: 'AL',
+        nom: 'Amandine L.',
+        role: 'Étudiante en radiesthésie',
+        entreprise: 'Apprentissage autonome',
         contenu:
-            'Découvrez les 7 centres énergétiques et les techniques d\'harmonisation pour libérer les blocages et retrouver votre équilibre.',
+            'Je partais de zéro et j\'appréhendais beaucoup le maniement du pendule. Grâce aux exercices simples et à la bienveillance du cours, j\'ai pu établir mes premières conventions et ressentir les énergies rapidement.',
     },
     {
-        initiales: 'EN',
-        nom: 'Énergétique',
-        role: 'Soins vibratoires',
-        entreprise: 'Nettoyage & protection',
+        initiales: 'SM',
+        nom: 'Sophie M.',
+        role: 'Praticienne Reiki',
+        entreprise: 'Reconversion',
         contenu:
-            'Explorez les principes de l\'énergétique, les soins à distance et les protocoles de nettoyage vibratoire pour votre bien-être.',
-    },
-    {
-        initiales: 'FO',
-        nom: 'Formateurs',
-        role: 'Espace dédié',
-        entreprise: 'Publiez vos formations',
-        contenu:
-            'Partagez votre expertise. Créez et publiez vos formations, gérez vos apprenants et développez votre activité sur FormationSession.',
-    },
-    {
-        initiales: 'CO',
-        nom: 'Communauté',
-        role: 'Échanges & partage',
-        entreprise: 'Apprentissage collaboratif',
-        contenu:
-            'Rejoignez une communauté bienveillante de passionnés. Échangez, pratiquez et progressez ensemble dans vos domaines de prédilection.',
+            'Cette plateforme n\'est pas juste un catalogue de vidéos. On y trouve un véritable espace d\'échange et d\'écoute. Pouvoir poser des questions aux formateurs et partager avec d\'autres élèves change tout.',
     },
 ] as const;
 
@@ -64,17 +48,15 @@ export default function Testimonials() {
             <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
                 <div className="mb-16 text-center">
                     <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                        Domaines explorés
+                        Témoignages
                     </div>
 
                     <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        Domaines de formation
+                        Ce que nos étudiants partagent
                     </h2>
 
                     <p className="mx-auto max-w-xl text-lg text-foreground/60">
-                        Des thématiques variées pour explorer, apprendre et
-                        maîtriser les pratiques énergétiques sur
-                        FormationSession.
+                        Découvrez les retours d'expérience et les histoires de transformation de ceux qui ont suivi nos formations holistiques.
                     </p>
                 </div>
             </div>
