@@ -20,6 +20,7 @@ const services = [
         href: '/courses?category=radiesthesie',
         color: 'from-purple-500 to-indigo-600',
         glow: 'rgba(168, 85, 247, 0.25)',
+        image: '/assets/images/service_radiesthesie.jpg',
     },
     {
         id: 1,
@@ -30,6 +31,7 @@ const services = [
         href: '/courses?category=pendule',
         color: 'from-amber-400 to-orange-600',
         glow: 'rgba(245, 158, 11, 0.25)',
+        image: '/assets/images/service_pendule.jpg',
     },
     {
         id: 2,
@@ -40,6 +42,7 @@ const services = [
         href: '/courses?category=chakras',
         color: 'from-emerald-400 to-teal-600',
         glow: 'rgba(16, 185, 129, 0.25)',
+        image: '/assets/images/service_chakras.jpg',
     },
     {
         id: 3,
@@ -50,6 +53,7 @@ const services = [
         href: '/courses?category=energetique',
         color: 'from-rose-500 to-red-600',
         glow: 'rgba(239, 68, 68, 0.25)',
+        image: '/assets/images/service_energetique.jpg',
     },
     {
         id: 4,
@@ -60,6 +64,7 @@ const services = [
         href: '/courses',
         color: 'from-sky-400 to-blue-600',
         glow: 'rgba(56, 189, 248, 0.25)',
+        image: '/assets/images/service_certifiant.jpg',
     },
     {
         id: 5,
@@ -70,6 +75,7 @@ const services = [
         href: '/become-trainer',
         color: 'from-pink-500 to-rose-600',
         glow: 'rgba(236, 72, 153, 0.25)',
+        image: '/assets/images/service_formateur.jpg',
     },
 ] as const;
 
@@ -115,7 +121,24 @@ export function Services() {
                         <div className="absolute inset-0 rounded-full border border-border/30 dark:border-border/10 pointer-events-none" />
                         
                         {/* Inner Pulsing Core (The Energetic Self) */}
-                        <div className="relative flex items-center justify-center w-36 h-36 md:w-44 md:h-44 rounded-full border border-white/10 shadow-2xl backdrop-blur-md z-20">
+                        <div className="relative flex items-center justify-center w-36 h-36 md:w-44 md:h-44 rounded-full border border-white/10 shadow-2xl backdrop-blur-md z-20 overflow-hidden">
+                            {/* Animated Image Reveal behind everything */}
+                            <AnimatePresence mode="wait">
+                                <motion.img
+                                    key={`img-${activeService.id}`}
+                                    src={activeService.image}
+                                    alt=""
+                                    initial={{ opacity: 0, scale: 1.15 }}
+                                    animate={{ opacity: 0.75, scale: 1 }}
+                                    exit={{ opacity: 0, scale: 0.9 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                    className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0"
+                                />
+                            </AnimatePresence>
+
+                            {/* Black gradient mask to guarantee text legibility */}
+                            <div className="absolute inset-0 bg-black/60 z-10" />
+
                             {/* Color changing glowing aura inside */}
                             <motion.div
                                 animate={{
@@ -126,10 +149,10 @@ export function Services() {
                                     scale: { repeat: Infinity, duration: 4, ease: "easeInOut" },
                                     background: { duration: 0.5 }
                                 }}
-                                className="absolute inset-0 rounded-full pointer-events-none"
+                                className="absolute inset-0 rounded-full pointer-events-none z-10"
                             />
                             
-                            <div className="flex flex-col items-center justify-center text-center p-4">
+                            <div className="relative flex flex-col items-center justify-center text-center p-4 z-20">
                                 <AnimatePresence mode="wait">
                                     <motion.div
                                         key={activeService.id}
@@ -142,7 +165,7 @@ export function Services() {
                                         <activeService.icon className="h-6 w-6" />
                                     </motion.div>
                                 </AnimatePresence>
-                                <span className="text-[10px] uppercase tracking-[0.2em] text-foreground/40 font-bold">Focus</span>
+                                <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold">Focus</span>
                             </div>
                         </div>
 
