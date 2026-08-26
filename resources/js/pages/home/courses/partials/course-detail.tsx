@@ -240,7 +240,7 @@ export function CourseDetail({ course }: { course: Course }) {
                             viewport={{ once: true }}
                             transition={{ duration: 0.5 }}
                         >
-                            <p className="text-lg leading-relaxed text-foreground/70">
+                            <p className="text-lg leading-relaxed text-foreground/70 whitespace-pre-line">
                                 {course.description}
                             </p>
                         </motion.section>
