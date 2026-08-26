@@ -138,8 +138,8 @@ export function Courses() {
                                     {featured.title}
                                 </h3>
 
-                                <p className="mb-5 text-sm leading-relaxed text-foreground/60 md:text-base">
-                                    {featured.description}
+                                <p className="mb-5 text-sm leading-relaxed text-foreground/60 md:text-base line-clamp-3">
+                                    {featured.description.length > 220 ? featured.description.slice(0, 220) + '...' : featured.description}
                                 </p>
 
                                 {featured.trainer && (
@@ -233,8 +233,8 @@ export function Courses() {
                                 <h3 className="mb-2 line-clamp-2 text-sm leading-snug font-semibold text-foreground">
                                     {course.title}
                                 </h3>
-                                <p className="mb-5 text-xs leading-relaxed text-foreground/60">
-                                    {course.description}
+                                <p className="mb-5 text-xs leading-relaxed text-foreground/60 line-clamp-2">
+                                    {course.description.length > 140 ? course.description.slice(0, 140) + '...' : course.description}
                                 </p>
                                 <div className="mb-3">
                                     <StarRating rating={course.rating} />
