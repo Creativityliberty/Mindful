@@ -59,6 +59,23 @@ class ModuleSeeder extends Seeder
                         'order' => $index + 1,
                     ]);
                 }
+            } elseif ($course->slug === 'initiation-a-l-aromatherapie-soigner-en-douceur-avec-les-huiles-essentielles') {
+                $modules = [
+                    'Qu\'est-ce qu\'une huile essentielle ?',
+                    'Les 5 huiles essentielles indispensables',
+                    'Comment les utiliser en toute sécurité',
+                    'Créer ses premières synergies bien-être',
+                    'Aromathérapie et pratiques énergétiques',
+                ];
+
+                foreach ($modules as $index => $title) {
+                    Module::create([
+                        'course_id' => $course->id,
+                        'title' => $title,
+                        'duration' => 14,
+                        'order' => $index + 1,
+                    ]);
+                }
             } else {
                 // Modules standards pour les autres cours
                 $modules = [

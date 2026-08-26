@@ -37,6 +37,7 @@ Route::get('courses', [CourseController::class, 'index'])->name('courses.index')
 Route::get('courses/{identifier}', [CourseController::class, 'show'])->name('courses.show');
 Route::get('courses/{identifier}/checkout', [CourseCheckoutController::class, 'show'])->middleware(['auth', 'verified'])->name('courses.checkout.show');
 Route::post('courses/checkout', [CourseCheckoutController::class, 'store'])->middleware(['auth', 'verified'])->name('courses.checkout');
+Route::post('courses/{courseId}/enroll-free', [\App\Http\Controllers\Public\Courses\FreeEnrollController::class, 'store'])->middleware(['auth', 'verified'])->name('courses.enroll-free');
 Route::inertia('courses/purchase/success', 'home/courses/success')->middleware(['auth', 'verified'])->name('courses.purchase.success');
 
 // Become trainer

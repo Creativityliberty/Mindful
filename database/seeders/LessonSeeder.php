@@ -22,6 +22,8 @@ class LessonSeeder extends Seeder
                 $lessons = $this->getLahochiLessons($module->title);
             } elseif ($courseSlug === 'formation-orisugi-devenir-tisseur-du-fil-dor') {
                 $lessons = $this->getOrisugiLessons($module->title);
+            } elseif ($courseSlug === 'initiation-a-l-aromatherapie-soigner-en-douceur-avec-les-huiles-essentielles') {
+                $lessons = $this->getAromatherapieLessons($module->title);
             } else {
                 // Leçons génériques pour les autres cours
                 $lessons = [
@@ -49,7 +51,7 @@ class LessonSeeder extends Seeder
                     'video_url' => $l['video_url'] ?? null,
                     'audio_url' => $l['audio_url'] ?? null,
                     'pdf_url' => $l['pdf_url'] ?? null,
-                    'is_free' => $index === 0, // La première leçon est gratuite
+                    'is_free' => $l['is_free'] ?? ($index === 0), // Explicite si défini, sinon la 1ère leçon
                     'order' => $index + 1,
                 ]);
             }
@@ -167,6 +169,102 @@ class LessonSeeder extends Seeder
             ],
             default => [
                 ['title' => 'Introduction', 'duration' => 15, 'type' => LessonType::Pdf],
+            ],
+        };
+    }
+
+    private function getAromatherapieLessons(string $moduleTitle): array
+    {
+        return match ($moduleTitle) {
+            'Qu\'est-ce qu\'une huile essentielle ?' => [
+                [
+                    'title' => 'Qu\'est-ce qu\'une huile essentielle ? (Définition et extraction)',
+                    'duration' => 8,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/Y2_eA-f8Zf0',
+                    'is_free' => true,
+                ],
+                [
+                    'title' => 'Les différentes voies d\'utilisation : cutanée, respiratoire, orale',
+                    'duration' => 12,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/2NiYqeXdZic',
+                    'is_free' => true,
+                ],
+            ],
+            'Les 5 huiles essentielles indispensables' => [
+                [
+                    'title' => 'La Lavande vraie : l\'huile universelle du bien-être',
+                    'duration' => 10,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/3ZPHpRHSbds',
+                    'is_free' => true,
+                ],
+                [
+                    'title' => 'L\'Arbre à thé (Tea Tree) : protecteur naturel',
+                    'duration' => 8,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/P5j-6kK5OlM',
+                    'is_free' => true,
+                ],
+                [
+                    'title' => 'La Menthe poivrée, l\'Eucalyptus et la Camomille romaine',
+                    'duration' => 12,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/r6LdZ5oHpNc',
+                    'is_free' => true,
+                ],
+            ],
+            'Comment les utiliser en toute sécurité' => [
+                [
+                    'title' => 'Les précautions essentielles à connaître avant de commencer',
+                    'duration' => 10,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/QOwFViA_ViY',
+                    'is_free' => true,
+                ],
+                [
+                    'title' => 'Les dilutions : comment utiliser une huile végétale comme support',
+                    'duration' => 8,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/2NiYqeXdZic',
+                    'is_free' => true,
+                ],
+            ],
+            'Créer ses premières synergies bien-être' => [
+                [
+                    'title' => 'Recette synergie anti-stress du quotidien',
+                    'duration' => 10,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/k7Bs1vC1QXY',
+                    'is_free' => true,
+                ],
+                [
+                    'title' => 'Recette synergie sommeil et relaxation profonde',
+                    'duration' => 12,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/Y2_eA-f8Zf0',
+                    'is_free' => true,
+                ],
+            ],
+            'Aromathérapie et pratiques énergétiques' => [
+                [
+                    'title' => 'Associer les huiles essentielles à l\'équilibrage des chakras',
+                    'duration' => 10,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/3ZPHpRHSbds',
+                    'is_free' => true,
+                ],
+                [
+                    'title' => 'Pour aller plus loin : les formations de Louise',
+                    'duration' => 5,
+                    'type' => LessonType::VideoUrl,
+                    'video_url' => 'https://www.youtube.com/embed/k7Bs1vC1QXY',
+                    'is_free' => true,
+                ],
+            ],
+            default => [
+                ['title' => 'Introduction', 'duration' => 10, 'type' => LessonType::VideoUrl, 'video_url' => 'https://www.youtube.com/embed/Y2_eA-f8Zf0', 'is_free' => true],
             ],
         };
     }

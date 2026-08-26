@@ -110,7 +110,11 @@ export function CourseDetail({ course }: { course: Course }) {
     function handleCheckout() {
         if (!auth.user) {
             router.visit(`/courses/${course.id}/checkout`)
+            return
+        }
 
+        if (course.price === 0 || course.price === '0.00') {
+            router.post(`/courses/${course.id}/enroll-free`, {}, { preserveScroll: true })
             return
         }
 
@@ -203,17 +207,15 @@ export function CourseDetail({ course }: { course: Course }) {
                             étudiants
                         </span>
                     </div>
-                    {minPrice && (
-                        <div className="flex items-center gap-2 text-sm text-foreground/60">
-                            <Award className="h-4 w-4 text-primary/60" />
-                            <span>
-                                À partir de{' '}
-                                <strong className="text-foreground">
-                                    {minPrice}
-                                </strong>
-                            </span>
-                        </div>
-                    )}
+                    <div className="flex items-center gap-2 text-sm text-foreground/60">
+                        <Award className="h-4 w-4 text-primary/60" />
+                        <span>
+                            {(minPrice === 0 || minPrice === '0.00')
+                                ? <strong className="text-green-400">🎁 Gratuit</strong>
+                                : <>À partir de{' '}<strong className="text-foreground">{minPrice} €</strong></>
+                            }
+                        </span>
+                    </div>
                     {course.trainer && (
                         <div className="flex items-center gap-2 text-sm text-foreground/60">
                             <Share2 className="h-4 w-4 text-primary/60" />
@@ -541,7 +543,10 @@ export function CourseDetail({ course }: { course: Course }) {
                                         Accès complet
                                     </p>
                                     <p className="mb-5 text-3xl font-bold text-foreground">
-                                        {minPrice}
+                                        {(minPrice === 0 || minPrice === '0.00')
+                                            ? <span className="text-green-500">Gratuit</span>
+                                            : <>{minPrice} €</>
+                                        }
                                     </p>
 
                                     {course.benefits && course.benefits.length > 0 && (
@@ -564,12 +569,16 @@ export function CourseDetail({ course }: { course: Course }) {
                                         </Button>
                                     ) : (
                                         <Button size="lg" className="w-full gap-2 rounded-full" onClick={handleCheckout}>
-                                            Accéder à la formation
+                                            {(course.price === 0 || course.price === '0.00')
+                                                ? 'S\'inscrire gratuitement'
+                                                : 'Accéder à la formation'}
                                             <ArrowRight className="h-4 w-4" />
                                         </Button>
                                     )}
                                     <p className="mt-3 text-center text-xs text-foreground/40">
-                                        Paiement sécurisé · Accès immédiat
+                                        {(course.price === 0 || course.price === '0.00')
+                                            ? '🎁 Gratuit · Accès immédiat'
+                                            : 'Paiement sécurisé · Accès immédiat'}
                                     </p>
                                 </CardContent>
                             </Card>
@@ -591,12 +600,14 @@ export function CourseDetail({ course }: { course: Course }) {
             <div className="sticky bottom-0 z-30 border-t border-border/40 bg-background/95 p-4 backdrop-blur-md lg:hidden">
                 <div className="flex items-center justify-between gap-4">
                     <div>
-                        <p className="text-xs text-foreground/50">
-                            À partir de
-                        </p>
-                        <p className="font-semibold text-foreground">
-                            {minPrice ?? 'Gratuit'}
-                        </p>
+                        {(minPrice === 0 || minPrice === '0.00') ? (
+                            <p className="font-semibold text-green-500">🎁 Gratuit</p>
+                        ) : (
+                            <>
+                                <p className="text-xs text-foreground/50">À partir de</p>
+                                <p className="font-semibold text-foreground">{minPrice} €</p>
+                            </>
+                        )}
                     </div>
                     {course.is_enrolled ? (
                         <Button size="lg" className="gap-2 rounded-full px-8" asChild>
@@ -606,7 +617,7 @@ export function CourseDetail({ course }: { course: Course }) {
                         </Button>
                     ) : (
                         <Button size="lg" className="gap-2 rounded-full px-8" onClick={handleCheckout}>
-                            Accéder <ArrowRight className="h-4 w-4" />
+                            {(minPrice === 0 || minPrice === '0.00') ? 'Gratuit' : 'Accéder'} <ArrowRight className="h-4 w-4" />
                         </Button>
                     )}
                 </div>
