@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion';
-import { useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowUpRight, Sparkles } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Link } from '@inertiajs/react';
@@ -81,11 +80,10 @@ const trustPoints = [
 
 export function Chiffres() {
     return (
-        <section className="relative py-24 md:py-32 overflow-hidden bg-[#09070D]">
-            {/* Background Halo */}
+        <section className="relative py-24 md:py-32 overflow-hidden bg-background">
+            {/* Ambient Background Glow matching the platform theme */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-purple-900/20 blur-[160px]" />
-                <div className="absolute top-1/3 left-1/2 h-[400px] w-[400px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-amber-500/10 blur-[130px]" />
+                <div className="absolute top-1/2 left-1/2 h-[750px] w-[750px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.03] blur-[160px]" />
             </div>
 
             <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
@@ -97,16 +95,16 @@ export function Chiffres() {
                     transition={{ duration: 0.7 }}
                     className="mb-14 text-center relative z-10"
                 >
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-amber-500/20 bg-amber-500/10 px-4 py-1.5 text-[11px] font-medium text-amber-300 backdrop-blur-md">
-                        <Sparkles className="h-3 w-3 text-amber-400" />
+                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-secondary-foreground uppercase backdrop-blur-md">
+                        <Sparkles className="h-3.5 w-3.5 text-primary" />
                         Une plateforme dédiée aux
                     </div>
 
-                    <h2 className="mb-4 text-4xl md:text-6xl font-bold tracking-tight text-white font-serif">
+                    <h2 className="mb-4 text-4xl md:text-6xl font-bold tracking-tight text-foreground">
                         pratiques énergétiques
                     </h2>
 
-                    <p className="mx-auto max-w-2xl text-sm md:text-base text-white/60 font-light leading-relaxed">
+                    <p className="mx-auto max-w-2xl text-base md:text-lg text-foreground/60 font-light leading-relaxed">
                         Des formateurs passionnés, des apprenants motivés et des contenus de qualité réunis sur une seule plateforme dédiée à la radiesthésie et à l'énergétique.
                     </p>
                 </motion.div>
@@ -120,14 +118,14 @@ export function Chiffres() {
                         slidesPerView={'auto'}
                         initialSlide={2} // Center on Chakras
                         coverflowEffect={{
-                            rotate: 20,
+                            rotate: 18,
                             stretch: 0,
-                            depth: 200,
+                            depth: 180,
                             modifier: 1,
                             slideShadows: false,
                         }}
                         autoplay={{
-                            delay: 4000,
+                            delay: 4500,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
@@ -141,10 +139,10 @@ export function Chiffres() {
                             >
                                 {({ isActive }) => (
                                     <div
-                                        className={`group relative h-full w-full overflow-hidden rounded-[2rem] border transition-all duration-500 flex flex-col justify-between p-7 md:p-8 ${
+                                        className={`group relative h-full w-full overflow-hidden rounded-[2.5rem] border transition-all duration-500 flex flex-col justify-between p-7 md:p-8 ${
                                             isActive
-                                                ? 'border-amber-400/40 bg-gradient-to-b from-white/10 to-black/90 shadow-2xl shadow-purple-950/50 scale-105'
-                                                : 'border-white/10 bg-black/60 opacity-65 scale-95'
+                                                ? 'border-primary/40 bg-background/80 shadow-2xl shadow-primary/10 scale-105 backdrop-blur-xl'
+                                                : 'border-border/30 bg-background/40 opacity-60 scale-95 backdrop-blur-md'
                                         }`}
                                     >
                                         {/* Artwork Image */}
@@ -154,13 +152,13 @@ export function Chiffres() {
                                             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
 
-                                        {/* Gradient Overlay for Text Visibility */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 z-0" />
+                                        {/* Gradient Overlay for Text Legibility */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 z-0 pointer-events-none" />
 
-                                        {/* Top Emblem */}
+                                        {/* Top Subtle Emblem */}
                                         <div className="relative z-10 flex justify-center">
-                                            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-amber-400/30 bg-black/40 text-amber-300 backdrop-blur-md">
-                                                <Sparkles className="h-4 w-4" />
+                                            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white/90 backdrop-blur-md">
+                                                <Sparkles className="h-3.5 w-3.5" />
                                             </div>
                                         </div>
 
@@ -183,7 +181,7 @@ export function Chiffres() {
                                                 href={item.href}
                                                 className={`flex h-11 w-11 items-center justify-center rounded-full border transition-all duration-300 ${
                                                     isActive
-                                                        ? 'border-amber-400/40 bg-amber-400/10 text-amber-300 hover:bg-amber-400 hover:text-black hover:scale-110'
+                                                        ? 'border-white/30 bg-white/10 text-white hover:bg-primary hover:border-primary hover:scale-110 shadow-lg'
                                                         : 'border-white/20 bg-white/5 text-white/60'
                                                 }`}
                                             >
@@ -203,9 +201,9 @@ export function Chiffres() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7, delay: 0.2 }}
-                    className="mt-16 rounded-2xl border border-white/10 bg-white/[0.03] p-6 md:p-8 backdrop-blur-md"
+                    className="mt-16 rounded-3xl border border-border/40 bg-background/60 p-6 md:p-8 backdrop-blur-md shadow-xl dark:border-border/50 dark:bg-background/40"
                 >
-                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-white/10">
+                    <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-border/30">
                         {trustPoints.map((tp, idx) => (
                             <div
                                 key={idx}
@@ -213,7 +211,7 @@ export function Chiffres() {
                                     idx !== 0 ? 'pt-4 sm:pt-0 sm:pl-6' : ''
                                 }`}
                             >
-                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-amber-400/20 bg-amber-400/5 text-amber-300">
+                                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-primary/5 text-primary">
                                     <svg
                                         className="h-5 w-5"
                                         fill="none"
@@ -229,10 +227,10 @@ export function Chiffres() {
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 className="text-sm font-semibold text-white">
+                                    <h4 className="text-sm font-semibold text-foreground">
                                         {tp.title}
                                     </h4>
-                                    <p className="text-xs text-white/50">
+                                    <p className="text-xs text-foreground/50">
                                         {tp.subtitle}
                                     </p>
                                 </div>
