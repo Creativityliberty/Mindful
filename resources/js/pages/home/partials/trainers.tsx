@@ -1,87 +1,86 @@
-import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, BookOpen, Users, Star, Sparkles } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ArrowRight, Sparkles, Star, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
+import { useState } from 'react';
 
-type Trainer = {
+type TrainerProfile = {
     id: number;
-    initials: string;
     name: string;
+    role: string;
     specialty: string;
     bio: string;
-    image: string;
+    avatar: string;
     courseCount: number;
     studentCount: string;
     rating: number;
+    reviewCount: number;
     featured?: boolean;
 };
 
-const trainers: Trainer[] = [
+// Real trainers list starting with Louise as the lead certified founder
+const trainersData: TrainerProfile[] = [
     {
         id: 1,
-        initials: 'SL',
-        name: 'Sophie Lefèvre',
-        specialty: 'Radiesthésie & Pendule',
-        bio: 'Enseignante certifiée MBSR depuis 12 ans, Sophie a accompagné plus de 1 200 personnes vers une pratique de pleine conscience durable et transformatrice.',
-        image: '/assets/images/trainer_sophie.jpg',
-        courseCount: 4,
-        studentCount: '3 800+',
+        name: 'Louise',
+        role: 'Fondatrice & Formatrice Référente',
+        specialty: 'Radiesthésie & Énergétique',
+        bio: 'Fondatrice de FormationSession, praticienne et enseignante passionnée. Louise accompagne les élèves dans la maîtrise du pendule, le soin des chakras et la géobiologie.',
+        avatar: '/assets/images/service_chakras_lux.jpg',
+        courseCount: 6,
+        studentCount: '2 400+',
         rating: 4.9,
+        reviewCount: 184,
         featured: true,
     },
     {
         id: 2,
-        initials: 'KM',
-        name: 'Kiran Mehta',
-        specialty: 'Chakras & Énergie',
-        bio: 'Praticien Ayurveda formé en Inde, Kiran enseigne la philosophie des chakras depuis 18 ans et a guidé plus de 2 500 élèves dans leur rééquilibrage énergétique.',
-        image: '/assets/images/trainer_kiran.jpg',
-        courseCount: 6,
-        studentCount: '5 100+',
-        rating: 4.8,
+        name: 'Fabienne D.',
+        role: 'Formatrice Certifiée',
+        specialty: 'Radiesthésie & Géobiologie',
+        bio: 'Certifiée en radiesthésie et harmonisation des lieux. Accompagne les élèves dans les protocoles de questionnement et la détection vibratoire.',
+        avatar: '/assets/images/service_radiesthesie_lux.jpg',
+        courseCount: 3,
+        studentCount: '850+',
+        rating: 4.9,
+        reviewCount: 62,
     },
     {
         id: 3,
-        initials: 'ML',
-        name: 'Marie-Laure Dubois',
-        specialty: 'Yoga Vinyasa & Yin',
-        bio: 'Professeure certifiée RYT-500, formée en Inde et à Bali. Marie-Laure guide tous les niveaux dans une pratique de yoga alliant fluidité, conscience et ancrage.',
-        image: '/assets/images/trainer_marie.jpg',
-        courseCount: 5,
-        studentCount: '6 200+',
-        rating: 4.7,
+        name: 'Julien R.',
+        role: 'Praticien & Formateur',
+        specialty: 'Pratique du Pendule & Cadrans',
+        bio: 'Spécialiste de la recherche au pendule et des cadrans de mesure. Formateur bienveillant axé sur la méthode et la précision.',
+        avatar: '/assets/images/service_pendule.jpg',
+        courseCount: 4,
+        studentCount: '1 100+',
+        rating: 4.8,
+        reviewCount: 94,
     },
     {
         id: 4,
-        initials: 'VR',
-        name: 'Valérie Renaud',
-        specialty: 'Sophrologie & Stress',
-        bio: 'Sophrologue certifiée RNCP depuis 15 ans, Valérie accompagne des particuliers et des entreprises dans la gestion du stress, du burnout et du sommeil.',
-        image: '/assets/images/trainer_valerie.jpg',
-        courseCount: 3,
-        studentCount: '2 100+',
-        rating: 4.8,
+        name: 'Amandine L.',
+        role: 'Formatrice Certifiée',
+        specialty: 'Chakras & Soins Vibratoires',
+        bio: 'Experte en équilibrage des centres énergétiques et soins holistiques. Transmet les clés du rééquilibrage vibratoire au quotidien.',
+        avatar: '/assets/images/service_chakras_lux.jpg',
+        courseCount: 5,
+        studentCount: '1 450+',
+        rating: 5.0,
+        reviewCount: 112,
     },
 ];
 
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: 'easeOut' },
-    },
-};
-
 export function Trainers() {
-    const featured = trainers.find((t) => t.featured) ?? trainers[0];
-    const others = trainers.filter((t) => t.id !== featured.id).slice(0, 3);
+    const [isHovered, setIsHovered] = useState(false);
+    const leadTrainer = trainersData.find((t) => t.featured) || trainersData[0];
+    const boardTrainers = [...trainersData, ...trainersData]; // Double loop for seamless infinite slider
 
     return (
-        <section className="relative overflow-hidden bg-muted/30 py-24 md:py-32 dark:bg-foreground/[0.02]">
+        <section className="relative overflow-hidden bg-background py-24 md:py-32">
+            {/* Ambient Background Aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-1/4 right-0 h-[460px] w-[460px] rounded-full bg-primary/[0.035] blur-[150px] dark:bg-primary/[0.07]" />
-                <div className="absolute bottom-0 left-0 h-[360px] w-[360px] rounded-full bg-foreground/[0.025] blur-[130px] dark:bg-foreground/[0.045]" />
+                <div className="absolute top-1/3 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.03] blur-[160px]" />
             </div>
 
             <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
@@ -94,164 +93,171 @@ export function Trainers() {
                     className="mb-14 flex flex-col gap-6 md:flex-row md:items-end md:justify-between"
                 >
                     <div className="max-w-2xl">
-                        <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                            Nos formateurs
+                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur">
+                            <Sparkles className="h-3.5 w-3.5 text-primary" />
+                            Nos Formateurs & Mentors
                         </div>
                         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
                             Des experts passionnés à votre service
                         </h2>
-                        <p className="text-lg leading-relaxed text-foreground/60">
-                            Radiesthésistes, énergéticiens, praticiens certifiés
-                            — nos formateurs sont sélectionnés pour leur expertise
-                            et leur capacité à transmettre les pratiques
-                            énergétiques.
+                        <p className="text-base md:text-lg leading-relaxed text-foreground/60">
+                            Radiesthésistes, énergéticiens et praticiens certifiés — nos formateurs sont sélectionnés pour leur expertise authentique et leur passion de la transmission.
                         </p>
                     </div>
+
                     <Button
                         variant="secondary"
-                        className="w-fit shrink-0 rounded-full"
+                        className="w-fit shrink-0 rounded-full border border-border/40 hover:bg-primary/10 transition-all duration-300"
                         asChild
                     >
                         <Link href="/become-trainer" preserveState prefetch>
                             Devenir formateur
-                            <ArrowRight
-                                className="ml-2 h-4 w-4"
-                                aria-hidden="true"
-                            />
+                            <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                         </Link>
                     </Button>
                 </motion.div>
 
-                {/* Featured trainer */}
-                <motion.article
-                    variants={itemVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-60px' }}
-                    className="group mb-5 grid overflow-hidden rounded-3xl border border-border/40 bg-background/70 backdrop-blur-sm lg:grid-cols-[1.5fr_1fr] dark:border-border/50 dark:bg-background/50"
-                >
-                    {/* Image */}
-                    <div className="relative min-h-[200px] overflow-hidden lg:min-h-[280px]">
-                        <img
-                            src={featured.image}
-                            alt={featured.name}
-                            className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-background/20 dark:to-background/30" />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent lg:hidden" />
-
-                        <div className="absolute top-5 left-5">
-                            <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold tracking-wider text-white uppercase backdrop-blur">
-                                {featured.specialty}
-                            </span>
-                        </div>
-                        <div className="absolute top-5 right-5">
-                            <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/20 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur">
-                                <Sparkles className="h-3 w-3" />
-                                Formateur vedette
-                            </span>
-                        </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="flex flex-col justify-center gap-5 p-7 md:p-10">
-                        <div>
-                            <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-lg font-bold text-primary">
-                                {featured.initials}
-                            </div>
-                            <h3 className="mb-1 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-                                {featured.name}
-                            </h3>
-                            <p className="mb-4 text-sm font-medium text-primary/70">
-                                {featured.specialty}
-                            </p>
-                            <p className="text-sm leading-relaxed text-foreground/60 md:text-base">
-                                {featured.bio}
-                            </p>
-                        </div>
-
-                        <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-foreground/50">
-                            <span className="flex items-center gap-1.5">
-                                <BookOpen className="h-4 w-4 text-primary/60" />
-                                {featured.courseCount} cours publiés
-                            </span>
-                            <span className="flex items-center gap-1.5">
-                                <Users className="h-4 w-4 text-primary/60" />
-                                {featured.studentCount} étudiants
-                            </span>
-                            <span className="flex items-center gap-1.5">
-                                <Star className="h-4 w-4 fill-amber-400 text-amber-400" />
-                                {featured.rating.toFixed(1)} / 5
-                            </span>
-                        </div>
-
-                        <Button className="w-fit rounded-full" asChild>
-                            <Link href="/courses">
-                                Voir ses formations
-                                <ArrowRight
-                                    className="ml-2 h-4 w-4"
-                                    aria-hidden="true"
-                                />
-                            </Link>
-                        </Button>
-                    </div>
-                </motion.article>
-
-                {/* 3 other trainers */}
+                {/* Lead Founder Hero Spotlight (Louise) */}
                 <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, margin: '-60px' }}
-                    transition={{ staggerChildren: 0.1 }}
-                    className="grid gap-5 sm:grid-cols-3"
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, delay: 0.1 }}
+                    className="group mb-16 relative overflow-hidden rounded-[2.5rem] border border-primary/20 bg-gradient-to-br from-background/90 via-background/60 to-primary/[0.05] p-8 md:p-12 shadow-2xl backdrop-blur-xl"
                 >
-                    {others.map((trainer) => (
-                        <motion.article
-                            key={trainer.id}
-                            variants={itemVariants}
-                            className="group overflow-hidden rounded-2xl border border-border/40 bg-background/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-md dark:border-border/50 dark:bg-background/50"
-                        >
-                            <div className="relative h-36 overflow-hidden">
+                    <div className="grid gap-8 lg:grid-cols-[1fr_1.4fr] items-center">
+                        {/* Circular Avatar Spotlight */}
+                        <div className="relative flex justify-center">
+                            <div className="relative h-48 w-48 md:h-64 md:w-64 rounded-full p-2 border-2 border-primary/40 shadow-2xl shadow-primary/20 bg-background overflow-hidden group-hover:border-primary transition-all duration-500">
                                 <img
-                                    src={trainer.image}
-                                    alt={trainer.name}
-                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                    src={leadTrainer.avatar}
+                                    alt={leadTrainer.name}
+                                    className="h-full w-full rounded-full object-cover transition-transform duration-700 group-hover:scale-105"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                                <div className="absolute top-3 left-3">
-                                    <span className="rounded-full border border-white/20 bg-white/10 px-2.5 py-0.5 text-[10px] font-semibold tracking-wider text-white/90 uppercase backdrop-blur">
-                                        {trainer.specialty}
-                                    </span>
+                            </div>
+
+                            {/* Badge Formateur Vedette */}
+                            <div className="absolute -bottom-2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-white/20 flex items-center gap-1.5">
+                                <Sparkles className="h-3.5 w-3.5" />
+                                {leadTrainer.role}
+                            </div>
+                        </div>
+
+                        {/* Details */}
+                        <div className="flex flex-col gap-4 text-center lg:text-left">
+                            <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-primary justify-center lg:justify-start">
+                                <ShieldCheck className="h-4 w-4" />
+                                {leadTrainer.specialty}
+                            </div>
+
+                            <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+                                {leadTrainer.name}
+                            </h3>
+
+                            <p className="text-base leading-relaxed text-foreground/70 font-light">
+                                {leadTrainer.bio}
+                            </p>
+
+                            {/* Stats Counter Bar */}
+                            <div className="pt-4 grid grid-cols-3 gap-4 border-t border-border/40 max-w-md mx-auto lg:mx-0">
+                                <div className="flex flex-col">
+                                    <span className="text-2xl font-bold text-foreground">{leadTrainer.courseCount}</span>
+                                    <span className="text-xs text-foreground/50">Cours publiés</span>
                                 </div>
-                                <div className="absolute right-4 bottom-3 left-4">
-                                    <p className="text-sm font-semibold text-white">
-                                        {trainer.name}
+                                <div className="flex flex-col">
+                                    <span className="text-2xl font-bold text-foreground">{leadTrainer.studentCount}</span>
+                                    <span className="text-xs text-foreground/50">Étudiants</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="text-2xl font-bold text-amber-400 flex items-center justify-center lg:justify-start gap-1">
+                                        <Star className="h-4 w-4 fill-amber-400" />
+                                        {leadTrainer.rating}
+                                    </span>
+                                    <span className="text-xs text-foreground/50">{leadTrainer.reviewCount} avis certifiés</span>
+                                </div>
+                            </div>
+
+                            <div className="pt-4 flex justify-center lg:justify-start">
+                                <Link
+                                    href="/courses"
+                                    className="group inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all hover:gap-3"
+                                >
+                                    Voir ses formations
+                                    <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                </motion.div>
+
+                {/* Trainers Infinite Interactive Board Slider */}
+                <div
+                    className="relative overflow-hidden py-4"
+                    onMouseEnter={() => setIsHovered(true)}
+                    onMouseLeave={() => setIsHovered(false)}
+                >
+                    <motion.div
+                        className="flex gap-6 w-max"
+                        animate={{ x: ['0%', '-50%'] }}
+                        transition={{
+                            x: {
+                                duration: isHovered ? 60 : 30, // Slow down smooth hover
+                                ease: 'linear',
+                                repeat: Infinity,
+                            },
+                        }}
+                    >
+                        {boardTrainers.map((trainer, index) => (
+                            <div
+                                key={`${trainer.name}-${index}`}
+                                className="group relative w-[280px] md:w-[320px] shrink-0 rounded-3xl border border-border/40 bg-background/80 p-6 md:p-8 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-2xl flex flex-col justify-between"
+                            >
+                                <div>
+                                    {/* Circular Avatar */}
+                                    <div className="flex items-center gap-4 mb-5">
+                                        <div className="relative h-14 w-14 rounded-full p-1 border border-primary/30 shadow-md bg-background overflow-hidden shrink-0 group-hover:border-primary transition-colors">
+                                            <img
+                                                src={trainer.avatar}
+                                                alt={trainer.name}
+                                                className="h-full w-full rounded-full object-cover"
+                                            />
+                                        </div>
+                                        <div>
+                                            <h4 className="text-lg font-bold text-foreground tracking-tight group-hover:text-primary transition-colors">
+                                                {trainer.name}
+                                            </h4>
+                                            <span className="text-xs font-medium text-foreground/50 block">
+                                                {trainer.specialty}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    {/* Bio */}
+                                    <p className="text-xs md:text-sm text-foreground/60 leading-relaxed font-light mb-6 line-clamp-3">
+                                        {trainer.bio}
                                     </p>
                                 </div>
-                            </div>
 
-                            <div className="p-5">
-                                <p className="mb-3 line-clamp-2 text-sm leading-relaxed text-foreground/60">
-                                    {trainer.bio}
-                                </p>
-                                <div className="flex flex-wrap items-center gap-3 text-xs text-foreground/40">
-                                    <span className="flex items-center gap-1">
-                                        <BookOpen className="h-3.5 w-3.5" />
-                                        {trainer.courseCount} cours
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                        <Users className="h-3.5 w-3.5" />
-                                        {trainer.studentCount}
-                                    </span>
-                                    <span className="flex items-center gap-1">
-                                        <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                                        {trainer.rating.toFixed(1)}
-                                    </span>
+                                {/* Stats & Reviews Footer */}
+                                <div className="pt-4 border-t border-border/30 flex items-center justify-between text-xs">
+                                    <div className="flex items-center gap-1.5 text-amber-400 font-bold">
+                                        <Star className="h-3.5 w-3.5 fill-amber-400" />
+                                        <span>{trainer.rating}</span>
+                                        <span className="text-foreground/40 font-normal">({trainer.reviewCount})</span>
+                                    </div>
+
+                                    <Link
+                                        href="/courses"
+                                        className="text-primary font-semibold hover:underline inline-flex items-center gap-1"
+                                    >
+                                        Voir cours
+                                        <ArrowRight className="h-3 w-3" />
+                                    </Link>
                                 </div>
                             </div>
-                        </motion.article>
-                    ))}
-                </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
             </div>
         </section>
     );

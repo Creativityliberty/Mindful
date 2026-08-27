@@ -16,70 +16,70 @@ const items = [
         eyebrow: 'Pratique vibratoire',
         description: 'Pendule, baguettes et mesure des énergies',
         href: '/courses?category=radiesthesie',
-        image: '/assets/images/theme_radiesthesie.jpg',
+        image: '/assets/images/service_radiesthesie_lux.jpg',
     },
     {
         title: 'Chakras',
         eyebrow: 'Soins & Harmonisation',
         description: 'LaHoChi, Reiki et 7 centres vitaux',
         href: '/courses?category=chakras',
-        image: '/assets/images/theme_chakras.jpg',
+        image: '/assets/images/service_chakras_lux.jpg',
     },
     {
         title: 'Bougies Artisanales',
         eyebrow: 'Artisanat & Senteurs',
         description: 'Cire végétale, fleurs séchées et cristaux',
         href: '/courses',
-        image: '/assets/images/course_aromatherapie.jpg',
+        image: '/assets/images/service_bougies_lux.jpg',
     },
     {
-        title: 'Aromathérapie',
-        eyebrow: 'Santé naturelle & Plantes',
-        description: 'Huiles essentielles et herbalisme',
+        title: 'Prothésie Ongulaire',
+        eyebrow: 'Stylisme de l\'ongle',
+        description: 'Nail art, pose gel et soins esthétiques',
         href: '/courses',
-        image: '/assets/images/course_elixirs_vibratoires.png',
-    },
-    {
-        title: 'Massages & Réflexologie',
-        eyebrow: 'Thérapies corporelles',
-        description: 'Soins du corps et points de pression',
-        href: '/courses',
-        image: '/assets/images/service_energetique.jpg',
+        image: '/assets/images/service_ongles_lux.jpg',
     },
     {
         title: 'IA & Digital',
         eyebrow: 'Nouvelles Technologies',
         description: 'Maîtriser l\'IA pour booster son activité',
         href: '/courses',
-        image: '/assets/images/service_certifiant.jpg',
+        image: '/assets/images/service_ia_lux.jpg',
+    },
+    {
+        title: 'Aromathérapie',
+        eyebrow: 'Santé naturelle & Plantes',
+        description: 'Huiles essentielles et herbalisme',
+        href: '/courses',
+        image: '/assets/images/service_aroma_lux.jpg',
+    },
+    {
+        title: 'Massages & Réflexologie',
+        eyebrow: 'Thérapies corporelles',
+        description: 'Soins du corps et points de pression',
+        href: '/courses',
+        image: '/assets/images/service_massage_lux.jpg',
     },
     {
         title: 'Artisanat & Bois',
         eyebrow: 'Savoir-faire & Création',
         description: 'Métiers manuels et noblesse du geste',
         href: '/courses',
-        image: '/assets/images/course_plexus_solaire.jpg',
+        image: '/assets/images/service_bois_lux.jpg',
     },
     {
         title: 'Formations Certifiantes',
         eyebrow: 'Parcours professionnels',
         description: 'Cursus complets avec attestation',
         href: '/courses',
-        image: '/assets/images/service_formateur.jpg',
-    },
-    {
-        title: 'Espace Formateur',
-        eyebrow: 'Transmission & Communauté',
-        description: 'Publiez et transmettez votre savoir',
-        href: '/become-trainer',
-        image: '/assets/images/theme_developpement.jpg',
+        image: '/assets/images/service_certif_lux.jpg',
     },
     {
         title: 'Accès à Vie',
         eyebrow: 'Apprentissage autonome',
         description: 'Accès illimité aux contenus en ligne',
         href: '/courses',
-        image: '/assets/images/theme_meditation.jpg',
+        image: '/assets/images/service_acces_lux.jpg',
     },
 ] as const;
 
@@ -146,14 +146,14 @@ export function Chiffres() {
                         slidesPerView={'auto'}
                         initialSlide={1}
                         coverflowEffect={{
-                            rotate: 18,
-                            stretch: 0,
-                            depth: 180,
+                            rotate: 8,
+                            stretch: -10,
+                            depth: 90,
                             modifier: 1,
                             slideShadows: false,
                         }}
                         autoplay={{
-                            delay: 4000,
+                            delay: 2500,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}
@@ -169,8 +169,8 @@ export function Chiffres() {
                                     <div
                                         className={`group relative h-full w-full overflow-hidden rounded-[2.5rem] border transition-all duration-500 flex flex-col justify-between p-7 md:p-8 ${
                                             isActive
-                                                ? 'border-primary/40 bg-background/80 shadow-2xl shadow-primary/10 scale-105 backdrop-blur-xl'
-                                                : 'border-border/30 bg-background/40 opacity-60 scale-95 backdrop-blur-md'
+                                                ? 'border-primary/40 bg-background/90 shadow-2xl shadow-primary/10 scale-105 backdrop-blur-xl'
+                                                : 'border-border/20 bg-background/20 opacity-80 scale-95 backdrop-blur-md'
                                         }`}
                                     >
                                         {/* Artwork Image */}
@@ -180,12 +180,12 @@ export function Chiffres() {
                                             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
 
-                                        {/* Gradient Overlay for Text Legibility */}
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-black/20 z-0 pointer-events-none" />
+                                        {/* Gradient Overlay for Text Legibility - Lightened */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent z-0 pointer-events-none" />
 
                                         {/* Top Emblem */}
                                         <div className="relative z-10 flex justify-center">
-                                            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white/90 backdrop-blur-md">
+                                            <div className="flex h-8 w-8 items-center justify-center rounded-full border border-white/20 bg-black/30 text-white/90 backdrop-blur-md">
                                                 <Sparkles className="h-3.5 w-3.5" />
                                             </div>
                                         </div>
