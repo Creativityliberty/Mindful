@@ -235,7 +235,7 @@ e.city = 'Ville requise'
                             <div className="sticky top-20">
                                 <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5, delay: 0.1 }}>
                                     <Card className="overflow-hidden border-border/40 bg-background/70 backdrop-blur-md dark:border-border/50 dark:bg-background/60">
-                                        <div className="relative h-40 overflow-hidden">
+                                        <div className="relative aspect-video overflow-hidden">
                                             <img src={course.image} alt={course.title} className="h-full w-full object-cover" />
                                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
                                             <div className="absolute bottom-3 left-4 right-4">

@@ -116,7 +116,7 @@ export default function CourseConfirmationPage({ courseId }: Props) {
                     {/* Access card */}
                     <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.2 }} className="w-full lg:max-w-md">
                         <div className="overflow-hidden rounded-3xl border border-border/40 bg-background shadow-2xl shadow-black/10 dark:border-border/50 dark:shadow-black/30">
-                            <div className="relative h-52 overflow-hidden">
+                            <div className="relative aspect-video overflow-hidden">
                                 <img src={course.image} alt={course.title} className="h-full w-full object-cover" />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-black/10" />
                                 <div className="absolute top-4 left-4">

@@ -91,7 +91,7 @@ export function Courses() {
                 >
                     <div className="grid lg:grid-cols-[1.5fr_1fr]">
                         {/* Image Container */}
-                        <div className="group relative min-h-[260px] overflow-hidden lg:min-h-[360px] w-full bg-muted">
+                        <div className="group relative aspect-video overflow-hidden w-full bg-muted">
                             <img
                                 src={featured.image}
                                 alt={featured.title}

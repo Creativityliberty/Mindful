@@ -59,7 +59,7 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                 />
 
                 {/* Image Container */}
-                <div className="relative h-52 w-full overflow-hidden bg-muted">
+                <div className="relative aspect-video w-full overflow-hidden bg-muted">
                     <img
                         src={course.image}
                         alt={course.title}
