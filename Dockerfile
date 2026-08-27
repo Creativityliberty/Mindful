@@ -1,12 +1,20 @@
 # =============================================================================
-# Stage 1 — PHP + Composer dependencies
+# Stage 0 — Base PHP-FPM with all extensions compiled exactly once
 # =============================================================================
-FROM php:8.4-cli-alpine AS composer-deps
+FROM php:8.4-fpm-alpine AS php-base
+
+# Limit parallel compilation jobs to avoid memory exhaustion (OOM) on resource-constrained servers
+ENV MAKEFLAGS="-j1"
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 RUN apk add --no-cache git curl zip unzip \
-    && install-php-extensions bcmath exif gd intl mbstring pcntl pdo_mysql zip
+    && install-php-extensions bcmath exif gd intl mbstring pcntl pdo_mysql opcache zip
+
+# =============================================================================
+# Stage 1 — PHP + Composer dependencies
+# =============================================================================
+FROM php-base AS composer-deps
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
@@ -34,8 +42,6 @@ RUN php artisan package:discover --ansi 2>/dev/null || true
 # =============================================================================
 # Stage 2 — Node.js asset + SSR bundle build
 # =============================================================================
-# Reuse composer-deps: PHP 8.4 + extensions + vendor + artisan already present.
-# Wayfinder runs `php artisan wayfinder:generate` during the Vite build.
 FROM composer-deps AS node-build
 
 RUN apk add --no-cache nodejs npm
@@ -53,7 +59,7 @@ RUN npm run build:ssr
 # =============================================================================
 # Stage 3 — Production image (PHP-FPM + Nginx + Supervisor)
 # =============================================================================
-FROM php:8.4-fpm-alpine AS production
+FROM php-base AS production
 
 LABEL maintainer="pmindfull"
 
@@ -64,9 +70,6 @@ RUN apk add --no-cache \
         curl \
         nodejs npm \
     && rm -rf /var/cache/apk/*
-
-COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
-RUN install-php-extensions bcmath exif gd intl mbstring pcntl pdo_mysql opcache zip
 
 # PHP configuration
 COPY docker/php/php.ini        "$PHP_INI_DIR/conf.d/99-app.ini"
