@@ -159,7 +159,7 @@ export default function About() {
                             <span className="text-xs text-foreground/50">Pays représentés</span>
                         </div>
                         <div>
-                            <span className="block text-3xl font-extrabold text-foreground">2021</span>
+                            <span className="block text-3xl font-extrabold text-foreground">2026</span>
                             <span className="text-xs text-foreground/50">Lancement de la Session</span>
                         </div>
                     </div>
