@@ -1,33 +1,19 @@
 import { Button } from '@/components/ui/button';
 import { motion, type Variants } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import { useEffect, useRef } from 'react';
 import { Link } from '@inertiajs/react';
 
-type Point = {
-    x: number;
-    y: number;
-};
-
-interface WaveConfig {
-    offset: number;
-    amplitude: number;
-    frequency: number;
-    color: string;
-    opacity: number;
-}
-
-// Pills fonctionnalités clés
+// Pills fonctionnalités clés - Clean design
 const highlightPills = [
-    'Radiesthésie & Pendule',
-    'Équilibrage des Chakras',
-    'Formateurs experts certifiés',
+    'Bien-être & Énergies',
+    'Artisanat & Créations',
+    'Mentors certifiés',
 ] as const;
 
-// Statistiques adaptées au projet
+// Statistiques adaptées au projet - Real numbers
 const heroStats: { label: string; value: string }[] = [
-    { label: 'Formations vidéo', value: 'Radiesthésie' },
-    { label: 'Domaines explorés', value: 'Pendule & Chakras' },
+    { label: 'Professionnels formés', value: '+800' },
+    { label: 'Domaines d\'apprentissage', value: 'Savoir-faire' },
     { label: 'Approche pédagogique', value: '100% Pratique' },
 ];
 
@@ -59,267 +45,29 @@ const statsVariants: Variants = {
 };
 
 export function Hero() {
-    const canvasRef = useRef<HTMLCanvasElement | null>(null);
-    const mouseRef = useRef<Point>({ x: 0, y: 0 });
-    const targetMouseRef = useRef<Point>({ x: 0, y: 0 });
-
-    useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return undefined;
-
-        const ctx = canvas.getContext('2d');
-        if (!ctx) return undefined;
-
-        let animationId: number;
-        let time = 0;
-
-        const computeThemeColors = () => {
-            const rootStyles = getComputedStyle(document.documentElement);
-
-            const resolveColor = (variables: string[], alpha = 1) => {
-                const tempEl = document.createElement('div');
-                tempEl.style.position = 'absolute';
-                tempEl.style.visibility = 'hidden';
-                tempEl.style.width = '1px';
-                tempEl.style.height = '1px';
-                document.body.appendChild(tempEl);
-
-                let color = `rgba(255, 255, 255, ${alpha})`;
-
-                for (const variable of variables) {
-                    const value = rootStyles.getPropertyValue(variable).trim();
-                    if (value) {
-                        tempEl.style.backgroundColor = `var(${variable})`;
-                        const computedColor =
-                            getComputedStyle(tempEl).backgroundColor;
-
-                        if (
-                            computedColor &&
-                            computedColor !== 'rgba(0, 0, 0, 0)'
-                        ) {
-                            if (alpha < 1) {
-                                const rgbMatch = computedColor.match(
-                                    /rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*[\d.]+)?\)/,
-                                );
-                                if (rgbMatch) {
-                                    color = `rgba(${rgbMatch[1]}, ${rgbMatch[2]}, ${rgbMatch[3]}, ${alpha})`;
-                                } else {
-                                    color = computedColor;
-                                }
-                            } else {
-                                color = computedColor;
-                            }
-                            break;
-                        }
-                    }
-                }
-
-                document.body.removeChild(tempEl);
-                return color;
-            };
-
-            return {
-                backgroundTop: resolveColor(['--background'], 1),
-                backgroundBottom: resolveColor(
-                    ['--muted', '--background'],
-                    0.95,
-                ),
-                wavePalette: [
-                    {
-                        offset: 0,
-                        amplitude: 70,
-                        frequency: 0.003,
-                        color: resolveColor(['--primary'], 0.8),
-                        opacity: 0.45,
-                    },
-                    {
-                        offset: Math.PI / 2,
-                        amplitude: 90,
-                        frequency: 0.0026,
-                        color: resolveColor(['--accent', '--primary'], 0.7),
-                        opacity: 0.35,
-                    },
-                    {
-                        offset: Math.PI,
-                        amplitude: 60,
-                        frequency: 0.0034,
-                        color: resolveColor(
-                            ['--secondary', '--foreground'],
-                            0.65,
-                        ),
-                        opacity: 0.3,
-                    },
-                    {
-                        offset: Math.PI * 1.5,
-                        amplitude: 80,
-                        frequency: 0.0022,
-                        color: resolveColor(
-                            ['--primary-foreground', '--foreground'],
-                            0.25,
-                        ),
-                        opacity: 0.25,
-                    },
-                    {
-                        offset: Math.PI * 2,
-                        amplitude: 55,
-                        frequency: 0.004,
-                        color: resolveColor(['--foreground'], 0.2),
-                        opacity: 0.2,
-                    },
-                ] satisfies WaveConfig[],
-            };
-        };
-
-        let themeColors = computeThemeColors();
-
-        const handleThemeMutation = () => {
-            themeColors = computeThemeColors();
-        };
-
-        const observer = new MutationObserver(handleThemeMutation);
-        observer.observe(document.documentElement, {
-            attributes: true,
-            attributeFilter: ['class', 'data-theme'],
-        });
-
-        const prefersReducedMotion = window.matchMedia(
-            '(prefers-reduced-motion: reduce)',
-        ).matches;
-
-        const mouseInfluence = prefersReducedMotion ? 10 : 70;
-        const influenceRadius = prefersReducedMotion ? 160 : 320;
-        const smoothing = prefersReducedMotion ? 0.04 : 0.1;
-
-        const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        };
-
-        const recenterMouse = () => {
-            const centerPoint = { x: canvas.width / 2, y: canvas.height / 2 };
-            mouseRef.current = centerPoint;
-            targetMouseRef.current = centerPoint;
-        };
-
-        const handleResize = () => {
-            resizeCanvas();
-            recenterMouse();
-        };
-
-        const handleMouseMove = (event: MouseEvent) => {
-            targetMouseRef.current = { x: event.clientX, y: event.clientY };
-        };
-
-        const handleMouseLeave = () => {
-            recenterMouse();
-        };
-
-        resizeCanvas();
-        recenterMouse();
-
-        window.addEventListener('resize', handleResize);
-        window.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('mouseleave', handleMouseLeave);
-
-        const drawWave = (wave: WaveConfig) => {
-            ctx.save();
-            ctx.beginPath();
-
-            for (let x = 0; x <= canvas.width; x += 4) {
-                const dx = x - mouseRef.current.x;
-                const dy = canvas.height / 2 - mouseRef.current.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const influence = Math.max(0, 1 - distance / influenceRadius);
-                const mouseEffect =
-                    influence *
-                    mouseInfluence *
-                    Math.sin(time * 0.001 + x * 0.01 + wave.offset);
-
-                const y =
-                    canvas.height / 2 +
-                    Math.sin(x * wave.frequency + time * 0.002 + wave.offset) *
-                        wave.amplitude +
-                    Math.sin(x * wave.frequency * 0.4 + time * 0.003) *
-                        (wave.amplitude * 0.45) +
-                    mouseEffect;
-
-                if (x === 0) {
-                    ctx.moveTo(x, y);
-                } else {
-                    ctx.lineTo(x, y);
-                }
-            }
-
-            ctx.lineWidth = 2.5;
-            ctx.strokeStyle = wave.color;
-            ctx.globalAlpha = wave.opacity;
-            ctx.shadowBlur = 35;
-            ctx.shadowColor = wave.color;
-            ctx.stroke();
-
-            ctx.restore();
-        };
-
-        const animate = () => {
-            time += 1;
-
-            mouseRef.current.x +=
-                (targetMouseRef.current.x - mouseRef.current.x) * smoothing;
-            mouseRef.current.y +=
-                (targetMouseRef.current.y - mouseRef.current.y) * smoothing;
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            ctx.globalAlpha = 1;
-            ctx.shadowBlur = 0;
-
-            themeColors.wavePalette.forEach(drawWave);
-
-            animationId = window.requestAnimationFrame(animate);
-        };
-
-        animationId = window.requestAnimationFrame(animate);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-            window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('mouseleave', handleMouseLeave);
-            cancelAnimationFrame(animationId);
-            observer.disconnect();
-        };
-    }, []);
-
     return (
         <section
             className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-background"
             role="region"
-            aria-label="Hero FormationSession - radiesthésie et pendule"
+            aria-label="Hero FormationSession"
         >
-            {/* fond avec dégradés */}
+            {/* fond avec dégradés - Changed to soft sky blue */}
             <div className="pointer-events-none absolute inset-0 z-0">
-                <div className="absolute top-0 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-foreground/[0.035] blur-[140px] dark:bg-foreground/[0.06]" />
-                <div className="absolute right-0 bottom-0 h-[360px] w-[360px] rounded-full bg-foreground/[0.025] blur-[120px] dark:bg-foreground/[0.05]" />
-                <div className="absolute top-1/2 left-1/4 h-[400px] w-[400px] rounded-full bg-primary/[0.02] blur-[150px] dark:bg-primary/[0.05]" />
+                <div className="absolute top-0 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-sky-400/[0.015] blur-[140px]" />
+                <div className="absolute right-0 bottom-0 h-[360px] w-[360px] rounded-full bg-primary/[0.01] blur-[120px]" />
             </div>
 
             <div className="absolute inset-y-0 right-0 z-[5] hidden w-[52%] lg:block">
                 <img
-                    src="/assets/images/hero_meditation.jpg"
-                    alt=""
+                    src="/assets/images/service_acces_lux.jpg"
+                    alt="Atelier ensoleillé"
                     aria-hidden="true"
                     fetchPriority="high"
                     decoding="sync"
                     className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-background via-background/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background via-background/10 to-transparent" />
             </div>
-
-            {/* canvas des vagues */}
-            <canvas
-                ref={canvasRef}
-                className="absolute inset-0 z-10 h-full w-full"
-                aria-hidden="true"
-            />
 
             {/* contenu texte & CTA */}
             <div className="relative z-20 mx-auto w-full max-w-7xl px-6 py-24 md:px-8 lg:px-12">
@@ -327,17 +75,17 @@ export function Hero() {
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
-                    className="mx-auto max-w-4xl text-center"
+                    className="mx-auto max-w-4xl text-center lg:text-left lg:mx-0 lg:max-w-2xl"
                 >
                     <motion.div
                         variants={itemVariants}
-                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-foreground/70 uppercase backdrop-blur dark:border-border/60 dark:bg-background/70 dark:text-foreground/80"
+                        className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-4 py-1.5 text-xs font-semibold tracking-wider text-foreground/70 uppercase backdrop-blur"
                     >
                         <Sparkles
-                            className="h-4 w-4 text-primary"
+                            className="h-4 w-4 text-sky-400"
                             aria-hidden="true"
                         />
-                        Explorez l'énergie qui vous habite
+                        L'académie du geste et du savoir-faire
                     </motion.div>
 
                     <motion.div
@@ -353,7 +101,7 @@ export function Hero() {
                                 repeat: Infinity,
                                 repeatType: 'reverse',
                             }}
-                            className="mb-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl lg:text-7xl"
+                            className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl font-sans"
                         >
                             Découvrez, pratiquez
                             <br />
@@ -363,16 +111,14 @@ export function Hero() {
 
                     <motion.p
                         variants={itemVariants}
-                        className="mx-auto mb-10 max-w-2xl text-lg text-foreground/70 md:text-2xl"
+                        className="mx-auto lg:mx-0 mb-10 max-w-2xl text-base md:text-lg text-foreground/60 font-light leading-relaxed"
                     >
-                        Explorez des formations en radiesthésie, pendule et équilibrage
-                        des chakras. Une plateforme dédiée aux pratiques énergétiques,
-                        guidée par des formateurs experts et passionnés.
+                        Explorez des formations immersives pour maîtriser l'artisanat, le bien-être et les savoir-faire créatifs. Une plateforme d'apprentissage pratique guidée par des professionnels passionnés.
                     </motion.p>
 
                     <motion.div
                         variants={itemVariants}
-                        className="mb-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center"
+                        className="mb-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-start"
                     >
                         <Button
                             size="lg"
@@ -402,7 +148,7 @@ export function Hero() {
 
                     <motion.ul
                         variants={itemVariants}
-                        className="mb-12 flex flex-wrap items-center justify-center gap-3 text-xs tracking-[0.2em] text-foreground/70 uppercase dark:text-foreground/80"
+                        className="mb-12 flex flex-wrap items-center justify-center lg:justify-start gap-3 text-xs tracking-[0.2em] text-foreground/70 uppercase dark:text-foreground/80"
                     >
                         {highlightPills.map((pill) => (
                             <li
@@ -422,7 +168,7 @@ export function Hero() {
                             <motion.div
                                 key={stat.label}
                                 variants={itemVariants}
-                                className="space-y-1 text-center"
+                                className="space-y-1 text-center lg:text-left"
                             >
                                 <div className="text-xs tracking-[0.3em] text-foreground/50 uppercase dark:text-foreground/60">
                                     {stat.label}

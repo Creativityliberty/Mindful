@@ -49,10 +49,10 @@ class CourseSeeder extends Seeder
             [
                 'title' => 'Formation Orisugi — Devenir Tisseur du Fil d’Or',
                 'category_id' => $creativityCategory->id,
-                'description' => 'Découvrez la méthode originale de création contemplative conçue par Louise. Apprenez à animer des cercles et des ateliers autour du Galet, du Fil d\'Or, des Trames, de l\'Ombre et de la Lisière des Mots.',
+                'description' => 'Découvrez la method originale de création contemplative conçue par Louise. Apprenez à animer des cercles et des ateliers autour du Galet, du Fil d\'Or, des Trames, de l\'Ombre et de la Lisière des Mots.',
                 'price' => 99.00, // Tarif d'attente à confirmer
                 'duration' => 240, // 4 heures
-                'image' => '/assets/images/course_orisugi.png',
+                'image' => '/assets/images/course_orisugi_lux.jpg',
                 'featured' => true,
                 'benefits' => [
                     'Devenir Tisseur du Fil d\'Or et ouvrir des cercles de création',

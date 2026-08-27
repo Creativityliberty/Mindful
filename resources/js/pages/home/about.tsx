@@ -125,7 +125,7 @@ export default function About() {
                         <Sparkles className="h-3.5 w-3.5 text-sky-400" />
                         Notre Histoire & Vision
                     </div>
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-serif">
+                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-sans">
                         Qui sommes-nous ?
                     </h1>
                 </motion.div>
@@ -133,7 +133,7 @@ export default function About() {
                 {/* Split-Screen Section: Vision and Mission */}
                 <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] items-start border-b border-border/20 pb-20">
                     <div className="space-y-6">
-                        <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground font-serif leading-tight">
+                        <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground font-sans leading-tight">
                             Une plateforme d'apprentissage dynamique et ouverte.
                         </h2>
                         <p className="text-base md:text-lg text-foreground/60 leading-relaxed font-light">
@@ -171,7 +171,7 @@ export default function About() {
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             Évolution
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-serif">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-sans">
                             Notre parcours
                         </h2>
                     </div>
@@ -198,7 +198,7 @@ export default function About() {
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             L'Équipe
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-serif">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-sans">
                             Les visages derrière FormationSession
                         </h2>
                     </div>
@@ -225,7 +225,7 @@ export default function About() {
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             Valeurs
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-serif">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-sans">
                             Ce qui nous guide
                         </h2>
                     </div>
@@ -248,7 +248,7 @@ export default function About() {
 
                 {/* CTA section */}
                 <section className="py-20 text-center space-y-6">
-                    <h2 className="text-3xl md:text-5xl font-bold text-foreground font-serif tracking-tight">
+                    <h2 className="text-3xl md:text-5xl font-bold text-foreground font-sans tracking-tight">
                         Rejoignez l'aventure FormationSession
                     </h2>
                     <p className="mx-auto max-w-xl text-base text-foreground/60 font-light leading-relaxed">

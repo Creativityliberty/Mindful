@@ -95,7 +95,7 @@ export default function BecomeTrainer() {
 
     return (
         <div className="relative min-h-screen bg-background">
-            {/* Ambient Background Aura - Changed from deep purple to soft sky blue/cyan */}
+            {/* Ambient Background Aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.03] blur-[150px]" />
                 <div className="absolute top-1/3 left-1/3 h-[500px] w-[500px] rounded-full bg-primary/[0.015] blur-[130px]" />
@@ -115,7 +115,7 @@ export default function BecomeTrainer() {
                             Rejoindre l'académie
                         </div>
                         
-                        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-serif leading-tight">
+                        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-sans leading-tight">
                             Partagez votre savoir-faire.
                         </h2>
                         
@@ -194,7 +194,7 @@ export default function BecomeTrainer() {
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             Tarifs transparents
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-serif">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-sans">
                             Choisissez votre plan
                         </h2>
                         <p className="text-base text-foreground/60 font-light leading-relaxed">
@@ -261,7 +261,7 @@ export default function BecomeTrainer() {
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             Communauté
                         </div>
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-serif">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-sans">
                             Ils ont rejoint FormationSession
                         </h2>
                     </div>
@@ -288,7 +288,7 @@ export default function BecomeTrainer() {
                     <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                         Prêt à commencer ?
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold text-foreground font-serif tracking-tight">
+                    <h2 className="text-3xl md:text-5xl font-bold text-foreground font-sans tracking-tight">
                         Lancez votre formation dès aujourd'hui
                     </h2>
                     <p className="mx-auto max-w-xl text-base text-foreground/60 font-light leading-relaxed">
