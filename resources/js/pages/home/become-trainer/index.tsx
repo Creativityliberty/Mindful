@@ -1,17 +1,7 @@
 import { Link, router, usePage } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import {
-    ArrowRight,
-    CheckCircle2,
-    TrendingUp,
-    Users,
-    Shield,
-    Zap,
-    Globe,
-    HeartHandshake,
-} from 'lucide-react';
+import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import type { Plan } from '@/types';
 import { BecomeTrainerHeader } from './partials/become-trainer-header';
 import { TrainerCard  } from './partials/trainer-card';
@@ -19,40 +9,20 @@ import type {TrainerProfile} from './partials/trainer-card';
 
 const benefits = [
     {
-        icon: TrendingUp,
         title: 'Développez votre activité',
-        description:
-            "Publiez vos cours et touchez des milliers d'apprenants motivés partout dans le monde francophone.",
+        description: 'Publiez vos cours et touchez des milliers d\'apprenants motivés partout dans le monde francophone.',
     },
     {
-        icon: Users,
         title: 'Une communauté engagée',
-        description:
-            'Rejoignez une plateforme dédiée aux pratiques énergétiques avec des étudiants réellement investis dans leur apprentissage.',
+        description: 'Rejoignez une plateforme dédiée aux pratiques énergétiques avec des étudiants investis.',
     },
     {
-        icon: Shield,
-        title: 'Plateforme sécurisée',
-        description:
-            'Vos contenus sont protégés, vos paiements sécurisés et votre profil mis en valeur auprès des bons apprenants.',
-    },
-    {
-        icon: Zap,
         title: 'Outils simples et puissants',
-        description:
-            'Créez et gérez vos formations facilement depuis votre dashboard dédié, sans compétence technique.',
+        description: 'Créez et gérez vos formations facilement depuis votre dashboard dédié, sans technique.',
     },
     {
-        icon: Globe,
-        title: 'Visibilité internationale',
-        description:
-            'Votre profil et vos cours sont référencés et promus auprès de notre communauté en constante croissance.',
-    },
-    {
-        icon: HeartHandshake,
         title: 'Support dédié',
-        description:
-            'Notre équipe vous accompagne à chaque étape : onboarding, création de cours et développement de votre audience.',
+        description: 'Notre équipe vous accompagne à chaque étape : onboarding, création et développement.',
     },
 ];
 
@@ -60,56 +30,55 @@ const steps = [
     {
         number: '01',
         title: 'Choisissez votre plan',
-        description:
-            'Sélectionnez l\'abonnement qui correspond à votre activité et cliquez sur "Choisir ce plan".',
+        description: 'Sélectionnez l\'abonnement qui correspond à votre activité.',
     },
     {
         number: '02',
-        title: 'Paiement sécurisé via Stripe',
-        description:
-            'Vous êtes redirigé sur Stripe pour saisir vos informations de paiement en toute sécurité.',
+        title: 'Paiement sécurisé Stripe',
+        description: 'Vous êtes redirigé sur Stripe pour régler en toute sécurité.',
     },
     {
         number: '03',
-        title: 'Réception de vos accès',
-        description:
-            'Dès le paiement confirmé, vous recevez un email avec vos identifiants pour accéder à votre espace.',
+        title: 'Accès instantané',
+        description: 'Dès le paiement validé, recevez vos identifiants.',
     },
     {
         number: '04',
-        title: 'Publiez et développez',
-        description:
-            'Publiez vos formations, accueillez vos premiers étudiants et développez votre activité sur FormationSession.',
+        title: 'Publiez & Transmettez',
+        description: 'Publiez vos cours et accueillez vos premiers élèves.',
     },
 ];
 
 const featuredTrainers: TrainerProfile[] = [
     {
-        initials: 'SL',
-        name: 'Sophie Lefèvre',
-        specialty: 'Radiesthésie & Pendule',
-        bio: 'Enseignante certifiée MBSR depuis 12 ans, Sophie a accompagné plus de 1 200 personnes dans leur pratique de la pleine conscience.',
-        courseCount: 4,
-        studentCount: '3 800+',
-        rating: 4.9,
-    },
-    {
-        initials: 'KM',
-        name: 'Kiran Mehta',
-        specialty: 'Praticien Ayurveda · Chakras',
-        bio: 'Formé en Inde, Kiran enseigne la philosophie des chakras et les pratiques énergétiques depuis 18 ans.',
+        initials: 'L',
+        name: 'Louise',
+        specialty: 'Radiesthésie & Énergétique',
+        bio: 'Fondatrice de la plateforme, Louise vous transmet les protocoles fondamentaux et avancés du pendule et des chakras.',
         courseCount: 6,
-        studentCount: '5 100+',
-        rating: 4.8,
+        studentCount: '2 400+',
+        rating: 4.9,
+        avatar: '/assets/images/service_chakras_lux.jpg',
     },
     {
-        initials: 'VR',
-        name: 'Valérie Renaud',
-        specialty: 'Sophrologue certifiée RNCP',
-        bio: 'Sophrologue diplômée depuis 15 ans, Valérie intervient en entreprise et accompagne des particuliers dans la gestion du stress.',
+        initials: 'FD',
+        name: 'Fabienne D.',
+        specialty: 'Radiesthésie & Géobiologie',
+        bio: 'Spécialiste de la détection vibratoire et de l\'harmonisation des lieux de vie en Normandie.',
         courseCount: 3,
-        studentCount: '2 100+',
+        studentCount: '850+',
+        rating: 4.9,
+        avatar: '/assets/images/service_radiesthesie_lux.jpg',
+    },
+    {
+        initials: 'JR',
+        name: 'Julien R.',
+        specialty: 'Pratique du Pendule & Cadrans',
+        bio: 'Formateur certifié, expert en recherche au pendule et en conception de cadrans de mesure.',
+        courseCount: 4,
+        studentCount: '1 100+',
         rating: 4.8,
+        avatar: '/assets/images/service_pendule.jpg',
     },
 ];
 
@@ -119,266 +88,184 @@ export default function BecomeTrainer() {
     function handleCheckout(slug: string) {
         if (!auth.user) {
             router.visit(`/become-trainer/checkout/${slug}`);
-
             return;
         }
-
         router.post('/become-trainer/checkout', { plan_slug: slug });
     }
 
     return (
-        <div className="relative min-h-screen">
+        <div className="relative min-h-screen bg-background">
+            {/* Ambient Background Aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-0 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/[0.03] blur-[150px] dark:bg-primary/[0.06]" />
+                <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/[0.02] blur-[150px]" />
             </div>
 
-            <div className="relative w-full px-4 py-10 md:px-6 lg:px-10">
+            <div className="relative w-full px-6 py-12 md:px-10 lg:px-16 max-w-7xl mx-auto">
                 {/* Header */}
                 <BecomeTrainerHeader />
 
-                {/* Stats */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="mb-20 grid gap-4 rounded-2xl border border-border/30 bg-background/60 p-6 backdrop-blur-sm sm:grid-cols-3 dark:border-border/60 dark:bg-background/70"
-                >
-                    {[
-                        {
-                            value: '10 000+',
-                            label: 'Étudiants actifs',
-                            detail: 'Communauté internationale',
-                        },
-                        {
-                            value: '200+',
-                            label: 'Formateurs certifiés',
-                            detail: 'Experts bien-être',
-                        },
-                        {
-                            value: '4.8/5',
-                            label: 'Note moyenne',
-                            detail: 'Satisfaction étudiants',
-                        },
-                    ].map((stat) => (
-                        <div key={stat.label} className="space-y-1 text-center">
-                            <div className="text-3xl font-semibold text-foreground">
-                                {stat.value}
-                            </div>
-                            <div className="text-sm font-medium text-foreground/70">
-                                {stat.label}
-                            </div>
-                            <div className="text-xs tracking-[0.2em] text-foreground/40 uppercase">
-                                {stat.detail}
-                            </div>
+                {/* Split-Screen Canvas Layout */}
+                <div className="mt-16 grid gap-16 lg:grid-cols-[1fr_1.2fr] items-start border-b border-border/30 pb-20">
+                    
+                    {/* Left Column: Fixed Stature & Info */}
+                    <div className="lg:sticky lg:top-28 space-y-8">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                            <Sparkles className="h-3.5 w-3.5 text-primary" />
+                            Rejoindre l'académie
                         </div>
-                    ))}
-                </motion.div>
-
-                {/* Benefits */}
-                <section className="mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-10"
-                    >
-                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                            Pourquoi nous rejoindre
-                        </div>
-                        <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            Les avantages d'enseigner sur FormationSession
+                        
+                        <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-serif leading-tight">
+                            Partagez votre savoir-faire.
                         </h2>
-                    </motion.div>
+                        
+                        <p className="text-lg text-foreground/60 leading-relaxed font-light">
+                            Que vous soyez expert en bien-être, créateur de bougies artisanales ou formateur technique, transmettez vos compétences à des étudiants engagés.
+                        </p>
 
-                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                        {benefits.map((benefit, i) => {
-                            const Icon = benefit.icon;
-
-                            return (
-                                <motion.div
-                                    key={benefit.title}
-                                    initial={{ opacity: 0, y: 24 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true }}
-                                    transition={{
-                                        duration: 0.5,
-                                        delay: i * 0.07,
-                                    }}
-                                >
-                                    <Card className="h-full border-border/40 bg-background/60 backdrop-blur-sm dark:border-border/50 dark:bg-background/50">
-                                        <CardContent className="p-6">
-                                            <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10 text-primary">
-                                                <Icon
-                                                    className="h-5 w-5"
-                                                    aria-hidden="true"
-                                                />
-                                            </div>
-                                            <h3 className="mb-2 font-semibold text-foreground">
-                                                {benefit.title}
-                                            </h3>
-                                            <p className="text-sm leading-relaxed text-foreground/60">
-                                                {benefit.description}
-                                            </p>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
-                            );
-                        })}
-                    </div>
-                </section>
-
-                {/* How it works */}
-                <section className="mb-20 rounded-3xl bg-muted/30 p-8 md:p-12 dark:bg-foreground/[0.02]">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-10 text-center"
-                    >
-                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                            Comment rejoindre
+                        {/* Minimalist Stats Counters */}
+                        <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border/20">
+                            <div>
+                                <span className="block text-3xl font-extrabold text-foreground">10K+</span>
+                                <span className="text-xs text-foreground/50">Étudiants actifs</span>
+                            </div>
+                            <div>
+                                <span className="block text-3xl font-extrabold text-foreground">200+</span>
+                                <span className="text-xs text-foreground/50">Mentors certifiés</span>
+                            </div>
+                            <div>
+                                <span className="block text-3xl font-extrabold text-foreground">4.8/5</span>
+                                <span className="text-xs text-foreground/50">Note moyenne</span>
+                            </div>
                         </div>
-                        <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            4 étapes pour démarrer
-                        </h2>
-                    </motion.div>
 
-                    <div className="relative grid gap-8 lg:grid-cols-4">
-                        <div className="absolute top-[2.6rem] right-0 left-0 hidden h-px bg-border/50 lg:block" />
-                        {steps.map((step, i) => (
-                            <motion.div
-                                key={step.number}
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: i * 0.1 }}
-                                className="relative flex flex-col items-center text-center lg:items-start lg:text-left"
+                        <div className="pt-4">
+                            <Button
+                                size="lg"
+                                className="rounded-full px-8 text-sm tracking-wider uppercase font-semibold h-12 gap-2"
+                                onClick={() =>
+                                    document
+                                        .getElementById('pricing')
+                                        ?.scrollIntoView({ behavior: 'smooth' })
+                                }
                             >
-                                <div className="relative z-10 mb-5 flex h-[5.2rem] w-[5.2rem] items-center justify-center rounded-2xl border border-border/40 bg-background backdrop-blur-sm dark:border-border/50 dark:bg-background/80">
-                                    <span className="text-2xl font-bold text-primary/40">
-                                        {step.number}
-                                    </span>
-                                    <span className="absolute -top-2 -right-2 flex h-5 w-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
-                                        {i + 1}
-                                    </span>
-                                </div>
-                                <h3 className="mb-2 font-semibold text-foreground">
-                                    {step.title}
-                                </h3>
-                                <p className="text-sm leading-relaxed text-foreground/60">
-                                    {step.description}
-                                </p>
-                            </motion.div>
-                        ))}
-                    </div>
-                </section>
-
-                {/* Plans */}
-                <section id="plans" className="mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-10 text-center"
-                    >
-                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                            Tarifs formateurs
+                                Commencer maintenant
+                                <ArrowRight className="h-4 w-4" />
+                            </Button>
                         </div>
-                        <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
+                    </div>
+
+                    {/* Right Column: Luminous Canvas (Benefits & Steps) */}
+                    <div className="space-y-16">
+                        
+                        {/* Benefits list separated by ultra-fine lines */}
+                        <div className="space-y-8">
+                            <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">Pourquoi enseigner ici ?</h3>
+                            <div className="divide-y divide-border/20">
+                                {benefits.map((b) => (
+                                    <div key={b.title} className="py-6 first:pt-0 last:pb-0">
+                                        <h4 className="text-lg font-bold text-foreground mb-2">{b.title}</h4>
+                                        <p className="text-sm text-foreground/60 leading-relaxed font-light">{b.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Steps Timeline canvas */}
+                        <div className="space-y-8 pt-8 border-t border-border/20">
+                            <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">Le parcours en 4 étapes</h3>
+                            <div className="grid gap-6 sm:grid-cols-2">
+                                {steps.map((s) => (
+                                    <div key={s.number} className="p-6 rounded-2xl border border-border/20 bg-secondary/10 hover:border-primary/30 transition-colors">
+                                        <span className="text-sm font-bold text-primary block mb-2">{s.number}</span>
+                                        <h4 className="font-bold text-foreground mb-1">{s.title}</h4>
+                                        <p className="text-xs text-foreground/60 leading-relaxed font-light">{s.description}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                {/* Pricing / Tunnel Section */}
+                <section id="pricing" className="py-20 border-b border-border/30">
+                    <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                            Tarifs transparents
+                        </div>
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-serif">
                             Choisissez votre plan
                         </h2>
-                        <p className="mx-auto mt-3 max-w-xl text-foreground/60">
-                            Tous les plans incluent l'accès à notre plateforme,
-                            vos outils de création de cours et notre support.
-                            Sans engagement, résiliable à tout moment.
+                        <p className="text-base text-foreground/60 font-light leading-relaxed">
+                            Accédez à l'ensemble de nos outils de création de cours, d'hébergement vidéo et à notre support dédié. Sans engagement.
                         </p>
-                    </motion.div>
+                    </div>
 
-                    <div className="grid gap-5 md:grid-cols-3">
-                        {plans.map((plan, i) => (
-                            <motion.div
+                    <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
+                        {plans.map((plan) => (
+                            <div
                                 key={plan.id}
-                                initial={{ opacity: 0, y: 24 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                transition={{ duration: 0.5, delay: i * 0.08 }}
+                                className={`relative h-full rounded-[2rem] border transition-all duration-300 p-8 flex flex-col justify-between bg-background/50 backdrop-blur-md ${
+                                    plan.highlight
+                                        ? 'border-primary shadow-xl shadow-primary/5 scale-105 z-10'
+                                        : 'border-border/30 hover:border-primary/40'
+                                }`}
                             >
-                                <Card
-                                    className={`relative h-full ${plan.highlight ? 'border-primary/50 bg-primary/5 dark:border-primary/40 dark:bg-primary/10' : 'border-border/40 bg-background/60 dark:border-border/50 dark:bg-background/50'} backdrop-blur-sm`}
+                                {plan.highlight && (
+                                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
+                                        <span className="rounded-full bg-primary px-4 py-1 text-[10px] font-bold tracking-widest text-primary-foreground uppercase shadow-sm">
+                                            Conseillé
+                                        </span>
+                                    </div>
+                                )}
+                                <div>
+                                    <p className="mb-2 text-xs font-bold tracking-wider text-foreground uppercase opacity-60">
+                                        {plan.name}
+                                    </p>
+                                    <div className="mb-6 flex items-end gap-1">
+                                        <span className="text-4xl font-extrabold text-foreground tracking-tight">
+                                            {plan.formatted_price}
+                                        </span>
+                                        <span className="mb-1 text-sm text-foreground/50">
+                                            / {plan.interval_label.toLowerCase()}
+                                        </span>
+                                    </div>
+                                    <ul className="mb-8 space-y-3.5 border-t border-border/20 pt-6">
+                                        {plan.features.map((feature) => (
+                                            <li
+                                                key={feature}
+                                                className="flex items-start gap-2.5 text-sm text-foreground/80 leading-relaxed font-light"
+                                            >
+                                                <Check className="h-4.5 w-4.5 shrink-0 text-primary mt-0.5" />
+                                                {feature}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                                <Button
+                                    className="w-full rounded-full h-11 tracking-wider font-semibold"
+                                    variant={plan.highlight ? 'default' : 'outline'}
+                                    onClick={() => handleCheckout(plan.slug)}
                                 >
-                                    {plan.highlight && (
-                                        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                                            <span className="rounded-full bg-primary px-3 py-1 text-[11px] font-semibold text-primary-foreground">
-                                                Le plus populaire
-                                            </span>
-                                        </div>
-                                    )}
-                                    <CardContent className="p-6">
-                                        <p className="mb-1 text-sm font-semibold text-foreground">
-                                            {plan.name}
-                                        </p>
-                                        <div className="mb-5 flex items-end gap-1">
-                                            <span className="text-4xl font-bold text-foreground">
-                                                {plan.formatted_price}
-                                            </span>
-                                            <span className="mb-1 text-sm text-foreground/50">
-                                                /
-                                                {plan.interval_label.toLowerCase()}
-                                            </span>
-                                        </div>
-                                        <ul className="mb-6 space-y-2">
-                                            {plan.features.map((feature) => (
-                                                <li
-                                                    key={feature}
-                                                    className="flex items-center gap-2 text-sm text-foreground/70"
-                                                >
-                                                    <CheckCircle2 className="h-4 w-4 shrink-0 text-primary/60" />
-                                                    {feature}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                        <Button
-                                            className="w-full rounded-full"
-                                            variant={
-                                                plan.highlight
-                                                    ? 'default'
-                                                    : 'outline'
-                                            }
-                                            onClick={() =>
-                                                handleCheckout(plan.slug)
-                                            }
-                                        >
-                                            Choisir ce plan
-                                        </Button>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
+                                    Choisir ce plan
+                                </Button>
+                            </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Featured trainers */}
-                <section className="mb-20">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.6 }}
-                        className="mb-10"
-                    >
-                        <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                            Nos formateurs
+                {/* Formateurs / Mentors Section */}
+                <section className="py-20">
+                    <div className="max-w-2xl mb-12 space-y-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                            Communauté
                         </div>
-                        <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
+                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-serif">
                             Ils ont rejoint FormationSession
                         </h2>
-                    </motion.div>
+                    </div>
 
-                    <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+                    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         {featuredTrainers.map((trainer, i) => (
                             <TrainerCard
                                 key={trainer.name}
@@ -388,52 +275,6 @@ export default function BecomeTrainer() {
                         ))}
                     </div>
                 </section>
-
-                {/* CTA */}
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                    className="rounded-3xl border border-border/40 bg-background/60 px-8 py-14 text-center backdrop-blur-sm md:px-16 dark:border-border/50 dark:bg-background/50"
-                >
-                    <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                        Prêt à vous lancer ?
-                    </div>
-                    <h2 className="mb-4 text-2xl font-semibold tracking-tight text-foreground md:text-4xl">
-                        Rejoignez nos formateurs dès aujourd'hui
-                    </h2>
-                    <p className="mx-auto mb-8 max-w-lg text-foreground/60">
-                        Soumettez votre candidature en moins de 5 minutes. Notre
-                        équipe vous répond sous 48h pour valider votre profil et
-                        vous accompagner dans vos premiers pas.
-                    </p>
-                    <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-                        <Button
-                            size="lg"
-                            className="group gap-2 rounded-full px-8 text-base tracking-[0.2em] uppercase"
-                            onClick={() =>
-                                document
-                                    .getElementById('plans')
-                                    ?.scrollIntoView({ behavior: 'smooth' })
-                            }
-                        >
-                            Choisir mon abonnement
-                            <ArrowRight
-                                className="h-4 w-4 transition-transform group-hover:translate-x-1"
-                                aria-hidden="true"
-                            />
-                        </Button>
-                        <Button
-                            size="lg"
-                            variant="secondary"
-                            className="rounded-full"
-                            asChild
-                        >
-                            <Link href="/contact">Nous contacter</Link>
-                        </Button>
-                    </div>
-                </motion.div>
             </div>
         </div>
     );
