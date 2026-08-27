@@ -171,10 +171,10 @@ export function Hero() {
                                 variants={itemVariants}
                                 className="space-y-1 text-center lg:text-left"
                             >
-                                <div className="text-xs tracking-[0.3em] text-foreground/50 uppercase dark:text-foreground/60">
+                                <div className="text-[10px] tracking-[0.2em] md:text-xs text-foreground/50 uppercase dark:text-foreground/60">
                                     {stat.label}
                                 </div>
-                                <div className="text-3xl font-semibold text-foreground">
+                                <div className="text-xl md:text-2xl font-semibold text-foreground tracking-tight">
                                     {stat.value}
                                 </div>
                             </motion.div>

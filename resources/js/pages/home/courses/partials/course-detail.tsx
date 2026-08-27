@@ -135,20 +135,21 @@ export function CourseDetail({ course }: { course: Course }) {
     return (
         <div className="relative min-h-screen">
             {/* Hero */}
-            <section className="relative h-[480px] overflow-hidden md:h-[560px]">
+            <section className="relative overflow-hidden bg-slate-950 lg:h-[560px] lg:bg-transparent">
                 <img
                     src={course.image}
                     alt={course.title}
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 hidden h-full w-full object-cover lg:block"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/20" />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/30 to-transparent" />
+                <div className="absolute inset-0 hidden bg-gradient-to-t from-black/90 via-black/50 to-black/20 lg:block" />
+                <div className="absolute inset-0 hidden bg-gradient-to-r from-black/30 to-transparent lg:block" />
 
                 <div className="relative mx-auto flex h-full max-w-7xl flex-col justify-between px-6 py-8 md:px-8 lg:px-12">
                     <motion.div
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.4 }}
+                        className="mb-6 lg:mb-0"
                     >
                         <Link
                             href="/courses"
@@ -159,10 +160,20 @@ export function CourseDetail({ course }: { course: Course }) {
                         </Link>
                     </motion.div>
 
+                    {/* Mobile course image preview (shown only on mobile/tablet) */}
+                    <div className="mb-6 w-full overflow-hidden rounded-2xl border border-white/10 aspect-video lg:hidden shadow-lg">
+                        <img
+                            src={course.image}
+                            alt={course.title}
+                            className="h-full w-full object-cover"
+                        />
+                    </div>
+
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
+                        className="mt-auto"
                     >
                         <div className="mb-4 flex flex-wrap items-center gap-2">
                             <span className="rounded-full border border-white/20 bg-white/10 px-3 py-1 text-xs font-semibold tracking-wider text-white uppercase backdrop-blur">
