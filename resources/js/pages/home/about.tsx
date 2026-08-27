@@ -142,8 +142,8 @@ export default function About() {
                     {/* Quick Stats Grid */}
                     <div className="grid grid-cols-2 gap-8 p-8 rounded-3xl border border-border/20 bg-secondary/10">
                         <div>
-                            <span className="block text-3xl font-extrabold text-foreground">10K+</span>
-                            <span className="text-xs text-foreground/50">Étudiants formés</span>
+                            <span className="block text-3xl font-extrabold text-foreground">+800</span>
+                            <span className="text-xs text-foreground/50">Professionnels formés</span>
                         </div>
                         <div>
                             <span className="block text-3xl font-extrabold text-foreground">200+</span>

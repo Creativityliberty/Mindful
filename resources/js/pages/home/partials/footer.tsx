@@ -137,10 +137,7 @@ export function Footer() {
                         </motion.div>
 
                         <p className="mb-4 max-w-md text-sm text-muted-foreground">
-                            FormationSession réunit apprenants et formateurs autour de la
-                            radiesthésie, du pendule et de l'équilibrage
-                            des chakras. Une plateforme dédiée aux pratiques
-                            énergétiques.
+                            La plateforme d'apprentissage dédiée au bien-être, à l'artisanat et aux savoir-faire de demain. Connectez-vous à des experts passionnés et apprenez à votre rythme.
                         </p>
 
                         {/* Newsletter */}
