@@ -55,20 +55,10 @@ const featuredTrainers: TrainerProfile[] = [
         name: 'Louise',
         specialty: 'Radiesthésie & Énergétique',
         bio: 'Fondatrice de la plateforme, Louise vous transmet les protocoles fondamentaux et avancés du pendule et des chakras.',
-        courseCount: 6,
+        courseCount: 8,
         studentCount: '2 400+',
         rating: 4.9,
         avatar: '/assets/images/service_chakras_lux.jpg',
-    },
-    {
-        initials: 'FD',
-        name: 'Fabienne D.',
-        specialty: 'Radiesthésie & Géobiologie',
-        bio: 'Spécialiste de la détection vibratoire et de l\'harmonisation des lieux de vie en Normandie.',
-        courseCount: 3,
-        studentCount: '850+',
-        rating: 4.9,
-        avatar: '/assets/images/service_radiesthesie_lux.jpg',
     },
     {
         initials: 'JR',
@@ -79,6 +69,16 @@ const featuredTrainers: TrainerProfile[] = [
         studentCount: '1 100+',
         rating: 4.8,
         avatar: '/assets/images/service_pendule.jpg',
+    },
+    {
+        initials: 'AL',
+        name: 'Amandine L.',
+        specialty: 'Chakras & Soins Vibratoires',
+        bio: 'Experte en équilibrage des centres énergétiques et soins holistiques. Transmet les clés du rééquilibrage vibratoire au quotidien.',
+        courseCount: 5,
+        studentCount: '1 450+',
+        rating: 5.0,
+        avatar: '/assets/images/service_chakras_lux.jpg',
     },
 ];
 

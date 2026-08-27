@@ -995,12 +995,12 @@ export const allCourses: Course[] = [
             },
         ],
         trainer: {
-            initials: 'FD',
-            name: 'Fabienne D.',
-            role: 'Formatrice Certifiée',
-            bio: 'Certifiée en radiesthésie et harmonisation des centres énergétiques.',
-            courseCount: 3,
-            studentCount: '850+',
+            initials: 'L',
+            name: 'Louise',
+            role: 'Fondatrice & Formatrice Référente',
+            bio: 'Fondatrice de la plateforme, Louise vous transmet les protocoles fondamentaux et avancés du pendule et des chakras.',
+            courseCount: 6,
+            studentCount: '2 400+',
         },
         objectives: [
             {
@@ -1034,6 +1034,111 @@ export const allCourses: Course[] = [
                 name: 'Audrey D.',
                 role: 'Élève — Rouen',
                 text: 'Une formation très complète et immédiatement actionnable. Les exercices minute font un bien fou au ventre.',
+                rating: 5,
+            },
+        ],
+    },
+    {
+        id: 8,
+        image: '/assets/images/service_chakras_lux.jpg',
+        category: 'Chakras',
+        title: 'Réveille ton Chakra Sacré : Sensualité, Créativité et Joie',
+        description:
+            'Reconnectez-vous à votre puissance créative, à votre sensualité et libérez vos blocages émotionnels en harmonisant le deuxième chakra (Svadhisthana).',
+        price: '99 €',
+        duration: '6h de contenu',
+        language: 'Français',
+        studentCount: 94,
+        moduleCount: 4,
+        rating: 5.0,
+        benefits: [
+            'Accès à vie',
+            'Méditations audio guidées quotidiennes',
+            'Fiches lithothérapie & huiles essentielles',
+            'Attestation de complétion officielle',
+        ],
+        modules: [
+            {
+                number: 1,
+                title: 'Signification et Origines de Svadhisthana',
+                duration: '1h 20 min',
+                lessons: [
+                    { title: 'Localisation et symbolique de "la demeure du Soi"', duration: '25 min', free: true },
+                    { title: 'L\'élément eau et la fluidité émotionnelle', duration: '25 min', free: true },
+                    { title: 'Le mantra vibratoire VAM (ou son Ré)', duration: '30 min' },
+                ],
+            },
+            {
+                number: 2,
+                title: 'Fonctions et Équilibrage du Chakra Sacré',
+                duration: '1h 30 min',
+                lessons: [
+                    { title: 'L\'intelligence émotionnelle et expression des désirs', duration: '30 min' },
+                    { title: 'Sexualité sacrée, sensualité et plaisir corporel', duration: '30 min' },
+                    { title: 'Identifier les blocages (Rigidité, addictions, dépendances)', duration: '30 min' },
+                ],
+            },
+            {
+                number: 3,
+                title: 'Pratiques d\'Harmonisation (Yoga & Méditation)',
+                duration: '1h 40 min',
+                lessons: [
+                    { title: 'Yoga d\'ouverture des hanches (Papillon, Pigeon, Demi-pont)', duration: '35 min' },
+                    { title: 'Méditation guidée quotidienne d\'activation', duration: '35 min' },
+                    { title: 'Affirmations de pouvoir et animal totem (le crocodile)', duration: '30 min' },
+                ],
+            },
+            {
+                number: 4,
+                title: 'Rituels de Vie, Litho & Aromathérapie',
+                duration: '1h 10 min',
+                lessons: [
+                    { title: 'Alimentation orange (curcuma, patate douce) et hydratation', duration: '20 min' },
+                    { title: 'Utilisation des minéraux (Cornaline, Ambre) et rechargement', duration: '25 min' },
+                    { title: 'Massage aromatique du bas-ventre et sécurité d\'usage', duration: '25 min' },
+                ],
+            },
+        ],
+        trainer: {
+            initials: 'L',
+            name: 'Louise',
+            role: 'Fondatrice & Formatrice Référente',
+            bio: 'Fondatrice de la plateforme, Louise vous transmet les protocoles fondamentaux et avancés du pendule et des chakras.',
+            courseCount: 6,
+            studentCount: '2 400+',
+        },
+        objectives: [
+            {
+                icon: CheckCircle2,
+                title: 'Éveiller l\'énergie vitale',
+                description: 'Libérer les hanches et le bas-ventre par des postures de yoga fluides.',
+            },
+            {
+                icon: CheckCircle2,
+                title: 'Libérer la puissance créative',
+                description: 'Débloquer l\'inspiration artistique et les projets personnels.',
+            },
+            {
+                icon: CheckCircle2,
+                title: 'Vivre le plaisir sans culpabilité',
+                description: 'Se reconnecter sainement à son corps, sa sensualité et ses émotions.',
+            },
+            {
+                icon: CheckCircle2,
+                title: 'Activer son intuition corporelle',
+                description: 'Réguler la sensibilité émotionnelle par des méditations douces.',
+            },
+        ],
+        prerequisites: [
+            'Aucun prérequis requis',
+            'Vérifiez la compatibilité des huiles essentielles auprès d\'un professionnel.',
+        ],
+        reviews: [
+            {
+                initials: 'CP',
+                name: 'Clara P.',
+                role: 'Élève — Paris',
+                text: 'Une magnifique initiation. Les explications sur la symbolique de l\'eau m\'ont permis de libérer d\'importants blocages émotionnels.',
                 rating: 5,
             },
         ],
