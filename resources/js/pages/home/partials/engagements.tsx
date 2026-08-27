@@ -1,38 +1,6 @@
 import { motion, type Variants } from 'framer-motion';
 import { ShieldCheck, FileText, Scale, HeartHandshake, Timer } from 'lucide-react';
-
-const engagements = [
-  {
-    icon: ShieldCheck,
-    title: 'Des informations honnêtes',
-    description:
-      "Nous ne publions pas de chiffres, de témoignages, de certifications ou de résultats qui ne peuvent pas être vérifiés.",
-  },
-  {
-    icon: FileText,
-    title: 'Des programmes clairement présentés',
-    description:
-      "Chaque page de formation explique ce que vous allez apprendre, le déroulement du programme et les ressources incluses.",
-  },
-  {
-    icon: Scale,
-    title: 'Des promesses raisonnables',
-    description:
-      "Les formations vous permettent d'apprendre, d'expérimenter et de développer votre pratique. Elles ne garantissent pas un résultat personnel, énergétique ou thérapeutique.",
-  },
-  {
-    icon: HeartHandshake,
-    title: 'Une distinction claire entre bien-être et santé',
-    description:
-      "Les contenus disponibles sur FormationSession relèvent du bien-être, de la transmission et du développement personnel. Ils ne remplacent pas un diagnostic, un traitement ou l'accompagnement d'un professionnel de santé.",
-  },
-  {
-    icon: Timer,
-    title: 'Le respect du rythme de chacun',
-    description:
-      "Vous restez libre de pratiquer selon vos besoins, vos convictions et vos propres limites.",
-  },
-];
+import { useTranslation } from 'react-i18next';
 
 const containerVariants: Variants = {
   hidden: {},
@@ -49,6 +17,36 @@ const itemVariants: Variants = {
 };
 
 export function Engagements() {
+  const { t } = useTranslation();
+
+  const engagements = [
+    {
+      icon: ShieldCheck,
+      title: t('engagements.item1_title'),
+      description: t('engagements.item1_desc'),
+    },
+    {
+      icon: FileText,
+      title: t('engagements.item2_title'),
+      description: t('engagements.item2_desc'),
+    },
+    {
+      icon: Scale,
+      title: t('engagements.item3_title'),
+      description: t('engagements.item3_desc'),
+    },
+    {
+      icon: HeartHandshake,
+      title: t('engagements.item4_title'),
+      description: t('engagements.item4_desc'),
+    },
+    {
+      icon: Timer,
+      title: t('engagements.item5_title'),
+      description: t('engagements.item5_desc'),
+    },
+  ];
+
   return (
     <section className="relative bg-muted/30 py-24 md:py-32 dark:bg-foreground/[0.02]">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
@@ -65,16 +63,15 @@ export function Engagements() {
           className="mb-16 text-center"
         >
           <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-            Notre approche
+            {t('engagements.badge')}
           </div>
 
           <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-            Nos engagements
+            {t('engagements.title')}
           </h2>
 
           <p className="mx-auto max-w-2xl text-lg text-foreground/60">
-            Comment nous concevons FormationSession : transparence, honnêteté
-            et respect de chacun.
+            {t('engagements.subtitle')}
           </p>
         </motion.div>
 

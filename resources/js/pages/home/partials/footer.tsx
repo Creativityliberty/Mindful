@@ -15,46 +15,6 @@ import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import Logo from './logo';
 
-// Footer Block
-const footerLinks = [
-    {
-        title: 'Formations',
-        links: [
-            { label: 'Radiesthésie', href: '/courses?category=radiesthesie' },
-            { label: 'Pendule', href: '/courses?category=pendule' },
-            { label: 'Chakras', href: '/courses?category=chakras' },
-            { label: 'Énergétique', href: '/courses?category=energetique' },
-        ],
-    },
-    {
-        title: 'Plateforme',
-        links: [
-            { label: 'Comment ça marche', href: '/comment-ca-marche' },
-            { label: 'Devenir formateur', href: '/become-trainer' },
-            { label: 'Blog', href: '/blog' },
-            { label: 'Contact', href: '/contact' },
-        ],
-    },
-    {
-        title: 'Ressources',
-        links: [
-            { label: 'Guides pratiques', href: '/guides' },
-            { label: 'Glossaire', href: '/glossaire' },
-            { label: 'FAQ', href: '/#faq' },
-            { label: 'Newsletter', href: '#newsletter' },
-        ],
-    },
-    {
-        title: 'Légal',
-        links: [
-            { label: 'Confidentialité', href: '/legal/confidentialite' },
-            { label: 'CGU', href: '/legal/cgu' },
-            { label: 'Cookies', href: '/legal/cookies' },
-            { label: 'Mentions légales', href: '/legal/mentions-legales' },
-        ],
-    },
-];
-
 const socialLinks = [
     { icon: SiX, label: 'Twitter', href: '#' },
     { icon: SiFacebook, label: 'Facebook', href: '#' },
@@ -64,6 +24,46 @@ const socialLinks = [
 
 export function Footer() {
     const { t } = useTranslation();
+
+    const footerLinks = [
+        {
+            title: t('footer.group_formations'),
+            links: [
+                { label: 'Radiesthésie', href: '/courses?category=radiesthesie' },
+                { label: 'Pendule', href: '/courses?category=pendule' },
+                { label: 'Chakras', href: '/courses?category=chakras' },
+                { label: 'Énergétique', href: '/courses?category=energetique' },
+            ],
+        },
+        {
+            title: t('footer.group_platform'),
+            links: [
+                { label: t('footer.link_how_it_works'), href: '/comment-ca-marche' },
+                { label: t('footer.link_become_trainer'), href: '/become-trainer' },
+                { label: t('footer.link_blog'), href: '/blog' },
+                { label: t('footer.link_contact'), href: '/contact' },
+            ],
+        },
+        {
+            title: t('footer.group_resources'),
+            links: [
+                { label: t('footer.link_guides'), href: '/guides' },
+                { label: t('footer.link_glossary'), href: '/glossaire' },
+                { label: t('footer.link_faq'), href: '/#faq' },
+                { label: t('footer.link_newsletter'), href: '#newsletter' },
+            ],
+        },
+        {
+            title: t('footer.group_legal'),
+            links: [
+                { label: t('footer.link_privacy'), href: '/legal/confidentialite' },
+                { label: t('footer.link_cgu'), href: '/legal/cgu' },
+                { label: t('footer.link_cookies'), href: '/legal/cookies' },
+                { label: t('footer.link_terms'), href: '/legal/mentions-legales' },
+            ],
+        },
+    ];
+
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -140,13 +140,13 @@ export function Footer() {
                         </motion.div>
 
                         <p className="mb-4 max-w-md text-sm text-muted-foreground">
-                            La plateforme d'apprentissage dédiée au bien-être, à l'artisanat et aux savoir-faire de demain. Connectez-vous à des experts passionnés et apprenez à votre rythme.
+                            {t('footer.description')}
                         </p>
 
                         {/* Newsletter */}
                         <div id="newsletter" className="mb-4">
                             <p className="mb-2 text-sm font-medium text-foreground">
-                                Recevez nos actualités formations
+                                {t('footer.newsletter_title')}
                             </p>
                             <form
                                 onSubmit={async (e) => {
@@ -174,7 +174,7 @@ export function Footer() {
                                 <Input
                                     type="email"
                                     required
-                                    placeholder="Votre adresse email"
+                                    placeholder={t('footer.placeholder_email')}
                                     className="h-10 rounded-xl border-border/60 bg-background/60 backdrop-blur placeholder:text-muted-foreground"
                                 />
                                 <Button

@@ -3,6 +3,7 @@ import { ArrowRight, Sparkles, Star, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type TrainerProfile = {
     id: number;
@@ -18,55 +19,55 @@ type TrainerProfile = {
     featured?: boolean;
 };
 
-// Real trainers list starting with Louise as the lead certified founder
-const trainersData: TrainerProfile[] = [
-    {
-        id: 1,
-        name: 'Louise',
-        role: 'Fondatrice & Formatrice Référente',
-        specialty: 'Radiesthésie & Énergétique',
-        bio: 'Fondatrice de FormationSession, praticienne et enseignante passionnée. Louise accompagne les élèves dans la maîtrise du pendule, le soin des chakras et la géobiologie.',
-        avatar: '/assets/images/service_chakras_lux.jpg',
-        courseCount: 8,
-        studentCount: '2 400+',
-        rating: 4.9,
-        reviewCount: 184,
-        featured: true,
-    },
-    {
-        id: 2,
-        name: 'Julien R.',
-        role: 'Praticien & Formateur',
-        specialty: 'Pratique du Pendule & Cadrans',
-        bio: 'Spécialiste de la recherche au pendule et des cadrans de mesure. Formateur bienveillant axé sur la méthode et la précision.',
-        avatar: '/assets/images/service_pendule.jpg',
-        courseCount: 4,
-        studentCount: '1 100+',
-        rating: 4.8,
-        reviewCount: 94,
-    },
-    {
-        id: 3,
-        name: 'Amandine L.',
-        role: 'Formatrice Certifiée',
-        specialty: 'Chakras & Soins Vibratoires',
-        bio: 'Experte en équilibrage des centres énergétiques et soins holistiques. Transmet les clés du rééquilibrage vibratoire au quotidien.',
-        avatar: '/assets/images/service_chakras_lux.jpg',
-        courseCount: 5,
-        studentCount: '1 450+',
-        rating: 5.0,
-        reviewCount: 112,
-    },
-];
-
 export function Trainers() {
+    const { t } = useTranslation();
     const [isHovered, setIsHovered] = useState(false);
+
+    const trainersData: TrainerProfile[] = [
+        {
+            id: 1,
+            name: 'Louise',
+            role: t('trainers.founder_role'),
+            specialty: t('trainers.founder_specialty'),
+            bio: t('trainers.founder_bio'),
+            avatar: '/assets/images/service_chakras_lux.jpg',
+            courseCount: 8,
+            studentCount: '2 400+',
+            rating: 4.9,
+            reviewCount: 184,
+            featured: true,
+        },
+        {
+            id: 2,
+            name: t('trainers.trainer2_name'),
+            role: t('trainers.trainer2_role'),
+            specialty: t('trainers.trainer2_specialty'),
+            bio: t('trainers.trainer2_bio'),
+            avatar: '/assets/images/service_pendule.jpg',
+            courseCount: 4,
+            studentCount: '1 100+',
+            rating: 4.8,
+            reviewCount: 94,
+        },
+        {
+            id: 3,
+            name: t('trainers.trainer3_name'),
+            role: t('trainers.trainer3_role'),
+            specialty: t('trainers.trainer3_specialty'),
+            bio: t('trainers.trainer3_bio'),
+            avatar: '/assets/images/service_chakras_lux.jpg',
+            courseCount: 5,
+            studentCount: '1 450+',
+            rating: 5.0,
+            reviewCount: 112,
+        },
+    ];
+
     const leadTrainer = trainersData.find((t) => t.featured) || trainersData[0];
-    const boardTrainers = [...trainersData, ...trainersData]; // Double loop for seamless infinite slider
+    const boardTrainers = [...trainersData, ...trainersData];
 
     return (
         <section className="relative overflow-hidden bg-background py-24 md:py-32">
-            {/* Ambient Background Aura - Soft sky blue */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-1/3 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-400/[0.02] blur-[160px]" />
             </div>
@@ -83,13 +84,13 @@ export function Trainers() {
                     <div className="max-w-2xl">
                         <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur">
                             <Sparkles className="h-3.5 w-3.5 text-primary" />
-                            Nos Formateurs & Mentors
+                            {t('trainers.badge')}
                         </div>
                         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                            Des experts passionnés à votre service
+                            {t('trainers.title')}
                         </h2>
                         <p className="text-base md:text-lg leading-relaxed text-foreground/60">
-                            Radiesthésistes, énergéticiens et praticiens certifiés — nos formateurs sont sélectionnés pour leur expertise authentique et leur passion de la transmission.
+                            {t('trainers.subtitle')}
                         </p>
                     </div>
 
@@ -99,7 +100,7 @@ export function Trainers() {
                         asChild
                     >
                         <Link href="/become-trainer" preserveState prefetch>
-                            Devenir formateur
+                            {t('trainers.become_trainer_btn')}
                             <ArrowRight className="ml-2 h-4 w-4" aria-hidden="true" />
                         </Link>
                     </Button>
@@ -124,7 +125,6 @@ export function Trainers() {
                                 />
                             </div>
 
-                            {/* Badge Formateur Vedette */}
                             <div className="absolute -bottom-2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-white/20 flex items-center gap-1.5">
                                 <Sparkles className="h-3.5 w-3.5" />
                                 {leadTrainer.role}
@@ -150,18 +150,18 @@ export function Trainers() {
                             <div className="pt-4 grid grid-cols-3 gap-4 border-t border-border/40 max-w-md mx-auto lg:mx-0">
                                 <div className="flex flex-col">
                                     <span className="text-2xl font-bold text-foreground">{leadTrainer.courseCount}</span>
-                                    <span className="text-xs text-foreground/50">Cours publiés</span>
+                                    <span className="text-xs text-foreground/50">{t('trainers.courses_published')}</span>
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-2xl font-bold text-foreground">{leadTrainer.studentCount}</span>
-                                    <span className="text-xs text-foreground/50">Étudiants</span>
+                                    <span className="text-xs text-foreground/50">{t('trainers.students_count')}</span>
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="text-2xl font-bold text-amber-400 flex items-center justify-center lg:justify-start gap-1">
                                         <Star className="h-4 w-4 fill-amber-400" />
                                         {leadTrainer.rating}
                                     </span>
-                                    <span className="text-xs text-foreground/50">{leadTrainer.reviewCount} avis certifiés</span>
+                                    <span className="text-xs text-foreground/50">{leadTrainer.reviewCount} {t('trainers.certified_reviews')}</span>
                                 </div>
                             </div>
 
@@ -170,7 +170,7 @@ export function Trainers() {
                                     href="/courses"
                                     className="group inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all hover:gap-3"
                                 >
-                                    Voir ses formations
+                                    {t('trainers.view_courses')}
                                     <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                                 </Link>
                             </div>
@@ -189,7 +189,7 @@ export function Trainers() {
                         animate={{ x: ['0%', '-50%'] }}
                         transition={{
                             x: {
-                                duration: isHovered ? 60 : 30, // Slow down smooth hover
+                                duration: isHovered ? 60 : 30,
                                 ease: 'linear',
                                 repeat: Infinity,
                             },
@@ -201,7 +201,6 @@ export function Trainers() {
                                 className="group relative w-[280px] md:w-[320px] shrink-0 rounded-3xl border border-border/40 bg-background/80 p-6 md:p-8 shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-105 hover:border-primary/40 hover:shadow-2xl flex flex-col justify-between"
                             >
                                 <div>
-                                    {/* Circular Avatar */}
                                     <div className="flex items-center gap-4 mb-5">
                                         <div className="relative h-14 w-14 rounded-full p-1 border border-primary/30 shadow-md bg-background overflow-hidden shrink-0 group-hover:border-primary transition-colors">
                                             <img
@@ -220,13 +219,11 @@ export function Trainers() {
                                         </div>
                                     </div>
 
-                                    {/* Bio */}
                                     <p className="text-xs md:text-sm text-foreground/60 leading-relaxed font-light mb-6 line-clamp-3">
                                         {trainer.bio}
                                     </p>
                                 </div>
 
-                                {/* Stats & Reviews Footer */}
                                 <div className="pt-4 border-t border-border/30 flex items-center justify-between text-xs">
                                     <div className="flex items-center gap-1.5 text-amber-400 font-bold">
                                         <Star className="h-3.5 w-3.5 fill-amber-400" />
@@ -238,7 +235,7 @@ export function Trainers() {
                                         href="/courses"
                                         className="text-primary font-semibold hover:underline inline-flex items-center gap-1"
                                     >
-                                        Voir cours
+                                        {t('trainers.view_short')}
                                         <ArrowRight className="h-3 w-3" />
                                     </Link>
                                 </div>

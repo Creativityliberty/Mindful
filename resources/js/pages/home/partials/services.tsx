@@ -9,78 +9,75 @@ import {
 } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import { useState } from 'react';
-
-const services = [
-    {
-        id: 0,
-        icon: Brain,
-        title: 'Radiesthésie',
-        description:
-            'Détectez et mesurez les vibrations énergétiques des lieux, objets et personnes à l\'aide du pendule et des baguettes.',
-        href: '/courses?category=radiesthesie',
-        color: 'from-purple-500 to-indigo-600',
-        glow: 'rgba(168, 85, 247, 0.25)',
-        image: '/assets/images/service_radiesthesie.jpg',
-    },
-    {
-        id: 1,
-        icon: Flame,
-        title: 'Pratique du Pendule',
-        description:
-            'Maîtrisez les techniques de questionnement, les cadrans et les protocoles avancés pour des consultations précises.',
-        href: '/courses?category=pendule',
-        color: 'from-amber-400 to-orange-600',
-        glow: 'rgba(245, 158, 11, 0.25)',
-        image: '/assets/images/service_pendule.jpg',
-    },
-    {
-        id: 2,
-        icon: Leaf,
-        title: 'Équilibrage des Chakras',
-        description:
-            'Harmonisez vos sept centres énergétiques pour libérer les blocages et revitaliser votre flux vital.',
-        href: '/courses?category=chakras',
-        color: 'from-emerald-400 to-teal-600',
-        glow: 'rgba(16, 185, 129, 0.25)',
-        image: '/assets/images/service_chakras.jpg',
-    },
-    {
-        id: 3,
-        icon: HeartPulse,
-        title: 'Énergétique & Vibratoire',
-        description:
-            'Découvrez les principes des soins à distance, du nettoyage énergétique et de la protection vibratoire.',
-        href: '/courses?category=energetique',
-        color: 'from-rose-500 to-red-600',
-        glow: 'rgba(239, 68, 68, 0.25)',
-        image: '/assets/images/service_energetique.jpg',
-    },
-    {
-        id: 4,
-        icon: GraduationCap,
-        title: 'Formations Certifiantes',
-        description:
-            'Des parcours d\'apprentissage structurés avec attestation de compétences pour valider votre cheminement.',
-        href: '/courses',
-        color: 'from-sky-400 to-blue-600',
-        glow: 'rgba(56, 189, 248, 0.25)',
-        image: '/assets/images/service_certifiant.jpg',
-    },
-    {
-        id: 5,
-        icon: LayoutDashboard,
-        title: 'Espace Formateur',
-        description:
-            'Partagez vos connaissances, publiez vos programmes et accompagnez votre propre communauté d\'élèves.',
-        href: '/become-trainer',
-        color: 'from-pink-500 to-rose-600',
-        glow: 'rgba(236, 72, 153, 0.25)',
-        image: '/assets/images/service_formateur.jpg',
-    },
-] as const;
+import { useTranslation } from 'react-i18next';
 
 export function Services() {
+    const { t } = useTranslation();
     const [activeIndex, setActiveIndex] = useState<number>(0);
+
+    const services = [
+        {
+            id: 0,
+            icon: Brain,
+            title: t('services.item0_title'),
+            description: t('services.item0_desc'),
+            href: '/courses?category=radiesthesie',
+            color: 'from-purple-500 to-indigo-600',
+            glow: 'rgba(168, 85, 247, 0.25)',
+            image: '/assets/images/service_radiesthesie.jpg',
+        },
+        {
+            id: 1,
+            icon: Flame,
+            title: t('services.item1_title'),
+            description: t('services.item1_desc'),
+            href: '/courses?category=pendule',
+            color: 'from-amber-400 to-orange-600',
+            glow: 'rgba(245, 158, 11, 0.25)',
+            image: '/assets/images/service_pendule.jpg',
+        },
+        {
+            id: 2,
+            icon: Leaf,
+            title: t('services.item2_title'),
+            description: t('services.item2_desc'),
+            href: '/courses?category=chakras',
+            color: 'from-emerald-400 to-teal-600',
+            glow: 'rgba(16, 185, 129, 0.25)',
+            image: '/assets/images/service_chakras.jpg',
+        },
+        {
+            id: 3,
+            icon: HeartPulse,
+            title: t('services.item3_title'),
+            description: t('services.item3_desc'),
+            href: '/courses?category=energetique',
+            color: 'from-rose-500 to-red-600',
+            glow: 'rgba(239, 68, 68, 0.25)',
+            image: '/assets/images/service_energetique.jpg',
+        },
+        {
+            id: 4,
+            icon: GraduationCap,
+            title: t('services.item4_title'),
+            description: t('services.item4_desc'),
+            href: '/courses',
+            color: 'from-sky-400 to-blue-600',
+            glow: 'rgba(56, 189, 248, 0.25)',
+            image: '/assets/images/service_certifiant.jpg',
+        },
+        {
+            id: 5,
+            icon: LayoutDashboard,
+            title: t('services.item5_title'),
+            description: t('services.item5_desc'),
+            href: '/become-trainer',
+            color: 'from-pink-500 to-rose-600',
+            glow: 'rgba(236, 72, 153, 0.25)',
+            image: '/assets/images/service_formateur.jpg',
+        },
+    ];
+
     const activeService = services[activeIndex];
 
     return (
@@ -100,15 +97,15 @@ export function Services() {
                     className="mb-20 text-center"
                 >
                     <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                        Ce que nous proposons
+                        {t('services.badge')}
                     </div>
 
                     <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        Tout pour votre pratique énergétique
+                        {t('services.title')}
                     </h2>
 
                     <p className="mx-auto max-w-2xl text-lg text-foreground/60">
-                        Une plateforme pensée pour réunir apprenants et formateurs autour de l'éveil vibratoire et de la transmission.
+                        {t('services.subtitle')}
                     </p>
                 </motion.div>
 
@@ -120,9 +117,8 @@ export function Services() {
                         {/* Outer Orbit Circle */}
                         <div className="absolute inset-0 rounded-full border border-border/30 dark:border-border/10 pointer-events-none" />
                         
-                        {/* Inner Pulsing Core (The Energetic Self) */}
+                        {/* Inner Pulsing Core */}
                         <div className="relative flex items-center justify-center w-36 h-36 md:w-44 md:h-44 rounded-full border border-white/10 shadow-2xl backdrop-blur-md z-20 overflow-hidden">
-                            {/* Animated Image Reveal behind everything */}
                             <AnimatePresence mode="wait">
                                 <motion.img
                                     key={`img-${activeService.id}`}
@@ -136,52 +132,27 @@ export function Services() {
                                 />
                             </AnimatePresence>
 
-                            {/* Black gradient mask to guarantee text legibility */}
                             <div className="absolute inset-0 bg-black/60 z-10" />
 
-                            {/* Color changing glowing aura inside */}
-                            <motion.div
-                                animate={{
-                                    scale: [1, 1.05, 1],
-                                    background: `radial-gradient(circle, ${activeService.glow} 0%, transparent 70%)`
-                                }}
-                                transition={{
-                                    scale: { repeat: Infinity, duration: 4, ease: "easeInOut" },
-                                    background: { duration: 0.5 }
-                                }}
-                                className="absolute inset-0 rounded-full pointer-events-none z-10"
-                            />
-                            
-                            <div className="relative flex flex-col items-center justify-center text-center p-4 z-20">
-                                <AnimatePresence mode="wait">
-                                    <motion.div
-                                        key={activeService.id}
-                                        initial={{ scale: 0.8, opacity: 0 }}
-                                        animate={{ scale: 1, opacity: 1 }}
-                                        exit={{ scale: 0.8, opacity: 0 }}
-                                        transition={{ duration: 0.3 }}
-                                        className={`mb-3 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr ${activeService.color} text-white shadow-lg`}
-                                    >
-                                        <activeService.icon className="h-6 w-6" />
-                                    </motion.div>
-                                </AnimatePresence>
-                                <span className="text-[10px] uppercase tracking-[0.2em] text-white/50 font-bold">Focus</span>
+                            <div className="relative z-20 text-center px-2">
+                                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/70">{t('services.focus')}</p>
+                                <p className="text-xs md:text-sm font-semibold text-white tracking-wide mt-0.5 line-clamp-1">
+                                    {activeService.title}
+                                </p>
                             </div>
                         </div>
 
-                        {/* Orbiting constellations (Items trig positioned) */}
+                        {/* Orbiting Satellite Nodes */}
                         {services.map((service, index) => {
-                            const angle = (index * 360) / services.length;
-                            // Convert angle to position on a radius
-                            const radius = 150; // Radius size of the circle (matches container size / 2)
-                            const x = Math.cos((angle * Math.PI) / 180) * radius;
-                            const y = Math.sin((angle * Math.PI) / 180) * radius;
-
+                            const angle = (index / services.length) * (2 * Math.PI) - (Math.PI / 2);
+                            const radius = 150;
+                            const x = Math.round(Math.cos(angle) * radius);
+                            const y = Math.round(Math.sin(angle) * radius);
                             const isSelected = activeIndex === index;
 
                             return (
                                 <motion.button
-                                    key={service.title}
+                                    key={service.id}
                                     style={{
                                         x: `${x}px`,
                                         y: `${y}px`,
@@ -213,7 +184,7 @@ export function Services() {
                                 className="space-y-6 max-w-xl text-center lg:text-left"
                             >
                                 <span className={`inline-block text-xs font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full bg-gradient-to-r ${activeService.color} text-white shadow-xs`}>
-                                    Univers {activeIndex + 1}
+                                    {t('services.universe', { number: activeIndex + 1 })}
                                 </span>
                                 
                                 <h3 className="text-3xl font-semibold text-foreground tracking-tight">
@@ -229,7 +200,7 @@ export function Services() {
                                         href={activeService.href}
                                         className="group inline-flex items-center gap-2 text-sm font-semibold text-primary transition-all hover:gap-3"
                                     >
-                                        Rejoindre cet apprentissage
+                                        {t('services.join_learning')}
                                         <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
                                     </Link>
                                 </div>

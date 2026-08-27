@@ -1,52 +1,46 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
 import { Plus } from 'lucide-react';
-
-const questions = [
-    {
-        question: 'Comment accéder aux formations sur FormationSession ?',
-        reponse:
-            'Créez un compte gratuit, parcourez notre catalogue et inscrivez-vous à la formation de votre choix. Vous y accédez immédiatement depuis votre espace personnel.',
-    },
-    {
-        question: 'Les formations sont-elles accessibles sur mobile ?',
-        reponse:
-            'Oui, la plateforme est entièrement responsive. Vous pouvez suivre vos formations depuis n\'importe quel appareil : smartphone, tablette ou ordinateur, à n\'importe quelle heure.',
-    },
-    {
-        question: 'Comment devenir formateur sur FormationSession ?',
-        reponse:
-            'Soumettez votre candidature depuis la page "Devenir formateur". Notre équipe évalue votre profil et expertise. Une fois accepté, vous publiez vos formations.',
-    },
-    {
-        question: 'Quel est le coût pour les formateurs ?',
-        reponse:
-            'Les formateurs paient un abonnement mensuel pour accéder à l\'espace de création et de publication de formations. Cet abonnement vous donne accès à tous les outils nécessaires.',
-    },
-    {
-        question: 'Quelle est la politique de remboursement ?',
-        reponse:
-            'Si vous n\'êtes pas satisfait d\'une formation dans les 7 jours suivant l\'inscription et que vous avez consulté moins de 30 % du contenu, vous pouvez demander un remboursement complet.',
-    },
-    {
-        question: 'Les formations sont-elles certifiantes ?',
-        reponse:
-            'Certaines formations proposent une attestation de compétences délivrée par le formateur. La certification est précisée sur la page de chaque formation.',
-    },
-    {
-        question: 'Puis-je interagir avec mon formateur ?',
-        reponse:
-            'Oui. Selon les formations, vous pouvez poser des questions via l\'espace commentaires, participer à des sessions live ou rejoindre un groupe dédié.',
-    },
-    {
-        question: 'Comment les formateurs sont-ils sélectionnés ?',
-        reponse:
-            'Chaque candidature formateur est examinée par notre équipe. Nous vérifions les qualifications, l\'expérience et la qualité du contenu proposé.',
-    },
-] as const;
+import { useTranslation } from 'react-i18next';
 
 export default function FAQ() {
+    const { t } = useTranslation();
     const [ouvert, setOuvert] = useState<number | null>(null);
+
+    const questions = [
+        {
+            question: t('faq.q1'),
+            reponse: t('faq.a1'),
+        },
+        {
+            question: t('faq.q2'),
+            reponse: t('faq.a2'),
+        },
+        {
+            question: t('faq.q3'),
+            reponse: t('faq.a3'),
+        },
+        {
+            question: t('faq.q4'),
+            reponse: t('faq.a4'),
+        },
+        {
+            question: t('faq.q5'),
+            reponse: t('faq.a5'),
+        },
+        {
+            question: t('faq.q6'),
+            reponse: t('faq.a6'),
+        },
+        {
+            question: t('faq.q7'),
+            reponse: t('faq.a7'),
+        },
+        {
+            question: t('faq.q8'),
+            reponse: t('faq.a8'),
+        },
+    ];
 
     return (
         <section className="relative bg-muted/30 py-24 md:py-32 dark:bg-foreground/[0.02]">
@@ -55,7 +49,7 @@ export default function FAQ() {
             </div>
 
             <div className="relative mx-auto max-w-3xl px-6 md:px-8 lg:px-12">
-                {/* en-tête */}
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -64,21 +58,19 @@ export default function FAQ() {
                     className="mb-14 text-center"
                 >
                     <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                        Questions fréquentes
+                        {t('faq.badge')}
                     </div>
 
                     <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        Toutes vos questions, répondues
+                        {t('faq.title')}
                     </h2>
 
                     <p className="mx-auto max-w-xl text-lg text-foreground/60">
-                        Étudiants ou formateurs, retrouvez les réponses aux
-                        questions les plus fréquentes sur les cours, les
-                        abonnements et le fonctionnement de la plateforme.
+                        {t('faq.subtitle')}
                     </p>
                 </motion.div>
 
-                {/* accordéon */}
+                {/* Accordion */}
                 <motion.div
                     initial={{ opacity: 0, y: 16 }}
                     whileInView={{ opacity: 1, y: 0 }}

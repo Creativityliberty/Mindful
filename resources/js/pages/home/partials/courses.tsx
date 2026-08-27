@@ -3,7 +3,7 @@ import { ArrowRight, Clock, Users, Star, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, usePage } from '@inertiajs/react';
 import type { Course } from '../courses/types';
-
+import { useTranslation } from 'react-i18next';
 
 function StarRating({ rating }: { rating: number }) {
     return (
@@ -31,6 +31,7 @@ const itemVariants: Variants = {
 };
 
 export function Courses() {
+    const { t } = useTranslation();
     const { featuredCourses } = usePage<{ featuredCourses: Course[] }>().props;
 
     if (!featuredCourses?.length) return null;
@@ -56,15 +57,13 @@ export function Courses() {
                 >
                     <div>
                         <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
-                            Formations phares
+                            {t('featured_courses.badge')}
                         </div>
                         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                            Les formations les plus appréciées
+                            {t('featured_courses.title')}
                         </h2>
                         <p className="max-w-xl text-lg text-foreground/60">
-                            Radiesthésie, pendule, chakras — découvrez
-                            nos formations les plus populaires, animées par des
-                            formateurs experts et passionnés.
+                            {t('featured_courses.subtitle')}
                         </p>
                     </div>
                     <Button
@@ -73,7 +72,7 @@ export function Courses() {
                         asChild
                     >
                         <Link href="/courses" preserveState prefetch>
-                            Voir toutes les formations
+                            {t('featured_courses.view_all')}
                             <ArrowRight
                                 className="ml-2 h-4 w-4"
                                 aria-hidden="true"
@@ -112,7 +111,7 @@ export function Courses() {
                                         className="h-3 w-3"
                                         aria-hidden="true"
                                     />
-                                    À la une
+                                    {t('featured_courses.featured_badge')}
                                 </span>
                             </div>
                         </div>
@@ -157,10 +156,7 @@ export function Courses() {
                                     <StarRating rating={featured.rating} />
                                     <span className="flex items-center gap-1">
                                         <Users className="h-3.5 w-3.5" />
-                                        {featured.studentCount.toLocaleString(
-                                            'fr-FR',
-                                        )}{' '}
-                                        étudiants
+                                        {t('featured_courses.students', { count: featured.studentCount })}
                                     </span>
                                 </div>
                             </div>
@@ -169,7 +165,7 @@ export function Courses() {
                             <div className="flex items-center justify-between gap-4">
                                 <div>
                                     <p className="text-xs tracking-wider text-foreground/40 uppercase">
-                                        À partir de
+                                        {t('featured_courses.from_price')}
                                     </p>
                                     <p className="text-xl font-semibold text-foreground">
                                         {featured.price}
@@ -177,7 +173,7 @@ export function Courses() {
                                 </div>
                                 <Button className="rounded-full" asChild>
                                     <Link href={`/courses/${featured.slug}`}>
-                                        Voir la formation
+                                        {t('featured_courses.view_course')}
                                         <ArrowRight
                                             className="ml-2 h-4 w-4"
                                             aria-hidden="true"
@@ -230,7 +226,7 @@ export function Courses() {
                                 <div className="flex items-center justify-between">
                                     <div>
                                         <p className="text-[10px] tracking-wider text-foreground/40 uppercase">
-                                            À partir de
+                                            {t('featured_courses.from_price')}
                                         </p>
                                         <p className="text-sm font-semibold text-foreground">
                                             {course.price}
@@ -243,7 +239,7 @@ export function Courses() {
                                         asChild
                                     >
                                         <Link href={`/courses/${course.slug}`}>
-                                            Voir
+                                            {t('featured_courses.view_btn')}
                                             <ArrowRight
                                                 className="ml-1 h-3.5 w-3.5"
                                                 aria-hidden="true"
