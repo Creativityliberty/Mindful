@@ -51,19 +51,19 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                 onMouseLeave={() => setIsHovered(false)}
                 className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/40 bg-background/60 backdrop-blur-md transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 dark:border-border/50 dark:bg-background/40"
             >
-                {/* Spotlight cursor glow */}
+                {/* Spotlight cursor glow - Changed to soft sky blue */}
                 <div
                     className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     style={{
-                        background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(168, 85, 247, 0.15), transparent 80%)`,
+                        background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(56, 189, 248, 0.08), transparent 80%)`,
                     }}
                 />
 
-                {/* Border highlight glow */}
+                {/* Border highlight glow - Changed to soft sky blue */}
                 <div
                     className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     style={{
-                        background: `radial-gradient(250px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(168, 85, 247, 0.3), transparent 80%)`,
+                        background: `radial-gradient(250px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(56, 189, 248, 0.2), transparent 80%)`,
                         maskImage: 'linear-gradient(black, black) content-box, linear-gradient(black, black)',
                         maskComposite: 'exclude',
                         WebkitMaskComposite: 'xor',
@@ -88,7 +88,7 @@ export function CourseCard({ course, index }: { course: Course; index: number })
 
                     {course.trainer && (
                         <div className="absolute bottom-3 left-4 z-30 flex items-center gap-2">
-                            <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-primary/90 text-[11px] font-bold text-primary-foreground shadow-sm">
+                            <div className="flex h-7 w-7 items-center justify-center rounded-full border border-white/20 bg-sky-400 text-[11px] font-bold text-white shadow-sm">
                                 {course.trainer.initials}
                             </div>
                             <span className="text-xs font-semibold text-white drop-shadow-md">{course.trainer.name}</span>
