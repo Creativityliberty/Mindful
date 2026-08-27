@@ -14,24 +14,29 @@ import { Button } from '@/components/ui/button';
 
 const timeline = [
     {
-        annee: '2021',
-        titre: 'La Genèse : FormationSession',
-        description: 'Fondée par des professionnels passionnés du geste et du numérique. Naissance de notre vision : décloisonner la transmission des savoir-faire et des pratiques de terrain.',
-    },
-    {
-        annee: '2022 - 2023',
-        titre: 'Ancrage dans le Bien-être',
-        description: 'Lancement de nos premières sessions certifiantes de Radiesthésie, de Pendule et d\'Énergétique en Normandie. Plus de 5 000 étudiants nous rejoignent.',
-    },
-    {
-        annee: '2024 - 2025',
-        titre: 'Ouverture vers l\'Artisanat',
-        description: 'La plateforme s\'ouvre aux métiers de la création (Bougies artisanales, senteurs) et de l\'esthétique, démontrant notre modèle d\'apprentissage évolutif.',
-    },
-    {
         annee: '2026',
-        titre: 'L\'Académie globale des Métiers',
-        description: 'FormationSession devient le portail de référence pour tous les savoir-faire pratiques : du bien-être holistique aux technologies numériques (IA) et techniques de terrain.',
+        titre: 'Le Hub Fondateur (Énergétique & Bien-être)',
+        description: 'Consolidation de notre socle historique (Radiesthésie, Chakras, Massages) avec déjà +800 praticiens et élèves actifs.',
+    },
+    {
+        annee: '2027',
+        titre: 'Vague Créative & Esthétique (Artisanat, Bougies, Ongles)',
+        description: 'Ouverture simultanée de la plateforme aux métiers de la création manuelle (bougies artisanales, senteurs) et de la beauté (prothésie ongulaire, nail art).',
+    },
+    {
+        annee: '2028',
+        titre: 'Autonomie & Révolution Digitale (IA & Outils Créateurs)',
+        description: 'Lancement des modules dédiés aux technologies (IA générative, marketing) pour aider nos artisans et praticiens à piloter et vivre sereinement de leur activité.',
+    },
+    {
+        annee: '2029',
+        titre: 'L\'Écosystème National & Métiers de Terrain (Éco-Habitat)',
+        description: 'Extension aux métiers techniques et manuels de terrain (rénovation énergétique, plomberie écologique, éco-habitat).',
+    },
+    {
+        annee: '2030',
+        titre: 'L\'Académie Intégrale des Compétences',
+        description: 'FormationSession devient le hub de référence national, connectant apprentissage en ligne de pointe et ateliers de mise en pratique dans les régions.',
     },
 ];
 
