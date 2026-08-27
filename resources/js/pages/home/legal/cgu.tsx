@@ -1,49 +1,99 @@
 import { Head } from '@inertiajs/react';
 import React from 'react';
+import { Mail, FileText, Sparkles } from 'lucide-react';
 
 export default function CGU() {
     return (
         <>
-            <Head title="Conditions Générales d'Utilisation - Mindfulness & Bien-être Studio" />
+            <Head title="Conditions Générales d'Utilisation - FormationSession" />
             
-            <div className="relative min-h-screen pt-20">
-                <div className="mx-auto max-w-4xl px-6 py-12 md:px-8">
-                    <div className="border-b border-border/40 pb-6 mb-10">
-                        <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl mb-2">
-                            Conditions Générales d'Utilisation (CGU)
+            <div className="relative min-h-screen bg-background">
+                {/* Soft ambient background aura */}
+                <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <div className="absolute top-0 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-sky-400/[0.02] blur-[130px]" />
+                </div>
+
+                <div className="relative w-full px-6 py-16 md:px-10 lg:px-16 max-w-7xl mx-auto">
+                    {/* Header */}
+                    <div className="border-b border-border/20 pb-8 mb-16">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase mb-4">
+                            <FileText className="h-3.5 w-3.5 text-sky-400" />
+                            Contrats
+                        </div>
+                        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-serif">
+                            Conditions Générales d'Utilisation
                         </h1>
-                        <p className="text-sm text-foreground/45">Dernière mise à jour : 17 Juillet 2026</p>
+                        <p className="text-sm text-foreground/45 mt-3">Dernière mise à jour : 17 Juillet 2026</p>
                     </div>
 
-                    <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground/80 space-y-6">
-                        <p>
-                            Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation de la plateforme <strong>Mindfulness & Bien-être Studio</strong>. En créant un compte ou en naviguant sur le site, vous acceptez sans réserve ces conditions.
-                        </p>
+                    {/* Split-Screen Canvas Layout */}
+                    <div className="grid gap-16 lg:grid-cols-[1fr_1.4fr] items-start">
+                        
+                        {/* Left Column: Fixed summary card */}
+                        <div className="lg:sticky lg:top-28 space-y-6">
+                            <div className="rounded-[2rem] border border-border/30 bg-background/50 p-8 backdrop-blur-md relative overflow-hidden shadow-xl">
+                                <h2 className="text-xl font-bold tracking-tight text-foreground mb-4">
+                                    Cadre d'utilisation clair.
+                                </h2>
+                                <p className="text-xs md:text-sm text-foreground/60 leading-relaxed font-light">
+                                    Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation de la plateforme FormationSession. En créant un compte, vous acceptez sans réserve ces conditions.
+                                </p>
+                                
+                                <div className="pt-6 border-t border-border/20 mt-6 space-y-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-400/10 text-sky-400">
+                                            <Mail className="h-4.5 w-4.5" />
+                                        </div>
+                                        <div>
+                                            <span className="text-[10px] font-bold text-foreground/40 block uppercase">Support Client</span>
+                                            <a href="mailto:contact@formationsession.com" className="text-xs text-foreground/80 hover:text-sky-400 font-semibold transition-colors">
+                                                contact@formationsession.com
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-                        <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">1. Description des services</h2>
-                        <p>
-                            La plateforme propose un espace d'apprentissage en ligne composé de leçons gratuites et payantes, ainsi qu'un espace de création de contenu pour les formateurs certifiés. Les cours peuvent être consultés à tout moment via le compte étudiant de l'utilisateur.
-                        </p>
+                        {/* Right Column: Legal Text Content */}
+                        <div className="divide-y divide-border/20 text-foreground/80">
+                            
+                            <div className="pb-8">
+                                <h2 className="text-lg font-bold text-foreground mb-3">1. Description des services</h2>
+                                <p className="text-sm leading-relaxed font-light text-foreground/70">
+                                    La plateforme propose un espace d'apprentissage en ligne composé de leçons gratuites et payantes, ainsi qu'un espace de création de contenu pour les formateurs certifiés. Les cours peuvent être consultés à tout moment via le compte étudiant de l'utilisateur.
+                                </p>
+                            </div>
 
-                        <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">2. Inscription et sécurité du compte</h2>
-                        <p>
-                            Pour utiliser nos services, vous devez créer un compte en fournissant des informations exactes et complètes. Vous êtes seul responsable du maintien de la confidentialité de vos identifiants de connexion. Toute utilisation suspecte de votre compte doit nous être signalée immédiatement.
-                        </p>
+                            <div className="py-8">
+                                <h2 className="text-lg font-bold text-foreground mb-3">2. Inscription et sécurité du compte</h2>
+                                <p className="text-sm leading-relaxed font-light text-foreground/70">
+                                    Pour utiliser nos services, vous devez créer un compte en fournissant des informations exactes et complètes. Vous êtes seul responsable du maintien de la confidentialité de vos identifiants de connexion. Toute utilisation suspecte de votre compte doit nous être signalée immédiatement.
+                                </p>
+                            </div>
 
-                        <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">3. Achat de formations & Remboursement</h2>
-                        <p>
-                            Les prix des cours sont fixés librement par les formateurs et affichés toutes taxes comprises. L'accès à la formation payante est débloqué immédiatement après validation du paiement par Stripe. Vous disposez d'un droit de rétractation de 14 jours, à condition de ne pas avoir complété plus de 20% des leçons payantes de la formation.
-                        </p>
+                            <div className="py-8">
+                                <h2 className="text-lg font-bold text-foreground mb-3">3. Achat de formations & Remboursement</h2>
+                                <p className="text-sm leading-relaxed font-light text-foreground/70">
+                                    Les prix des cours sont fixés librement par les formateurs et affichés toutes taxes comprises. L'accès à la formation payante est débloqué immédiatement après validation du paiement par Stripe. Vous disposez d'un droit de rétractation de 14 jours, à condition de ne pas avoir complété plus de 20% des leçons payantes de la formation.
+                                </p>
+                            </div>
 
-                        <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">4. Propriété intellectuelle</h2>
-                        <p>
-                            Tous les contenus (vidéos, supports PDF, audios de sophrologie, textes et structures) présents sur le site sont la propriété exclusive de leurs auteurs respectifs (les formateurs) ou de la plateforme. Tout téléchargement non autorisé, revente ou diffusion publique est strictement interdit et passible de poursuites judiciaires.
-                        </p>
+                            <div className="py-8">
+                                <h2 className="text-lg font-bold text-foreground mb-3">4. Propriété intellectuelle</h2>
+                                <p className="text-sm leading-relaxed font-light text-foreground/70">
+                                    Tous les contenus (vidéos, supports PDF, audios de pratique, textes et structures) présents sur le site sont la propriété exclusive de leurs auteurs respectifs (les formateurs) ou de la plateforme. Tout téléchargement non autorisé, revente ou diffusion publique est strictement interdit et passible de poursuites judiciaires.
+                                </p>
+                            </div>
 
-                        <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">5. Résiliation du compte</h2>
-                        <p>
-                            Vous pouvez supprimer votre compte à tout moment depuis votre tableau de bord. Mindfulness & Bien-être Studio se réserve le droit de suspendre ou supprimer tout compte d'utilisateur en cas de non-respect flagrant des présentes CGU.
-                        </p>
+                            <div className="pt-8">
+                                <h2 className="text-lg font-bold text-foreground mb-3">5. Résiliation du compte</h2>
+                                <p className="text-sm leading-relaxed font-light text-foreground/70">
+                                    Vous pouvez supprimer votre compte à tout moment depuis votre tableau de bord. FormationSession se réserve le droit de suspendre ou supprimer tout compte d'utilisateur en cas de non-respect flagrant des présentes CGU.
+                                </p>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
