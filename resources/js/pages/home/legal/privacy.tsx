@@ -46,8 +46,8 @@ export default function Privacy() {
                                         </div>
                                         <div>
                                             <span className="text-[10px] font-bold text-foreground/40 block uppercase">Contact DPO</span>
-                                            <a href="mailto:hello@formationsession.com" className="text-xs text-foreground/80 hover:text-sky-400 font-semibold transition-colors">
-                                                hello@formationsession.com
+                                            <a href="mailto:contact@formationsession.com" className="text-xs text-foreground/80 hover:text-sky-400 font-semibold transition-colors">
+                                                contact@formationsession.com
                                             </a>
                                         </div>
                                     </div>
@@ -129,7 +129,7 @@ export default function Privacy() {
                             <div className="pt-8">
                                 <h2 className="text-lg font-bold text-foreground mb-3">5. Contact</h2>
                                 <p className="text-sm leading-relaxed font-light text-foreground/70">
-                                    Pour toute question concernant la protection de vos données personnelles ou pour faire valoir vos droits, vous pouvez nous écrire à : <a href="mailto:hello@formationsession.com" className="font-semibold text-sky-400 hover:underline">hello@formationsession.com</a>.
+                                    Pour toute question concernant la protection de vos données personnelles ou pour faire valoir vos droits, vous pouvez nous écrire à : <a href="mailto:contact@formationsession.com" className="font-semibold text-sky-400 hover:underline">contact@formationsession.com</a>.
                                 </p>
                             </div>
 
