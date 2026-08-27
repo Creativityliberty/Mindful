@@ -1,86 +1,88 @@
 import { Head, Link } from '@inertiajs/react';
 import { Check, HelpCircle, ArrowRight } from 'lucide-react';
-import React from 'react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-
-const pricingPlans = [
-    {
-        name: "Apprenant",
-        price: "À la carte",
-        period: "par formation",
-        description: "Achetez uniquement les formations qui vous intéressent, sans engagement ni abonnement récurrent.",
-        ctaText: "Découvrir les cours",
-        ctaHref: "/courses",
-        popular: false,
-        features: [
-            "Accès illimité et à vie",
-            "Mode aperçu gratuit (leçons offertes)",
-            "Supports audios, vidéos & PDF téléchargeables",
-            "Échanges directs avec les formateurs dans l'espace cours",
-            "Attestation de complétion officielle",
-            "Garantie satisfait ou remboursé 14 jours"
-        ]
-    },
-    {
-        name: "Formateur - Plan Pro",
-        price: "29 €",
-        period: "par mois",
-        description: "Pour les professionnels et formateurs souhaitant optimiser leurs gains avec 0% de commission.",
-        ctaText: "Rejoindre en tant que Pro",
-        ctaHref: "/become-trainer",
-        popular: true,
-        features: [
-            "0% de commission sur vos ventes",
-            "Hébergement vidéo illimité de vos cours",
-            "Outils de création complets (modules, leçons)",
-            "Accès aux statistiques de ventes détaillées",
-            "Intégration et paiement direct via Stripe Connect",
-            "Support technique prioritaire 7j/7"
-        ]
-    },
-    {
-        name: "Formateur - Plan Libre",
-        price: "Gratuit",
-        period: "à vie",
-        description: "Démarrez sereinement sans frais fixes. Nous prélevons une simple commission sur vos ventes.",
-        ctaText: "Démarrez gratuitement",
-        ctaHref: "/become-trainer",
-        popular: false,
-        features: [
-            "15% de commission sur vos ventes",
-            "Hébergement vidéo illimité de vos cours",
-            "Outils de création complets",
-            "Paiements Stripe Connect automatisés",
-            "Support technique standard sous 48h",
-            "Sans engagement, résiliable à tout moment"
-        ]
-    }
-];
-
-const faqs = [
-    {
-        q: "Comment fonctionne le mode aperçu gratuit ?",
-        a: "Chaque formation dispose de leçons désignées gratuites par le formateur. Vous pouvez vous inscrire et suivre ces leçons immédiatement sans sortir votre carte de crédit."
-    },
-    {
-        q: "Y a-t-il des frais cachés ou d'inscription ?",
-        a: "Non. Pour les apprenants, vous ne payez que le prix affiché de la formation. Pour les formateurs, vous choisissez entre un plan gratuit à la commission ou un forfait mensuel sans engagement."
-    },
-    {
-        q: "Comment sont gérés les paiements et la facturation ?",
-        a: "Tous nos paiements sont traités de manière sécurisée par Stripe. Vous recevez une facture par e-mail immédiatement après chaque transaction."
-    },
-    {
-        q: "Puis-je changer de plan formateur à tout moment ?",
-        a: "Tout à fait. Vous pouvez passer du plan Libre au plan Pro (ou inversement) à tout moment depuis votre tableau de bord sans frais de résiliation."
-    }
-];
+import { Card } from '@/components/ui/card';
+import { useTranslation } from 'react-i18next';
 
 export default function Pricing() {
+    const { t } = useTranslation();
+
+    const pricingPlans = [
+        {
+            name: t('pricing_page.plan1_name'),
+            price: t('pricing_page.plan1_price'),
+            period: t('pricing_page.plan1_period'),
+            description: t('pricing_page.plan1_desc'),
+            ctaText: t('pricing_page.plan1_cta'),
+            ctaHref: "/courses",
+            popular: false,
+            features: [
+                t('pricing_page.plan1_f1'),
+                t('pricing_page.plan1_f2'),
+                t('pricing_page.plan1_f3'),
+                t('pricing_page.plan1_f4'),
+                t('pricing_page.plan1_f5'),
+                t('pricing_page.plan1_f6'),
+            ]
+        },
+        {
+            name: t('pricing_page.plan2_name'),
+            price: t('pricing_page.plan2_price'),
+            period: t('pricing_page.plan2_period'),
+            description: t('pricing_page.plan2_desc'),
+            ctaText: t('pricing_page.plan2_cta'),
+            ctaHref: "/become-trainer",
+            popular: true,
+            features: [
+                t('pricing_page.plan2_f1'),
+                t('pricing_page.plan2_f2'),
+                t('pricing_page.plan2_f3'),
+                t('pricing_page.plan2_f4'),
+                t('pricing_page.plan2_f5'),
+                t('pricing_page.plan2_f6'),
+            ]
+        },
+        {
+            name: t('pricing_page.plan3_name'),
+            price: t('pricing_page.plan3_price'),
+            period: t('pricing_page.plan3_period'),
+            description: t('pricing_page.plan3_desc'),
+            ctaText: t('pricing_page.plan3_cta'),
+            ctaHref: "/become-trainer",
+            popular: false,
+            features: [
+                t('pricing_page.plan3_f1'),
+                t('pricing_page.plan3_f2'),
+                t('pricing_page.plan3_f3'),
+                t('pricing_page.plan3_f4'),
+                t('pricing_page.plan3_f5'),
+                t('pricing_page.plan3_f6'),
+            ]
+        }
+    ];
+
+    const faqs = [
+        {
+            q: t('pricing_page.faq1_q'),
+            a: t('pricing_page.faq1_a'),
+        },
+        {
+            q: t('pricing_page.faq2_q'),
+            a: t('pricing_page.faq2_a'),
+        },
+        {
+            q: t('pricing_page.faq3_q'),
+            a: t('pricing_page.faq3_a'),
+        },
+        {
+            q: t('pricing_page.faq4_q'),
+            a: t('pricing_page.faq4_a'),
+        }
+    ];
+
     return (
         <>
-            <Head title="Tarifs transparents - Mindfulness & Bien-être Studio" />
+            <Head title={`${t('pricing_page.badge')} - FormationSession`} />
             
             <div className="relative min-h-screen pt-20">
                 {/* Background Decor */}
@@ -92,13 +94,13 @@ export default function Pricing() {
                     {/* Header */}
                     <div className="text-center max-w-3xl mx-auto mb-20">
                         <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur">
-                            Tarifs transparents
+                            {t('pricing_page.badge')}
                         </div>
                         <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl lg:text-6xl mb-6">
-                            Des formules claires, adaptées à chacun
+                            {t('pricing_page.title')}
                         </h1>
                         <p className="text-lg text-foreground/60">
-                            Que vous soyez apprenant ou formateur, nous croyons en une tarification juste et sans engagement pour cultiver la sérénité.
+                            {t('pricing_page.subtitle')}
                         </p>
                     </div>
 
@@ -112,7 +114,7 @@ export default function Pricing() {
                                 {plan.popular && (
                                     <div className="absolute top-4 right-4">
                                         <span className="rounded-full bg-primary px-3 py-1 text-[10px] font-semibold text-primary-foreground uppercase">
-                                            Recommandé
+                                            {t('pricing_page.recommended')}
                                         </span>
                                     </div>
                                 )}
@@ -120,7 +122,7 @@ export default function Pricing() {
                                     <h3 className="text-xl font-semibold text-foreground mb-2">{plan.name}</h3>
                                     <div className="mb-4 flex items-baseline gap-1">
                                         <span className="text-4xl font-bold tracking-tight text-foreground">{plan.price}</span>
-                                        <span className="text-sm font-medium text-foreground/50">{plan.period}</span>
+                                        <span className="text-sm font-medium text-foreground/50"> / {plan.period}</span>
                                     </div>
                                     <p className="text-sm leading-relaxed text-foreground/60 mb-6">{plan.description}</p>
                                     <hr className="border-border/30 mb-6" />
@@ -149,7 +151,7 @@ export default function Pricing() {
                     {/* FAQ section */}
                     <div className="max-w-4xl mx-auto">
                         <h2 className="text-3xl font-semibold text-foreground text-center mb-12 flex items-center justify-center gap-2">
-                            <HelpCircle className="h-7 w-7 text-primary" /> Questions fréquentes sur les tarifs
+                            <HelpCircle className="h-7 w-7 text-primary" /> {t('pricing_page.faq_title')}
                         </h2>
                         <div className="grid gap-6 sm:grid-cols-2">
                             {faqs.map((faq, idx) => (

@@ -1,10 +1,11 @@
 import { Link } from '@inertiajs/react'
 import { motion } from 'framer-motion'
-import { Star, Clock, Users, ArrowRight, Sparkles } from 'lucide-react'
+import { Star, Clock, Users, ArrowRight } from 'lucide-react'
 import { useState, useRef, MouseEvent } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import type { Course } from '../types'
+import { useTranslation } from 'react-i18next'
 
 export type { Course }
 
@@ -23,10 +24,10 @@ function StarRating({ rating }: { rating: number }) {
 }
 
 export function CourseCard({ course, index }: { course: Course; index: number }) {
+    const { t } = useTranslation()
     const minPrice = course.price
     const cardRef = useRef<HTMLDivElement>(null)
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-    const [isHovered, setIsHovered] = useState(false)
 
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
         if (!cardRef.current) return
@@ -47,27 +48,13 @@ export function CourseCard({ course, index }: { course: Course; index: number })
             <div
                 ref={cardRef}
                 onMouseMove={handleMouseMove}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
                 className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-border/40 bg-background/60 backdrop-blur-md transition-all duration-500 hover:-translate-y-1.5 hover:border-primary/40 hover:shadow-2xl hover:shadow-primary/5 dark:border-border/50 dark:bg-background/40"
             >
-                {/* Spotlight cursor glow - Changed to soft sky blue */}
+                {/* Spotlight cursor glow */}
                 <div
                     className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
                     style={{
                         background: `radial-gradient(400px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(56, 189, 248, 0.08), transparent 80%)`,
-                    }}
-                />
-
-                {/* Border highlight glow - Changed to soft sky blue */}
-                <div
-                    className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-                    style={{
-                        background: `radial-gradient(250px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(56, 189, 248, 0.2), transparent 80%)`,
-                        maskImage: 'linear-gradient(black, black) content-box, linear-gradient(black, black)',
-                        maskComposite: 'exclude',
-                        WebkitMaskComposite: 'xor',
-                        padding: '1px',
                     }}
                 />
 
@@ -114,7 +101,7 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                             </span>
                             <span className="flex items-center gap-1.5">
                                 <Users className="h-3.5 w-3.5 text-primary/70" aria-hidden="true" />
-                                {course.studentCount.toLocaleString('fr-FR')} étudiants
+                                {t('featured_courses.students', { count: course.studentCount })}
                             </span>
                         </div>
                     </div>
@@ -122,7 +109,7 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                     <div className="mt-auto flex items-center justify-between pt-2">
                         {minPrice ? (
                             <div>
-                                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">Tarif</p>
+                                <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">{t('featured_courses.from_price')}</p>
                                 <p className="text-base font-bold text-foreground tracking-tight">{minPrice}</p>
                             </div>
                         ) : (
@@ -130,7 +117,7 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                         )}
                         <Button variant="secondary" size="sm" className="rounded-full gap-1.5 font-medium transition-all group-hover:bg-primary group-hover:text-primary-foreground" asChild>
                             <Link href={`/courses/${course.slug}`}>
-                                Découvrir
+                                {t('featured_courses.view_btn')}
                                 <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-0.5" aria-hidden="true" />
                             </Link>
                         </Button>

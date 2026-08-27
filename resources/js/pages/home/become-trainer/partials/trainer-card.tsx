@@ -1,18 +1,21 @@
-import { motion } from 'framer-motion'
-import { Star, Users, BookOpen } from 'lucide-react'
-import { Card, CardContent } from '@/components/ui/card'
+import { motion } from 'framer-motion';
+import { Star, Users, BookOpen } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
+import { useTranslation } from 'react-i18next';
 
 export type TrainerProfile = {
-    initials: string
-    name: string
-    specialty: string
-    bio: string
-    courseCount: number
-    studentCount: string
-    rating: number
-}
+    initials: string;
+    name: string;
+    specialty: string;
+    bio: string;
+    courseCount: number;
+    studentCount: string;
+    rating: number;
+};
 
 export function TrainerCard({ trainer, index }: { trainer: TrainerProfile; index: number }) {
+    const { t } = useTranslation();
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -37,11 +40,11 @@ export function TrainerCard({ trainer, index }: { trainer: TrainerProfile; index
                     <div className="flex items-center gap-4 text-xs text-foreground/50">
                         <span className="flex items-center gap-1">
                             <BookOpen className="h-3.5 w-3.5 text-primary/60" />
-                            {trainer.courseCount} cours
+                            {t('become_trainer_page.courses_count', { count: trainer.courseCount })}
                         </span>
                         <span className="flex items-center gap-1">
                             <Users className="h-3.5 w-3.5 text-primary/60" />
-                            {trainer.studentCount} étudiants
+                            {t('become_trainer_page.students_count', { count: trainer.studentCount })}
                         </span>
                         <span className="flex items-center gap-1">
                             <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
@@ -51,5 +54,5 @@ export function TrainerCard({ trainer, index }: { trainer: TrainerProfile; index
                 </CardContent>
             </Card>
         </motion.div>
-    )
+    );
 }

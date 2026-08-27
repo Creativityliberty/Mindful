@@ -4,86 +4,84 @@ import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { Plan } from '@/types';
 import { BecomeTrainerHeader } from './partials/become-trainer-header';
-import { TrainerCard  } from './partials/trainer-card';
-import type {TrainerProfile} from './partials/trainer-card';
-
-const benefits = [
-    {
-        title: 'Développez votre activité',
-        description: 'Publiez vos cours et touchez des milliers d\'apprenants motivés partout dans le monde francophone.',
-    },
-    {
-        title: 'Une communauté engagée',
-        description: 'Rejoignez une plateforme dédiée aux pratiques énergétiques avec des étudiants investis.',
-    },
-    {
-        title: 'Outils simples et puissants',
-        description: 'Créez et gérez vos formations facilement depuis votre dashboard dédié, sans technique.',
-    },
-    {
-        title: 'Support dédié',
-        description: 'Notre équipe vous accompagne à chaque étape : onboarding, création et développement.',
-    },
-];
-
-const steps = [
-    {
-        number: '01',
-        title: 'Choisissez votre plan',
-        description: 'Sélectionnez l\'abonnement qui correspond à votre activité.',
-    },
-    {
-        number: '02',
-        title: 'Paiement sécurisé Stripe',
-        description: 'Vous êtes redirigé sur Stripe pour régler en toute sécurité.',
-    },
-    {
-        number: '03',
-        title: 'Accès instantané',
-        description: 'Dès le paiement validé, recevez vos identifiants.',
-    },
-    {
-        number: '04',
-        title: 'Publiez & Transmettez',
-        description: 'Publiez vos cours et accueillez vos premiers élèves.',
-    },
-];
-
-const featuredTrainers: TrainerProfile[] = [
-    {
-        initials: 'L',
-        name: 'Louise',
-        specialty: 'Radiesthésie & Énergétique',
-        bio: 'Fondatrice de la plateforme, Louise vous transmet les protocoles fondamentaux et avancés du pendule et des chakras.',
-        courseCount: 8,
-        studentCount: '2 400+',
-        rating: 4.9,
-        avatar: '/assets/images/service_chakras_lux.jpg',
-    },
-    {
-        initials: 'JR',
-        name: 'Julien R.',
-        specialty: 'Pratique du Pendule & Cadrans',
-        bio: 'Formateur certifié, expert en recherche au pendule et en conception de cadrans de mesure.',
-        courseCount: 4,
-        studentCount: '1 100+',
-        rating: 4.8,
-        avatar: '/assets/images/service_pendule.jpg',
-    },
-    {
-        initials: 'AL',
-        name: 'Amandine L.',
-        specialty: 'Chakras & Soins Vibratoires',
-        bio: 'Experte en équilibrage des centres énergétiques et soins holistiques. Transmet les clés du rééquilibrage vibratoire au quotidien.',
-        courseCount: 5,
-        studentCount: '1 450+',
-        rating: 5.0,
-        avatar: '/assets/images/service_chakras_lux.jpg',
-    },
-];
+import { TrainerCard, type TrainerProfile } from './partials/trainer-card';
+import { useTranslation } from 'react-i18next';
 
 export default function BecomeTrainer() {
+    const { t } = useTranslation();
     const { auth, plans } = usePage<{ plans: Plan[] }>().props;
+
+    const benefits = [
+        {
+            title: t('become_trainer_page.benefit1_title'),
+            description: t('become_trainer_page.benefit1_desc'),
+        },
+        {
+            title: t('become_trainer_page.benefit2_title'),
+            description: t('become_trainer_page.benefit2_desc'),
+        },
+        {
+            title: t('become_trainer_page.benefit3_title'),
+            description: t('become_trainer_page.benefit3_desc'),
+        },
+        {
+            title: t('become_trainer_page.benefit4_title'),
+            description: t('become_trainer_page.benefit4_desc'),
+        },
+    ];
+
+    const steps = [
+        {
+            number: t('become_trainer_page.step1_num'),
+            title: t('become_trainer_page.step1_title'),
+            description: t('become_trainer_page.step1_desc'),
+        },
+        {
+            number: t('become_trainer_page.step2_num'),
+            title: t('become_trainer_page.step2_title'),
+            description: t('become_trainer_page.step2_desc'),
+        },
+        {
+            number: t('become_trainer_page.step3_num'),
+            title: t('become_trainer_page.step3_title'),
+            description: t('become_trainer_page.step3_desc'),
+        },
+        {
+            number: t('become_trainer_page.step4_num'),
+            title: t('become_trainer_page.step4_title'),
+            description: t('become_trainer_page.step4_desc'),
+        },
+    ];
+
+    const featuredTrainers: TrainerProfile[] = [
+        {
+            initials: 'L',
+            name: 'Louise',
+            specialty: t('trainers.founder_specialty'),
+            bio: t('trainers.founder_bio'),
+            courseCount: 8,
+            studentCount: '2 400+',
+            rating: 4.9,
+        },
+        {
+            initials: 'JR',
+            name: t('trainers.trainer2_name'),
+            specialty: t('trainers.trainer2_specialty'),
+            bio: t('trainers.trainer2_bio'),
+            courseCount: 4,
+            studentCount: '1 100+',
+            rating: 4.8,
+        },
+        {
+            initials: 'AL',
+            name: t('trainers.trainer3_name'),
+            specialty: t('trainers.trainer3_specialty'),
+            bio: t('trainers.trainer3_bio'),
+            courseCount: 5,
+            studentCount: '1 450+',
+            rating: 5.0,
+        },
+    ];
 
     function handleCheckout(slug: string) {
         if (!auth.user) {
@@ -112,30 +110,30 @@ export default function BecomeTrainer() {
                     <div className="lg:sticky lg:top-28 space-y-8">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             <Sparkles className="h-3.5 w-3.5 text-sky-400" />
-                            Rejoindre l'académie
+                            {t('become_trainer_page.join_badge')}
                         </div>
                         
                         <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-sans leading-tight">
-                            Partagez votre savoir-faire.
+                            {t('become_trainer_page.main_heading')}
                         </h2>
                         
                         <p className="text-lg text-foreground/60 leading-relaxed font-light">
-                            Que vous soyez expert en bien-être, créateur de bougies artisanales ou formateur technique, transmettez vos compétences à des étudiants engagés.
+                            {t('become_trainer_page.main_desc')}
                         </p>
 
                         {/* Minimalist Stats Counters */}
                         <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border/20">
                             <div>
                                 <span className="block text-3xl font-extrabold text-foreground">10K+</span>
-                                <span className="text-xs text-foreground/50">Étudiants actifs</span>
+                                <span className="text-xs text-foreground/50">{t('become_trainer_page.stat1_lbl')}</span>
                             </div>
                             <div>
                                 <span className="block text-3xl font-extrabold text-foreground">200+</span>
-                                <span className="text-xs text-foreground/50">Mentors certifiés</span>
+                                <span className="text-xs text-foreground/50">{t('become_trainer_page.stat2_lbl')}</span>
                             </div>
                             <div>
                                 <span className="block text-3xl font-extrabold text-foreground">4.8/5</span>
-                                <span className="text-xs text-foreground/50">Note moyenne</span>
+                                <span className="text-xs text-foreground/50">{t('become_trainer_page.stat3_lbl')}</span>
                             </div>
                         </div>
 
@@ -149,7 +147,7 @@ export default function BecomeTrainer() {
                                         ?.scrollIntoView({ behavior: 'smooth' })
                                 }
                             >
-                                Commencer maintenant
+                                {t('become_trainer_page.btn_start')}
                                 <ArrowRight className="h-4 w-4" />
                             </Button>
                         </div>
@@ -160,7 +158,9 @@ export default function BecomeTrainer() {
                         
                         {/* Benefits list separated by ultra-fine lines */}
                         <div className="space-y-8">
-                            <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">Pourquoi enseigner ici ?</h3>
+                            <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">
+                                {t('become_trainer_page.why_title')}
+                            </h3>
                             <div className="divide-y divide-border/20">
                                 {benefits.map((b) => (
                                     <div key={b.title} className="py-6 first:pt-0 last:pb-0">
@@ -173,7 +173,9 @@ export default function BecomeTrainer() {
 
                         {/* Steps Timeline canvas */}
                         <div className="space-y-8 pt-8 border-t border-border/20">
-                            <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">Le parcours en 4 étapes</h3>
+                            <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">
+                                {t('become_trainer_page.steps_title')}
+                            </h3>
                             <div className="grid gap-6 sm:grid-cols-2">
                                 {steps.map((s) => (
                                     <div key={s.number} className="p-6 rounded-2xl border border-border/20 bg-secondary/10 hover:border-sky-400/40 transition-colors">
@@ -192,13 +194,13 @@ export default function BecomeTrainer() {
                 <section id="pricing" className="py-20 border-b border-border/30">
                     <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                            Tarifs transparents
+                            {t('become_trainer_page.pricing_badge')}
                         </div>
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-sans">
-                            Choisissez votre plan
+                            {t('become_trainer_page.pricing_title')}
                         </h2>
                         <p className="text-base text-foreground/60 font-light leading-relaxed">
-                            Accédez à l'ensemble de nos outils de création de cours, d'hébergement vidéo et à notre support dédié. Sans engagement.
+                            {t('become_trainer_page.pricing_subtitle')}
                         </p>
                     </div>
 
@@ -215,7 +217,7 @@ export default function BecomeTrainer() {
                                 {plan.highlight && (
                                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                                         <span className="rounded-full bg-sky-400 text-[10px] font-bold tracking-widest text-white uppercase px-4 py-1 shadow-sm">
-                                            Conseillé
+                                            {t('become_trainer_page.recommended')}
                                         </span>
                                     </div>
                                 )}
@@ -248,7 +250,7 @@ export default function BecomeTrainer() {
                                     variant={plan.highlight ? 'default' : 'outline'}
                                     onClick={() => handleCheckout(plan.slug)}
                                 >
-                                    Choisir ce plan
+                                    {t('become_trainer_page.choose_plan')}
                                 </Button>
                             </div>
                         ))}
@@ -259,10 +261,10 @@ export default function BecomeTrainer() {
                 <section className="py-20 border-b border-border/30">
                     <div className="max-w-2xl mb-12 space-y-3">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                            Communauté
+                            {t('become_trainer_page.community_badge')}
                         </div>
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground font-sans">
-                            Ils ont rejoint FormationSession
+                            {t('become_trainer_page.community_title')}
                         </h2>
                     </div>
 
@@ -277,7 +279,7 @@ export default function BecomeTrainer() {
                     </div>
                 </section>
 
-                {/* restored Call to Action Section inviting users to launch or contact support */}
+                {/* Call to Action Section */}
                 <motion.section
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -286,13 +288,13 @@ export default function BecomeTrainer() {
                     className="py-20 text-center space-y-6"
                 >
                     <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                        Prêt à commencer ?
+                        {t('become_trainer_page.ready_badge')}
                     </div>
                     <h2 className="text-3xl md:text-5xl font-bold text-foreground font-sans tracking-tight">
-                        Lancez votre formation dès aujourd'hui
+                        {t('become_trainer_page.ready_title')}
                     </h2>
                     <p className="mx-auto max-w-xl text-base text-foreground/60 font-light leading-relaxed">
-                        Créez vos modules d'apprentissage et commencez à enseigner en moins de 10 minutes. Besoin d'aide pour débuter ? Notre support est là pour vous.
+                        {t('become_trainer_page.ready_subtitle')}
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                         <Button
@@ -304,7 +306,7 @@ export default function BecomeTrainer() {
                                     ?.scrollIntoView({ behavior: 'smooth' })
                             }
                         >
-                            Choisir mon abonnement
+                            {t('become_trainer_page.btn_choose_sub')}
                         </Button>
                         <Button
                             size="lg"
@@ -312,7 +314,7 @@ export default function BecomeTrainer() {
                             className="rounded-full h-12 border border-border/40"
                             asChild
                         >
-                            <Link href="/contact">Nous contacter</Link>
+                            <Link href="/contact">{t('become_trainer_page.btn_contact')}</Link>
                         </Button>
                     </div>
                 </motion.section>

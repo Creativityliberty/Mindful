@@ -16,60 +16,7 @@ import {
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
-
-/* ── données ─────────────────────────────────────────────── */
-
-const infos = [
-    {
-        icon: MapPin,
-        label: 'Adresse',
-        value: 'Paris, France\nCommunauté internationale',
-    },
-    { icon: Phone, label: 'Téléphone', value: '+33 1 00 00 00 00' },
-    { icon: Mail, label: 'Email', value: 'contact@formationsession.com' },
-    {
-        icon: Clock,
-        label: 'Disponibilité',
-        value: 'Lun – Ven : 9h00 – 18h00\nRéponse sous 24h',
-    },
-];
-
-const quickCards = [
-    {
-        icon: BookOpen,
-        titre: 'Nos formations',
-        description:
-            'Questions sur nos cours de bien-être, artisanat, sophrologie ou création.',
-        cta: 'Voir les formations',
-        href: '/courses',
-    },
-    {
-        icon: Building2,
-        titre: 'Devenir formateur',
-        description:
-            'Vous êtes professionnel ou artisan et souhaitez publier vos cours sur FormationSession.',
-        cta: 'Déposer ma candidature',
-        href: '/become-trainer',
-    },
-    {
-        icon: Handshake,
-        titre: 'Partenariat',
-        description:
-            'Entreprise, institution ou association ? Discutons d\'une collaboration.',
-        cta: 'Nous écrire',
-        href: '#contact-form',
-    },
-];
-
-const subjects = [
-    'Renseignement formation',
-    'Devenir formateur',
-    'Problème technique',
-    'Partenariat',
-    'Autre',
-];
-
-/* ── variants ────────────────────────────────────────────── */
+import { useTranslation } from 'react-i18next';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -81,6 +28,55 @@ const fadeUp: Variants = {
 };
 
 export default function Contact() {
+    const { t } = useTranslation();
+
+    const infos = [
+        {
+            icon: MapPin,
+            label: t('contact_page.coord_address'),
+            value: t('contact_page.coord_address_val'),
+        },
+        { icon: Phone, label: t('contact_page.coord_phone'), value: '+33 1 00 00 00 00' },
+        { icon: Mail, label: t('contact_page.coord_email'), value: 'contact@formationsession.com' },
+        {
+            icon: Clock,
+            label: t('contact_page.coord_hours'),
+            value: t('contact_page.coord_hours_val'),
+        },
+    ];
+
+    const quickCards = [
+        {
+            icon: BookOpen,
+            titre: t('contact_page.card1_title'),
+            description: t('contact_page.card1_desc'),
+            cta: t('contact_page.card1_cta'),
+            href: '/courses',
+        },
+        {
+            icon: Building2,
+            titre: t('contact_page.card2_title'),
+            description: t('contact_page.card2_desc'),
+            cta: t('contact_page.card2_cta'),
+            href: '/become-trainer',
+        },
+        {
+            icon: Handshake,
+            titre: t('contact_page.card3_title'),
+            description: t('contact_page.card3_desc'),
+            cta: t('contact_page.card3_cta'),
+            href: '#contact-form',
+        },
+    ];
+
+    const subjects = [
+        { label: t('contact_page.subject_course'), val: 'Renseignement formation' },
+        { label: t('contact_page.subject_trainer'), val: 'Devenir formateur' },
+        { label: t('contact_page.subject_tech'), val: 'Problème technique' },
+        { label: t('contact_page.subject_partner'), val: 'Partenariat' },
+        { label: t('contact_page.subject_other'), val: 'Autre' },
+    ];
+
     const [form, setForm] = useState({
         nom: '',
         email: '',
@@ -112,13 +108,13 @@ export default function Contact() {
                 >
                     <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase backdrop-blur">
                         <MessageSquare className="h-3.5 w-3.5 text-sky-400" />
-                        Parlons-nous
+                        {t('contact_page.badge')}
                     </div>
                     <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl font-sans">
-                        Contactez-nous
+                        {t('contact_page.title')}
                     </h1>
                     <p className="mx-auto max-w-xl text-base md:text-lg text-foreground/60 font-light leading-relaxed">
-                        Une question sur nos formations, votre candidature formateur ou un projet de partenariat ? Notre équipe vous répond sous 24h.
+                        {t('contact_page.subtitle')}
                     </p>
                 </motion.div>
 
@@ -188,10 +184,10 @@ export default function Contact() {
                             <>
                                 <div className="mb-8">
                                     <h2 className="text-2xl font-bold text-foreground font-sans">
-                                        Envoyer un message
+                                        {t('contact_page.form_title')}
                                     </h2>
                                     <p className="text-sm text-foreground/50 font-light mt-1">
-                                        Remplissez le formulaire ci-dessous et nous vous recontacterons rapidement.
+                                        {t('contact_page.form_subtitle')}
                                     </p>
                                 </div>
                                 <form
@@ -202,7 +198,7 @@ export default function Contact() {
                                     <div className="grid gap-6 sm:grid-cols-2">
                                         <div className="space-y-2">
                                             <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
-                                                Nom complet
+                                                {t('contact_page.label_name')}
                                             </label>
                                             <input
                                                 type="text"
@@ -214,13 +210,13 @@ export default function Contact() {
                                                         nom: e.target.value,
                                                     })
                                                 }
-                                                placeholder="Jean Dupont"
+                                                placeholder={t('contact_page.placeholder_name')}
                                                 className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
                                             />
                                         </div>
                                         <div className="space-y-2">
                                             <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
-                                                Email
+                                                {t('contact_page.label_email')}
                                             </label>
                                             <input
                                                 type="email"
@@ -232,7 +228,7 @@ export default function Contact() {
                                                         email: e.target.value,
                                                     })
                                                 }
-                                                placeholder="vous@email.com"
+                                                placeholder={t('contact_page.placeholder_email')}
                                                 className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
                                             />
                                         </div>
@@ -241,7 +237,7 @@ export default function Contact() {
                                     {/* Objet */}
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
-                                            Objet
+                                            {t('contact_page.label_subject')}
                                         </label>
                                         <select
                                             required
@@ -255,14 +251,14 @@ export default function Contact() {
                                             className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
                                         >
                                             <option value="" disabled>
-                                                Sélectionner un objet
+                                                {t('contact_page.select_subject')}
                                             </option>
                                             {subjects.map((s) => (
                                                 <option
-                                                    key={s}
-                                                    value={s}
+                                                    key={s.val}
+                                                    value={s.val}
                                                 >
-                                                    {s}
+                                                    {s.label}
                                                 </option>
                                             ))}
                                         </select>
@@ -271,7 +267,7 @@ export default function Contact() {
                                     {/* Message */}
                                     <div className="space-y-2">
                                         <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
-                                            Message
+                                            {t('contact_page.label_message')}
                                         </label>
                                         <textarea
                                             required
@@ -283,7 +279,7 @@ export default function Contact() {
                                                     message: e.target.value,
                                                 })
                                             }
-                                            placeholder="Décrivez votre demande, question ou projet..."
+                                            placeholder={t('contact_page.placeholder_message')}
                                             className="w-full resize-none rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
                                         />
                                     </div>
@@ -294,7 +290,7 @@ export default function Contact() {
                                         className="w-full gap-2 rounded-full h-12 font-semibold tracking-wider uppercase text-sm"
                                     >
                                         <Send className="h-4 w-4" />
-                                        Envoyer le message
+                                        {t('contact_page.btn_send')}
                                     </Button>
                                 </form>
                             </>
@@ -309,10 +305,10 @@ export default function Contact() {
                                     <CheckCircle2 className="h-8 w-8" />
                                 </div>
                                 <h3 className="mb-2 text-2xl font-bold text-foreground font-sans">
-                                    Message envoyé !
+                                    {t('contact_page.success_title')}
                                 </h3>
                                 <p className="text-sm text-foreground/60 font-light max-w-md">
-                                    Merci pour votre message. Notre équipe vous répondra dans les 24 heures.
+                                    {t('contact_page.success_subtitle')}
                                 </p>
                                 <Button
                                     variant="outline"
@@ -327,7 +323,7 @@ export default function Contact() {
                                         });
                                     }}
                                 >
-                                    Envoyer un autre message
+                                    {t('contact_page.btn_send_another')}
                                 </Button>
                             </motion.div>
                         )}
@@ -344,7 +340,7 @@ export default function Contact() {
                         {/* Coordonnées Card */}
                         <div className="rounded-[2.5rem] border border-border/30 bg-background/50 p-8 backdrop-blur-md shadow-xl space-y-6">
                             <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">
-                                Coordonnées
+                                {t('contact_page.coords_title')}
                             </h3>
                             <ul className="space-y-6">
                                 {infos.map((info) => {
@@ -386,7 +382,7 @@ export default function Contact() {
                                         <MapPin className="h-6 w-6" />
                                     </div>
                                     <span className="rounded-full bg-background/90 border border-border/40 px-4 py-1.5 text-xs font-bold tracking-wider text-foreground shadow-md backdrop-blur uppercase">
-                                        Paris · Rayonnement Mondial
+                                        {t('contact_page.location_badge')}
                                     </span>
                                 </div>
                             </div>

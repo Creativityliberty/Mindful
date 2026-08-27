@@ -6,6 +6,7 @@ import { allArticles } from './blog-data';
 import { ArticleCard } from './partials/article-card';
 import { BlogSidebar } from './partials/blog-sidebar';
 import { FeaturedArticle } from './partials/featured-article';
+import { useTranslation } from 'react-i18next';
 
 const PER_PAGE = 4;
 
@@ -13,6 +14,7 @@ const featured = allArticles.find((a) => a.featured)!;
 const rest = allArticles.filter((a) => !a.featured);
 
 export default function Blog() {
+    const { t } = useTranslation();
     const [search, setSearch] = useState('');
     const [activeCategory, setActiveCategory] = useState('');
     const [page, setPage] = useState(1);
@@ -21,16 +23,16 @@ export default function Blog() {
         let list = rest;
 
         if (activeCategory) {
-list = list.filter((a) => a.categories.includes(activeCategory));
-}
+            list = list.filter((a) => a.categories.includes(activeCategory));
+        }
 
         if (search.trim()) {
-list = list.filter(
+            list = list.filter(
                 (a) =>
                     a.titre.toLowerCase().includes(search.toLowerCase()) ||
                     a.description.toLowerCase().includes(search.toLowerCase()),
             );
-}
+        }
 
         return list;
     }, [search, activeCategory]);
@@ -63,15 +65,13 @@ list = list.filter(
                     className="mb-14 text-center"
                 >
                     <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur">
-                        Ressources & Bien-être
+                        {t('blog_page.badge')}
                     </div>
                     <h1 className="text-4xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        Blog Mindfulness & Bien-être Studio
+                        {t('blog_page.title')}
                     </h1>
                     <p className="mx-auto mt-4 max-w-xl text-foreground/55">
-                        Articles, guides pratiques et réflexions sur le
-                        mindfulness, les chakras, le yoga et l'art de vivre
-                        avec conscience.
+                        {t('blog_page.subtitle')}
                     </p>
                 </motion.div>
 
@@ -95,11 +95,10 @@ list = list.filter(
                         {/* Grille articles */}
                         <div className="mb-10 flex items-end justify-between border-b border-border/30 pb-4">
                             <h2 className="text-lg font-semibold text-foreground">
-                                Dernières publications
+                                {t('blog_page.recent_posts')}
                             </h2>
                             <span className="text-xs font-semibold tracking-widest text-foreground/35 uppercase">
-                                {filtered.length} article
-                                {filtered.length > 1 ? 's' : ''}
+                                {filtered.length} article{filtered.length > 1 ? 's' : ''}
                             </span>
                         </div>
 
@@ -126,10 +125,10 @@ list = list.filter(
                         ) : (
                             <div className="flex flex-col items-center justify-center rounded-2xl border border-border/40 bg-background/60 py-20 text-center backdrop-blur-sm">
                                 <p className="text-base font-medium text-foreground/50">
-                                    Aucun article trouvé
+                                    {t('blog_page.no_articles')}
                                 </p>
                                 <p className="mt-1 text-sm text-foreground/35">
-                                    Essayez d'autres mots-clés
+                                    {t('blog_page.try_keywords')}
                                 </p>
                             </div>
                         )}

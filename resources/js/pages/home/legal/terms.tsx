@@ -1,28 +1,30 @@
 import { Head } from '@inertiajs/react';
-import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 export default function Terms() {
+    const { t } = useTranslation();
+
     return (
         <>
-            <Head title="Mentions Légales - Mindfulness & Bien-être Studio" />
+            <Head title={`${t('legal_pages.terms_title')} - FormationSession`} />
             
             <div className="relative min-h-screen pt-20">
                 <div className="mx-auto max-w-4xl px-6 py-12 md:px-8">
                     <div className="border-b border-border/40 pb-6 mb-10">
                         <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl mb-2">
-                            Mentions Légales
+                            {t('legal_pages.terms_title')}
                         </h1>
-                        <p className="text-sm text-foreground/45">En vigueur le : 17 Juillet 2026</p>
+                        <p className="text-sm text-foreground/45">{t('legal_pages.last_updated')}</p>
                     </div>
 
                     <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground/80 space-y-6">
                         <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">1. Éditeur de la plateforme</h2>
                         <p>
-                            La plateforme <strong>Mindfulness & Bien-être Studio</strong> est éditée par la société fictive <em>Nümtema SAS</em> au capital de 10 000 €, immatriculée au RCS de Paris sous le numéro 123 456 789.
+                            La plateforme <strong>FormationSession</strong> est éditée par la société <em>FormationSession SAS</em> au capital de 10 000 €, immatriculée au RCS de Paris.
                             <br />
-                            Siège social : 12 rue de la Paix, 75002 Paris, France.
+                            Siège social : Paris, France.
                             <br />
-                            Directeur de la publication : Le Responsable Nümtema.
+                            Directeur de la publication : La Direction FormationSession.
                         </p>
 
                         <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">2. Hébergement du site</h2>
@@ -32,12 +34,12 @@ export default function Terms() {
 
                         <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">3. Propriété intellectuelle</h2>
                         <p>
-                            L'intégralité de la plateforme, incluant les logos, les chartes graphiques, l'architecture et les codes sources, est protégée par le droit d'auteur. Les contenus des formations (vidéos, audios de méditation) appartiennent exclusivement aux formateurs et ne peuvent faire l'objet d'aucune reproduction sans autorisation explicite de l'auteur.
+                            L'intégralité de la plateforme, incluant les logos, les chartes graphiques, l'architecture et les codes sources, est protégée par le droit d'auteur. Les contenus des formations appartiennent exclusivement aux formateurs et ne peuvent faire l'objet d'aucune reproduction sans autorisation explicite de l'auteur.
                         </p>
 
                         <h2 className="text-xl font-semibold text-foreground mt-8 mb-4">4. Contact et réclamation</h2>
                         <p>
-                            Pour toute demande légale ou signalement de contenu illicite, veuillez nous envoyer un courrier électronique à l'adresse de support : <strong>hello@mindfulness.com</strong>.
+                            Pour toute demande légale ou signalement, veuillez nous envoyer un courrier électronique à l'adresse de support : <strong>contact@formationsession.com</strong>.
                         </p>
                     </div>
                 </div>

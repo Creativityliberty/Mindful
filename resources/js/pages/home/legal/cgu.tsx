@@ -1,11 +1,14 @@
 import { Head } from '@inertiajs/react';
 import React from 'react';
-import { Mail, FileText, Sparkles } from 'lucide-react';
+import { Mail, FileText } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function CGU() {
+    const { t } = useTranslation();
+
     return (
         <>
-            <Head title="Conditions Générales d'Utilisation - FormationSession" />
+            <Head title={`${t('legal_pages.cgu_title')} - FormationSession`} />
             
             <div className="relative min-h-screen bg-background">
                 {/* Soft ambient background aura */}
@@ -18,12 +21,12 @@ export default function CGU() {
                     <div className="border-b border-border/20 pb-8 mb-16">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase mb-4">
                             <FileText className="h-3.5 w-3.5 text-sky-400" />
-                            Contrats
+                            {t('legal_pages.badge')}
                         </div>
                         <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-serif">
-                            Conditions Générales d'Utilisation
+                            {t('legal_pages.cgu_title')}
                         </h1>
-                        <p className="text-sm text-foreground/45 mt-3">Dernière mise à jour : 17 Juillet 2026</p>
+                        <p className="text-sm text-foreground/45 mt-3">{t('legal_pages.last_updated')}</p>
                     </div>
 
                     {/* Split-Screen Canvas Layout */}
@@ -33,10 +36,10 @@ export default function CGU() {
                         <div className="lg:sticky lg:top-28 space-y-6">
                             <div className="rounded-[2rem] border border-border/30 bg-background/50 p-8 backdrop-blur-md relative overflow-hidden shadow-xl">
                                 <h2 className="text-xl font-bold tracking-tight text-foreground mb-4">
-                                    Cadre d'utilisation clair.
+                                    {t('legal_pages.cgu_sidebar_title')}
                                 </h2>
                                 <p className="text-xs md:text-sm text-foreground/60 leading-relaxed font-light">
-                                    Les présentes Conditions Générales d'Utilisation (CGU) régissent l'accès et l'utilisation de la plateforme FormationSession. En créant un compte, vous acceptez sans réserve ces conditions.
+                                    {t('legal_pages.cgu_sidebar_desc')}
                                 </p>
                                 
                                 <div className="pt-6 border-t border-border/20 mt-6 space-y-4">
@@ -45,7 +48,7 @@ export default function CGU() {
                                             <Mail className="h-4.5 w-4.5" />
                                         </div>
                                         <div>
-                                            <span className="text-[10px] font-bold text-foreground/40 block uppercase">Support Client</span>
+                                            <span className="text-[10px] font-bold text-foreground/40 block uppercase">{t('legal_pages.legal_contact')}</span>
                                             <a href="mailto:contact@formationsession.com" className="text-xs text-foreground/80 hover:text-sky-400 font-semibold transition-colors">
                                                 contact@formationsession.com
                                             </a>

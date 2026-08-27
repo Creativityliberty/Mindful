@@ -1,7 +1,10 @@
-import { motion } from 'framer-motion'
-import { Sparkles } from 'lucide-react'
+import { motion } from 'framer-motion';
+import { Sparkles } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function BecomeTrainerHeader() {
+    const { t } = useTranslation();
+
     return (
         <motion.div
             initial={{ opacity: 0, y: 24 }}
@@ -11,16 +14,14 @@ export function BecomeTrainerHeader() {
         >
             <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-foreground/70 uppercase backdrop-blur dark:border-border/60 dark:bg-background/70">
                 <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
-                Programme formateur
+                {t('become_trainer_page.badge')}
             </div>
             <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                Devenez formateur sur FormationSession
+                {t('become_trainer_page.title')}
             </h1>
             <p className="mt-4 max-w-2xl text-lg text-foreground/60">
-                Partagez votre expertise en radiesthésie, pendule ou équilibrage
-                des chakras avec une communauté engagée. Publiez vos formations,
-                développez votre activité et rejoignez nos formateurs experts.
+                {t('become_trainer_page.subtitle')}
             </p>
         </motion.div>
-    )
+    );
 }

@@ -1,9 +1,10 @@
 import { Head, Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { BookOpen, FileText, ArrowRight, Sparkles, Download, CheckCircle2 } from 'lucide-react';
+import { BookOpen, FileText, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { useTranslation } from 'react-i18next';
 
 type Guide = {
     id: number;
@@ -44,14 +45,12 @@ const guides: Guide[] = [
 ];
 
 export default function Guides() {
+    const { t } = useTranslation();
+
     return (
         <>
             <Head>
-                <title>Guides Pratiques Radiesthésie, Pendule & Chakras | FormationSession</title>
-                <meta
-                    name="description"
-                    content="Découvrez nos guides pratiques téléchargeables et illustrés pour vous initier au pendule, à la radiesthésie et aux soins des chakras."
-                />
+                <title>{`${t('guides_page.title')} | FormationSession`}</title>
             </Head>
 
             <div className="relative min-h-screen">
@@ -69,13 +68,13 @@ export default function Guides() {
                     >
                         <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur">
                             <FileText className="h-3.5 w-3.5 text-primary" />
-                            Ressources & Pratiques
+                            {t('guides_page.badge')}
                         </div>
                         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
-                            Guides Pratiques & Manuels
+                            {t('guides_page.title')}
                         </h1>
                         <p className="mx-auto mt-4 max-w-xl text-base text-muted-foreground">
-                            Des guides illustrés et des fiches méthodologiques pour accompagner votre apprentissage autonome.
+                            {t('guides_page.subtitle')}
                         </p>
                     </motion.div>
 
@@ -111,11 +110,11 @@ export default function Guides() {
                                         <div className="pt-4 border-t border-border/30 flex items-center justify-between">
                                             <span className="text-xs font-semibold text-emerald-500 flex items-center gap-1">
                                                 <CheckCircle2 className="h-3.5 w-3.5" />
-                                                Accès Gratuit
+                                                Gratuit
                                             </span>
                                             <Button size="sm" className="rounded-full gap-1.5 font-semibold" asChild>
                                                 <Link href={`/blog/${guide.slug}`}>
-                                                    Lire le Guide
+                                                    {t('guides_page.view_guide')}
                                                     <ArrowRight className="h-3.5 w-3.5" />
                                                 </Link>
                                             </Button>

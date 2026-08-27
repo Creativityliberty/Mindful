@@ -1,110 +1,96 @@
 import { Link } from '@inertiajs/react';
-import { motion  } from 'framer-motion';
-import type {Variants} from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import {
-    ArrowRight,
     Sparkles,
     ShieldCheck,
     Heart,
     Eye,
-    Award,
-    TrendingUp
+    Award
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-
-const timeline = [
-    {
-        annee: '2026',
-        titre: 'Le Hub Fondateur (Énergétique & Bien-être)',
-        description: 'Consolidation de notre socle historique (Radiesthésie, Chakras, Massages) avec déjà +800 praticiens et élèves actifs.',
-    },
-    {
-        annee: '2027',
-        titre: 'Vague Créative & Esthétique (Artisanat, Bougies, Ongles)',
-        description: 'Ouverture simultanée de la plateforme aux métiers de la création manuelle (bougies artisanales, senteurs) et de la beauté (prothésie ongulaire, nail art).',
-    },
-    {
-        annee: '2028',
-        titre: 'Autonomie & Révolution Digitale (IA & Outils Créateurs)',
-        description: 'Lancement des modules dédiés aux technologies (IA générative, marketing) pour aider nos artisans et praticiens à piloter et vivre sereinement de leur activité.',
-    },
-    {
-        annee: '2029',
-        titre: 'L\'Écosystème National & Métiers de Terrain (Éco-Habitat)',
-        description: 'Extension aux métiers techniques et manuels de terrain (rénovation énergétique, plomberie écologique, éco-habitat).',
-    },
-    {
-        annee: '2030',
-        titre: 'L\'Académie Intégrale des Compétences',
-        description: 'FormationSession devient le hub de référence national, connectant apprentissage en ligne de pointe et ateliers de mise en pratique dans les régions.',
-    },
-];
-
-const equipe = [
-    {
-        nom: 'Marie Lefebvre',
-        role: 'Co-fondatrice & Directrice Académique',
-        bio: 'Praticienne certifiée depuis 14 ans. Marie veille à la rigueur pédagogique et scientifique de nos programmes bien-être.',
-        avatar: '/assets/images/service_chakras_lux.jpg'
-    },
-    {
-        nom: 'Thomas Durand',
-        role: 'Co-fondateur & Directeur Produit',
-        bio: 'Designer digital et passionné d\'apprentissage en ligne. Thomas conçoit une interface épurée et sans friction.',
-        avatar: '/assets/images/service_ia_lux.jpg'
-    },
-    {
-        nom: 'Sarah Chakroun',
-        role: 'Responsable Qualité Formateurs',
-        bio: 'Praticienne et coach certifiée. Sarah accompagne chaque expert pour structurer et sublimer ses cours en ligne.',
-        avatar: '/assets/images/service_certif_lux.jpg'
-    },
-    {
-        nom: 'Antoine Bonneau',
-        role: 'Responsable Communauté',
-        bio: 'Animateur passionné, Antoine veille à l\'entraide entre les étudiants et à la réussite de leur apprentissage.',
-        avatar: '/assets/images/service_acces_lux.jpg'
-    },
-];
-
-const valeurs = [
-    {
-        icon: Heart,
-        titre: 'Bienveillance',
-        description: 'L\'apprentissage requiert un espace sécurisé. Nous favorisons le respect, l\'écoute et l\'entraide au sein de notre communauté.',
-    },
-    {
-        icon: ShieldCheck,
-        titre: 'Authenticité',
-        description: 'Nos formateurs sont des professionnels actifs. Ce qu\'ils enseignent, ils le vivent au quotidien dans leur activité.',
-    },
-    {
-        icon: Eye,
-        titre: 'Accessibilité',
-        description: 'Le savoir-faire ne doit pas être un luxe. Nos formations sont claires, structurées et accessibles sur tous vos écrans.',
-    },
-    {
-        icon: Award,
-        titre: 'Transformation',
-        description: 'Notre but n\'est pas seulement de délivrer de l\'information, mais de vous aider à acquérir de réelles compétences professionnelles.',
-    },
-];
-
-const fadeUp: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.65, ease: 'easeOut' },
-    },
-};
-
-const stagger: Variants = {
-    hidden: {},
-    visible: { transition: { staggerChildren: 0.1 } },
-};
+import { useTranslation } from 'react-i18next';
 
 export default function About() {
+    const { t } = useTranslation();
+
+    const timeline = [
+        {
+            annee: t('about_page.step1_year'),
+            titre: t('about_page.step1_title'),
+            description: t('about_page.step1_desc'),
+        },
+        {
+            annee: t('about_page.step2_year'),
+            titre: t('about_page.step2_title'),
+            description: t('about_page.step2_desc'),
+        },
+        {
+            annee: t('about_page.step3_year'),
+            titre: t('about_page.step3_title'),
+            description: t('about_page.step3_desc'),
+        },
+        {
+            annee: t('about_page.step4_year'),
+            titre: t('about_page.step4_title'),
+            description: t('about_page.step4_desc'),
+        },
+        {
+            annee: t('about_page.step5_year'),
+            titre: t('about_page.step5_title'),
+            description: t('about_page.step5_desc'),
+        },
+    ];
+
+    const equipe = [
+        {
+            nom: t('about_page.team1_name'),
+            role: t('about_page.team1_role'),
+            bio: t('about_page.team1_bio'),
+            avatar: '/assets/images/service_chakras_lux.jpg'
+        },
+        {
+            nom: t('about_page.team2_name'),
+            role: t('about_page.team2_role'),
+            bio: t('about_page.team2_bio'),
+            avatar: '/assets/images/service_ia_lux.jpg'
+        },
+        {
+            nom: t('about_page.team3_name'),
+            role: t('about_page.team3_role'),
+            bio: t('about_page.team3_bio'),
+            avatar: '/assets/images/service_certif_lux.jpg'
+        },
+        {
+            nom: t('about_page.team4_name'),
+            role: t('about_page.team4_role'),
+            bio: t('about_page.team4_bio'),
+            avatar: '/assets/images/service_acces_lux.jpg'
+        },
+    ];
+
+    const valeurs = [
+        {
+            icon: Heart,
+            titre: t('about_page.val1_title'),
+            description: t('about_page.val1_desc'),
+        },
+        {
+            icon: ShieldCheck,
+            titre: t('about_page.val2_title'),
+            description: t('about_page.val2_desc'),
+        },
+        {
+            icon: Eye,
+            titre: t('about_page.val3_title'),
+            description: t('about_page.val3_desc'),
+        },
+        {
+            icon: Award,
+            titre: t('about_page.val4_title'),
+            description: t('about_page.val4_desc'),
+        },
+    ];
+
     return (
         <div className="relative min-h-screen bg-background">
             {/* Background Halo */}
@@ -123,10 +109,10 @@ export default function About() {
                 >
                     <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                         <Sparkles className="h-3.5 w-3.5 text-sky-400" />
-                        Notre Histoire & Vision
+                        {t('about_page.badge')}
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-sans">
-                        Qui sommes-nous ?
+                        {t('about_page.title')}
                     </h1>
                 </motion.div>
 
@@ -134,52 +120,51 @@ export default function About() {
                 <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] items-start border-b border-border/20 pb-20">
                     <div className="space-y-6">
                         <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground font-sans leading-tight">
-                            Une plateforme d'apprentissage dynamique et ouverte.
+                            {t('about_page.main_heading')}
                         </h2>
                         <p className="text-base md:text-lg text-foreground/60 leading-relaxed font-light">
-                            FormationSession a débuté avec une ambition claire : connecter les passionnés de pratiques énergétiques et de bien-être à des formateurs d'expérience. 
+                            {t('about_page.intro_p1')}
                         </p>
                         <p className="text-base text-foreground/60 leading-relaxed font-light">
-                            Mais notre vision va plus loin. Nous pensons que tout savoir-faire de terrain mérite d'être partagé. C'est pourquoi la plateforme s'ouvre progressivement à l'artisanat, aux techniques de création et aux métiers d'avenir.
+                            {t('about_page.intro_p2')}
                         </p>
                     </div>
 
                     {/* Quick Stats Grid */}
                     <div className="grid grid-cols-2 gap-8 p-8 rounded-3xl border border-border/20 bg-secondary/10">
                         <div>
-                            <span className="block text-3xl font-extrabold text-foreground">+800</span>
-                            <span className="text-xs text-foreground/50">Professionnels formés</span>
+                            <span className="block text-3xl font-extrabold text-foreground">{t('about_page.stat1_val')}</span>
+                            <span className="text-xs text-foreground/50">{t('about_page.stat1_lbl')}</span>
                         </div>
                         <div>
-                            <span className="block text-3xl font-extrabold text-foreground">200+</span>
-                            <span className="text-xs text-foreground/50">Mentors certifiés</span>
+                            <span className="block text-3xl font-extrabold text-foreground">{t('about_page.stat2_val')}</span>
+                            <span className="text-xs text-foreground/50">{t('about_page.stat2_lbl')}</span>
                         </div>
                         <div>
-                            <span className="block text-3xl font-extrabold text-foreground">30+</span>
-                            <span className="text-xs text-foreground/50">Pays représentés</span>
+                            <span className="block text-3xl font-extrabold text-foreground">{t('about_page.stat3_val')}</span>
+                            <span className="text-xs text-foreground/50">{t('about_page.stat3_lbl')}</span>
                         </div>
                         <div>
-                            <span className="block text-3xl font-extrabold text-foreground">2026</span>
-                            <span className="text-xs text-foreground/50">Lancement de la Session</span>
+                            <span className="block text-3xl font-extrabold text-foreground">{t('about_page.stat4_val')}</span>
+                            <span className="text-xs text-foreground/50">{t('about_page.stat4_lbl')}</span>
                         </div>
                     </div>
                 </div>
 
-                {/* Timeline / Notre Cheminement (Minimalist vertical track) */}
+                {/* Timeline / Notre Cheminement */}
                 <section className="py-20 border-b border-border/20">
                     <div className="max-w-2xl mb-16 space-y-3">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                            Évolution
+                            {t('about_page.evolution_badge')}
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-sans">
-                            Notre parcours
+                            {t('about_page.evolution_title')}
                         </h2>
                     </div>
 
                     <div className="relative border-l border-border/30 pl-8 ml-4 space-y-12">
                         {timeline.map((item) => (
                             <div key={item.annee} className="relative group">
-                                {/* Bullet indicator on the line */}
                                 <div className="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background transition-colors group-hover:bg-sky-400 group-hover:border-sky-400" />
                                 
                                 <div className="space-y-1.5">
@@ -192,14 +177,14 @@ export default function About() {
                     </div>
                 </section>
 
-                {/* Équipe Section with Circular avatars */}
+                {/* Équipe Section */}
                 <section className="py-20 border-b border-border/20">
                     <div className="max-w-2xl mb-16 space-y-3">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                            L'Équipe
+                            {t('about_page.team_badge')}
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-sans">
-                            Les visages derrière FormationSession
+                            {t('about_page.team_title')}
                         </h2>
                     </div>
 
@@ -223,10 +208,10 @@ export default function About() {
                 <section className="py-20 border-b border-border/20">
                     <div className="max-w-2xl mb-16 space-y-3">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                            Valeurs
+                            {t('about_page.values_badge')}
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-sans">
-                            Ce qui nous guide
+                            {t('about_page.values_title')}
                         </h2>
                     </div>
 
@@ -249,17 +234,17 @@ export default function About() {
                 {/* CTA section */}
                 <section className="py-20 text-center space-y-6">
                     <h2 className="text-3xl md:text-5xl font-bold text-foreground font-sans tracking-tight">
-                        Rejoignez l'aventure FormationSession
+                        {t('about_page.cta_title')}
                     </h2>
                     <p className="mx-auto max-w-xl text-base text-foreground/60 font-light leading-relaxed">
-                        Que vous souhaitiez apprendre, partager votre expertise ou simplement en savoir plus, notre équipe est là pour vous accompagner.
+                        {t('about_page.cta_subtitle')}
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                         <Button size="lg" className="rounded-full px-8 text-sm tracking-wider uppercase font-semibold h-12" asChild>
-                            <Link href="/contact">Nous contacter</Link>
+                            <Link href="/contact">{t('about_page.cta_contact')}</Link>
                         </Button>
                         <Button size="lg" variant="secondary" className="rounded-full h-12 border border-border/40" asChild>
-                            <Link href="/courses">Voir les formations</Link>
+                            <Link href="/courses">{t('about_page.cta_courses')}</Link>
                         </Button>
                     </div>
                 </section>

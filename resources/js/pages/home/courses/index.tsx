@@ -6,6 +6,7 @@ import { CourseCard } from './partials/course-card'
 import { CoursesHeader  } from './partials/courses-header'
 import type {CourseFilters} from './partials/courses-header';
 import type { Course } from './types'
+import { useTranslation } from 'react-i18next'
 
 const PER_PAGE = 6
 
@@ -18,6 +19,7 @@ type PageProps = {
 }
 
 export default function Courses() {
+    const { t } = useTranslation()
     const { courses, categories, trainers } = usePage<PageProps>().props
 
     const [filters, setFilters] = useState<CourseFilters>(defaultFilters)
@@ -107,8 +109,7 @@ list.sort((a, b) => (a.trainer?.name ?? '').localeCompare(b.trainer?.name ?? '')
                     </div>
                 ) : (
                     <div className="flex flex-col items-center justify-center rounded-2xl border border-border/40 bg-background/60 py-20 text-center backdrop-blur-sm">
-                        <p className="text-lg font-medium text-foreground/60">Aucune formation trouvée</p>
-                        <p className="mt-1 text-sm text-foreground/40">Essayez de modifier vos filtres</p>
+                        <p className="text-lg font-medium text-foreground/60">{t('courses_page.no_results')}</p>
                     </div>
                 )}
 

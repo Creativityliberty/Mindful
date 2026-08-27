@@ -7,14 +7,7 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
-
-const sortOptions = [
-    { value: 'popular', label: 'Les plus populaires' },
-    { value: 'rating', label: 'Meilleures notes' },
-    { value: 'price-asc', label: 'Prix croissant' },
-    { value: 'price-desc', label: 'Prix décroissant' },
-    { value: 'trainer', label: 'Par formateur (A–Z)' },
-]
+import { useTranslation } from 'react-i18next'
 
 export type CourseFilters = {
     categories: string[]
@@ -27,9 +20,11 @@ type MultiSelectProps = {
     selected: string[]
     onChange: (selected: string[]) => void
     searchable?: boolean
+    searchPlaceholder?: string
+    noResultsText?: string
 }
 
-function MultiSelect({ label, options, selected, onChange, searchable = false }: MultiSelectProps) {
+function MultiSelect({ label, options, selected, onChange, searchable = false, searchPlaceholder = 'Rechercher...', noResultsText = 'Aucun résultat' }: MultiSelectProps) {
     const [open, setOpen] = useState(false)
 
     const toggle = (value: string) => {
@@ -57,10 +52,10 @@ function MultiSelect({ label, options, selected, onChange, searchable = false }:
             </PopoverTrigger>
             <PopoverContent className="w-56 border-border/40 bg-background/95 p-0 backdrop-blur-md dark:border-border/50" align="start">
                 <Command>
-                    {searchable && <CommandInput placeholder="Rechercher..." className="h-9 text-sm" />}
+                    {searchable && <CommandInput placeholder={searchPlaceholder} className="h-9 text-sm" />}
                     <CommandList>
                         {searchable && (
-                            <CommandEmpty className="py-4 text-center text-sm text-foreground/50">Aucun résultat</CommandEmpty>
+                            <CommandEmpty className="py-4 text-center text-sm text-foreground/50">{noResultsText}</CommandEmpty>
                         )}
                         <CommandGroup>
                             {options.map((option) => {
@@ -96,9 +91,18 @@ type Props = {
 }
 
 export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilters, total, categoryOptions, trainerOptions }: Props) {
+    const { t } = useTranslation()
     const [sortOpen, setSortOpen] = useState(false)
-    const current = sortOptions.find((o) => o.value === sort)
 
+    const sortOptions = [
+        { value: 'popular', label: t('courses_page.sort_popular') },
+        { value: 'rating', label: t('courses_page.sort_rating') },
+        { value: 'price-asc', label: t('courses_page.sort_price_asc') },
+        { value: 'price-desc', label: t('courses_page.sort_price_desc') },
+        { value: 'trainer', label: t('courses_page.sort_trainer') },
+    ]
+
+    const current = sortOptions.find((o) => o.value === sort)
     const activeCount = filters.categories.length + filters.trainers.length
 
     return (
@@ -109,11 +113,12 @@ export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilte
                     Catalogue
                 </div>
                 <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                    Toutes nos formations bien-être
+                    {t('nav.courses')}
                 </h1>
                 <p className="mt-2 text-foreground/60">
-                    <span className="font-medium text-foreground">{total}</span>{' '}
-                    formation{total > 1 ? 's' : ''} disponible{total > 1 ? 's' : ''}
+                    {total > 1
+                        ? t('courses_page.results_count_plural', { count: total })
+                        : t('courses_page.results_count', { count: total })}
                 </p>
             </div>
 
@@ -122,7 +127,7 @@ export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilte
                     <Search className="absolute top-1/2 left-3 h-4 w-4 -translate-y-1/2 text-foreground/40" aria-hidden="true" />
                     <Input
                         type="search"
-                        placeholder="Rechercher une formation, un thème, un formateur..."
+                        placeholder={t('courses_page.search_placeholder')}
                         value={search}
                         onChange={(e) => onSearch(e.target.value)}
                         className="border-border/40 bg-background/60 pl-9 backdrop-blur-sm placeholder:text-foreground/40 focus-visible:border-border/60 dark:border-border/50 dark:bg-background/50"
@@ -137,9 +142,8 @@ export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilte
                             aria-expanded={sortOpen}
                             className="w-full justify-between border-border/40 bg-background/60 backdrop-blur-sm hover:bg-background/80 sm:w-56 dark:border-border/50 dark:bg-background/50"
                         >
-                            <span className="mr-1 text-xs text-foreground/50">Trier :</span>
                             <span className="flex-1 text-left text-sm font-medium text-foreground">
-                                {current?.label ?? 'Les plus populaires'}
+                                {current?.label ?? t('courses_page.sort_popular')}
                             </span>
                             <ChevronsUpDown className="ml-2 h-3.5 w-3.5 shrink-0 text-foreground/40" />
                         </Button>
@@ -153,8 +157,8 @@ export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilte
                                             key={option.value}
                                             value={option.value}
                                             onSelect={(val) => {
- onSort(val); setSortOpen(false) 
-}}
+                                                onSort(val); setSortOpen(false) 
+                                            }}
                                             className="gap-2 text-sm"
                                         >
                                             <Check className={cn('h-4 w-4 text-primary', sort === option.value ? 'opacity-100' : 'opacity-0')} />
@@ -170,13 +174,13 @@ export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilte
 
             <div className="flex flex-wrap items-center gap-2">
                 <MultiSelect
-                    label="Catégorie"
+                    label={t('courses_page.categories_title')}
                     options={categoryOptions}
                     selected={filters.categories}
                     onChange={(categories) => onFilters({ ...filters, categories })}
                 />
                 <MultiSelect
-                    label="Formateur"
+                    label={t('courses_page.trainers_title')}
                     options={trainerOptions}
                     selected={filters.trainers}
                     onChange={(trainers) => onFilters({ ...filters, trainers })}
@@ -190,7 +194,7 @@ export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilte
                         className="inline-flex h-9 items-center gap-1.5 rounded-full border border-border/40 bg-background/60 px-3 text-xs text-foreground/50 transition-colors hover:text-foreground dark:border-border/50 dark:bg-background/50"
                     >
                         <X className="h-3 w-3" />
-                        Effacer ({activeCount})
+                        {t('courses_page.reset_filters')} ({activeCount})
                     </button>
                 )}
             </div>
