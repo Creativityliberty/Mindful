@@ -78,9 +78,9 @@ export function Trainers() {
 
     return (
         <section className="relative overflow-hidden bg-background py-24 md:py-32">
-            {/* Ambient Background Aura */}
+            {/* Ambient Background Aura - Soft sky blue */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-1/3 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.03] blur-[160px]" />
+                <div className="absolute top-1/3 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-400/[0.02] blur-[160px]" />
             </div>
 
             <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-12">

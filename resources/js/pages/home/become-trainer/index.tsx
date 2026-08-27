@@ -95,9 +95,10 @@ export default function BecomeTrainer() {
 
     return (
         <div className="relative min-h-screen bg-background">
-            {/* Ambient Background Aura */}
+            {/* Ambient Background Aura - Changed from deep purple to soft sky blue/cyan */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-primary/[0.02] blur-[150px]" />
+                <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.03] blur-[150px]" />
+                <div className="absolute top-1/3 left-1/3 h-[500px] w-[500px] rounded-full bg-primary/[0.015] blur-[130px]" />
             </div>
 
             <div className="relative w-full px-6 py-12 md:px-10 lg:px-16 max-w-7xl mx-auto">
@@ -110,7 +111,7 @@ export default function BecomeTrainer() {
                     {/* Left Column: Fixed Stature & Info */}
                     <div className="lg:sticky lg:top-28 space-y-8">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                            <Sparkles className="h-3.5 w-3.5 text-primary" />
+                            <Sparkles className="h-3.5 w-3.5 text-sky-400" />
                             Rejoindre l'académie
                         </div>
                         
@@ -175,8 +176,8 @@ export default function BecomeTrainer() {
                             <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">Le parcours en 4 étapes</h3>
                             <div className="grid gap-6 sm:grid-cols-2">
                                 {steps.map((s) => (
-                                    <div key={s.number} className="p-6 rounded-2xl border border-border/20 bg-secondary/10 hover:border-primary/30 transition-colors">
-                                        <span className="text-sm font-bold text-primary block mb-2">{s.number}</span>
+                                    <div key={s.number} className="p-6 rounded-2xl border border-border/20 bg-secondary/10 hover:border-sky-400/40 transition-colors">
+                                        <span className="text-sm font-bold text-sky-400 block mb-2">{s.number}</span>
                                         <h4 className="font-bold text-foreground mb-1">{s.title}</h4>
                                         <p className="text-xs text-foreground/60 leading-relaxed font-light">{s.description}</p>
                                     </div>
@@ -207,13 +208,13 @@ export default function BecomeTrainer() {
                                 key={plan.id}
                                 className={`relative h-full rounded-[2rem] border transition-all duration-300 p-8 flex flex-col justify-between bg-background/50 backdrop-blur-md ${
                                     plan.highlight
-                                        ? 'border-primary shadow-xl shadow-primary/5 scale-105 z-10'
-                                        : 'border-border/30 hover:border-primary/40'
+                                        ? 'border-sky-400/40 shadow-xl shadow-sky-400/5 scale-105 z-10'
+                                        : 'border-border/30 hover:border-sky-400/30'
                                 }`}
                             >
                                 {plan.highlight && (
                                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                                        <span className="rounded-full bg-primary px-4 py-1 text-[10px] font-bold tracking-widest text-primary-foreground uppercase shadow-sm">
+                                        <span className="rounded-full bg-sky-400 text-[10px] font-bold tracking-widest text-white uppercase px-4 py-1 shadow-sm">
                                             Conseillé
                                         </span>
                                     </div>
@@ -236,7 +237,7 @@ export default function BecomeTrainer() {
                                                 key={feature}
                                                 className="flex items-start gap-2.5 text-sm text-foreground/80 leading-relaxed font-light"
                                             >
-                                                <Check className="h-4.5 w-4.5 shrink-0 text-primary mt-0.5" />
+                                                <Check className="h-4.5 w-4.5 shrink-0 text-sky-400 mt-0.5" />
                                                 {feature}
                                             </li>
                                         ))}
@@ -255,7 +256,7 @@ export default function BecomeTrainer() {
                 </section>
 
                 {/* Formateurs / Mentors Section */}
-                <section className="py-20">
+                <section className="py-20 border-b border-border/30">
                     <div className="max-w-2xl mb-12 space-y-3">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             Communauté
@@ -275,6 +276,46 @@ export default function BecomeTrainer() {
                         ))}
                     </div>
                 </section>
+
+                {/* restored Call to Action Section inviting users to launch or contact support */}
+                <motion.section
+                    initial={{ opacity: 0, y: 24 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="py-20 text-center space-y-6"
+                >
+                    <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                        Prêt à commencer ?
+                    </div>
+                    <h2 className="text-3xl md:text-5xl font-bold text-foreground font-serif tracking-tight">
+                        Lancez votre formation dès aujourd'hui
+                    </h2>
+                    <p className="mx-auto max-w-xl text-base text-foreground/60 font-light leading-relaxed">
+                        Créez vos modules d'apprentissage et commencez à enseigner en moins de 10 minutes. Besoin d'aide pour débuter ? Notre support est là pour vous.
+                    </p>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                        <Button
+                            size="lg"
+                            className="rounded-full px-8 text-sm tracking-wider uppercase font-semibold h-12"
+                            onClick={() =>
+                                document
+                                    .getElementById('pricing')
+                                    ?.scrollIntoView({ behavior: 'smooth' })
+                            }
+                        >
+                            Choisir mon abonnement
+                        </Button>
+                        <Button
+                            size="lg"
+                            variant="secondary"
+                            className="rounded-full h-12 border border-border/40"
+                            asChild
+                        >
+                            <Link href="/contact">Nous contacter</Link>
+                        </Button>
+                    </div>
+                </motion.section>
             </div>
         </div>
     );

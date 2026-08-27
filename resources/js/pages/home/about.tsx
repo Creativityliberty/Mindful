@@ -2,70 +2,63 @@ import { Link } from '@inertiajs/react';
 import { motion  } from 'framer-motion';
 import type {Variants} from 'framer-motion';
 import {
-    Heart,
-    Sparkles,
-    Lightbulb,
-    GraduationCap,
-    Users,
     ArrowRight,
-    Globe,
+    Sparkles,
+    ShieldCheck,
+    Heart,
+    Eye,
+    Award,
+    TrendingUp
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-
-/* ── données ─────────────────────────────────────────────── */
 
 const timeline = [
     {
         annee: '2021',
-        titre: 'Naissance de Mindfulness & Bien-être Studio',
-        description:
-            "Fondée à Paris par une équipe de praticiens du bien-être et de passionnés du digital, Mindfulness & Bien-être Studio naît d'une conviction : rendre le mindfulness et les pratiques de bien-être accessibles à tous.",
+        titre: 'La Genèse : FormationSession',
+        description: 'Fondée par des professionnels passionnés du geste et du numérique. Naissance de notre vision : décloisonner la transmission des savoir-faire et des pratiques de terrain.',
     },
     {
-        annee: '2022',
-        titre: 'Premiers formateurs',
-        description:
-            'Sélection et intégration des 20 premiers formateurs certifiés. Lancement des premières formations en méditation, yoga et sophrologie. Plus de 500 étudiants dès la première année.',
+        annee: '2022 - 2023',
+        titre: 'Ancrage dans le Bien-être',
+        description: 'Lancement de nos premières sessions certifiantes de Radiesthésie, de Pendule et d\'Énergétique en Normandie. Plus de 5 000 étudiants nous rejoignent.',
     },
     {
-        annee: '2023',
-        titre: 'Croissance communautaire',
-        description:
-            'Franchissement du cap des 5 000 étudiants actifs. Ouverture du programme chakras et développement spirituel. Lancement des sessions live mensuelles avec les formateurs.',
+        annee: '2024 - 2025',
+        titre: 'Ouverture vers l\'Artisanat',
+        description: 'La plateforme s\'ouvre aux métiers de la création (Bougies artisanales, senteurs) et de l\'esthétique, démontrant notre modèle d\'apprentissage évolutif.',
     },
     {
-        annee: '2024',
-        titre: 'Expansion internationale',
-        description:
-            'Déploiement auprès de la communauté francophone mondiale. Plus de 200 formateurs certifiés, 500 cours disponibles et 10 000 étudiants transformés dans 30 pays.',
+        annee: '2026',
+        titre: 'L\'Académie globale des Métiers',
+        description: 'FormationSession devient le portail de référence pour tous les savoir-faire pratiques : du bien-être holistique aux technologies numériques (IA) et techniques de terrain.',
     },
 ];
 
 const equipe = [
     {
-        initiales: 'ML',
         nom: 'Marie Lefebvre',
-        role: 'Co-fondatrice & Directrice bien-être',
-        bio: 'Enseignante certifiée MBSR depuis 14 ans et psychologue clinicienne. Marie a accompagné plus de 2 000 personnes vers une vie plus sereine.',
+        role: 'Co-fondatrice & Directrice Académique',
+        bio: 'Praticienne certifiée depuis 14 ans. Marie veille à la rigueur pédagogique et scientifique de nos programmes bien-être.',
+        avatar: '/assets/images/service_chakras_lux.jpg'
     },
     {
-        initiales: 'TD',
         nom: 'Thomas Durand',
-        role: 'Co-fondateur & Directeur produit',
-        bio: 'Entrepreneur digital et méditant zen depuis 10 ans. Thomas allie vision technologique et expérience spirituelle pour créer des outils d\'apprentissage transformateurs.',
+        role: 'Co-fondateur & Directeur Produit',
+        bio: 'Designer digital et passionné d\'apprentissage en ligne. Thomas conçoit une interface épurée et sans friction.',
+        avatar: '/assets/images/service_ia_lux.jpg'
     },
     {
-        initiales: 'SC',
         nom: 'Sarah Chakroun',
-        role: 'Responsable formateurs & Qualité',
-        bio: 'Praticienne Ayurveda et coach certifiée ICF. Sarah sélectionne et accompagne nos formateurs pour garantir la qualité et l\'authenticité de chaque cours.',
+        role: 'Responsable Qualité Formateurs',
+        bio: 'Praticienne et coach certifiée. Sarah accompagne chaque expert pour structurer et sublimer ses cours en ligne.',
+        avatar: '/assets/images/service_certif_lux.jpg'
     },
     {
-        initiales: 'AB',
         nom: 'Antoine Bonneau',
-        role: 'Responsable communauté',
-        bio: 'Ancien sophrologue reconverti dans le numérique. Antoine anime notre communauté d\'apprenants et veille à ce que chacun trouve sa place sur Mindfulness & Bien-être Studio.',
+        role: 'Responsable Communauté',
+        bio: 'Animateur passionné, Antoine veille à l\'entraide entre les étudiants et à la réussite de leur apprentissage.',
+        avatar: '/assets/images/service_acces_lux.jpg'
     },
 ];
 
@@ -73,30 +66,24 @@ const valeurs = [
     {
         icon: Heart,
         titre: 'Bienveillance',
-        description:
-            "Chaque interaction sur Mindfulness & Bien-être Studio est guidée par la douceur et le respect. Nous croyons que la transformation durable naît dans un espace sûr et bienveillant.",
+        description: 'L\'apprentissage requiert un espace sécurisé. Nous favorisons le respect, l\'écoute et l\'entraide au sein de notre communauté.',
     },
     {
-        icon: Sparkles,
+        icon: ShieldCheck,
         titre: 'Authenticité',
-        description:
-            'Nos formateurs sont des praticiens actifs et passionnés. Ce qu\'ils enseignent, ils le vivent. Pas de contenu superficiel — seulement des savoirs incarnés.',
+        description: 'Nos formateurs sont des professionnels actifs. Ce qu\'ils enseignent, ils le vivent au quotidien dans leur activité.',
     },
     {
-        icon: Lightbulb,
+        icon: Eye,
         titre: 'Accessibilité',
-        description:
-            "Le bien-être ne devrait pas être un luxe. Nous concevons des formations claires, progressives et adaptées à tous les niveaux, pour rendre ces pratiques accessibles à chacun.",
+        description: 'Le savoir-faire ne doit pas être un luxe. Nos formations sont claires, structurées et accessibles sur tous vos écrans.',
     },
     {
-        icon: GraduationCap,
+        icon: Award,
         titre: 'Transformation',
-        description:
-            "Notre mission n'est pas de transmettre des informations, mais de catalyser de vraies transformations. Chaque cours est conçu pour produire des changements durables dans la vie réelle.",
+        description: 'Notre but n\'est pas seulement de délivrer de l\'information, mais de vous aider à acquérir de réelles compétences professionnelles.',
     },
 ];
-
-/* ── variants ────────────────────────────────────────────── */
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -112,310 +99,167 @@ const stagger: Variants = {
     visible: { transition: { staggerChildren: 0.1 } },
 };
 
-/* ── composant ───────────────────────────────────────────── */
-
 export default function About() {
     return (
-        <div className="relative min-h-screen">
-            {/* ── Hero ───────────────────────────────────────────── */}
-            <section className="relative overflow-hidden py-32 md:py-44">
-                {/* background image */}
-                <div className="absolute inset-0 z-0">
-                    <img
-                        src="/assets/images/about_studio.jpg"
-                        alt=""
-                        aria-hidden="true"
-                        className="h-full w-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-background/88 backdrop-blur-sm dark:bg-background/92" />
-                </div>
+        <div className="relative min-h-screen bg-background">
+            {/* Background Halo */}
+            <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.02] blur-[150px]" />
+            </div>
 
-                <div className="relative z-10 mx-auto max-w-4xl px-4 text-center md:px-6">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                    >
-                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur">
-                            Qui sommes-nous
-                        </div>
-                        <h1 className="mb-6 text-4xl font-semibold tracking-tight text-foreground md:text-6xl">
-                            Éveiller, former,{' '}
-                            <span className="text-foreground/40">
-                                transformer
-                            </span>
-                        </h1>
-                        <p className="mx-auto max-w-2xl text-lg leading-relaxed text-foreground/60">
-                            Mindfulness & Bien-être Studio est une plateforme dédiée au bien-être, à
-                            la pleine conscience et au développement personnel —
-                            où formateurs certifiés et apprenants motivés se
-                            retrouvent pour une transformation durable.
-                        </p>
-                    </motion.div>
+            <div className="relative w-full px-6 py-12 md:px-10 lg:px-16 max-w-7xl mx-auto">
+                
+                {/* Header Section */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-16 text-center space-y-4"
+                >
+                    <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                        <Sparkles className="h-3.5 w-3.5 text-sky-400" />
+                        Notre Histoire & Vision
+                    </div>
+                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-serif">
+                        Qui sommes-nous ?
+                    </h1>
+                </motion.div>
 
-                    <motion.div
-                        initial={{ opacity: 0, y: 16 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5, delay: 0.25 }}
-                        className="mt-10 flex flex-wrap items-center justify-center gap-4"
-                    >
-                        <div className="flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-5 py-2.5 text-sm backdrop-blur">
-                            <GraduationCap className="h-4 w-4 text-primary/70" />
-                            <span className="font-semibold text-foreground">
-                                10 000+
-                            </span>
-                            <span className="text-foreground">
-                                étudiants transformés
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-5 py-2.5 text-sm backdrop-blur">
-                            <Users className="h-4 w-4 text-primary/70" />
-                            <span className="font-semibold text-foreground">
-                                200+
-                            </span>
-                            <span className="text-foreground">
-                                formateurs certifiés
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-5 py-2.5 text-sm backdrop-blur">
-                            <Globe className="h-4 w-4 text-primary/70" />
-                            <span className="font-semibold text-foreground">
-                                30+
-                            </span>
-                            <span className="text-foreground">
-                                pays représentés
-                            </span>
-                        </div>
-                    </motion.div>
-                </div>
-            </section>
-
-            {/* ── Histoire / Timeline ────────────────────────────── */}
-            <section className="relative py-24 md:py-32">
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                    <div className="absolute top-1/2 right-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-primary/[0.2] blur-[160px] dark:bg-primary/[0.06]" />
-                </div>
-
-                <div className="relative mx-auto max-w-5xl px-4 md:px-6">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeUp}
-                        className="mb-16 text-center"
-                    >
-                        <p className="mb-2 text-xs font-semibold tracking-[0.25em] text-foreground/40 uppercase">
-                            Depuis 2021
-                        </p>
-                        <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            Notre histoire
+                {/* Split-Screen Section: Vision and Mission */}
+                <div className="grid gap-16 lg:grid-cols-[1.1fr_1fr] items-start border-b border-border/20 pb-20">
+                    <div className="space-y-6">
+                        <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground font-serif leading-tight">
+                            Une plateforme d'apprentissage dynamique et ouverte.
                         </h2>
-                    </motion.div>
+                        <p className="text-base md:text-lg text-foreground/60 leading-relaxed font-light">
+                            FormationSession a débuté avec une ambition claire : connecter les passionnés de pratiques énergétiques et de bien-être à des formateurs d'expérience. 
+                        </p>
+                        <p className="text-base text-foreground/60 leading-relaxed font-light">
+                            Mais notre vision va plus loin. Nous pensons que tout savoir-faire de terrain mérite d'être partagé. C'est pourquoi la plateforme s'ouvre progressivement à l'artisanat, aux techniques de création et aux métiers d'avenir.
+                        </p>
+                    </div>
 
-                    {/* timeline verticale */}
-                    <div className="relative">
-                        {/* ligne centrale desktop */}
-                        <div className="absolute top-0 left-1/2 hidden h-full w-px -translate-x-1/2 bg-border lg:block" />
-
-                        <div className="flex flex-col gap-12">
-                            {timeline.map((item, i) => (
-                                <motion.div
-                                    key={item.annee}
-                                    initial="hidden"
-                                    whileInView="visible"
-                                    viewport={{ once: true, margin: '-60px' }}
-                                    variants={fadeUp}
-                                    className={`relative flex flex-col gap-4 lg:flex-row lg:gap-0 ${
-                                        i % 2 === 0
-                                            ? 'lg:flex-row'
-                                            : 'lg:flex-row-reverse'
-                                    }`}
-                                >
-                                    {/* contenu */}
-                                    <div
-                                        className={`lg:w-[calc(50%-2rem)] ${i % 2 === 0 ? 'lg:pr-12 lg:text-right' : 'lg:pl-12'}`}
-                                    >
-                                        <Card className="border-border/40 bg-background/60 backdrop-blur-sm dark:border-border/50 dark:bg-background/50">
-                                            <CardContent className="p-6">
-                                                <p className="mb-1 text-xs font-bold tracking-[0.2em] text-primary/60 uppercase">
-                                                    {item.annee}
-                                                </p>
-                                                <h3 className="mb-2 text-lg font-semibold text-foreground">
-                                                    {item.titre}
-                                                </h3>
-                                                <p className="text-sm leading-relaxed text-foreground/60">
-                                                    {item.description}
-                                                </p>
-                                            </CardContent>
-                                        </Card>
-                                    </div>
-
-                                    {/* nœud central */}
-                                    <div className="hidden lg:flex lg:w-16 lg:shrink-0 lg:items-center lg:justify-center">
-                                        <div className="z-10 flex h-8 w-8 items-center justify-center rounded-full border-2 border-primary/40 bg-background text-xs font-bold text-primary/70">
-                                            {String(i + 1).padStart(2, '0')}
-                                        </div>
-                                    </div>
-
-                                    {/* espace vide côté opposé */}
-                                    <div className="hidden lg:block lg:w-[calc(50%-2rem)]" />
-                                </motion.div>
-                            ))}
+                    {/* Quick Stats Grid */}
+                    <div className="grid grid-cols-2 gap-8 p-8 rounded-3xl border border-border/20 bg-secondary/10">
+                        <div>
+                            <span className="block text-3xl font-extrabold text-foreground">10K+</span>
+                            <span className="text-xs text-foreground/50">Étudiants formés</span>
+                        </div>
+                        <div>
+                            <span className="block text-3xl font-extrabold text-foreground">200+</span>
+                            <span className="text-xs text-foreground/50">Mentors certifiés</span>
+                        </div>
+                        <div>
+                            <span className="block text-3xl font-extrabold text-foreground">30+</span>
+                            <span className="text-xs text-foreground/50">Pays représentés</span>
+                        </div>
+                        <div>
+                            <span className="block text-3xl font-extrabold text-foreground">2021</span>
+                            <span className="text-xs text-foreground/50">Lancement de la Session</span>
                         </div>
                     </div>
                 </div>
-            </section>
 
-            {/* ── Équipe ─────────────────────────────────────────── */}
-            <section className="relative py-24 md:py-32">
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                    <div className="absolute top-1/2 left-0 h-[500px] w-[500px] -translate-y-1/2 rounded-full bg-foreground/[0.02] blur-[150px]" />
-                </div>
-
-                <div className="relative mx-auto max-w-7xl px-4 md:px-6">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeUp}
-                        className="mb-16 text-center"
-                    >
-                        <p className="mb-2 text-xs font-semibold tracking-[0.25em] text-foreground/40 uppercase">
-                            Les personnes derrière la plateforme
-                        </p>
-                        <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            Notre équipe
+                {/* Timeline / Notre Cheminement (Minimalist vertical track) */}
+                <section className="py-20 border-b border-border/20">
+                    <div className="max-w-2xl mb-16 space-y-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                            Évolution
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-serif">
+                            Notre parcours
                         </h2>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: '-80px' }}
-                        variants={stagger}
-                        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-                    >
-                        {equipe.map((membre) => (
-                            <motion.div key={membre.nom} variants={fadeUp}>
-                                <Card className="group h-full border-border/40 bg-background/60 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-lg dark:border-border/50 dark:bg-background/50">
-                                    <CardContent className="p-6">
-                                        {/* avatar */}
-                                        <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary/10 text-lg font-semibold text-primary">
-                                            {membre.initiales}
-                                        </div>
-                                        <h3 className="mb-1 font-semibold text-foreground">
-                                            {membre.nom}
-                                        </h3>
-                                        <p className="mb-4 text-xs font-medium text-primary/70">
-                                            {membre.role}
-                                        </p>
-                                        <p className="text-sm leading-relaxed text-foreground/55">
-                                            {membre.bio}
-                                        </p>
-                                    </CardContent>
-                                </Card>
-                            </motion.div>
+                    <div className="relative border-l border-border/30 pl-8 ml-4 space-y-12">
+                        {timeline.map((item) => (
+                            <div key={item.annee} className="relative group">
+                                {/* Bullet indicator on the line */}
+                                <div className="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background transition-colors group-hover:bg-sky-400 group-hover:border-sky-400" />
+                                
+                                <div className="space-y-1.5">
+                                    <span className="text-xs font-bold text-sky-400 tracking-wider uppercase">{item.annee}</span>
+                                    <h3 className="text-lg font-bold text-foreground">{item.titre}</h3>
+                                    <p className="text-sm text-foreground/60 leading-relaxed font-light max-w-3xl">{item.description}</p>
+                                </div>
+                            </div>
                         ))}
-                    </motion.div>
-                </div>
-            </section>
+                    </div>
+                </section>
 
-            {/* ── Valeurs ────────────────────────────────────────── */}
-            <section className="relative py-24 md:py-32">
-                <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                    <div className="absolute top-1/2 left-1/2 h-[600px] w-[600px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-primary/[0.03] blur-[180px] dark:bg-primary/[0.07]" />
-                </div>
-
-                <div className="relative mx-auto max-w-7xl px-4 md:px-6">
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeUp}
-                        className="mb-16 text-center"
-                    >
-                        <p className="mb-2 text-xs font-semibold tracking-[0.25em] text-foreground/40 uppercase">
-                            Ce qui nous guide
-                        </p>
-                        <h2 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                            Nos valeurs
+                {/* Équipe Section with Circular avatars */}
+                <section className="py-20 border-b border-border/20">
+                    <div className="max-w-2xl mb-16 space-y-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                            L'Équipe
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-serif">
+                            Les visages derrière FormationSession
                         </h2>
-                    </motion.div>
+                    </div>
 
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: '-80px' }}
-                        variants={stagger}
-                        className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
-                    >
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                        {equipe.map((membre) => (
+                            <div key={membre.nom} className="space-y-4 text-center sm:text-left">
+                                <div className="relative h-20 w-20 rounded-full border border-border/30 overflow-hidden mx-auto sm:mx-0 shadow-sm">
+                                    <img src={membre.avatar} alt={membre.nom} className="h-full w-full object-cover" />
+                                </div>
+                                <div className="space-y-1">
+                                    <h3 className="font-bold text-foreground">{membre.nom}</h3>
+                                    <span className="text-xs text-sky-400 font-semibold block">{membre.role}</span>
+                                    <p className="text-xs text-foreground/50 leading-relaxed font-light pt-2">{membre.bio}</p>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+
+                {/* Valeurs Section */}
+                <section className="py-20 border-b border-border/20">
+                    <div className="max-w-2xl mb-16 space-y-3">
+                        <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                            Valeurs
+                        </div>
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-serif">
+                            Ce qui nous guide
+                        </h2>
+                    </div>
+
+                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
                         {valeurs.map((val) => {
                             const Icon = val.icon;
-
                             return (
-                                <motion.div key={val.titre} variants={fadeUp}>
-                                    <Card className="h-full border-border/40 bg-background/60 backdrop-blur-sm dark:border-border/50 dark:bg-background/50">
-                                        <CardContent className="p-8">
-                                            <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-xl bg-primary/10">
-                                                <Icon className="h-5 w-5 text-primary" />
-                                            </div>
-                                            <h3 className="mb-3 text-lg font-semibold text-foreground">
-                                                {val.titre}
-                                            </h3>
-                                            <p className="text-sm leading-relaxed text-foreground/60">
-                                                {val.description}
-                                            </p>
-                                        </CardContent>
-                                    </Card>
-                                </motion.div>
+                                <div key={val.titre} className="space-y-3">
+                                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-400/10 text-sky-400">
+                                        <Icon className="h-5 w-5" />
+                                    </div>
+                                    <h3 className="font-bold text-foreground">{val.titre}</h3>
+                                    <p className="text-xs md:text-sm text-foreground/60 leading-relaxed font-light">{val.description}</p>
+                                </div>
                             );
                         })}
-                    </motion.div>
-                </div>
-            </section>
+                    </div>
+                </section>
 
-            {/* ── CTA ────────────────────────────────────────────── */}
-            <section className="relative py-20 md:py-28">
-                <motion.div
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true }}
-                    variants={fadeUp}
-                    className="mx-auto max-w-3xl px-4 text-center md:px-6"
-                >
-                    <h2 className="mb-5 text-3xl font-semibold tracking-tight text-foreground md:text-4xl">
-                        Rejoignez l'aventure Mindfulness & Bien-être Studio
+                {/* CTA section */}
+                <section className="py-20 text-center space-y-6">
+                    <h2 className="text-3xl md:text-5xl font-bold text-foreground font-serif tracking-tight">
+                        Rejoignez l'aventure FormationSession
                     </h2>
-                    <p className="mb-10 text-lg text-foreground/55">
-                        Que vous souhaitiez apprendre, partager votre expertise
-                        ou simplement en savoir plus, notre équipe est là pour
-                        vous accompagner.
+                    <p className="mx-auto max-w-xl text-base text-foreground/60 font-light leading-relaxed">
+                        Que vous souhaitiez apprendre, partager votre expertise ou simplement en savoir plus, notre équipe est là pour vous accompagner.
                     </p>
-                    <div className="flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
-                        <Button
-                            size="lg"
-                            className="gap-2 rounded-full px-8"
-                            asChild
-                        >
-                            <Link href="/contact">
-                                Nous contacter
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                        <Button size="lg" className="rounded-full px-8 text-sm tracking-wider uppercase font-semibold h-12" asChild>
+                            <Link href="/contact">Nous contacter</Link>
                         </Button>
-                        <Button
-                            size="lg"
-                            variant="outline"
-                            className="gap-2 rounded-full border-border/40 bg-background/60 px-8 backdrop-blur hover:bg-background/80"
-                            asChild
-                        >
-                            <Link href="/courses">
-                                Voir les formations
-                                <ArrowRight className="h-4 w-4" />
-                            </Link>
+                        <Button size="lg" variant="secondary" className="rounded-full h-12 border border-border/40" asChild>
+                            <Link href="/courses">Voir les formations</Link>
                         </Button>
                     </div>
-                </motion.div>
-            </section>
+                </section>
+
+            </div>
         </div>
     );
 }
