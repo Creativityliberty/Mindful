@@ -1,5 +1,5 @@
 import { Link, usePage } from '@inertiajs/react';
-import { BookOpen, CreditCard, FolderGit2, GraduationCap, LayoutGrid } from 'lucide-react';
+import { BookOpen, CreditCard, FolderGit2, GraduationCap, LayoutGrid, Mail } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -15,15 +15,17 @@ import {
 import type { NavItem } from '@/types';
 import adminCourses from '@/actions/App/Http/Controllers/Admin/Courses/CourseController';
 import adminPlans from '@/actions/App/Http/Controllers/Admin/Plans/PlanController';
+import adminNewsletter from '@/actions/App/Http/Controllers/Admin/NewsletterController';
 import studentCourses from '@/actions/App/Http/Controllers/Student/Courses/CourseController';
 import trainerCourses from '@/actions/App/Http/Controllers/Trainer/Courses/CourseController';
 import admin from '@/routes/admin';
 import student from '@/routes/student';
 import trainer from '@/routes/trainer';
 
-
+import { useTranslation } from 'react-i18next';
 
 export function AppSidebar() {
+    const { t } = useTranslation();
     const { auth } = usePage().props;
     const user = auth.user;
 
@@ -35,28 +37,37 @@ export function AppSidebar() {
 
     const mainNavItems: NavItem[] = [
         {
-            title: 'Dashboard',
+            title: t('sidebar.dashboard'),
             href: dashboardHref,
             icon: LayoutGrid,
         },
         ...(user?.is_admin
             ? [
                   {
-                      title: 'Gestion des Cours',
+                      title: t('sidebar.manage_courses'),
                       href: adminCourses.index(),
                       icon: FolderGit2,
                   },
                   {
-                      title: 'Plans formateurs',
+                      title: t('sidebar.trainer_plans'),
                       href: adminPlans.index(),
                       icon: CreditCard,
                   },
+                  ...(user?.can_manage_newsletter
+                      ? [
+                            {
+                                title: t('sidebar.newsletter'),
+                                href: adminNewsletter.index(),
+                                icon: Mail,
+                            },
+                        ]
+                      : []),
               ]
             : []),
         ...(user?.is_trainer && !user?.is_admin
             ? [
                   {
-                      title: 'Mes Cours',
+                      title: t('sidebar.my_courses'),
                       href: trainerCourses.index(),
                       icon: FolderGit2,
                   },
@@ -65,7 +76,7 @@ export function AppSidebar() {
         ...(user?.is_student && !user?.is_admin && !user?.is_trainer
             ? [
                   {
-                      title: 'Mes Formations',
+                      title: t('sidebar.my_trainings'),
                       href: studentCourses.index(),
                       icon: GraduationCap,
                   },

@@ -10,23 +10,25 @@ import StripeConnectController from '@/actions/App/Http/Controllers/Trainer/Stri
 import { edit as editAppearance } from '@/routes/appearance';
 import { edit } from '@/routes/profile';
 import { edit as editSecurity } from '@/routes/security';
+import { useTranslation } from 'react-i18next';
 
 export default function SettingsLayout({ children }: PropsWithChildren) {
+    const { t } = useTranslation();
     const { isCurrentOrParentUrl } = useCurrentUrl();
     const { auth } = usePage().props;
 
     const sidebarNavItems: NavItem[] = [
-        { title: 'Profile', href: edit(), icon: null },
-        { title: 'Security', href: editSecurity(), icon: null },
-        { title: 'Appearance', href: editAppearance(), icon: null },
+        { title: t('settings.profile'), href: edit(), icon: null },
+        { title: t('settings.security'), href: editSecurity(), icon: null },
+        { title: t('settings.appearance'), href: editAppearance(), icon: null },
         ...(auth.user?.is_trainer ? [{ title: 'Stripe Connect', href: StripeConnectController.edit.url(), icon: null }] : []),
     ];
 
     return (
         <div className="px-4 py-6">
             <Heading
-                title="Settings"
-                description="Manage your profile and account settings"
+                title={t('settings.title')}
+                description={t('settings.subtitle')}
             />
 
             <div className="flex flex-col lg:flex-row lg:space-x-12">

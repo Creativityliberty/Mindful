@@ -3,6 +3,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import { useEffect, useRef } from 'react';
+import { useTranslation } from 'react-i18next';
 
 type Point = {
     x: number;
@@ -18,7 +19,9 @@ interface WaveConfig {
 }
 
 export function Cta() {
+    const { t } = useTranslation();
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
+
     const mouseRef = useRef<Point>({ x: 0, y: 0 });
     const targetMouseRef = useRef<Point>({ x: 0, y: 0 });
 
@@ -257,15 +260,15 @@ export function Cta() {
                     className="mx-auto max-w-3xl rounded-[2.5rem] border border-border/40 bg-background/50 px-8 py-16 text-center backdrop-blur-md md:px-16 dark:border-border/50"
                 >
                     <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                        Commencez dès aujourd’hui
+                        {t('cta.badge')}
                     </div>
 
                     <h2 className="mb-5 text-3xl font-bold tracking-tight text-foreground md:text-5xl font-sans">
-                        Révélez et transmettez votre savoir-faire.
+                        {t('cta.title')}
                     </h2>
 
                     <p className="mx-auto mb-10 max-w-2xl text-base md:text-lg text-foreground/60 font-light leading-relaxed">
-                        Que vous souhaitiez vous initier aux pratiques énergétiques, maîtriser la création de bougies artisanales, le stylisme de l'ongle, ou automatiser votre activité avec l'IA, accédez à des formations de qualité dispensées par des professionnels passionnés.
+                        {t('cta.description')}
                     </p>
 
                     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -275,7 +278,7 @@ export function Cta() {
                             asChild
                         >
                             <Link href="/courses" preserveState prefetch>
-                                Explorer les formations
+                                {t('cta.explore_btn')}
                                 <ArrowRight
                                     className="h-4 w-4 transition-transform group-hover:translate-x-1"
                                     aria-hidden="true"
@@ -290,7 +293,7 @@ export function Cta() {
                             asChild
                         >
                             <Link href="/become-trainer" preserveState prefetch>
-                                Devenir formateur
+                                {t('cta.become_trainer_btn')}
                             </Link>
                         </Button>
                     </div>

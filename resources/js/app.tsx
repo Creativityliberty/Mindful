@@ -6,6 +6,7 @@ import AppLayout from '@/layouts/app-layout';
 import AuthLayout from '@/layouts/auth-layout';
 import HomeLayout from '@/layouts/home/home-layout';
 import SettingsLayout from '@/layouts/settings/layout';
+import '@/i18n/config';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';

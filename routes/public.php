@@ -19,6 +19,7 @@ Route::inertia('glossaire', 'home/glossary')->name('glossary');
 Route::inertia('guides', 'home/guides')->name('guides');
 Route::inertia('contact', 'home/contact')->name('contact');
 Route::inertia('realisations', 'home/realisations/index')->name('realisations');
+Route::post('newsletter/subscribe', [\App\Http\Controllers\Admin\NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 
 // Plateforme & Communauté
 Route::inertia('comment-ca-marche', 'home/how-it-works')->name('how-it-works');

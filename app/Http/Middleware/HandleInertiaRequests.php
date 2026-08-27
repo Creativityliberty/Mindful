@@ -52,6 +52,7 @@ class HandleInertiaRequests extends Middleware
                         'is_admin' => $request->user()->isAdmin(),
                         'is_trainer' => $request->user()->isTrainer(),
                         'is_student' => $request->user()->isStudent(),
+                        'can_manage_newsletter' => $request->user()->canManageNewsletter(),
                     ],
                 ) : null,
             ],

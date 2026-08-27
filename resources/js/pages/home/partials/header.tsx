@@ -6,6 +6,8 @@ import { Link, router, usePage } from '@inertiajs/react';
 import type { Auth, User } from '@/types';
 import { Button, buttonVariants } from '@/components/ui/button';
 import ThemeToggle from './ThemeToggle';
+import LanguageSelector from '@/components/language-selector';
+import { useTranslation } from 'react-i18next';
 import { MenuToggleIcon } from './menu-toggle-icon';
 import Logo from './logo';
 import { login, logout, register, about, contact } from '@/routes';
@@ -15,6 +17,7 @@ import becomeTrainer from '@/actions/App/Http/Controllers/Public/BecomeTrainer/T
 import admin from '@/routes/admin';
 import trainer from '@/routes/trainer';
 import student from '@/routes/student';
+
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -89,10 +92,19 @@ function UserMenu({ user }: { user: User }) {
 export function Header() {
     const [open, setOpen] = React.useState(false);
     const scrolled = useScroll(10);
+    const { t } = useTranslation();
     const { auth, canRegister } = usePage<{
         auth: Auth;
         canRegister?: boolean;
     }>().props;
+
+    const navLinks = [
+        { label: t('nav.courses'), href: publicCourses.index.url() },
+        { label: t('nav.become_trainer'), href: becomeTrainer.index.url() },
+        { label: t('nav.blog'), href: '/blog' },
+        { label: t('nav.about'), href: about.url() },
+        { label: t('nav.contact'), href: contact.url() },
+    ];
 
     const hasRole = auth.user?.is_admin || auth.user?.is_trainer || auth.user?.is_student;
 
@@ -127,7 +139,7 @@ export function Header() {
 
                     {/* liens — centre flex */}
                     <div className="hidden lg:flex items-center justify-center gap-1 xl:gap-2 flex-1">
-                        {simpleLinks.map((link) => (
+                        {navLinks.map((link) => (
                             <Link
                                 key={link.label}
                                 href={link.href}
@@ -139,7 +151,8 @@ export function Header() {
                     </div>
 
                     {/* CTA — droite écran */}
-                    <div className="hidden lg:flex items-center justify-end gap-2 shrink-0 lg:w-[250px]">
+                    <div className="hidden lg:flex items-center justify-end gap-2 shrink-0 lg:w-[320px]">
+                        <LanguageSelector />
                         {auth.user ? (
                             hasRole ? (
                                 <Button
@@ -147,7 +160,7 @@ export function Header() {
                                     className="shrink-0 rounded-full h-8 px-4 text-xs font-medium"
                                     asChild
                                 >
-                                    <Link href={dashboardHrefFor(auth.user)}>Dashboard</Link>
+                                    <Link href={dashboardHrefFor(auth.user)}>{t('nav.dashboard')}</Link>
                                 </Button>
                             ) : (
                                 <UserMenu user={auth.user} />
@@ -159,14 +172,14 @@ export function Header() {
                                     className="shrink-0 rounded-full h-8 px-4 text-xs font-medium"
                                     asChild
                                 >
-                                    <Link href={login()}>Connexion</Link>
+                                    <Link href={login()}>{t('nav.login')}</Link>
                                 </Button>
                                 {canRegister !== false && (
                                     <Button
                                         className="shrink-0 rounded-full h-8 px-4 text-xs font-medium"
                                         asChild
                                     >
-                                        <Link href={register()}>S'inscrire</Link>
+                                        <Link href={register()}>{t('nav.register')}</Link>
                                     </Button>
                                 )}
                             </>
@@ -211,21 +224,27 @@ function MobileMenu({
     auth: Auth;
     canRegister?: boolean;
 }) {
+    const { t } = useTranslation();
     const hasRole = auth.user?.is_admin || auth.user?.is_trainer || auth.user?.is_student;
+
+    const navLinks = [
+        { label: t('nav.courses'), href: publicCourses.index.url() },
+        { label: t('nav.become_trainer'), href: becomeTrainer.index.url() },
+        { label: t('nav.blog'), href: '/blog' },
+        { label: t('nav.about'), href: about.url() },
+        { label: t('nav.contact'), href: contact.url() },
+    ];
 
     if (!open || typeof window === 'undefined') return null;
 
     return createPortal(
         <div
             id="mobile-menu"
-            className="fixed top-[80px] right-0 bottom-0 left-0 z-40 flex flex-col overflow-hidden border-y border-border/30 bg-background/95 backdrop-blur-lg supports-[backdrop-filter]:bg-background/50 lg:hidden"
+            className="fixed inset-0 z-50 flex flex-col bg-background/95 backdrop-blur-md px-6 pt-20 pb-8 lg:hidden overflow-y-auto"
         >
-            <div
-                data-slot={open ? 'open' : 'closed'}
-                className="flex size-full flex-col justify-between overflow-y-auto p-4 ease-out data-[slot=open]:animate-in data-[slot=open]:zoom-in-97"
-            >
+            <div className="flex flex-col gap-6">
                 <div className="flex flex-col gap-1">
-                    {simpleLinks.map((link) => (
+                    {navLinks.map((link) => (
                         <a
                             key={link.label}
                             className={buttonVariants({
@@ -241,10 +260,13 @@ function MobileMenu({
 
                 <div className="flex flex-col gap-3 border-t border-border/30 pt-4">
                     <div className="flex items-center justify-between px-1">
-                        <span className="text-xs font-medium text-foreground/40">
-                            Apparence
+                        <span className="text-xs font-medium text-foreground/60">
+                            Langue & Thème
                         </span>
-                        <ThemeToggle />
+                        <div className="flex items-center gap-2">
+                            <LanguageSelector />
+                            <ThemeToggle />
+                        </div>
                     </div>
 
                     {auth.user ? (

@@ -32,6 +32,8 @@ import {
     TableRow,
 } from './table';
 
+import { useTranslation } from 'react-i18next';
+
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
@@ -47,6 +49,7 @@ export function DataTable<TData, TValue>({
     facetedFilters,
     actionButton,
 }: DataTableProps<TData, TValue>) {
+    const { t } = useTranslation();
     const [rowSelection, setRowSelection] = React.useState({});
     const [columnVisibility, setColumnVisibility] =
         React.useState<VisibilityState>({});
@@ -163,9 +166,9 @@ return false;
                             <TableRow>
                                 <TableCell
                                     colSpan={columns.length}
-                                    className="h-24 text-center"
+                                    className="h-24 text-center text-muted-foreground"
                                 >
-                                    No results.
+                                    {t('table.no_results')}
                                 </TableCell>
                             </TableRow>
                         )}

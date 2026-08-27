@@ -2,20 +2,7 @@ import { Button } from '@/components/ui/button';
 import { motion, type Variants } from 'framer-motion';
 import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from '@inertiajs/react';
-
-// Pills fonctionnalités clés - Clean design
-const highlightPills = [
-    'Bien-être & Énergies',
-    'Artisanat & Créations',
-    'Mentors certifiés',
-] as const;
-
-// Statistiques adaptées au projet - Real numbers
-const heroStats: { label: string; value: string }[] = [
-    { label: 'Professionnels formés', value: '+800' },
-    { label: 'Domaines d\'apprentissage', value: 'Savoir-faire' },
-    { label: 'Approche pédagogique', value: '100% Pratique' },
-];
+import { useTranslation } from 'react-i18next';
 
 const containerVariants: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -45,13 +32,27 @@ const statsVariants: Variants = {
 };
 
 export function Hero() {
+    const { t } = useTranslation();
+
+    const highlightPills = [
+        t('hero.pill1'),
+        t('hero.pill2'),
+        t('hero.pill3'),
+    ];
+
+    const heroStats = [
+        { label: t('hero.stat1_label'), value: t('hero.stat1_val') },
+        { label: t('hero.stat2_label'), value: t('hero.stat2_val') },
+        { label: t('hero.stat3_label'), value: t('hero.stat3_val') },
+    ];
+
     return (
         <section
             className="relative isolate flex min-h-screen w-full items-center overflow-hidden bg-background"
             role="region"
             aria-label="Hero FormationSession"
         >
-            {/* fond avec dégradés - Changed to soft sky blue */}
+            {/* fond avec dégradés - Soft sky blue */}
             <div className="pointer-events-none absolute inset-0 z-0">
                 <div className="absolute top-0 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-sky-400/[0.015] blur-[140px]" />
                 <div className="absolute right-0 bottom-0 h-[360px] w-[360px] rounded-full bg-primary/[0.01] blur-[120px]" />
@@ -85,7 +86,7 @@ export function Hero() {
                             className="h-4 w-4 text-sky-400"
                             aria-hidden="true"
                         />
-                        L'académie du geste et du savoir-faire
+                        {t('hero.badge')}
                     </motion.div>
 
                     <motion.div
@@ -103,9 +104,9 @@ export function Hero() {
                             }}
                             className="mb-6 text-4xl font-bold tracking-tight text-foreground md:text-6xl lg:text-7xl font-sans"
                         >
-                            Découvrez, pratiquez
+                            {t('hero.title_part1')}
                             <br />
-                            et avancez à votre rythme
+                            {t('hero.title_part2')}
                         </motion.h1>
                     </motion.div>
 
@@ -113,7 +114,7 @@ export function Hero() {
                         variants={itemVariants}
                         className="mx-auto lg:mx-0 mb-10 max-w-2xl text-base md:text-lg text-foreground/60 font-light leading-relaxed"
                     >
-                        Explorez des formations immersives pour maîtriser l'artisanat, le bien-être et les savoir-faire créatifs. Une plateforme d'apprentissage pratique guidée par des professionnels passionnés.
+                        {t('hero.description')}
                     </motion.p>
 
                     <motion.div
@@ -126,7 +127,7 @@ export function Hero() {
                             asChild
                         >
                             <Link href="/courses">
-                                Explorer les formations
+                                {t('hero.explore_btn')}
                                 <ArrowRight
                                     className="h-4 w-4 transition-transform group-hover:translate-x-1"
                                     aria-hidden="true"
@@ -141,7 +142,7 @@ export function Hero() {
                             asChild
                         >
                             <Link href="/become-trainer">
-                                Devenir formateur
+                                {t('hero.become_trainer_btn')}
                             </Link>
                         </Button>
                     </motion.div>

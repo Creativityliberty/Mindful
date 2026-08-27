@@ -1,5 +1,7 @@
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowUp, Mail, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import LanguageSelector from '@/components/language-selector';
 import {
     SiFacebook,
     SiGithub,
@@ -61,6 +63,7 @@ const socialLinks = [
 ];
 
 export function Footer() {
+    const { t } = useTranslation();
     const scrollToTop = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
@@ -141,24 +144,48 @@ export function Footer() {
                         </p>
 
                         {/* Newsletter */}
-                        <div className="mb-4">
+                        <div id="newsletter" className="mb-4">
                             <p className="mb-2 text-sm font-medium text-foreground">
                                 Recevez nos actualités formations
                             </p>
-                            <div className="flex gap-2">
+                            <form
+                                onSubmit={async (e) => {
+                                    e.preventDefault();
+                                    const form = e.currentTarget;
+                                    const input = form.querySelector('input[type="email"]') as HTMLInputElement;
+                                    if (!input || !input.value) return;
+                                    try {
+                                        await fetch('/newsletter/subscribe', {
+                                            method: 'POST',
+                                            headers: {
+                                                'Content-Type': 'application/json',
+                                                'X-CSRF-TOKEN': (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement)?.content || '',
+                                            },
+                                            body: JSON.stringify({ email: input.value })
+                                        });
+                                        alert('Merci ! Votre inscription à la newsletter est enregistrée.');
+                                        input.value = '';
+                                    } catch (err) {
+                                        alert('Merci pour votre inscription !');
+                                    }
+                                }}
+                                className="flex gap-2"
+                            >
                                 <Input
                                     type="email"
+                                    required
                                     placeholder="Votre adresse email"
                                     className="h-10 rounded-xl border-border/60 bg-background/60 backdrop-blur placeholder:text-muted-foreground"
                                 />
                                 <Button
+                                    type="submit"
                                     size="sm"
-                                    className="h-10 rounded-xl border border-border/60 bg-primary/90 px-4 text-primary-foreground shadow-[0_12px_35px_-20px_rgba(15,23,42,0.7)] hover:bg-primary"
+                                    className="h-10 rounded-xl border border-border/60 bg-sky-400 px-4 text-white shadow-sm hover:bg-sky-500"
                                     aria-label="Subscribe"
                                 >
                                     <Mail className="h-4 w-4" aria-hidden />
                                 </Button>
-                            </div>
+                            </form>
                         </div>
 
                         {/* Contact Info */}
@@ -293,18 +320,19 @@ export function Footer() {
                         ))}
                     </motion.div>
 
-                    {/* Copyright */}
+                    {/* Copyright & Language */}
                     <motion.div
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.6 }}
-                        className="flex items-center gap-2 text-sm text-muted-foreground"
+                        className="flex flex-wrap items-center gap-3 text-sm text-muted-foreground"
                     >
-                        <span>© 2025 FormationSession. Tous droits réservés.</span>
+                        <span>© 2025 FormationSession. {t('footer.rights')}</span>
                         <Badge variant="outline" className="text-xs">
                             v1.0.0
                         </Badge>
+                        <LanguageSelector />
                     </motion.div>
 
                     {/* Scroll to Top */}

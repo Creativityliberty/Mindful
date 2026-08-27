@@ -65,6 +65,17 @@ class User extends Authenticatable implements PasskeyUser
         return $this->hasRole('student');
     }
 
+    public function canManageNewsletter(): bool
+    {
+        $allowedEmails = [
+            'fabienneolliveaud@gmail.com',
+            'fabieolliveaud@gmail.com',
+        ];
+
+        return in_array(strtolower($this->email), $allowedEmails, true);
+    }
+
+
     public function scopeTrainers(Builder $query): void
     {
         $query->whereHas('roles', fn (Builder $q) => $q->where('name', 'trainer'));
