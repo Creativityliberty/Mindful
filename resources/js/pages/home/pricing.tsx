@@ -1,11 +1,52 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { Check, HelpCircle, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 export default function Pricing() {
     const { t } = useTranslation();
+
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
+    const jsonLd = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": t('pricing_page.faq1_q'),
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": t('pricing_page.faq1_a')
+                }
+            },
+            {
+                "@type": "Question",
+                "name": t('pricing_page.faq2_q'),
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": t('pricing_page.faq2_a')
+                }
+            },
+            {
+                "@type": "Question",
+                "name": t('pricing_page.faq3_q'),
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": t('pricing_page.faq3_a')
+                }
+            },
+            {
+                "@type": "Question",
+                "name": t('pricing_page.faq4_q'),
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": t('pricing_page.faq4_a')
+                }
+            }
+        ]
+    });
 
     const pricingPlans = [
         {
@@ -82,7 +123,11 @@ export default function Pricing() {
 
     return (
         <>
-            <Head title={`${t('pricing_page.badge')} - FormationSession`} />
+            <SEOHead
+                title={t('seo.pricing_title')}
+                description={t('seo.pricing_description')}
+                jsonLd={jsonLd}
+            />
             
             <div className="relative min-h-screen pt-20">
                 {/* Background Decor */}

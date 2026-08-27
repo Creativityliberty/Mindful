@@ -4,10 +4,45 @@ import { useState } from 'react';
 import { ArrowRight, Sparkles, Check, User, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 export default function HowItWorks() {
     const { t } = useTranslation();
     const [activeTab, setActiveTab] = useState<'student' | 'trainer'>('student');
+
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
+    const jsonLd = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": t('seo.how_it_works_title'),
+        "description": t('seo.how_it_works_description'),
+        "step": [
+            {
+                "@type": "HowToStep",
+                "position": 1,
+                "name": t('how_it_works_page.student_step1_title'),
+                "text": t('how_it_works_page.student_step1_desc')
+            },
+            {
+                "@type": "HowToStep",
+                "position": 2,
+                "name": t('how_it_works_page.student_step2_title'),
+                "text": t('how_it_works_page.student_step2_desc')
+            },
+            {
+                "@type": "HowToStep",
+                "position": 3,
+                "name": t('how_it_works_page.student_step3_title'),
+                "text": t('how_it_works_page.student_step3_desc')
+            },
+            {
+                "@type": "HowToStep",
+                "position": 4,
+                "name": t('how_it_works_page.student_step4_title'),
+                "text": t('how_it_works_page.student_step4_desc')
+            }
+        ]
+    });
 
     const studentSteps = [
         {
@@ -56,7 +91,13 @@ export default function HowItWorks() {
     ];
 
     return (
-        <div className="relative min-h-screen bg-background">
+        <>
+            <SEOHead
+                title={t('seo.how_it_works_title')}
+                description={t('seo.how_it_works_description')}
+                jsonLd={jsonLd}
+            />
+            <div className="relative min-h-screen bg-background">
             {/* Soft Ambient Sky Blue Aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.02] blur-[150px]" />
@@ -213,5 +254,6 @@ export default function HowItWorks() {
 
             </div>
         </div>
-    );
+    </>
+);
 }

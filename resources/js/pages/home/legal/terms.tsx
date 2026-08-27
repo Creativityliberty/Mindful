@@ -1,12 +1,16 @@
-import { Head } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 export default function Terms() {
     const { t } = useTranslation();
 
     return (
         <>
-            <Head title={`${t('legal_pages.terms_title')} - FormationSession`} />
+            <SEOHead
+                title={t('seo.terms_title')}
+                description={t('seo.terms_description')}
+                noIndex
+            />
             
             <div className="relative min-h-screen pt-20">
                 <div className="mx-auto max-w-4xl px-6 py-12 md:px-8">

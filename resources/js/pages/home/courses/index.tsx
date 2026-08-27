@@ -7,6 +7,7 @@ import { CoursesHeader  } from './partials/courses-header'
 import type {CourseFilters} from './partials/courses-header';
 import type { Course } from './types'
 import { useTranslation } from 'react-i18next'
+import { SEOHead } from '@/components/seo-head'
 
 const PER_PAGE = 6
 
@@ -21,6 +22,31 @@ type PageProps = {
 export default function Courses() {
     const { t } = useTranslation()
     const { courses, categories, trainers } = usePage<PageProps>().props
+
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
+    const jsonLd = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "@id": `${origin}/courses#formations`,
+        "name": t('seo.courses_title'),
+        "numberOfItems": courses.length,
+        "itemListElement": courses.map((course, i) => ({
+            "@type": "ListItem",
+            "position": i + 1,
+            "url": `${origin}/courses/${course.slug}`,
+            "item": {
+                "@type": "Course",
+                "name": course.title,
+                "description": course.description,
+                "url": `${origin}/courses/${course.slug}`,
+                "provider": {
+                    "@type": "Organization",
+                    "name": "FormationSession",
+                    "url": origin
+                }
+            }
+        }))
+    });
 
     const [filters, setFilters] = useState<CourseFilters>(defaultFilters)
     const [search, setSearch] = useState('')
@@ -81,7 +107,13 @@ list.sort((a, b) => (a.trainer?.name ?? '').localeCompare(b.trainer?.name ?? '')
 }
 
     return (
-        <div className="relative min-h-screen">
+        <>
+            <SEOHead
+                title={t('seo.courses_title')}
+                description={t('seo.courses_description')}
+                jsonLd={jsonLd}
+            />
+            <div className="relative min-h-screen">
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/[0.03] blur-[150px] dark:bg-primary/[0.06]" />
             </div>
@@ -150,5 +182,6 @@ list.sort((a, b) => (a.trainer?.name ?? '').localeCompare(b.trainer?.name ?? '')
                 )}
             </div>
         </div>
-    )
+    </>
+)
 }

@@ -15,4 +15,5 @@ test('public pages return a successful response', function (string $route) {
     'legal.cgu',
     'legal.cookies',
     'legal.terms',
+    'sitemap',
 ]);

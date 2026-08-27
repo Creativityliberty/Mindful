@@ -90,6 +90,14 @@ final readonly class SeoData
             'alternateName' => $altName,
             'inLanguage' => $locale,
             'publisher' => ['@id' => "{$url}#organization"],
+            'potentialAction' => [
+                '@type' => 'SearchAction',
+                'target' => [
+                    '@type' => 'EntryPoint',
+                    'urlTemplate' => "{$url}/courses?search={search_term_string}",
+                ],
+                'query-input' => 'required name=search_term_string',
+            ],
         ];
 
         $webPage = [

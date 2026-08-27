@@ -1,10 +1,11 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import { BookOpen, FileText, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 type Guide = {
     id: number;
@@ -49,9 +50,10 @@ export default function Guides() {
 
     return (
         <>
-            <Head>
-                <title>{`${t('guides_page.title')} | FormationSession`}</title>
-            </Head>
+            <SEOHead
+                title={t('seo.guides_title')}
+                description={t('seo.guides_description')}
+            />
 
             <div className="relative min-h-screen">
                 <div className="pointer-events-none absolute inset-0 overflow-hidden">

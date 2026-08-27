@@ -1,4 +1,4 @@
-import { Head, Link } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import { BookOpen, Search, ArrowRight } from 'lucide-react';
 import { useState, useMemo } from 'react';
@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 type GlossaryTerm = {
     term: string;
@@ -97,9 +98,10 @@ export default function Glossary() {
 
     return (
         <>
-            <Head>
-                <title>{`${t('glossary_page.title')} | FormationSession`}</title>
-            </Head>
+            <SEOHead
+                title={t('seo.glossary_title')}
+                description={t('seo.glossary_description')}
+            />
 
             <div className="relative min-h-screen">
                 <div className="pointer-events-none absolute inset-0 overflow-hidden">

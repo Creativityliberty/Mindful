@@ -7,6 +7,7 @@ import { ArticleCard } from './partials/article-card';
 import { BlogSidebar } from './partials/blog-sidebar';
 import { FeaturedArticle } from './partials/featured-article';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 const PER_PAGE = 4;
 
@@ -18,6 +19,28 @@ export default function Blog() {
     const [search, setSearch] = useState('');
     const [activeCategory, setActiveCategory] = useState('');
     const [page, setPage] = useState(1);
+
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
+    const jsonLd = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "@id": `${origin}/blog#blog`,
+        "name": t('seo.blog_title'),
+        "description": t('seo.blog_description'),
+        "publisher": {
+            "@type": "Organization",
+            "name": "FormationSession",
+            "url": origin
+        },
+        "blogPost": allArticles.map((art) => ({
+            "@type": "BlogPosting",
+            "headline": art.titre,
+            "description": art.description,
+            "url": `${origin}/blog/${art.slug}`,
+            "datePublished": art.date,
+            "image": art.image.startsWith('http') ? art.image : `${origin}${art.image}`
+        }))
+    });
 
     const filtered = useMemo(() => {
         let list = rest;
@@ -50,7 +73,13 @@ export default function Blog() {
     };
 
     return (
-        <div className="relative min-h-screen">
+        <>
+            <SEOHead
+                title={t('seo.blog_title')}
+                description={t('seo.blog_description')}
+                jsonLd={jsonLd}
+            />
+            <div className="relative min-h-screen">
             {/* blob décoratif */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-1/2 h-[500px] w-[500px] -translate-x-1/2 rounded-full bg-primary/[0.03] blur-[160px] dark:bg-primary/[0.06]" />
@@ -186,5 +215,6 @@ export default function Blog() {
                 </div>
             </div>
         </div>
-    );
+    </>
+);
 }

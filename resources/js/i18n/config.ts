@@ -22,8 +22,9 @@ i18n
             escapeValue: false, // React already escapes values
         },
         detection: {
-            order: ['localStorage', 'navigator'],
-            caches: ['localStorage'],
+            order: ['querystring', 'cookie', 'localStorage', 'navigator'],
+            lookupQuerystring: 'lng',
+            caches: ['localStorage', 'cookie'],
         },
     });
 

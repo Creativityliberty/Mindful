@@ -1,2 +1,9 @@
 User-agent: *
-Disallow:
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /trainer/
+Disallow: /student/
+Disallow: /become-trainer/checkout/
+Disallow: /courses/*/checkout
+
+Sitemap: https://formationsession.com/sitemap.xml

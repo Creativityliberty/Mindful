@@ -9,9 +9,26 @@ import {
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 export default function About() {
     const { t } = useTranslation();
+
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
+    const jsonLd = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "@id": `${origin}/about#webpage`,
+        "url": `${origin}/about`,
+        "name": `${t('seo.about_title')} | FormationSession`,
+        "description": t('seo.about_description'),
+        "isPartOf": {
+            "@type": "WebSite",
+            "@id": `${origin}/#website`,
+            "url": origin,
+            "name": "FormationSession"
+        }
+    });
 
     const timeline = [
         {
@@ -92,7 +109,13 @@ export default function About() {
     ];
 
     return (
-        <div className="relative min-h-screen bg-background">
+        <>
+            <SEOHead
+                title={t('seo.about_title')}
+                description={t('seo.about_description')}
+                jsonLd={jsonLd}
+            />
+            <div className="relative min-h-screen bg-background">
             {/* Background Halo */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.02] blur-[150px]" />
@@ -251,5 +274,6 @@ export default function About() {
 
             </div>
         </div>
-    );
+    </>
+);
 }

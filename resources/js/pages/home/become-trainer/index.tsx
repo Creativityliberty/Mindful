@@ -6,10 +6,35 @@ import type { Plan } from '@/types';
 import { BecomeTrainerHeader } from './partials/become-trainer-header';
 import { TrainerCard, type TrainerProfile } from './partials/trainer-card';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 export default function BecomeTrainer() {
     const { t } = useTranslation();
     const { auth, plans } = usePage<{ plans: Plan[] }>().props;
+
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
+    const jsonLd = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "Quelles sont les commissions sur FormationSession ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Nous proposons deux formules : le Plan Libre avec 15% de commission sur vos ventes (sans abonnement), et le Plan Pro à 29€/mois avec 0% de commission."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Comment fonctionne l'hébergement des cours ?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "L'hébergement vidéo est illimité et inclus dans tous nos plans. Vous disposez d'un espace de création complet pour concevoir vos modules et leçons."
+                }
+            }
+        ]
+    });
 
     const benefits = [
         {
@@ -92,7 +117,13 @@ export default function BecomeTrainer() {
     }
 
     return (
-        <div className="relative min-h-screen bg-background">
+        <>
+            <SEOHead
+                title={t('seo.become_trainer_title')}
+                description={t('seo.become_trainer_description')}
+                jsonLd={jsonLd}
+            />
+            <div className="relative min-h-screen bg-background">
             {/* Ambient Background Aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.03] blur-[150px]" />
@@ -320,5 +351,6 @@ export default function BecomeTrainer() {
                 </motion.section>
             </div>
         </div>
-    );
+    </>
+);
 }

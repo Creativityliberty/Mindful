@@ -1,14 +1,19 @@
-import { Head } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import React from 'react';
 import { Mail, FileText } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 export default function CGU() {
     const { t } = useTranslation();
 
     return (
         <>
-            <Head title={`${t('legal_pages.cgu_title')} - FormationSession`} />
+            <SEOHead
+                title={t('seo.cgu_title')}
+                description={t('seo.cgu_description')}
+                noIndex
+            />
             
             <div className="relative min-h-screen bg-background">
                 {/* Soft ambient background aura */}

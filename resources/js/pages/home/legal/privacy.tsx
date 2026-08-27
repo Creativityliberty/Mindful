@@ -1,14 +1,19 @@
-import { Head } from '@inertiajs/react';
+import { Link } from '@inertiajs/react';
 import React from 'react';
 import { Mail, ShieldCheck } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 export default function Privacy() {
     const { t } = useTranslation();
 
     return (
         <>
-            <Head title={`${t('legal_pages.privacy_title')} - FormationSession`} />
+            <SEOHead
+                title={t('seo.privacy_title')}
+                description={t('seo.privacy_description')}
+                noIndex
+            />
             
             <div className="relative min-h-screen bg-background">
                 {/* Soft ambient background aura */}

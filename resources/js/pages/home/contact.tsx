@@ -17,6 +17,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
+import { SEOHead } from '@/components/seo-head';
 
 const fadeUp: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -29,6 +30,34 @@ const fadeUp: Variants = {
 
 export default function Contact() {
     const { t } = useTranslation();
+    const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
+    const jsonLd = JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ContactPage",
+        "@id": `${origin}/contact#webpage`,
+        "url": `${origin}/contact`,
+        "name": `${t('seo.contact_title')} | FormationSession`,
+        "description": t('seo.contact_description'),
+        "isPartOf": {
+            "@type": "WebSite",
+            "@id": `${origin}/#website`,
+            "url": origin,
+            "name": "FormationSession"
+        },
+        "mainEntity": {
+            "@type": "Organization",
+            "@id": `${origin}/#organization`,
+            "name": "FormationSession",
+            "url": origin,
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+33 1 23 45 67 89",
+                "contactType": "customer service",
+                "email": "contact@formationsession.com",
+                "availableLanguage": ["French", "English"]
+            }
+        }
+    });
 
     const infos = [
         {
@@ -91,7 +120,13 @@ export default function Contact() {
     };
 
     return (
-        <div className="relative min-h-screen bg-background">
+        <>
+            <SEOHead
+                title={t('seo.contact_title')}
+                description={t('seo.contact_description')}
+                jsonLd={jsonLd}
+            />
+            <div className="relative min-h-screen bg-background">
             {/* Soft ambient background aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.025] blur-[160px]" />
@@ -391,5 +426,6 @@ export default function Contact() {
                 </div>
             </div>
         </div>
-    );
+    </>
+);
 }
