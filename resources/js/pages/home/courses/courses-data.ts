@@ -931,4 +931,111 @@ export const allCourses: Course[] = [
             },
         ],
     },
+    {
+        id: 7,
+        image: '/assets/images/service_chakras_lux.jpg',
+        category: 'Chakras',
+        title: 'Le Plexus Solaire : Centre de Pouvoir, Confiance et Transformation',
+        description:
+            'Comprenez la symbolique du 3e chakra (Manipura), identifiez ses déséquilibres et maîtrisez des outils concrets de réharmonisation pour renforcer votre estime de soi.',
+        price: '89 €',
+        duration: '5h de contenu',
+        language: 'Français',
+        studentCount: 124,
+        moduleCount: 4,
+        rating: 4.9,
+        benefits: [
+            'Accès à vie',
+            'Méditations guidées incluses',
+            'Playlist vibratoire 528 Hz',
+            'Fiches mémo litho & aromathérapie',
+            'Attestation de complétion',
+        ],
+        modules: [
+            {
+                number: 1,
+                title: 'Introduction au plexus solaire',
+                duration: '1h 15 min',
+                lessons: [
+                    { title: 'Définition et localisation énergétique (Manipura)', duration: '20 min', free: true },
+                    { title: 'Son rôle dans le système des chakras', duration: '25 min', free: true },
+                    { title: 'Correspondances physiques et physiologiques (pancréas, estomac)', duration: '30 min' },
+                ],
+            },
+            {
+                number: 2,
+                title: 'Symbolique et influence émotionnelle',
+                duration: '1h 20 min',
+                lessons: [
+                    { title: 'Pouvoir personnel, confiance en soi et volonté', duration: '30 min' },
+                    { title: 'Signes du plexus déséquilibré (excès de contrôle, colères)', duration: '25 min' },
+                    { title: 'Études de cas & Détox émotionnelle', duration: '25 min' },
+                ],
+            },
+            {
+                number: 3,
+                title: 'Équilibrer et activer le plexus solaire',
+                duration: '1h 30 min',
+                lessons: [
+                    { title: 'Exercices de respiration (respiration solaire, cohérence)', duration: '25 min' },
+                    { title: 'Méditations guidées quotidiennes et mantras (RAM)', duration: '30 min' },
+                    { title: 'Postures de yoga (planche, bateau, torsion)', duration: '20 min' },
+                    { title: 'Exercice minute de soulagement des tensions', duration: '15 min' },
+                ],
+            },
+            {
+                number: 4,
+                title: 'Nutrition et mode de vie pour stimuler le plexus',
+                duration: '1h 10 min',
+                lessons: [
+                    { title: 'Aliments associés au feu digestif (curcuma, gingembre)', duration: '25 min' },
+                    { title: 'Hygiène de vie dynamique et exposition solaire', duration: '25 min' },
+                    { title: 'Utilisation des minéraux (citrine) et huiles essentielles', duration: '20 min' },
+                ],
+            },
+        ],
+        trainer: {
+            initials: 'FD',
+            name: 'Fabienne D.',
+            role: 'Formatrice Certifiée',
+            bio: 'Certifiée en radiesthésie et harmonisation des centres énergétiques.',
+            courseCount: 3,
+            studentCount: '850+',
+        },
+        objectives: [
+            {
+                icon: CheckCircle2,
+                title: 'Comprendre l\'anatomie énergétique',
+                description: 'Maîtriser la symbolique et la physiologie associée au 3e chakra.',
+            },
+            {
+                icon: CheckCircle2,
+                title: 'Identifier les déséquilibres',
+                description: 'Repérer les signes physiques et émotionnels d\'un plexus bloqué.',
+            },
+            {
+                icon: CheckCircle2,
+                title: 'Maîtriser les outils de réharmonisation',
+                description: 'Utiliser le yoga, la méditation, la lithothérapie et les huiles essentielles.',
+            },
+            {
+                icon: CheckCircle2,
+                title: 'Renforcer l\'estime de soi',
+                description: 'Développer son pouvoir personnel et sa confiance au quotidien.',
+            },
+        ],
+        prerequisites: [
+            'Aucun prérequis nécessaire',
+            'Avoir un pendule ou une pierre de citrine est un plus',
+        ],
+        reviews: [
+            {
+                initials: 'AD',
+                name: 'Audrey D.',
+                role: 'Élève — Rouen',
+                text: 'Une formation très complète et immédiatement actionnable. Les exercices minute font un bien fou au ventre.',
+                rating: 5,
+            },
+        ],
+    },
 ];
