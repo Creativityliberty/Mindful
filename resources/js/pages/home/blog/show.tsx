@@ -16,6 +16,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { allArticles } from './blog-data';
 import { SEOHead } from '@/components/seo-head';
+import { generateArticleSchema } from '@/lib/seo-schema';
 
 type Props = {
     slug: string;
@@ -27,26 +28,7 @@ export default function BlogShow() {
     const article = allArticles.find((a) => a.slug === slug) ?? allArticles[0];
 
     const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
-    const jsonLd = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BlogPosting",
-        "@id": `${origin}/blog/${article.slug}#post`,
-        "headline": article.titre,
-        "description": article.description,
-        "datePublished": article.date,
-        "url": `${origin}/blog/${article.slug}`,
-        "image": article.image.startsWith('http') ? article.image : `${origin}${article.image}`,
-        "author": {
-            "@type": "Organization",
-            "name": "FormationSession",
-            "url": origin
-        },
-        "publisher": {
-            "@type": "Organization",
-            "name": "FormationSession",
-            "url": origin
-        }
-    });
+    const jsonLd = generateArticleSchema(article, origin);
 
     return (
         <>

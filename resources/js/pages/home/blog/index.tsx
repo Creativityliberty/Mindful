@@ -8,6 +8,7 @@ import { BlogSidebar } from './partials/blog-sidebar';
 import { FeaturedArticle } from './partials/featured-article';
 import { useTranslation } from 'react-i18next';
 import { SEOHead } from '@/components/seo-head';
+import { generateBlogSchema } from '@/lib/seo-schema';
 
 const PER_PAGE = 4;
 
@@ -21,26 +22,7 @@ export default function Blog() {
     const [page, setPage] = useState(1);
 
     const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
-    const jsonLd = JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Blog",
-        "@id": `${origin}/blog#blog`,
-        "name": t('seo.blog_title'),
-        "description": t('seo.blog_description'),
-        "publisher": {
-            "@type": "Organization",
-            "name": "FormationSession",
-            "url": origin
-        },
-        "blogPost": allArticles.map((art) => ({
-            "@type": "BlogPosting",
-            "headline": art.titre,
-            "description": art.description,
-            "url": `${origin}/blog/${art.slug}`,
-            "datePublished": art.date,
-            "image": art.image.startsWith('http') ? art.image : `${origin}${art.image}`
-        }))
-    });
+    const jsonLd = generateBlogSchema(allArticles, origin, t('seo.blog_title'), t('seo.blog_description'));
 
     const filtered = useMemo(() => {
         let list = rest;

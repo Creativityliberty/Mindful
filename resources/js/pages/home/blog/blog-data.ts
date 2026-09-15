@@ -7,20 +7,96 @@ export type Article = {
   description: string
   duree: string
   date: string
+  dateIso?: string
+  keywords?: string[]
+  articleSection?: string
+  author?: {
+    name: string
+    role: string
+  }
   featured?: boolean
 }
 
 export const allArticles: Article[] = [
   {
+    id: 10,
+    slug: 'guide-complet-lithotherapie-mineraux-chakras',
+    image: '/assets/images/course_lithotherapie_mineraux.jpg',
+    categories: ['Lithothérapie', 'Chakras', 'Minéraux'],
+    titre: 'Guide Complet de la Lithothérapie : Pouvoir des Minéraux et Réharmonisation des Chakras',
+    description: 'Explorez les fondements de la lithothérapie consciente : comment reconnaître les pierres brutes et polies, les purifier par l\'eau ou la fumigation, les recharger à la lune et équilibrer vos 7 chakras.',
+    duree: '15 min',
+    date: '15 sept. 2026',
+    dateIso: '2026-09-15T09:00:00+02:00',
+    keywords: [
+      'lithothérapie',
+      'pouvoir des minéraux',
+      'purification des cristaux',
+      'rechargement des pierres',
+      'harmonisation des chakras',
+      'améthyste vertus',
+      'quartz rose',
+      'bracelet chemin de vie',
+      'formation lithothérapie certifiante'
+    ],
+    articleSection: 'Lithothérapie & Énergétique',
+    author: {
+      name: 'Fabienne Dizy-Olliveaud',
+      role: 'Formatrice en Lithothérapie & Énergétique'
+    },
+    featured: true,
+  },
+  {
     id: 9,
     slug: 'comment-choisir-premier-pendule-divinatoire',
-    image: '/images/blog/choisir-pendule-divinatoire.jpg',
+    image: '/assets/images/course_radiesthesie_decouverte.png',
     categories: ['Radiesthésie', 'Pendule'],
     titre: 'Comment Choisir et Utiliser son Premier Pendule Divinatoire ?',
     description: 'Découvrez comment choisir votre premier pendule divinatoire (bois, laiton ou cristal), l\'activer en 4 étapes et éviter les pièges grâce à l\'effet idéomoteur.',
     duree: '12 min',
     date: '18 août 2026',
-    featured: true,
+    dateIso: '2026-08-18T10:00:00+02:00',
+    keywords: [
+      'radiesthésie',
+      'pendule divinatoire débutant',
+      'choisir son pendule',
+      'convention oui non pendule',
+      'cadrans de radiesthésie',
+      'taux vibratoire bovis',
+      'initiation radiesthésie'
+    ],
+    articleSection: 'Radiesthésie & Arts Divinatoires',
+    author: {
+      name: 'Fabienne Dizy-Olliveaud',
+      role: 'Praticienne en Radiesthésie'
+    },
+    featured: false,
+  },
+  {
+    id: 11,
+    slug: 'initiation-lahochi-frequence-soin-energetique',
+    image: '/assets/images/course_lahochi.png',
+    categories: ['LaHoChi', 'Énergie', 'Soins'],
+    titre: 'Initiation au LaHoChi : Comprendre cette Haute Fréquence de Guérison Énergétique',
+    description: 'Qu\'est-ce que le LaHoChi ? Comment se déroule l\'initiation en visioconférence, les 21 jours d\'auto-soins et la transmission des positions sacrées des mains.',
+    duree: '14 min',
+    date: '10 sept. 2026',
+    dateIso: '2026-09-10T14:00:00+02:00',
+    keywords: [
+      'lahochi',
+      'initiation lahochi',
+      'soin énergétique lahochi',
+      '21 jours auto soins',
+      'apposer les mains lahochi',
+      'formation lahochi certifiante',
+      'taux vibratoire'
+    ],
+    articleSection: 'Soins Énergétiques & LaHoChi',
+    author: {
+      name: 'Fabienne Dizy-Olliveaud',
+      role: 'Praticienne & Enseignante LaHoChi'
+    },
+    featured: false,
   },
   {
     id: 1,
