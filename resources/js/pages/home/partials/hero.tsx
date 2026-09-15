@@ -60,14 +60,14 @@ export function Hero() {
 
             <div className="absolute inset-y-0 right-0 z-[5] hidden w-[52%] lg:block">
                 <img
-                    src="/assets/images/service_acces_lux.jpg"
-                    alt="Atelier ensoleillé"
+                    src="/assets/images/hero_savoir_faire_8k.jpg"
+                    alt="Atelier d'exception & Savoir-faire"
                     aria-hidden="true"
                     fetchPriority="high"
                     decoding="sync"
-                    className="absolute inset-0 h-full w-full object-cover"
+                    className="absolute inset-0 h-full w-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-background via-background/10 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background via-background/20 to-transparent" />
             </div>
 
             {/* contenu texte & CTA */}
