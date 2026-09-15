@@ -60,7 +60,7 @@ export type Course = {
 export const allCourses: Course[] = [
     {
         id: 10,
-        image: '/assets/images/course_lithotherapie_mineraux.jpg',
+        image: '/assets/images/course_lithotherapie_mineraux.webp',
         category: 'Chakras & Énergétique',
         title: 'Lithothérapie : Utilisation Consciente des Minéraux & Chakras',
         description:
@@ -1110,7 +1110,7 @@ export const allCourses: Course[] = [
     },
     {
         id: 7,
-        image: '/assets/images/service_chakras_lux.jpg',
+        image: '/assets/images/service_chakras_lux.webp',
         category: 'Chakras',
         title: 'Le Plexus Solaire : Centre de Pouvoir, Confiance et Transformation',
         description:
@@ -1217,7 +1217,7 @@ export const allCourses: Course[] = [
     },
     {
         id: 8,
-        image: '/assets/images/service_chakras_lux.jpg',
+        image: '/assets/images/service_chakras_lux.webp',
         category: 'Chakras',
         title: 'Réveille ton Chakra Sacré : Sensualité, Créativité et Joie',
         description:

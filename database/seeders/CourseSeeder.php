@@ -36,7 +36,7 @@ class CourseSeeder extends Seeder
                 'description' => "Ce support de cours certifiant est conçu pour vous guider à travers les profondeurs de la lithothérapie et de l'harmonisation énergétique.\n\nQue vous soyez un particulier passionné par le développement personnel ou un professionnel désireux d'animer des ateliers, cette formation vous fournira les connaissances fondamentales et protocoles sécurisés nécessaires.\n\nAu programme :\n- Guide complet des pierres et cristaux (brutes, polies, géodes, gemmes)\n- Protocoles de purification initiale et de rechargement (lunaire, solaire, géométrie sacrée)\n- Entretien régulier et cycles de maintenance énergétique\n- Déontologie, pratique consciente et certification finale.",
                 'price' => 89.00,
                 'duration' => 55, // 55 minutes
-                'image' => '/assets/images/course_lithotherapie_mineraux.jpg',
+                'image' => '/assets/images/course_lithotherapie_mineraux.webp',
                 'featured' => true,
                 'benefits' => [
                     'Formation certifiante complète avec attestation officielle',
@@ -52,7 +52,7 @@ class CourseSeeder extends Seeder
                 'description' => "Formation LaHoChi en ligne : comment se déroule-t-elle ?\n\nLa formation LaHoChi en ligne se déroule en visioconférence afin de vous permettre d’apprendre dans les meilleures conditions, depuis chez vous et à votre rythme.\n\nDès votre inscription, vous recevez un livret pédagogique au format PDF. Celui-ci présente les origines du LaHoChi, ses principes énergétiques, le protocole complet ainsi que les différentes positions des mains utilisées lors des séances.\n\nNous convenons ensuite ensemble d’un rendez-vous pour votre initiation. Lors de cette rencontre, nous prenons le temps d’étudier le contenu du livret en détail. J’y apporte également mon expérience personnelle, des connaissances complémentaires et des conseils pratiques issus de mon parcours de praticienne.\n\nLa formation comprend :\n- un temps d’enseignement théorique et pratique ;\n- Une séance énergétique à la fin de la formation afin de vous transmettre l'énergie du LaHoChi\n\nAprès la période traditionnelle des 21 jours d’auto-soins, vous réaliserez à votre tour une séance LaHoChi sur moi. Cette étape permet de valider votre pratique, de répondre à vos dernières questions et de renforcer votre confiance dans l’utilisation de cette méthode énergétique.\n\nÀ l’issue de la formation, vous disposerez de tous les outils nécessaires pour pratiquer le LaHoChi sur vous-même et sur vos proches en toute autonomie.",
                 'price' => 150.00,
                 'duration' => 300, // 5 heures
-                'image' => '/assets/images/course_lahochi.png',
+                'image' => '/assets/images/course_lahochi.webp',
                 'featured' => true,
                 'benefits' => [
                     'Accompagnement individuel en visioconférence avec Louise',
@@ -68,7 +68,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Découvrez la method originale de création contemplative conçue par Louise. Apprenez à animer des cercles et des ateliers autour du Galet, du Fil d\'Or, des Trames, de l\'Ombre et de la Lisière des Mots.',
                 'price' => 99.00, // Tarif d'attente à confirmer
                 'duration' => 240, // 4 heures
-                'image' => '/assets/images/course_orisugi_lux.jpg',
+                'image' => '/assets/images/course_orisugi_lux.webp',
                 'featured' => true,
                 'benefits' => [
                     'Devenir Tisseur du Fil d\'Or et ouvrir des cercles de création',
@@ -83,7 +83,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Un atelier d\'initiation pratique de 3 heures en présentiel pour apprendre à utiliser votre premier pendule, établir vos conventions oui/non et maîtriser les bases des cadrans de radiesthésie.',
                 'price' => 50.00,
                 'duration' => 180, // 3 heures
-                'image' => '/assets/images/course_radiesthesie_decouverte.png',
+                'image' => '/assets/images/course_radiesthesie_decouverte.webp',
                 'featured' => true,
                 'benefits' => [
                     'Séance pratique de 3 heures en présentiel',
@@ -98,7 +98,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Développez votre sensibilité énergétique lors de cet atelier complet d\'une demi-journée. Apprenez à formuler des questions précises et à utiliser des cadrans complexes en visioconférence ou en présentiel.',
                 'price' => 70.00,
                 'duration' => 240, // 4 heures
-                'image' => '/assets/images/course_pendule_radiesthesie.png',
+                'image' => '/assets/images/course_pendule_radiesthesie.webp',
                 'featured' => false,
                 'benefits' => [
                     'Atelier approfondi d\'une demi-journée',
@@ -112,7 +112,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Une formation approfondie pour maîtriser l\'art du pendule, l\'usage des baguettes de sourcier et les premiers repères de la géobiologie (réseaux Hartmann, Curry et ressentis de l\'aura).',
                 'price' => 120.00, // Tarif d'attente à confirmer
                 'duration' => 360, // 6 heures
-                'image' => '/assets/images/course_radiesthesie_complete.png',
+                'image' => '/assets/images/course_radiesthesie_complete.webp',
                 'featured' => false,
                 'benefits' => [
                     'Prise en main des baguettes de sourcier',
@@ -126,7 +126,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Un programme complet en 7 modules pour comprendre, purifier et équilibrer vos sept centres énergétiques principaux à l\'aide de méditations guidées, de la lithothérapie et des pratiques vibratoires.',
                 'price' => 89.00, // Tarif d'attente à confirmer
                 'duration' => 420, // 7 heures
-                'image' => '/assets/images/course_chakras.png',
+                'image' => '/assets/images/course_chakras.webp',
                 'featured' => false,
                 'benefits' => [
                     '7 modules théoriques et pratiques',
@@ -140,7 +140,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Libérez votre force créatrice, apprivoisez vos émotions et retrouvez un rapport sain à votre corps physique et votre sensualité. Un parcours de 21 séquences d\'exploration personnelle.',
                 'price' => 29.00, // Tarif d'attente à confirmer
                 'duration' => 150, // 2.5 heures
-                'image' => '/assets/images/course_chakra_racine.png',
+                'image' => '/assets/images/course_chakra_racine.webp',
                 'featured' => false,
                 'benefits' => [
                     '21 séquences d\'exercices quotidiens',
@@ -154,7 +154,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Retrouvez votre confiance personnelle, votre pouvoir d\'action et votre juste volonté. Un programme complet de 20 jours pour équilibrer Manipura.',
                 'price' => 29.00, // Tarif d'attente à confirmer
                 'duration' => 150, // 2.5 heures
-                'image' => '/assets/images/course_plexus_solaire.png',
+                'image' => '/assets/images/course_plexus_solaire.webp',
                 'featured' => false,
                 'benefits' => [
                     '20 jours d\'exercices guidés',
@@ -168,7 +168,7 @@ class CourseSeeder extends Seeder
                 'description' => 'Apprenez à co-créer vos propres élixirs de cristaux et de fleurs lors de cet atelier présentiel d\'une demi-journée. Repartez avec votre élixir personnalisé et le protocole complet de solarisation.',
                 'price' => 80.00,
                 'duration' => 240, // 4 heures
-                'image' => '/assets/images/course_elixirs_vibratoires.png',
+                'image' => '/assets/images/course_elixirs_vibratoires.webp',
                 'featured' => false,
                 'benefits' => [
                     'Atelier pratique de 4 heures en présentiel',

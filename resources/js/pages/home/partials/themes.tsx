@@ -75,37 +75,37 @@ export function Themes() {
             title: t('themes.theme1_title'),
             description: t('themes.theme1_desc'),
             href: '/courses?category=bougies',
-            image: '/assets/images/theme_bougies.jpg',
+            image: '/assets/images/theme_bougies.webp',
         },
         {
             title: t('themes.theme2_title'),
             description: t('themes.theme2_desc'),
             href: '/courses?category=onglerie',
-            image: '/assets/images/theme_onglerie.jpg',
+            image: '/assets/images/theme_onglerie.webp',
         },
         {
             title: t('themes.theme3_title'),
             description: t('themes.theme3_desc'),
             href: '/courses?category=ceramique',
-            image: '/assets/images/theme_ceramique.jpg',
+            image: '/assets/images/theme_ceramique.webp',
         },
         {
             title: t('themes.theme4_title'),
             description: t('themes.theme4_desc'),
             href: '/courses?category=patisserie',
-            image: '/assets/images/theme_patisserie.jpg',
+            image: '/assets/images/theme_patisserie.webp',
         },
         {
             title: t('themes.theme5_title'),
             description: t('themes.theme5_desc'),
             href: '/courses?category=couture',
-            image: '/assets/images/theme_couture.jpg',
+            image: '/assets/images/theme_couture.webp',
         },
         {
             title: t('themes.theme6_title'),
             description: t('themes.theme6_desc'),
             href: '/courses?category=digital',
-            image: '/assets/images/theme_digital.jpg',
+            image: '/assets/images/theme_digital.webp',
         },
     ];
 

@@ -64,6 +64,8 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                     <img
                         src={course.image}
                         alt={course.title}
+                        loading="lazy"
+                        decoding="async"
                         className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                     />
                     <div className="absolute inset-0 z-20 bg-gradient-to-t from-background/90 via-background/10 to-transparent pointer-events-none" />

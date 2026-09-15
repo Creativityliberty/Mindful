@@ -56,7 +56,7 @@ export const allArticles: Article[] = [
   {
     id: 10,
     slug: 'guide-complet-lithotherapie-mineraux-chakras',
-    image: '/assets/images/blog_lithotherapie_chakras.jpg',
+    image: '/assets/images/blog_lithotherapie_chakras.webp',
     categories: ['Lithothérapie', 'Chakras', 'Minéraux'],
     titre: 'Guide Complet de la Lithothérapie : Pouvoir des Minéraux & Réharmonisation des Chakras',
     description: 'Explorez les fondements de la lithothérapie consciente : comment reconnaître les pierres brutes et polies, les purifier par l\'eau ou la fumigation, les recharger à la lune et équilibrer vos 7 chakras.',
@@ -177,7 +177,7 @@ export const allArticles: Article[] = [
   {
     id: 9,
     slug: 'comment-choisir-premier-pendule-divinatoire',
-    image: '/assets/images/blog_pendule_radiesthesie.jpg',
+    image: '/assets/images/blog_pendule_radiesthesie.webp',
     categories: ['Radiesthésie', 'Pendule', 'Arts Divinatoires'],
     titre: 'Comment Choisir et Utiliser son Premier Pendule Divinatoire ? Guide Pratique du Débutant',
     description: 'Découvrez comment choisir votre premier pendule divinatoire (laiton, bois ou cristal), l\'activer en 4 étapes, définir votre convention Oui/Non et mesurer le taux vibratoire sur cadran de Bovis sans tomber dans le piège de l\'effet idéomoteur.',
@@ -302,7 +302,7 @@ export const allArticles: Article[] = [
   {
     id: 11,
     slug: 'initiation-lahochi-frequence-soin-energetique',
-    image: '/assets/images/blog_lahochi_energie.jpg',
+    image: '/assets/images/blog_lahochi_energie.webp',
     categories: ['LaHoChi', 'Énergie', 'Soins', 'Transmission'],
     titre: 'Initiation au LaHoChi : Comprendre cette Haute Fréquence de Guérison Énergétique',
     description: 'Qu\'est-ce que le LaHoChi ? Comment se déroule l\'initiation en visioconférence ou en présentiel, le cycle indispensable des 21 jours d\'auto-soins et la maîtrise des 5 positions sacrées des mains pour canaliser l\'énergie universelle.',

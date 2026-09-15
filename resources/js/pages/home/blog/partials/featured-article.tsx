@@ -16,6 +16,8 @@ export function FeaturedArticle({ article }: { article: Article }) {
             <img
                 src={article.image}
                 alt={article.titre}
+                fetchPriority="high"
+                decoding="sync"
                 className="absolute inset-0 h-full w-full object-cover"
             />
 

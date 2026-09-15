@@ -141,6 +141,8 @@ export function CourseDetail({ course }: { course: Course }) {
                 <img
                     src={course.image}
                     alt={course.title}
+                    fetchPriority="high"
+                    decoding="async"
                     className="absolute inset-0 hidden h-full w-full object-cover lg:block"
                 />
                 <div className="absolute inset-0 hidden bg-gradient-to-t from-black/90 via-black/50 to-black/20 lg:block" />
@@ -167,6 +169,8 @@ export function CourseDetail({ course }: { course: Course }) {
                         <img
                             src={course.image}
                             alt={course.title}
+                            fetchPriority="high"
+                            decoding="async"
                             className="h-full w-full object-cover"
                         />
                     </div>

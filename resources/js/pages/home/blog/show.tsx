@@ -117,6 +117,8 @@ export default function BlogShow() {
                         <img
                             src={article.image}
                             alt={article.titre}
+                            fetchPriority="high"
+                            decoding="async"
                             className="h-full w-full object-cover"
                         />
                     </motion.div>

@@ -17,6 +17,8 @@ export function ArticleCard({ article }: { article: Article }) {
         <img
           src={article.image}
           alt={article.titre}
+          loading="lazy"
+          decoding="async"
           className="h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
         />
       </Link>

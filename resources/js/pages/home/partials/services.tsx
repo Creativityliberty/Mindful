@@ -23,7 +23,7 @@ export function Services() {
             href: '/courses?category=bougies',
             color: 'from-amber-500 via-orange-500 to-rose-500',
             badgeColor: 'bg-amber-500/20 text-amber-200 border-amber-400/30',
-            image: '/assets/images/theme_bougies.jpg',
+            image: '/assets/images/theme_bougies.webp',
         },
         {
             id: 1,
@@ -33,7 +33,7 @@ export function Services() {
             href: '/courses?category=onglerie',
             color: 'from-pink-500 via-rose-500 to-amber-400',
             badgeColor: 'bg-pink-500/20 text-pink-200 border-pink-400/30',
-            image: '/assets/images/theme_onglerie.jpg',
+            image: '/assets/images/theme_onglerie.webp',
         },
         {
             id: 2,
@@ -43,7 +43,7 @@ export function Services() {
             href: '/courses?category=ceramique',
             color: 'from-emerald-500 via-teal-600 to-stone-600',
             badgeColor: 'bg-emerald-500/20 text-emerald-200 border-emerald-400/30',
-            image: '/assets/images/theme_ceramique.jpg',
+            image: '/assets/images/theme_ceramique.webp',
         },
         {
             id: 3,
@@ -53,7 +53,7 @@ export function Services() {
             href: '/courses?category=patisserie',
             color: 'from-amber-600 via-yellow-600 to-orange-700',
             badgeColor: 'bg-orange-500/20 text-orange-200 border-orange-400/30',
-            image: '/assets/images/theme_patisserie.jpg',
+            image: '/assets/images/theme_patisserie.webp',
         },
         {
             id: 4,
@@ -63,7 +63,7 @@ export function Services() {
             href: '/courses?category=couture',
             color: 'from-purple-500 via-indigo-600 to-blue-600',
             badgeColor: 'bg-purple-500/20 text-purple-200 border-purple-400/30',
-            image: '/assets/images/theme_couture.jpg',
+            image: '/assets/images/theme_couture.webp',
         },
         {
             id: 5,
@@ -73,7 +73,7 @@ export function Services() {
             href: '/courses?category=digital',
             color: 'from-sky-500 via-blue-600 to-cyan-500',
             badgeColor: 'bg-sky-500/20 text-sky-200 border-sky-400/30',
-            image: '/assets/images/theme_digital.jpg',
+            image: '/assets/images/theme_digital.webp',
         },
     ];
 
@@ -85,30 +85,41 @@ export function Services() {
                 <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-primary/[0.01] blur-[140px]" />
             </div>
 
-            <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-                {/* Header */}
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
-                    className="mb-16 text-center"
-                >
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60">
-                        {t('services.badge')}
-                    </div>
-
-                    <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
-                        {t('services.title')}
-                    </h2>
-
-                    <p className="mx-auto max-w-2xl text-base md:text-lg text-foreground/70">
+            <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+                {/* Section Header */}
+                <div className="mx-auto max-w-3xl text-center mb-16 md:mb-24">
+                    <motion.div
+                        initial={{ opacity: 0, y: 15 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                        className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-widest mb-4"
+                    >
+                        <Sparkles className="h-3.5 w-3.5" />
+                        <span>{t('services.badge')}</span>
+                    </motion.div>
+                    <motion.h2
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                        className="text-3xl font-extrabold tracking-tight sm:text-5xl text-foreground"
+                    >
+                        {t('services.title_main')}
+                    </motion.h2>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                        className="mt-4 text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto"
+                    >
                         {t('services.subtitle')}
-                    </p>
-                </motion.div>
+                    </motion.p>
+                </div>
 
-                {/* Bento Grid Layout - 6 Univers */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Services Bento Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {services.map((service, index) => {
                         const IconComponent = service.icon;
                         return (
@@ -127,6 +138,8 @@ export function Services() {
                                     <img
                                         src={service.image}
                                         alt={service.title}
+                                        loading="lazy"
+                                        decoding="async"
                                         className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                     />
 
