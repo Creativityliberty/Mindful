@@ -1,10 +1,9 @@
 import { Link } from '@inertiajs/react';
 import { motion, type Variants } from 'framer-motion';
 import {
-    Sparkles,
     ShieldCheck,
-    Heart,
     Eye,
+    Heart,
     Award
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -87,17 +86,17 @@ export default function About() {
 
     const valeurs = [
         {
-            icon: Heart,
+            icon: ShieldCheck,
             titre: t('about_page.val1_title'),
             description: t('about_page.val1_desc'),
         },
         {
-            icon: ShieldCheck,
+            icon: Eye,
             titre: t('about_page.val2_title'),
             description: t('about_page.val2_desc'),
         },
         {
-            icon: Eye,
+            icon: Heart,
             titre: t('about_page.val3_title'),
             description: t('about_page.val3_desc'),
         },
@@ -131,7 +130,6 @@ export default function About() {
                     className="mb-16 text-center space-y-4"
                 >
                     <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                        <Sparkles className="h-3.5 w-3.5 text-sky-400" />
                         {t('about_page.badge')}
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-sans">
@@ -264,10 +262,10 @@ export default function About() {
                     </p>
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
                         <Button size="lg" className="rounded-full px-8 text-sm tracking-wider uppercase font-semibold h-12" asChild>
-                            <Link href="/contact">{t('about_page.cta_contact')}</Link>
+                            <Link href="/courses">{t('about_page.cta_courses')}</Link>
                         </Button>
                         <Button size="lg" variant="secondary" className="rounded-full h-12 border border-border/40" asChild>
-                            <Link href="/courses">{t('about_page.cta_courses')}</Link>
+                            <Link href="/become-trainer">{t('about_page.cta_become_trainer')}</Link>
                         </Button>
                     </div>
                 </section>

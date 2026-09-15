@@ -8,7 +8,6 @@ import {
     Clock,
     HelpCircle,
     Share2,
-    Sparkles,
     Star,
     ShieldCheck,
 } from 'lucide-react';
@@ -136,7 +135,7 @@ export default function BlogShow() {
                         {/* Direct Answer AEO Box */}
                         <div className="my-8 rounded-2xl border border-primary/30 bg-primary/5 p-6 backdrop-blur-sm">
                             <div className="mb-3 flex items-center gap-2 font-bold uppercase tracking-wider text-primary text-xs">
-                                <Sparkles className="h-4 w-4" />
+                                <BookOpen className="h-4 w-4" />
                                 En résumé — Réponse directe
                             </div>
                             <p className="m-0 text-base font-medium leading-relaxed text-foreground">

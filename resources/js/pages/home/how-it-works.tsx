@@ -1,7 +1,7 @@
 import { Link } from '@inertiajs/react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState } from 'react';
-import { ArrowRight, Sparkles, Check, User, Briefcase } from 'lucide-react';
+import { ArrowRight, Check, User, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
 import { SEOHead } from '@/components/seo-head';
@@ -113,7 +113,6 @@ export default function HowItWorks() {
                     className="mb-16 text-center space-y-4"
                 >
                     <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                        <Sparkles className="h-3.5 w-3.5 text-sky-400" />
                         {t('how_it_works_page.badge')}
                     </div>
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-serif">

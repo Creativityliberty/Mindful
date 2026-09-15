@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles, Star, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Star, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from '@inertiajs/react';
 import { useState } from 'react';
@@ -83,7 +83,6 @@ export function Trainers() {
                 >
                     <div className="max-w-2xl">
                         <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur">
-                            <Sparkles className="h-3.5 w-3.5 text-primary" />
                             {t('trainers.badge')}
                         </div>
                         <h2 className="mb-4 text-3xl font-semibold tracking-tight text-foreground md:text-5xl">
@@ -126,7 +125,6 @@ export function Trainers() {
                             </div>
 
                             <div className="absolute -bottom-2 bg-primary text-primary-foreground text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-white/20 flex items-center gap-1.5">
-                                <Sparkles className="h-3.5 w-3.5" />
                                 {leadTrainer.role}
                             </div>
                         </div>

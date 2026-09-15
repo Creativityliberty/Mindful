@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectCoverflow, Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { Link } from '@inertiajs/react';
@@ -112,7 +112,6 @@ export function Chiffres() {
                     className="mb-14 text-center relative z-10"
                 >
                     <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-secondary-foreground uppercase backdrop-blur-md">
-                        <Sparkles className="h-3.5 w-3.5 text-primary" />
                         {t('chiffres.title_part1')}
                     </div>
 

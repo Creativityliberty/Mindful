@@ -1,5 +1,5 @@
 import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, Clock, Users, Star, Sparkles } from 'lucide-react';
+import { ArrowRight, Clock, Users, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link, usePage } from '@inertiajs/react';
 import type { Course } from '../courses/types';
@@ -106,11 +106,7 @@ export function Courses() {
                                 </span>
                             </div>
                             <div className="absolute top-5 right-5 z-30">
-                                <span className="inline-flex items-center gap-1.5 rounded-full border border-primary/40 bg-primary/20 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur whitespace-nowrap">
-                                    <Sparkles
-                                        className="h-3 w-3"
-                                        aria-hidden="true"
-                                    />
+                                <span className="inline-flex items-center rounded-full border border-primary/40 bg-primary/20 px-3 py-1 text-[11px] font-semibold text-primary backdrop-blur whitespace-nowrap">
                                     {t('featured_courses.featured_badge')}
                                 </span>
                             </div>

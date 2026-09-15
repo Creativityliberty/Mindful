@@ -1,6 +1,6 @@
 import { Link, router, usePage } from '@inertiajs/react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Check, Sparkles } from 'lucide-react';
+import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import type { Plan } from '@/types';
 import { BecomeTrainerHeader } from './partials/become-trainer-header';
@@ -140,7 +140,6 @@ export default function BecomeTrainer() {
                     {/* Left Column: Fixed Stature & Info */}
                     <div className="lg:sticky lg:top-28 space-y-8">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
-                            <Sparkles className="h-3.5 w-3.5 text-sky-400" />
                             {t('become_trainer_page.join_badge')}
                         </div>
                         

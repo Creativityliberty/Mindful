@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { Search, Sparkles, ChevronsUpDown, Check, X, ChevronDown } from 'lucide-react'
+import { Search, ChevronsUpDown, Check, X, ChevronDown } from 'lucide-react'
 import { useState } from 'react'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -109,7 +109,6 @@ export function CoursesHeader({ search, onSearch, sort, onSort, filters, onFilte
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="mb-10">
             <div className="mb-6">
                 <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-foreground/70 uppercase backdrop-blur dark:border-border/60 dark:bg-background/70">
-                    <Sparkles className="h-3.5 w-3.5 text-primary" aria-hidden="true" />
                     Catalogue
                 </div>
                 <h1 className="text-3xl font-semibold tracking-tight text-foreground md:text-4xl">

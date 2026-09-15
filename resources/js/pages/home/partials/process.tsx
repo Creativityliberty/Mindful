@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Search, UserPlus, PlayCircle, Sparkles } from 'lucide-react';
+import { Search, UserPlus, PlayCircle, Award } from 'lucide-react';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
@@ -28,7 +28,7 @@ export function Process() {
         },
         {
             number: '04',
-            icon: Sparkles,
+            icon: Award,
             title: t('process.step4_title'),
             description: t('process.step4_desc'),
         },

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
 
@@ -82,10 +82,6 @@ export function Hero() {
                         variants={itemVariants}
                         className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-4 py-1.5 text-xs font-semibold tracking-wider text-foreground/70 uppercase backdrop-blur"
                     >
-                        <Sparkles
-                            className="h-4 w-4 text-sky-400"
-                            aria-hidden="true"
-                        />
                         {t('hero.badge')}
                     </motion.div>
 
