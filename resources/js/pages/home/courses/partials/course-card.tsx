@@ -25,7 +25,8 @@ function StarRating({ rating }: { rating: number }) {
 
 export function CourseCard({ course, index }: { course: Course; index: number }) {
     const { t } = useTranslation()
-    const minPrice = course.price
+    const isFree = !course.price || course.price === 0 || course.price === '0' || course.price === '0.00' || String(course.price).toLowerCase().includes('gratuit');
+    const formattedPrice = isFree ? null : `${String(course.price).replace(/€/g, '').trim()} €`;
     const cardRef = useRef<HTMLDivElement>(null)
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
 
@@ -107,10 +108,10 @@ export function CourseCard({ course, index }: { course: Course; index: number })
                     </div>
 
                     <div className="mt-auto flex items-center justify-between pt-2">
-                        {minPrice ? (
+                        {!isFree && formattedPrice ? (
                             <div>
                                 <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground/70">{t('featured_courses.from_price')}</p>
-                                <p className="text-base font-bold text-foreground tracking-tight">{minPrice}</p>
+                                <p className="text-base font-bold text-foreground tracking-tight">{formattedPrice}</p>
                             </div>
                         ) : (
                             <span className="text-sm font-semibold text-emerald-500">Gratuit</span>
