@@ -133,13 +133,9 @@ export function Services() {
                                     {/* Voile Dégradé de Luxe */}
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 transition-opacity duration-500 group-hover:opacity-95" />
 
-                                    {/* Partie Haute : Numéro d'Univers & Icône */}
-                                    <div className="relative z-10 p-6 md:p-8 flex items-center justify-between">
-                                        <span className={`inline-flex items-center rounded-full border px-3.5 py-1.5 text-[11px] font-bold tracking-[0.2em] uppercase backdrop-blur-md shadow-xs ${service.badgeColor}`}>
-                                            {t('services.universe', { number: index + 1 })}
-                                        </span>
-
-                                        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
+                                    {/* Partie Haute : Icône Épurée */}
+                                    <div className="relative z-10 p-6 md:p-8 flex items-center justify-end">
+                                        <div className="flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/10 text-white backdrop-blur-md shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:bg-white/20">
                                             <IconComponent className="h-5 w-5" />
                                         </div>
                                     </div>
