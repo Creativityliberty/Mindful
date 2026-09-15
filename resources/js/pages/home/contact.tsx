@@ -402,26 +402,6 @@ export default function Contact() {
                                 })}
                             </ul>
                         </div>
-
-                        {/* Localisation Visual Card */}
-                        <div className="overflow-hidden rounded-[2.5rem] border border-border/30 bg-background/50 backdrop-blur-md shadow-xl relative group">
-                            <div className="relative h-56 overflow-hidden bg-secondary/30">
-                                <img
-                                    src="/assets/images/contact_zen.jpg"
-                                    alt="Localisation FormationSession"
-                                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-80"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/40 to-transparent" />
-                                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 p-6 text-center">
-                                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-400 text-white shadow-lg shadow-sky-400/30 animate-pulse">
-                                        <MapPin className="h-6 w-6" />
-                                    </div>
-                                    <span className="rounded-full bg-background/90 border border-border/40 px-4 py-1.5 text-xs font-bold tracking-wider text-foreground shadow-md backdrop-blur uppercase">
-                                        {t('contact_page.location_badge')}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
                     </motion.div>
                 </div>
             </div>

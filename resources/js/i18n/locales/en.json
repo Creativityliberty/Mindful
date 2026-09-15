@@ -433,12 +433,12 @@
     "btn_send_another": "Send Another Message",
     "coords_title": "Contact Details",
     "coord_address": "Location",
-    "coord_address_val": "Paris, France\nGlobal Community",
+    "coord_address_val": "100% Online Platform\nInternational Community",
     "coord_phone": "Phone",
     "coord_email": "Email",
     "coord_hours": "Availability",
     "coord_hours_val": "Mon – Fri: 9:00 AM – 6:00 PM\nResponse within 24h",
-    "location_badge": "Paris · Global Reach"
+    "location_badge": "Online Platform · Global Reach"
   },
   "become_trainer_page": {
     "badge": "Instructor Program",
