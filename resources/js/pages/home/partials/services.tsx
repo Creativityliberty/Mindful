@@ -1,4 +1,4 @@
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
     Flame,
     Sparkles,
@@ -9,13 +9,10 @@ import {
     ArrowRight,
 } from 'lucide-react';
 import { Link } from '@inertiajs/react';
-import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 export function Services() {
     const { t } = useTranslation();
-    const [activeIndex, setActiveIndex] = useState<number>(0);
-    const [isAutoPlaying, setIsAutoPlaying] = useState<boolean>(true);
 
     const services = [
         {
@@ -25,8 +22,7 @@ export function Services() {
             description: t('services.item0_desc'),
             href: '/courses?category=bougies',
             color: 'from-amber-500 via-orange-500 to-rose-500',
-            glowColor: 'rgba(245, 158, 11, 0.18)',
-            accentColor: 'rgb(245, 158, 11)',
+            badgeColor: 'bg-amber-500/20 text-amber-200 border-amber-400/30',
             image: '/assets/images/theme_bougies.jpg',
         },
         {
@@ -36,8 +32,7 @@ export function Services() {
             description: t('services.item1_desc'),
             href: '/courses?category=onglerie',
             color: 'from-pink-500 via-rose-500 to-amber-400',
-            glowColor: 'rgba(244, 114, 182, 0.18)',
-            accentColor: 'rgb(244, 114, 182)',
+            badgeColor: 'bg-pink-500/20 text-pink-200 border-pink-400/30',
             image: '/assets/images/theme_onglerie.jpg',
         },
         {
@@ -47,8 +42,7 @@ export function Services() {
             description: t('services.item2_desc'),
             href: '/courses?category=ceramique',
             color: 'from-emerald-500 via-teal-600 to-stone-600',
-            glowColor: 'rgba(16, 185, 129, 0.18)',
-            accentColor: 'rgb(16, 185, 129)',
+            badgeColor: 'bg-emerald-500/20 text-emerald-200 border-emerald-400/30',
             image: '/assets/images/theme_ceramique.jpg',
         },
         {
@@ -58,8 +52,7 @@ export function Services() {
             description: t('services.item3_desc'),
             href: '/courses?category=patisserie',
             color: 'from-amber-600 via-yellow-600 to-orange-700',
-            glowColor: 'rgba(217, 119, 6, 0.18)',
-            accentColor: 'rgb(217, 119, 6)',
+            badgeColor: 'bg-orange-500/20 text-orange-200 border-orange-400/30',
             image: '/assets/images/theme_patisserie.jpg',
         },
         {
@@ -69,8 +62,7 @@ export function Services() {
             description: t('services.item4_desc'),
             href: '/courses?category=couture',
             color: 'from-purple-500 via-indigo-600 to-blue-600',
-            glowColor: 'rgba(139, 92, 246, 0.18)',
-            accentColor: 'rgb(139, 92, 246)',
+            badgeColor: 'bg-purple-500/20 text-purple-200 border-purple-400/30',
             image: '/assets/images/theme_couture.jpg',
         },
         {
@@ -80,44 +72,21 @@ export function Services() {
             description: t('services.item5_desc'),
             href: '/courses?category=digital',
             color: 'from-sky-500 via-blue-600 to-cyan-500',
-            glowColor: 'rgba(14, 165, 233, 0.18)',
-            accentColor: 'rgb(14, 165, 233)',
+            badgeColor: 'bg-sky-500/20 text-sky-200 border-sky-400/30',
             image: '/assets/images/theme_digital.jpg',
         },
     ];
 
-    // Autoplay fluide du carrousel d'univers
-    useEffect(() => {
-        if (!isAutoPlaying) return;
-        const timer = setInterval(() => {
-            setActiveIndex((prev) => (prev + 1) % services.length);
-        }, 5000);
-        return () => clearInterval(timer);
-    }, [isAutoPlaying, services.length]);
-
-    const activeService = services[activeIndex];
-
     return (
-        <section 
-            className="relative py-28 md:py-36 overflow-hidden bg-background transition-colors duration-700"
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-        >
-            {/* Background Halo réactif à l'Univers sélectionné */}
+        <section className="relative py-24 md:py-36 overflow-hidden bg-background">
+            {/* Ambient Background Aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <motion.div
-                    key={`aura-${activeService.id}`}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 1.1 }}
-                    transition={{ duration: 1 }}
-                    style={{ backgroundColor: activeService.glowColor }}
-                    className="absolute top-1/2 left-1/2 h-[750px] w-[750px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-[160px]"
-                />
+                <div className="absolute top-1/4 left-1/2 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-sky-400/[0.015] blur-[160px]" />
+                <div className="absolute bottom-0 right-0 h-[400px] w-[400px] rounded-full bg-primary/[0.01] blur-[140px]" />
             </div>
 
             <div className="relative mx-auto max-w-7xl px-6 md:px-8 lg:px-12">
-                {/* En-tête de section */}
+                {/* Header */}
                 <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -125,7 +94,7 @@ export function Services() {
                     transition={{ duration: 0.7 }}
                     className="mb-16 text-center"
                 >
-                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary/80 px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60">
+                    <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60">
                         {t('services.badge')}
                     </div>
 
@@ -133,129 +102,67 @@ export function Services() {
                         {t('services.title')}
                     </h2>
 
-                    <p className="mx-auto max-w-2xl text-lg text-foreground/70">
+                    <p className="mx-auto max-w-2xl text-base md:text-lg text-foreground/70">
                         {t('services.subtitle')}
                     </p>
                 </motion.div>
 
-                {/* Système d'Orbite Quantum & Contenu Dynamique */}
-                <div className="relative flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20 w-full min-h-[520px]">
-                    
-                    {/* Zone de l'Orbite Centrale */}
-                    <div className="relative flex items-center justify-center w-[340px] h-[340px] md:w-[460px] md:h-[460px] shrink-0">
-                        {/* Cercle d'orbite extérieur avec effets subtils */}
-                        <div className="absolute inset-0 rounded-full border border-border/40 dark:border-white/10 pointer-events-none" />
-                        
-                        {/* Cœur visuel de l'Univers sélectionné */}
-                        <div className="relative flex items-center justify-center w-44 h-44 md:w-56 md:h-56 rounded-full border border-white/40 dark:border-white/20 shadow-2xl backdrop-blur-md z-20 overflow-hidden group">
-                            <AnimatePresence mode="wait">
-                                <motion.img
-                                    key={`img-${activeService.id}`}
-                                    src={activeService.image}
-                                    alt={activeService.title}
-                                    initial={{ opacity: 0, scale: 1.15 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                                    className="absolute inset-0 w-full h-full object-cover pointer-events-none z-0 transition-transform duration-700 group-hover:scale-105"
-                                />
-                            </AnimatePresence>
-
-                            {/* Cartouche translucide bas de photo */}
-                            <div className="absolute inset-x-0 bottom-0 p-3 bg-gradient-to-t from-black/80 via-black/40 to-transparent z-10 flex flex-col items-center text-center">
-                                <p className="text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] text-white/80">
-                                    {t('services.universe', { number: activeIndex + 1 })}
-                                </p>
-                                <p className="text-xs md:text-sm font-semibold text-white tracking-wide line-clamp-1">
-                                    {activeService.title}
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Nœuds d'Orbites Satellite (6 Univers) */}
-                        {services.map((service, index) => {
-                            const angle = (index / services.length) * (2 * Math.PI) - (Math.PI / 2);
-                            const radius = 175; // rayon d'orbite étendu
-                            const x = Math.round(Math.cos(angle) * radius);
-                            const y = Math.round(Math.sin(angle) * radius);
-                            const isSelected = activeIndex === index;
-
-                            return (
-                                <motion.button
-                                    key={service.id}
-                                    style={{
-                                        x: `${x}px`,
-                                        y: `${y}px`,
-                                    }}
-                                    whileHover={{ scale: 1.2 }}
-                                    onClick={() => setActiveIndex(index)}
-                                    className={`absolute flex h-13 w-13 md:h-16 md:w-16 items-center justify-center rounded-full border transition-all duration-300 z-30 shadow-lg ${
-                                        isSelected
-                                            ? `border-white bg-white text-slate-900 scale-110 shadow-2xl ring-4 ring-offset-2 ring-offset-background ring-primary/40`
-                                            : 'border-border/60 bg-background/90 text-foreground/70 hover:text-foreground hover:border-border hover:bg-card'
-                                    }`}
-                                >
-                                    <service.icon className={`h-5 w-5 md:h-6 md:w-6 ${isSelected ? 'text-slate-900' : ''}`} />
-                                </motion.button>
-                            );
-                        })}
-                    </div>
-
-                    {/* Panneau de Présentation & Description */}
-                    <div className="flex-1 flex flex-col justify-center min-h-[260px]">
-                        <AnimatePresence mode="wait">
+                {/* Bento Grid Layout - 6 Univers */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {services.map((service, index) => {
+                        const IconComponent = service.icon;
+                        return (
                             <motion.div
-                                key={activeService.id}
-                                initial={{ opacity: 0, x: 24 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -24 }}
-                                transition={{ duration: 0.45, ease: "easeOut" }}
-                                className="space-y-6 max-w-xl text-center lg:text-left"
+                                key={service.id}
+                                initial={{ opacity: 0, y: 28 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-50px' }}
+                                transition={{ duration: 0.6, delay: index * 0.08 }}
                             >
-                                {/* Badge branding coloré par Univers */}
-                                <div className="flex items-center justify-center lg:justify-start gap-3">
-                                    <span className={`inline-block text-xs font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-full bg-gradient-to-r ${activeService.color} text-white shadow-md`}>
-                                        {t('services.universe', { number: activeIndex + 1 })}
-                                    </span>
-                                </div>
-                                
-                                <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
-                                    {activeService.title}
-                                </h3>
+                                <Link
+                                    href={service.href}
+                                    className="group relative flex h-[420px] md:h-[460px] w-full flex-col justify-between overflow-hidden rounded-3xl border border-border/40 bg-card shadow-xl transition-all duration-500 hover:border-border hover:shadow-2xl dark:border-border/60"
+                                >
+                                    {/* Image de fond avec effet Zoom smooth */}
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                                    />
 
-                                <p className="text-lg leading-relaxed text-foreground/70">
-                                    {activeService.description}
-                                </p>
+                                    {/* Voile Dégradé de Luxe */}
+                                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-black/20 transition-opacity duration-500 group-hover:opacity-95" />
 
-                                <div className="pt-2 flex justify-center lg:justify-start">
-                                    <Link
-                                        href={activeService.href}
-                                        className="group inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-sm shadow-lg transition-all hover:gap-3.5 hover:shadow-xl hover:scale-[1.02]"
-                                    >
-                                        {t('services.join_learning')}
-                                        <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                                    </Link>
-                                </div>
+                                    {/* Partie Haute : Numéro d'Univers & Icône */}
+                                    <div className="relative z-10 p-6 md:p-8 flex items-center justify-between">
+                                        <span className={`inline-flex items-center rounded-full border px-3.5 py-1.5 text-[11px] font-bold tracking-[0.2em] uppercase backdrop-blur-md shadow-xs ${service.badgeColor}`}>
+                                            {t('services.universe', { number: index + 1 })}
+                                        </span>
+
+                                        <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/20 bg-white/10 text-white backdrop-blur-md shadow-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-white/20">
+                                            <IconComponent className="h-5 w-5" />
+                                        </div>
+                                    </div>
+
+                                    {/* Partie Basse : Titre, Description & CTA */}
+                                    <div className="relative z-10 p-6 md:p-8 space-y-3">
+                                        <h3 className="text-2xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-amber-200">
+                                            {service.title}
+                                        </h3>
+
+                                        <p className="text-sm font-light leading-relaxed text-white/80 line-clamp-2">
+                                            {service.description}
+                                        </p>
+
+                                        <div className="pt-2 flex items-center gap-2 text-xs font-semibold tracking-wider text-white uppercase group-hover:text-amber-300 transition-colors">
+                                            <span>{t('services.join_learning')}</span>
+                                            <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
+                                        </div>
+                                    </div>
+                                </Link>
                             </motion.div>
-                        </AnimatePresence>
-
-                        {/* Puces de navigation rapide sous la description */}
-                        <div className="mt-10 flex items-center justify-center lg:justify-start gap-2">
-                            {services.map((service, index) => (
-                                <button
-                                    key={`bullet-${service.id}`}
-                                    onClick={() => setActiveIndex(index)}
-                                    className={`h-2.5 rounded-full transition-all duration-300 ${
-                                        activeIndex === index
-                                            ? 'w-8 bg-primary'
-                                            : 'w-2.5 bg-border/60 hover:bg-border'
-                                    }`}
-                                    aria-label={`Aller à l'univers ${index + 1}`}
-                                />
-                            ))}
-                        </div>
-                    </div>
-
+                        );
+                    })}
                 </div>
             </div>
         </section>
