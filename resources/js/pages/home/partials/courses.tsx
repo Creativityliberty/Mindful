@@ -87,11 +87,11 @@ export function Courses() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: '-60px' }}
-                    className="mb-5 overflow-hidden rounded-3xl border border-border/40 bg-background/70 backdrop-blur-sm dark:border-border/50 dark:bg-background/50"
+                    className="group mb-8 overflow-hidden rounded-3xl border border-border/40 bg-background/70 shadow-sm backdrop-blur-sm transition-all duration-500 hover:border-border/80 hover:shadow-xl dark:border-border/50 dark:bg-background/50"
                 >
                     <div className="grid lg:grid-cols-[1.5fr_1fr]">
                         {/* Image Container */}
-                        <div className="group relative aspect-video overflow-hidden w-full bg-muted">
+                        <div className="relative aspect-video overflow-hidden w-full bg-muted">
                             <img
                                 src={featured.image}
                                 alt={featured.title}
@@ -100,7 +100,10 @@ export function Courses() {
                             <div className="absolute inset-0 z-20 bg-gradient-to-r from-transparent via-transparent to-background/10 dark:to-background/20 pointer-events-none" />
                             <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/55 via-black/10 to-transparent lg:hidden pointer-events-none" />
 
-                            <div className="absolute top-5 left-5 z-30">
+                            <div className="absolute top-5 left-5 z-30 flex items-center gap-2">
+                                <span className="rounded-full border border-white/20 bg-black/70 px-3 py-1 text-[11px] font-mono font-semibold tracking-widest text-white backdrop-blur">
+                                    (01)
+                                </span>
                                 <span className="rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[11px] font-semibold tracking-[0.18em] text-white uppercase backdrop-blur whitespace-nowrap">
                                     {featured.category}
                                 </span>
@@ -116,13 +119,13 @@ export function Courses() {
                         <div className="flex flex-col justify-between gap-6 p-7 md:p-10">
                             <div>
                                 <div className="mb-4 flex flex-wrap items-center gap-2">
-                                    <span className="flex items-center gap-1 text-xs text-foreground/40">
+                                    <span className="flex items-center gap-1.5 rounded-full border border-border/40 bg-secondary/50 px-2.5 py-1 text-xs text-foreground/70">
                                         <Clock className="h-3.5 w-3.5" />
                                         {featured.duration} min
                                     </span>
                                 </div>
 
-                                <h3 className="mb-3 text-2xl leading-tight font-semibold tracking-tight text-foreground md:text-3xl">
+                                <h3 className="mb-3 text-2xl leading-tight font-semibold tracking-tight text-foreground md:text-3xl transition-colors duration-300 group-hover:text-primary">
                                     {featured.title}
                                 </h3>
 
@@ -158,12 +161,12 @@ export function Courses() {
                             </div>
 
                             {/* Price + CTA */}
-                            <div className="flex items-center justify-between gap-4">
+                            <div className="flex items-center justify-between gap-4 border-t border-border/30 pt-5">
                                 <div>
-                                    <p className="text-xs tracking-wider text-foreground/40 uppercase">
+                                    <p className="text-[10px] font-medium tracking-widest text-foreground/40 uppercase">
                                         {t('featured_courses.from_price')}
                                     </p>
-                                    <p className="text-xl font-semibold text-foreground">
+                                    <p className="text-xl font-bold tracking-tight text-foreground">
                                         {featured.price}
                                     </p>
                                 </div>
@@ -181,19 +184,19 @@ export function Courses() {
                     </div>
                 </motion.article>
 
-                {/* 3 other courses */}
+                {/* Other courses */}
                 <motion.div
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: '-60px' }}
                     transition={{ staggerChildren: 0.1 }}
-                    className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
+                    className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
                 >
-                    {others.map((course) => (
+                    {others.map((course, idx) => (
                         <motion.article
                             key={course.id}
                             variants={itemVariants}
-                            className="group overflow-hidden rounded-2xl border border-border/40 bg-background/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/60 hover:shadow-md dark:border-border/50 dark:bg-background/50"
+                            className="group overflow-hidden rounded-2xl border border-border/40 bg-background/70 shadow-sm backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 hover:border-border/80 hover:shadow-lg dark:border-border/50 dark:bg-background/50"
                         >
                             <div className="relative aspect-video w-full overflow-hidden bg-muted">
                                 <img
@@ -202,7 +205,10 @@ export function Courses() {
                                     className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                                 />
                                 <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/65 via-black/15 to-transparent pointer-events-none" />
-                                <div className="absolute top-3 left-3 z-30">
+                                <div className="absolute top-3 left-3 z-30 flex items-center gap-1.5">
+                                    <span className="rounded-full border border-white/20 bg-black/70 px-2 py-0.5 text-[10px] font-mono font-semibold text-white/90 backdrop-blur">
+                                        {`0${idx + 2}`.slice(-2)}
+                                    </span>
                                     <span className="rounded-full border border-white/20 bg-black/60 px-2.5 py-0.5 text-[10px] font-semibold tracking-[0.15em] text-white/90 uppercase backdrop-blur whitespace-nowrap">
                                         {course.category}
                                     </span>
@@ -210,21 +216,25 @@ export function Courses() {
                             </div>
 
                             <div className="p-5">
-                                <h3 className="mb-2 line-clamp-2 text-sm leading-snug font-semibold text-foreground">
+                                <h3 className="mb-2 line-clamp-2 text-sm leading-snug font-semibold text-foreground transition-colors group-hover:text-primary">
                                     {course.title}
                                 </h3>
-                                <p className="mb-5 text-xs leading-relaxed text-foreground/60 line-clamp-2">
+                                <p className="mb-4 text-xs leading-relaxed text-foreground/60 line-clamp-2">
                                     {course.description.length > 140 ? course.description.slice(0, 140) + '...' : course.description}
                                 </p>
-                                <div className="mb-3">
+                                <div className="mb-3 flex items-center justify-between text-xs text-foreground/50">
                                     <StarRating rating={course.rating} />
+                                    <span className="flex items-center gap-1 text-[11px] text-foreground/40">
+                                        <Clock className="h-3 w-3" />
+                                        {course.duration} min
+                                    </span>
                                 </div>
-                                <div className="flex items-center justify-between">
+                                <div className="flex items-center justify-between border-t border-border/30 pt-3">
                                     <div>
-                                        <p className="text-[10px] tracking-wider text-foreground/40 uppercase">
+                                        <p className="text-[9px] font-medium tracking-wider text-foreground/40 uppercase">
                                             {t('featured_courses.from_price')}
                                         </p>
-                                        <p className="text-sm font-semibold text-foreground">
+                                        <p className="text-sm font-bold text-foreground">
                                             {course.price}
                                         </p>
                                     </div>

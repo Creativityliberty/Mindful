@@ -4,6 +4,7 @@ import { Cta } from './partials/cta'
 import { Engagements } from './partials/engagements'
 import FAQ from './partials/faq'
 import { Hero } from './partials/hero'
+import { MarqueeTicker } from './partials/marquee-ticker'
 import { Newsletter } from './partials/newsletter'
 import { Process } from './partials/process'
 import { Services } from './partials/services'
@@ -35,6 +36,7 @@ export default function Home({ seo }: HomeProps) {
         jsonLd={seo.jsonLd}
       />
       <Hero />
+      <MarqueeTicker />
       <Services />
       <Process />
       <Courses />

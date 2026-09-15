@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import {
     Flame,
-    Sparkles,
+    Gem,
     Palette,
     Utensils,
     Scissors,
@@ -27,7 +27,7 @@ export function Services() {
         },
         {
             id: 1,
-            icon: Sparkles,
+            icon: Gem,
             title: t('services.item1_title'),
             description: t('services.item1_desc'),
             href: '/courses?category=onglerie',

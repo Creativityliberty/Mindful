@@ -29,6 +29,15 @@
     "stat3_label": "Approche pédagogique",
     "stat3_val": "100% Pratique"
   },
+  "marquee": {
+    "item1": "Savoir-Faire Artisanal",
+    "item2": "Transmission Directe",
+    "item3": "Formations d'Excellence",
+    "item4": "Mentorat Personnalisé",
+    "item5": "Ateliers Pratiques",
+    "item6": "Praticiens & Créateurs Passionnés",
+    "item7": "Apprentissage Sans Frontières"
+  },
   "services": {
     "badge": "VOS UNIVERS DE SAVOIR-FAIRE",
     "title": "Des formations concrètes pour révéler vos compétences",
