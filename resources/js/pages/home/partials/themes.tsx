@@ -30,30 +30,32 @@ function MagneticCard({ theme, discoverLabel }: { theme: { title: string; descri
             onMouseLeave={handleMouseLeave}
             animate={{ x: position.x, y: position.y }}
             transition={{ type: 'spring', stiffness: 120, damping: 18, mass: 0.8 }}
-            className="relative w-[280px] md:w-[320px] h-[360px] md:h-[420px] shrink-0 rounded-3xl overflow-hidden border border-white/10 bg-background/80 shadow-2xl backdrop-blur-md cursor-pointer group origin-center transition-all duration-300 hover:scale-105 hover:border-primary/20"
+            className="relative w-[280px] md:w-[320px] h-[380px] md:h-[440px] shrink-0 rounded-3xl overflow-hidden border border-border/30 bg-card shadow-xl cursor-pointer group origin-center transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:border-primary/40"
         >
             <Link href={theme.href} className="block w-full h-full">
                 <div className="relative w-full h-full flex flex-col justify-end">
                     <img
                         src={theme.image}
                         alt={theme.title}
-                        className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-transform duration-700 ease-out group-hover:scale-110"
+                        className="absolute inset-0 w-full h-full object-cover pointer-events-none transition-transform duration-700 ease-out group-hover:scale-105"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none z-10" />
+                    {/* Aucun masque sombre : la photo reste 100% lumineuse et naturelle */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent pointer-events-none z-10" />
 
-                    <div className="relative z-20 p-6 md:p-8 flex flex-col justify-end h-full">
-                        <div className="w-8 h-[2px] bg-primary rounded-full mb-3 origin-left transition-all duration-300 group-hover:w-16" />
+                    {/* Cartouche Verre Dépoli Blanc Lumineux (Lumière & Élégance Luxe) */}
+                    <div className="relative z-20 m-3 p-3.5 md:p-4 rounded-2xl bg-white/80 dark:bg-slate-900/85 backdrop-blur-xl border border-white/90 dark:border-white/20 shadow-xl shadow-slate-900/10 flex flex-col justify-end transition-all duration-300 group-hover:bg-white/90 dark:group-hover:bg-slate-900/90 group-hover:shadow-2xl">
+                        <div className="w-6 h-[2px] bg-primary rounded-full mb-1.5 origin-left transition-all duration-300 group-hover:w-12" />
 
-                        <h3 className="text-xl font-bold text-white mb-2 group-hover:text-primary transition-colors duration-300">
+                        <h3 className="text-base md:text-lg font-bold text-slate-900 dark:text-white mb-1 group-hover:text-primary transition-colors duration-300 line-clamp-1">
                             {theme.title}
                         </h3>
 
-                        <p className="text-xs md:text-sm text-white/60 leading-relaxed mb-4">
+                        <p className="text-xs text-slate-600 dark:text-slate-300 leading-snug mb-2 line-clamp-1 font-normal">
                             {theme.description}
                         </p>
 
-                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-all group-hover:gap-2.5">
+                        <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary transition-all group-hover:gap-2">
                             {discoverLabel}
                             <ArrowRight className="h-3.5 w-3.5" />
                         </span>
@@ -72,30 +74,42 @@ export function Themes() {
         {
             title: t('themes.theme1_title'),
             description: t('themes.theme1_desc'),
-            href: '/courses?theme=radiesthesie',
-            image: '/assets/images/theme_radiesthesie.jpg',
+            href: '/courses?category=bougies',
+            image: '/assets/images/theme_bougies.jpg',
         },
         {
             title: t('themes.theme2_title'),
             description: t('themes.theme2_desc'),
-            href: '/courses?theme=chakras',
-            image: '/assets/images/theme_chakras.jpg',
+            href: '/courses?category=onglerie',
+            image: '/assets/images/theme_onglerie.jpg',
         },
         {
             title: t('themes.theme3_title'),
             description: t('themes.theme3_desc'),
-            href: '/courses?theme=meditation',
-            image: '/assets/images/theme_meditation.jpg',
+            href: '/courses?category=ceramique',
+            image: '/assets/images/theme_ceramique.jpg',
         },
         {
             title: t('themes.theme4_title'),
             description: t('themes.theme4_desc'),
-            href: '/courses?theme=developpement-personnel',
-            image: '/assets/images/theme_developpement.jpg',
+            href: '/courses?category=patisserie',
+            image: '/assets/images/theme_patisserie.jpg',
+        },
+        {
+            title: t('themes.theme5_title'),
+            description: t('themes.theme5_desc'),
+            href: '/courses?category=couture',
+            image: '/assets/images/theme_couture.jpg',
+        },
+        {
+            title: t('themes.theme6_title'),
+            description: t('themes.theme6_desc'),
+            href: '/courses?category=digital',
+            image: '/assets/images/theme_digital.jpg',
         },
     ];
 
-    const marqueeThemes = [...themes, ...themes, ...themes];
+    const marqueeThemes = [...themes, ...themes];
 
     return (
         <section className="relative py-24 md:py-32 overflow-hidden bg-background">
@@ -132,10 +146,10 @@ export function Themes() {
             >
                 <motion.div
                     className="flex gap-6 w-max px-3"
-                    animate={{ x: ['0%', '-33.333%'] }}
+                    animate={{ x: ['0%', '-50%'] }}
                     transition={{
                         x: {
-                            duration: isHovered ? 60 : 35,
+                            duration: isHovered ? 75 : 45,
                             ease: 'linear',
                             repeat: Infinity,
                         }

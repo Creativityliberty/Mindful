@@ -19,56 +19,56 @@ export function Chiffres() {
             title: t('chiffres.item1_title'),
             eyebrow: t('chiffres.item1_eyebrow'),
             description: t('chiffres.item1_desc'),
-            href: '/courses?category=radiesthesie',
-            image: '/assets/images/service_radiesthesie_lux.jpg',
+            href: '/courses?category=bougies',
+            image: '/assets/images/theme_bougies.jpg',
         },
         {
             title: t('chiffres.item2_title'),
             eyebrow: t('chiffres.item2_eyebrow'),
             description: t('chiffres.item2_desc'),
-            href: '/courses?category=chakras',
-            image: '/assets/images/service_chakras_lux.jpg',
+            href: '/courses?category=onglerie',
+            image: '/assets/images/theme_onglerie.jpg',
         },
         {
             title: t('chiffres.item3_title'),
             eyebrow: t('chiffres.item3_eyebrow'),
             description: t('chiffres.item3_desc'),
-            href: '/courses',
-            image: '/assets/images/service_bougies_lux.jpg',
+            href: '/courses?category=ceramique',
+            image: '/assets/images/theme_ceramique.jpg',
         },
         {
             title: t('chiffres.item4_title'),
             eyebrow: t('chiffres.item4_eyebrow'),
             description: t('chiffres.item4_desc'),
-            href: '/courses',
-            image: '/assets/images/service_ongles_lux.jpg',
+            href: '/courses?category=patisserie',
+            image: '/assets/images/theme_patisserie.jpg',
         },
         {
             title: t('chiffres.item5_title'),
             eyebrow: t('chiffres.item5_eyebrow'),
             description: t('chiffres.item5_desc'),
-            href: '/courses',
-            image: '/assets/images/service_ia_lux.jpg',
+            href: '/courses?category=couture',
+            image: '/assets/images/theme_couture.jpg',
         },
         {
             title: t('chiffres.item6_title'),
             eyebrow: t('chiffres.item6_eyebrow'),
             description: t('chiffres.item6_desc'),
-            href: '/courses',
-            image: '/assets/images/service_aroma_lux.jpg',
+            href: '/courses?category=digital',
+            image: '/assets/images/theme_digital.jpg',
         },
         {
             title: t('chiffres.item7_title'),
             eyebrow: t('chiffres.item7_eyebrow'),
             description: t('chiffres.item7_desc'),
-            href: '/courses',
-            image: '/assets/images/service_massage_lux.jpg',
+            href: '/courses?category=radiesthesie',
+            image: '/assets/images/theme_radiesthesie.jpg',
         },
         {
             title: t('chiffres.item8_title'),
             eyebrow: t('chiffres.item8_eyebrow'),
             description: t('chiffres.item8_desc'),
-            href: '/courses',
+            href: '/courses?category=bois',
             image: '/assets/images/service_bois_lux.jpg',
         },
     ];
@@ -120,7 +120,7 @@ export function Chiffres() {
                         {t('chiffres.title_part2')}
                     </h2>
 
-                    <p className="mx-auto max-w-2xl text-base md:text-lg text-foreground/60 font-light leading-relaxed">
+                    <p className="mx-auto max-w-2xl text-base md:text-lg text-foreground/70 font-normal leading-relaxed">
                         {t('chiffres.subtitle')}
                     </p>
                 </motion.div>
@@ -155,7 +155,7 @@ export function Chiffres() {
                             >
                                 {({ isActive }) => (
                                     <div
-                                        className={`group relative h-full w-full overflow-hidden rounded-[2.5rem] border transition-all duration-500 flex flex-col justify-between p-7 md:p-8 ${
+                                        className={`group relative h-full w-full overflow-hidden rounded-[2.5rem] border transition-all duration-500 flex flex-col justify-between p-5 md:p-6 ${
                                             isActive
                                                 ? 'border-primary/40 bg-background/90 shadow-2xl shadow-primary/10 scale-105 backdrop-blur-xl'
                                                 : 'border-border/20 bg-background/20 opacity-80 scale-95 backdrop-blur-md'
@@ -167,25 +167,27 @@ export function Chiffres() {
                                             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
 
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent pointer-events-none z-10" />
+                                        {/* Aucun masque sombre : photo 100% claire */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-white/20 via-transparent to-transparent pointer-events-none z-10" />
 
                                         <div className="relative z-20 flex justify-between items-start">
-                                            <span className="rounded-full bg-white/20 px-3.5 py-1 text-xs font-semibold tracking-wider text-white backdrop-blur-md">
+                                            <span className="rounded-full bg-white/80 dark:bg-slate-900/80 px-3.5 py-1 text-xs font-semibold tracking-wider text-slate-900 dark:text-white backdrop-blur-md shadow-md border border-white/90">
                                                 {item.eyebrow}
                                             </span>
                                             <Link
                                                 href={item.href}
-                                                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground"
+                                                className="flex h-10 w-10 items-center justify-center rounded-full bg-white/80 dark:bg-slate-900/80 text-slate-900 dark:text-white backdrop-blur-md transition-transform duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground shadow-md border border-white/90"
                                             >
                                                 <ArrowUpRight className="h-4 w-4" />
                                             </Link>
                                         </div>
 
-                                        <div className="relative z-20 space-y-2">
-                                            <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
+                                        {/* Cartouche Verre Dépoli Blanc Lumineux */}
+                                        <div className="relative z-20 p-4 md:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/85 backdrop-blur-xl border border-white/90 dark:border-white/20 shadow-xl shadow-slate-900/10 space-y-1">
+                                            <h3 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white tracking-tight line-clamp-1">
                                                 {item.title}
                                             </h3>
-                                            <p className="text-xs md:text-sm text-white/70 leading-relaxed font-light">
+                                            <p className="text-xs md:text-sm text-slate-600 dark:text-slate-300 leading-relaxed font-normal line-clamp-2">
                                                 {item.description}
                                             </p>
                                         </div>
