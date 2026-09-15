@@ -331,8 +331,9 @@
   },
   "about_page": {
     "badge": "À propos",
-    "title": "À propos de Formationsession.com",
-    "main_heading": "L'espace dédié à la transmission, au partage de connaissances et à l'épanouissement personnel et professionnel.",
+    "title": "Transmettre, partager et révéler les savoir-faire",
+    "subtitle": "L'espace dédié à la transmission de compétences, au partage de connaissances et à l'épanouissement personnel et professionnel.",
+    "main_heading": "Bienvenue sur Formationsession.com",
     "intro_p1": "À l'origine de ce projet, nous sommes deux passionnés convaincus d'une chose : chacun possède un savoir-faire précieux qui mérite d'être transmis, et chaque personne doit pouvoir accéder librement à des apprentissages variés pour enrichir sa vie.",
     "intro_p2": "Formationsession.com a été conçu comme une maison d'accueil numérique. Notre rôle est de mettre à disposition une technologie simple, performante et accessible pour permettre à des experts, artisans, praticiens du bien-être et professionnels de tous horizons de partager leurs formations en ligne. Nous offrons le cadre, la visibilité et l'infrastructure technique, tout en garantissant la pleine indépendance pédagogique de chaque créateur.",
     "stat1_val": "+800",

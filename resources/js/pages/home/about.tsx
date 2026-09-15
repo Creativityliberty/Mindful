@@ -127,7 +127,7 @@ export default function About() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6 }}
-                    className="mb-16 text-center space-y-4"
+                    className="mb-16 text-center space-y-4 max-w-3xl mx-auto"
                 >
                     <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3.5 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                         {t('about_page.badge')}
@@ -135,6 +135,9 @@ export default function About() {
                     <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-foreground font-sans">
                         {t('about_page.title')}
                     </h1>
+                    <p className="text-base md:text-lg text-foreground/70 font-light leading-relaxed">
+                        {t('about_page.subtitle')}
+                    </p>
                 </motion.div>
 
                 {/* Split-Screen Section: Vision and Mission */}
