@@ -60,7 +60,7 @@ export const allArticles: Article[] = [
   {
     id: 10,
     slug: 'guide-complet-lithotherapie-mineraux-chakras',
-    image: '/assets/images/course_lithotherapie_mineraux.jpg',
+    image: '/assets/images/blog_lithotherapie_chakras.jpg',
     categories: ['Lithothérapie', 'Chakras', 'Minéraux'],
     titre: 'Guide Complet de la Lithothérapie : Pouvoir des Minéraux & Réharmonisation des Chakras',
     description: 'Explorez les fondements de la lithothérapie consciente : comment reconnaître les pierres brutes et polies, les purifier par l\'eau ou la fumigation, les recharger à la lune et équilibrer vos 7 chakras.',
