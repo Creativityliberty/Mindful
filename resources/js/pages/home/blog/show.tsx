@@ -217,28 +217,52 @@ export default function BlogShow() {
                             </div>
                         )}
 
-                        {/* FAQ Section (Indexable via Schema.org FAQPage) */}
+                        {/* People Also Ask (PAA) Section (Indexable via Schema.org FAQPage & Google Rich Snippets) */}
                         {article.faq && article.faq.length > 0 && (
-                            <div className="my-14 border-t border-border/40 pt-10">
-                                <div className="mb-6 flex items-center gap-2">
-                                    <HelpCircle className="h-5 w-5 text-primary" />
-                                    <h3 className="text-2xl font-bold tracking-tight text-foreground m-0">
-                                        Questions Fréquentes (FAQ)
+                            <section className="my-14 rounded-3xl border border-primary/20 bg-gradient-to-b from-primary/[0.04] via-background to-background p-6 md:p-10 shadow-lg backdrop-blur-md" aria-label="People Also Ask Google">
+                                <div className="mb-8">
+                                    <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+                                        <Sparkles className="h-3.5 w-3.5" />
+                                        <span>Google People Also Ask • Réponses Directes AEO</span>
+                                    </div>
+                                    <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground m-0">
+                                        People Also Ask — Questions Fréquentes des Internautes
                                     </h3>
+                                    <p className="mt-2 text-sm md:text-base text-muted-foreground m-0 leading-relaxed max-w-2xl">
+                                        Voici les interrogations les plus souvent posées sur Google sur ce thème, résolues de manière claire et directe par nos formatrices et formateurs certifiés.
+                                    </p>
                                 </div>
+
                                 <div className="space-y-4">
                                     {article.faq.map((item, fIdx) => (
-                                        <div key={fIdx} className="rounded-xl border border-border/40 bg-card/60 p-5 backdrop-blur-sm">
-                                            <h4 className="text-base font-semibold text-foreground mb-2 m-0">
+                                        <div
+                                            key={fIdx}
+                                            className="group rounded-2xl border border-border/50 bg-card/80 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/40 hover:shadow-md hover:bg-card"
+                                        >
+                                            <div className="mb-3 flex items-center gap-2">
+                                                <span className="inline-flex items-center gap-1 rounded-md bg-secondary/80 px-2.5 py-0.5 text-[11px] font-semibold text-secondary-foreground">
+                                                    <HelpCircle className="h-3 w-3 text-primary" />
+                                                    Requête Google #{fIdx + 1}
+                                                </span>
+                                                <span className="text-[11px] font-medium text-muted-foreground">
+                                                    Réponse vérifiée
+                                                </span>
+                                            </div>
+
+                                            <h4 className="text-base md:text-lg font-semibold text-foreground mb-3 m-0 leading-snug">
                                                 {item.question}
                                             </h4>
-                                            <p className="text-sm text-muted-foreground m-0 leading-relaxed">
-                                                {item.answer}
-                                            </p>
+
+                                            <div className="flex items-start gap-3 rounded-xl border border-border/30 bg-muted/30 p-4">
+                                                <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0 mt-0.5" />
+                                                <p className="text-sm md:text-base text-foreground/80 m-0 leading-relaxed">
+                                                    {item.answer}
+                                                </p>
+                                            </div>
                                         </div>
                                     ))}
                                 </div>
-                            </div>
+                            </section>
                         )}
 
                         {/* Formation CTA Card */}
