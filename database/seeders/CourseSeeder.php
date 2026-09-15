@@ -107,7 +107,7 @@ class CourseSeeder extends Seeder
             [
                 'title' => 'Harmonisez vos chakras',
                 'category_id' => $chakrasCategory->id,
-                'description' => 'Un programme complet en 7 modules pour comprendre, purifier et équilibrer vos sept centres énergétiques principaux à l\'aide de méditations guidées, de la lithothérapie et des huiles essentielles.',
+                'description' => 'Un programme complet en 7 modules pour comprendre, purifier et équilibrer vos sept centres énergétiques principaux à l\'aide de méditations guidées, de la lithothérapie et des pratiques vibratoires.',
                 'price' => 89.00, // Tarif d'attente à confirmer
                 'duration' => 420, // 7 heures
                 'image' => '/assets/images/course_chakras.png',
@@ -115,7 +115,7 @@ class CourseSeeder extends Seeder
                 'benefits' => [
                     '7 modules théoriques et pratiques',
                     'Méditations guidées audio incluses',
-                    'Fiches pratiques d\'aromathérapie et de lithothérapie',
+                    'Fiches pratiques de lithothérapie et d\'équilibrage',
                 ],
             ],
             [
@@ -159,22 +159,6 @@ class CourseSeeder extends Seeder
                     'Flacons et matières premières fournis',
                     'Protocole de solarisation pas à pas',
                     'Boissons offertes',
-                ],
-            ],
-            [
-                'title' => 'Initiation à l\'aromathérapie — Soigner en douceur avec les huiles essentielles',
-                'category_id' => $creativityCategory->id,
-                'description' => "Découvrez le pouvoir des huiles essentielles pour prendre soin de vous naturellement. Dans cette formation d'introduction entièrement gratuite, Louise vous guide pas à pas dans les bases de l'aromathérapie : comprendre les huiles essentielles, les choisir, les utiliser en toute sécurité et créer vos premières synergies bien-être.\n\nUne première étape accessible à tous, en complément parfait de vos pratiques énergétiques.",
-                'price' => 0.00,
-                'duration' => 70, // ~70 min
-                'image' => '/assets/images/course_aromatherapie.jpg',
-                'featured' => true,
-                'benefits' => [
-                    'Formation 100% gratuite — accès immédiat sans paiement',
-                    'Comprendre ce qu\'est une huile essentielle et comment elle agit',
-                    'Les 5 huiles essentielles indispensables pour débuter',
-                    'Créer vos premières synergies de bien-être à la maison',
-                    'Utiliser l\'aromathérapie en complément de vos pratiques énergétiques',
                 ],
             ],
         ];

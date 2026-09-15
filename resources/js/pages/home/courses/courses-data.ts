@@ -948,7 +948,7 @@ export const allCourses: Course[] = [
             'Accès à vie',
             'Méditations guidées incluses',
             'Playlist vibratoire 528 Hz',
-            'Fiches mémo litho & aromathérapie',
+            'Fiches mémo lithothérapie',
             'Attestation de complétion',
         ],
         modules: [
@@ -990,7 +990,7 @@ export const allCourses: Course[] = [
                 lessons: [
                     { title: 'Aliments associés au feu digestif (curcuma, gingembre)', duration: '25 min' },
                     { title: 'Hygiène de vie dynamique et exposition solaire', duration: '25 min' },
-                    { title: 'Utilisation des minéraux (citrine) et huiles essentielles', duration: '20 min' },
+                    { title: 'Utilisation des minéraux (citrine) et pierres d\'ancrage', duration: '20 min' },
                 ],
             },
         ],
@@ -1016,7 +1016,7 @@ export const allCourses: Course[] = [
             {
                 icon: CheckCircle2,
                 title: 'Maîtriser les outils de réharmonisation',
-                description: 'Utiliser le yoga, la méditation, la lithothérapie et les huiles essentielles.',
+                description: 'Utiliser le yoga, la méditation et la lithothérapie.',
             },
             {
                 icon: CheckCircle2,
@@ -1054,7 +1054,7 @@ export const allCourses: Course[] = [
         benefits: [
             'Accès à vie',
             'Méditations audio guidées quotidiennes',
-            'Fiches lithothérapie & huiles essentielles',
+            'Fiches lithothérapie & soins énergétiques',
             'Attestation de complétion officielle',
         ],
         modules: [
@@ -1090,12 +1090,12 @@ export const allCourses: Course[] = [
             },
             {
                 number: 4,
-                title: 'Rituels de Vie, Litho & Aromathérapie',
+                title: 'Rituels de Vie & Lithothérapie',
                 duration: '1h 10 min',
                 lessons: [
                     { title: 'Alimentation orange (curcuma, patate douce) et hydratation', duration: '20 min' },
                     { title: 'Utilisation des minéraux (Cornaline, Ambre) et rechargement', duration: '25 min' },
-                    { title: 'Massage aromatique du bas-ventre et sécurité d\'usage', duration: '25 min' },
+                    { title: 'Rituel d\'ancrage du bas-ventre et soin énergétique', duration: '25 min' },
                 ],
             },
         ],
@@ -1131,7 +1131,7 @@ export const allCourses: Course[] = [
         ],
         prerequisites: [
             'Aucun prérequis requis',
-            'Vérifiez la compatibilité des huiles essentielles auprès d\'un professionnel.',
+            'Avoir un tapis de sol et une cornaline est recommandé',
         ],
         reviews: [
             {
