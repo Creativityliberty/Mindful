@@ -14,7 +14,7 @@ class EloquentCourseRepository implements CourseRepository
         return Course::query()
             ->published()
             ->with(['category', 'trainer'])
-            ->withCount('modules')
+            ->withCount(['modules', 'enrollments'])
             ->orderByDesc('featured')
             ->orderBy('title')
             ->get();
@@ -25,7 +25,7 @@ class EloquentCourseRepository implements CourseRepository
         return Course::query()
             ->published()
             ->with(['category', 'trainer', 'modules.lessons'])
-            ->withCount('modules')
+            ->withCount(['modules', 'enrollments'])
             ->orderByDesc('featured')
             ->orderBy('title')
             ->get();
@@ -36,7 +36,7 @@ class EloquentCourseRepository implements CourseRepository
         return Course::query()
             ->published()
             ->with(['category', 'trainer', 'modules.lessons', 'reviews.user'])
-            ->withCount('modules')
+            ->withCount(['modules', 'enrollments'])
             ->where(function ($query) use ($identifier) {
                 if (is_numeric($identifier)) {
                     $query->where('id', (int) $identifier)->orWhere('slug', (string) $identifier);
@@ -52,7 +52,7 @@ class EloquentCourseRepository implements CourseRepository
         return Course::query()
             ->published()
             ->with(['category', 'trainer'])
-            ->withCount('modules')
+            ->withCount(['modules', 'enrollments'])
             ->orderByDesc('featured')
             ->limit($limit)
             ->get();

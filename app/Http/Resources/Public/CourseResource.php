@@ -24,7 +24,7 @@ class CourseResource extends JsonResource
             'category' => $this->whenLoaded('category', fn () => $this->category->name),
             'moduleCount' => $this->modules_count ?? $this->whenLoaded('modules', fn () => $this->modules->count(), 0),
             'lessonCount' => $this->whenLoaded('modules', fn () => $this->modules->sum(fn ($m) => $m->relationLoaded('lessons') ? $m->lessons->count() : 0), 0),
-            'studentCount' => $this->enrollments()->count(),
+            'studentCount' => (int) ($this->enrollments_count ?? $this->enrollments()->count()),
             'rating' => round((float) ($this->reviews()->avg('rating') ?? 0), 1),
             'benefits' => $this->benefits,
             'objectives' => $this->when(
@@ -40,6 +40,9 @@ class CourseResource extends JsonResource
                 'initials' => $this->trainerInitials(),
                 'role' => $this->trainer->trainer_title,
                 'bio' => $this->trainer->trainer_bio,
+                'avatar' => $this->trainer->trainer_avatar,
+                'courseCount' => $this->trainer->courses()->where('status', \App\Enums\CourseStatus::Published)->count(),
+                'studentCount' => (string) \App\Models\Enrollment::whereIn('course_id', $this->trainer->courses()->pluck('id'))->distinct('user_id')->count('user_id'),
             ]),
             'modules' => $this->whenLoaded('modules', fn () => ModuleResource::collection($this->modules)->resolve()),
             'is_enrolled' => Auth::check()

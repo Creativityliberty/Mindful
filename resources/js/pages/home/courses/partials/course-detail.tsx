@@ -217,7 +217,7 @@ export function CourseDetail({ course }: { course: Course }) {
                         <Users className="h-4 w-4 text-primary/60" />
                         <span>
                             {course.studentCount.toLocaleString('fr-FR')}{' '}
-                            étudiants
+                            {course.studentCount > 1 ? 'étudiants' : 'étudiant'}
                         </span>
                     </div>
                     <div className="flex items-center gap-2 text-sm text-foreground/60">
