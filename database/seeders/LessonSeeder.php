@@ -18,7 +18,9 @@ class LessonSeeder extends Seeder
         Module::with('course')->get()->each(function (Module $module): void {
             $courseSlug = $module->course->slug;
 
-            if ($courseSlug === 'initiation-au-lahochi') {
+            if ($courseSlug === 'lithotherapie-utilisation-consciente-des-mineraux-chakras') {
+                $lessons = $this->getLithotherapieLessons($module->title);
+            } elseif ($courseSlug === 'initiation-au-lahochi') {
                 $lessons = $this->getLahochiLessons($module->title);
             } elseif ($courseSlug === 'formation-orisugi-devenir-tisseur-du-fil-dor') {
                 $lessons = $this->getOrisugiLessons($module->title);
@@ -167,6 +169,43 @@ class LessonSeeder extends Seeder
             ],
             default => [
                 ['title' => 'Introduction', 'duration' => 15, 'type' => LessonType::Pdf],
+            ],
+        };
+    }
+
+    private function getLithotherapieLessons(string $moduleTitle): array
+    {
+        return match ($moduleTitle) {
+            'Guide des Pierres et Cristaux' => [
+                ['title' => 'Différencier pierres brutes, polies, géodes et gemmes', 'duration' => 4, 'type' => LessonType::VideoUrl, 'is_free' => true],
+                ['title' => 'Structure cristalline et caractéristiques minéralogiques', 'duration' => 4, 'type' => LessonType::Pdf, 'is_free' => true, 'pdf_url' => '/assets/docs/intro.pdf'],
+            ],
+            'Introduction aux Minéraux et à l’Énergie' => [
+                ['title' => 'Les minéraux : gardiens et réservoirs d’énergies', 'duration' => 3, 'type' => LessonType::VideoUrl],
+                ['title' => 'Le voyage millénaire et la libération des mémoires', 'duration' => 3, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/intro.pdf'],
+            ],
+            'Nettoyage des Minéraux au Moment de l’Achat' => [
+                ['title' => 'Protocole complet de purification initiale (Eau claire et sel)', 'duration' => 5, 'type' => LessonType::VideoUrl],
+                ['title' => 'Précautions essentielles et symbolique du cycle de 7 jours', 'duration' => 5, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/intro.pdf'],
+            ],
+            'Rechargement des Minéraux Après l’Achat' => [
+                ['title' => 'Lumière solaire douce et lumière lunaire (Yin & Yang)', 'duration' => 4, 'type' => LessonType::VideoUrl],
+                ['title' => 'Reconnexion tellurique, géodes, fleur de vie et intention', 'duration' => 6, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/intro.pdf'],
+            ],
+            'Nettoyage des Minéraux Après Chaque Utilisation' => [
+                ['title' => 'Quand purifier : post-séance, charge émotionnelle et port prolongé', 'duration' => 3, 'type' => LessonType::VideoUrl],
+                ['title' => 'Méthodes adaptées : sel indirect, fumigation sacrée et bols sonores', 'duration' => 5, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/intro.pdf'],
+            ],
+            'Rechargement Régulier & Cycles de Maintenance' => [
+                ['title' => 'Cycle complet de maintenance (Nettoyage, Rechargement, Programmation)', 'duration' => 4, 'type' => LessonType::VideoUrl],
+                ['title' => 'Développer sa sensibilité intuitive aux énergies minérales', 'duration' => 3, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/intro.pdf'],
+            ],
+            'Conclusion, Éthique & Certification' => [
+                ['title' => 'Évolution de la pratique consciente et cadre déontologique', 'duration' => 3, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/intro.pdf'],
+                ['title' => 'Validation du parcours et délivrance du certificat officiel', 'duration' => 3, 'type' => LessonType::Pdf, 'pdf_url' => '/assets/docs/intro.pdf'],
+            ],
+            default => [
+                ['title' => 'Introduction et pratique du module', 'duration' => 5, 'type' => LessonType::VideoUrl],
             ],
         };
     }

@@ -59,6 +59,183 @@ export type Course = {
 
 export const allCourses: Course[] = [
     {
+        id: 10,
+        image: '/assets/images/course_lithotherapie_mineraux.jpg',
+        category: 'Chakras & Énergétique',
+        title: 'Lithothérapie : Utilisation Consciente des Minéraux & Chakras',
+        description:
+            'Découvrez l\'art ancestral et raffiné de travailler avec les minéraux pour accompagner votre développement personnel et énergétique. Formation certifiante complète : purification, rechargement et harmonisation.',
+        price: '89 €',
+        duration: '55 min',
+        language: 'Français',
+        studentCount: 342,
+        moduleCount: 7,
+        rating: 5.0,
+        featured: true,
+        benefits: [
+            'Formation certifiante complète avec attestation',
+            'Guide illustré de reconnaissance des pierres & cristaux',
+            'Protocoles sécurisés de purification (eau, sel, fumigation, son)',
+            'Techniques de rechargement (lunaire, solaire, géométrie sacrée)',
+            'Accès illimité à vie et mises à jour pédagogiques',
+        ],
+        modules: [
+            {
+                number: 1,
+                title: 'Guide des Pierres et Cristaux',
+                duration: '8 min',
+                lessons: [
+                    {
+                        title: 'Différencier pierres brutes, polies, géodes et gemmes',
+                        duration: '4 min',
+                        free: true,
+                    },
+                    {
+                        title: 'Structure cristalline et caractéristiques minéralogiques',
+                        duration: '4 min',
+                        free: true,
+                    },
+                ],
+            },
+            {
+                number: 2,
+                title: 'Introduction aux Minéraux et à l\'Énergie',
+                duration: '6 min',
+                lessons: [
+                    {
+                        title: 'Les minéraux : gardiens et réservoirs d\'énergies',
+                        duration: '3 min',
+                    },
+                    {
+                        title: 'Le voyage millénaire et la libération des mémoires',
+                        duration: '3 min',
+                    },
+                ],
+            },
+            {
+                number: 3,
+                title: 'Nettoyage des Minéraux au Moment de l\'Achat',
+                duration: '10 min',
+                lessons: [
+                    {
+                        title: 'Protocole complet de purification initiale (Eau claire et sel)',
+                        duration: '5 min',
+                    },
+                    {
+                        title: 'Précautions essentielles et symbolique du cycle de 7 jours',
+                        duration: '5 min',
+                    },
+                ],
+            },
+            {
+                number: 4,
+                title: 'Rechargement des Minéraux Après l\'Achat',
+                duration: '10 min',
+                lessons: [
+                    {
+                        title: 'Lumière solaire douce et lumière lunaire (Yin & Yang)',
+                        duration: '4 min',
+                    },
+                    {
+                        title: 'Reconnexion tellurique, géodes, fleur de vie et intention',
+                        duration: '6 min',
+                    },
+                ],
+            },
+            {
+                number: 5,
+                title: 'Nettoyage des Minéraux Après Chaque Utilisation',
+                duration: '8 min',
+                lessons: [
+                    {
+                        title: 'Quand purifier : post-séance, charge émotionnelle et port prolongé',
+                        duration: '3 min',
+                    },
+                    {
+                        title: 'Méthodes adaptées : sel indirect, fumigation sacrée et bols sonores',
+                        duration: '5 min',
+                    },
+                ],
+            },
+            {
+                number: 6,
+                title: 'Rechargement Régulier & Cycles de Maintenance',
+                duration: '7 min',
+                lessons: [
+                    {
+                        title: 'Cycle complet de maintenance (Nettoyage, Rechargement, Programmation)',
+                        duration: '4 min',
+                    },
+                    {
+                        title: 'Développer sa sensibilité intuitive aux énergies minérales',
+                        duration: '3 min',
+                    },
+                ],
+            },
+            {
+                number: 7,
+                title: 'Conclusion, Éthique & Certification',
+                duration: '6 min',
+                lessons: [
+                    {
+                        title: 'Évolution de la pratique consciente et cadre déontologique',
+                        duration: '3 min',
+                    },
+                    {
+                        title: 'Validation du parcours et délivrance du certificat officiel',
+                        duration: '3 min',
+                    },
+                ],
+            },
+        ],
+        trainer: {
+            initials: 'FD',
+            name: 'Fabienne Dizy-Olliveaud',
+            role: 'Formatrice Certifiée en Lithothérapie & Énergétique',
+            bio: 'Praticienne passionnée et co-éditrice de FormationSession, Fabienne accompagne les praticiens et particuliers dans l\'art ancestral et éthique des minéraux.',
+            courseCount: 3,
+            studentCount: '800+',
+        },
+        objectives: [
+            {
+                icon: CheckCircle2,
+                title: 'Maîtrise des protocoles de purification',
+                description: 'Savoir nettoyer en toute sécurité chaque type de pierre selon sa dureté et sa sensibilité.',
+            },
+            {
+                icon: CheckCircle2,
+                title: 'Rechargement optimal et intention consciente',
+                description: 'Utiliser la lune, les géodes et la géométrie sacrée pour restaurer la fréquence vibratoire des minéraux.',
+            },
+            {
+                icon: CheckCircle2,
+                title: 'Pratique éthique et sécurisée',
+                description: 'Intégrer les minéraux en accompagnement bien-être dans le respect du cadre déontologique.',
+            },
+        ],
+        prerequisites: [
+            'Aucun prérequis technique nécessaire, formation ouverte à tous',
+            'Avoir quelques minéraux ou l\'envie d\'en acquérir',
+            'Un carnet de bord pour noter vos ressentis',
+        ],
+        reviews: [
+            {
+                initials: 'CL',
+                name: 'Claire L.',
+                role: 'Élève Certifiée',
+                text: 'Une formation d\'une clarté remarquable. Les protocoles de 7 jours et de fumigation ont transformé ma relation avec mes pierres.',
+                rating: 5,
+            },
+            {
+                initials: 'MP',
+                name: 'Marc P.',
+                role: 'Praticien Holistique',
+                text: 'Pédagogie impeccable, vidéos courtes et percutantes. La structure par modules de 5 à 10 minutes est parfaite pour apprendre à son rythme.',
+                rating: 5,
+            },
+        ],
+    },
+    {
         id: 1,
         image: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=800&q=80',
         category: 'Mindfulness',

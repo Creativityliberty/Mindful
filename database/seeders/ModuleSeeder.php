@@ -15,7 +15,27 @@ class ModuleSeeder extends Seeder
         Module::query()->delete();
 
         Course::all()->each(function (Course $course): void {
-            if ($course->slug === 'initiation-au-lahochi') {
+            if ($course->slug === 'lithotherapie-utilisation-consciente-des-mineraux-chakras') {
+                $modules = [
+                    'Guide des Pierres et Cristaux' => 8,
+                    'Introduction aux Minéraux et à l’Énergie' => 6,
+                    'Nettoyage des Minéraux au Moment de l’Achat' => 10,
+                    'Rechargement des Minéraux Après l’Achat' => 10,
+                    'Nettoyage des Minéraux Après Chaque Utilisation' => 8,
+                    'Rechargement Régulier & Cycles de Maintenance' => 7,
+                    'Conclusion, Éthique & Certification' => 6,
+                ];
+
+                $index = 1;
+                foreach ($modules as $title => $duration) {
+                    Module::create([
+                        'course_id' => $course->id,
+                        'title' => $title,
+                        'duration' => $duration,
+                        'order' => $index++,
+                    ]);
+                }
+            } elseif ($course->slug === 'initiation-au-lahochi') {
                 $modules = [
                     'Découvrir le LaHoChi',
                     'Préparer une séance',

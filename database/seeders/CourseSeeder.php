@@ -31,6 +31,22 @@ class CourseSeeder extends Seeder
         // 3. Définir le catalogue réel
         $courses = [
             [
+                'title' => 'Lithothérapie : Utilisation Consciente des Minéraux & Chakras',
+                'category_id' => $chakrasCategory->id,
+                'description' => "Ce support de cours certifiant est conçu pour vous guider à travers les profondeurs de la lithothérapie et de l'harmonisation énergétique.\n\nQue vous soyez un particulier passionné par le développement personnel ou un professionnel désireux d'animer des ateliers, cette formation vous fournira les connaissances fondamentales et protocoles sécurisés nécessaires.\n\nAu programme :\n- Guide complet des pierres et cristaux (brutes, polies, géodes, gemmes)\n- Protocoles de purification initiale et de rechargement (lunaire, solaire, géométrie sacrée)\n- Entretien régulier et cycles de maintenance énergétique\n- Déontologie, pratique consciente et certification finale.",
+                'price' => 89.00,
+                'duration' => 55, // 55 minutes
+                'image' => '/assets/images/course_lithotherapie_mineraux.jpg',
+                'featured' => true,
+                'benefits' => [
+                    'Formation certifiante complète avec attestation officielle',
+                    'Guide illustré de reconnaissance des pierres & cristaux',
+                    'Protocoles de purification (eau, sel, fumigation, son)',
+                    'Techniques de rechargement (lunaire, solaire, géométrie sacrée)',
+                    'Accès illimité à vie et mises à jour pédagogiques',
+                ],
+            ],
+            [
                 'title' => 'Initiation au LaHoChi',
                 'category_id' => $chakrasCategory->id,
                 'description' => "Formation LaHoChi en ligne : comment se déroule-t-elle ?\n\nLa formation LaHoChi en ligne se déroule en visioconférence afin de vous permettre d’apprendre dans les meilleures conditions, depuis chez vous et à votre rythme.\n\nDès votre inscription, vous recevez un livret pédagogique au format PDF. Celui-ci présente les origines du LaHoChi, ses principes énergétiques, le protocole complet ainsi que les différentes positions des mains utilisées lors des séances.\n\nNous convenons ensuite ensemble d’un rendez-vous pour votre initiation. Lors de cette rencontre, nous prenons le temps d’étudier le contenu du livret en détail. J’y apporte également mon expérience personnelle, des connaissances complémentaires et des conseils pratiques issus de mon parcours de praticienne.\n\nLa formation comprend :\n- un temps d’enseignement théorique et pratique ;\n- Une séance énergétique à la fin de la formation afin de vous transmettre l'énergie du LaHoChi\n\nAprès la période traditionnelle des 21 jours d’auto-soins, vous réaliserez à votre tour une séance LaHoChi sur moi. Cette étape permet de valider votre pratique, de répondre à vos dernières questions et de renforcer votre confiance dans l’utilisation de cette méthode énergétique.\n\nÀ l’issue de la formation, vous disposerez de tous les outils nécessaires pour pratiquer le LaHoChi sur vous-même et sur vos proches en toute autonomie.",
