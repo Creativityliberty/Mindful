@@ -11,7 +11,6 @@ import {
     Star,
     ShieldCheck,
     AlertTriangle,
-    Sparkles,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -128,7 +127,7 @@ export default function BlogShow() {
                         {/* Direct Answer Summary Box */}
                         <div className="my-8 rounded-2xl border border-primary/30 bg-primary/5 p-6 backdrop-blur-sm">
                             <div className="mb-3 flex items-center gap-2 font-bold uppercase tracking-wider text-primary text-xs">
-                                <Sparkles className="h-4 w-4" />
+                                <BookOpen className="h-4 w-4" />
                                 En résumé — L'essentiel en un coup d'œil
                             </div>
                             <p className="m-0 text-base font-medium leading-relaxed text-foreground">
@@ -222,7 +221,7 @@ export default function BlogShow() {
                             <section className="my-14 rounded-3xl border border-primary/20 bg-gradient-to-b from-primary/[0.04] via-background to-background p-6 md:p-10 shadow-lg backdrop-blur-md" aria-label="Questions Fréquentes">
                                 <div className="mb-8">
                                     <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-                                        <Sparkles className="h-3.5 w-3.5" />
+                                        <HelpCircle className="h-3.5 w-3.5" />
                                         <span>Questions Fréquentes & Réponses d'Experts</span>
                                     </div>
                                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground m-0">

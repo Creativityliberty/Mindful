@@ -7,7 +7,6 @@ import {
     Scissors,
     Brain,
     ArrowRight,
-    Sparkles,
 } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
@@ -94,9 +93,8 @@ export function Services() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-widest mb-4"
+                        className="inline-flex items-center px-3.5 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-widest mb-4"
                     >
-                        <Sparkles className="h-3.5 w-3.5" />
                         <span>{t('services.badge')}</span>
                     </motion.div>
                     <motion.h2
