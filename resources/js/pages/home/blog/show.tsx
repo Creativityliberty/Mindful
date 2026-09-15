@@ -125,11 +125,11 @@ export default function BlogShow() {
 
                     {/* Article Content */}
                     <div className="prose prose-neutral dark:prose-invert max-w-none text-foreground leading-relaxed">
-                        {/* Direct Answer AEO Box */}
+                        {/* Direct Answer Summary Box */}
                         <div className="my-8 rounded-2xl border border-primary/30 bg-primary/5 p-6 backdrop-blur-sm">
                             <div className="mb-3 flex items-center gap-2 font-bold uppercase tracking-wider text-primary text-xs">
                                 <Sparkles className="h-4 w-4" />
-                                En résumé — Réponse directe AEO
+                                En résumé — L'essentiel en un coup d'œil
                             </div>
                             <p className="m-0 text-base font-medium leading-relaxed text-foreground">
                                 {article.summaryAnswer || article.description}
@@ -138,44 +138,44 @@ export default function BlogShow() {
 
                         {/* Dynamic Structured Sections */}
                         {article.sections && article.sections.length > 0 ? (
-                            article.sections.map((section, idx) => (
-                                <div key={idx} className="my-10">
-                                    {section.title && (
-                                        <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-foreground">
-                                            {section.title}
-                                        </h2>
-                                    )}
+                            article.sections.map((section, sIdx) => (
+                                <div key={sIdx} className="my-10">
+                                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4">
+                                        {section.title}
+                                    </h2>
 
-                                    {section.paragraphs?.map((p, pIdx) => (
-                                        <p key={pIdx} className="text-base text-muted-foreground leading-relaxed my-4">
+                                    {section.paragraphs && section.paragraphs.map((p, pIdx) => (
+                                        <p key={pIdx} className="text-base md:text-lg text-foreground/80 leading-relaxed mb-4">
                                             {p}
                                         </p>
                                     ))}
 
-                                    {section.bulletPoints && (
-                                        <ul className="space-y-3 my-6 list-none p-0">
-                                            {section.bulletPoints.map((bp, bpIdx) => (
-                                                <li key={bpIdx} className="flex items-start gap-3 text-muted-foreground">
-                                                    <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                                    <span>{bp}</span>
+                                    {section.list && (
+                                        <ul className="my-4 space-y-2 list-none p-0">
+                                            {section.list.map((item, lIdx) => (
+                                                <li key={lIdx} className="flex items-start gap-3 text-base text-foreground/85">
+                                                    <span className="h-2 w-2 rounded-full bg-primary mt-2 shrink-0" />
+                                                    <span>{item}</span>
                                                 </li>
                                             ))}
                                         </ul>
                                     )}
 
                                     {section.table && (
-                                        <div className="my-8 overflow-x-auto rounded-xl border border-border/40 bg-card p-4">
+                                        <div className="my-6 overflow-x-auto rounded-xl border border-border/40 bg-card/50 backdrop-blur-sm">
                                             <table className="w-full text-left text-sm">
-                                                <thead>
-                                                    <tr className="border-b border-border/40 text-foreground font-semibold">
+                                                <thead className="border-b border-border/40 bg-muted/40 text-xs uppercase tracking-wider text-muted-foreground">
+                                                    <tr>
                                                         {section.table.headers.map((h, hIdx) => (
-                                                            <th key={hIdx} className="pb-3 px-3">{h}</th>
+                                                            <th key={hIdx} className="py-3.5 px-4 font-semibold text-foreground">
+                                                                {h}
+                                                            </th>
                                                         ))}
                                                     </tr>
                                                 </thead>
-                                                <tbody className="divide-y divide-border/20 text-muted-foreground">
+                                                <tbody className="divide-y divide-border/30">
                                                     {section.table.rows.map((row, rIdx) => (
-                                                        <tr key={rIdx}>
+                                                        <tr key={rIdx} className="hover:bg-muted/20 transition-colors">
                                                             {row.map((cell, cIdx) => (
                                                                 <td key={cIdx} className={`py-3 px-3 ${cIdx === 0 ? 'font-semibold text-foreground' : ''}`}>
                                                                     {cell}
@@ -217,19 +217,19 @@ export default function BlogShow() {
                             </div>
                         )}
 
-                        {/* People Also Ask (PAA) Section (Indexable via Schema.org FAQPage & Google Rich Snippets) */}
+                        {/* FAQ Section (Indexable via Schema.org FAQPage & Google Rich Snippets) */}
                         {article.faq && article.faq.length > 0 && (
-                            <section className="my-14 rounded-3xl border border-primary/20 bg-gradient-to-b from-primary/[0.04] via-background to-background p-6 md:p-10 shadow-lg backdrop-blur-md" aria-label="People Also Ask Google">
+                            <section className="my-14 rounded-3xl border border-primary/20 bg-gradient-to-b from-primary/[0.04] via-background to-background p-6 md:p-10 shadow-lg backdrop-blur-md" aria-label="Questions Fréquentes">
                                 <div className="mb-8">
                                     <div className="mb-3 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary">
                                         <Sparkles className="h-3.5 w-3.5" />
-                                        <span>Google People Also Ask • Réponses Directes AEO</span>
+                                        <span>Questions Fréquentes & Réponses d'Experts</span>
                                     </div>
                                     <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground m-0">
-                                        People Also Ask — Questions Fréquentes des Internautes
+                                        Questions fréquemment posées sur ce sujet
                                     </h3>
                                     <p className="mt-2 text-sm md:text-base text-muted-foreground m-0 leading-relaxed max-w-2xl">
-                                        Voici les interrogations les plus souvent posées sur Google sur ce thème, résolues de manière claire et directe par nos formatrices et formateurs certifiés.
+                                        Retrouvez les réponses claires et précises aux interrogations les plus courantes, rédigées et validées par nos formatrices certifiées.
                                     </p>
                                 </div>
 
@@ -242,7 +242,7 @@ export default function BlogShow() {
                                             <div className="mb-3 flex items-center gap-2">
                                                 <span className="inline-flex items-center gap-1 rounded-md bg-secondary/80 px-2.5 py-0.5 text-[11px] font-semibold text-secondary-foreground">
                                                     <HelpCircle className="h-3 w-3 text-primary" />
-                                                    Requête Google #{fIdx + 1}
+                                                    Question #{fIdx + 1}
                                                 </span>
                                                 <span className="text-[11px] font-medium text-muted-foreground">
                                                     Réponse vérifiée
