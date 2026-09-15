@@ -7,6 +7,7 @@ import {
     Scissors,
     Brain,
     ArrowRight,
+    Sparkles,
 } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
