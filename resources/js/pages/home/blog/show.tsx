@@ -10,6 +10,8 @@ import {
     Share2,
     Star,
     ShieldCheck,
+    AlertTriangle,
+    Sparkles,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -29,6 +31,9 @@ export default function BlogShow() {
 
     const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
     const jsonLd = generateArticleSchema(article, origin);
+
+    const authorName = article.author?.name || 'Fabienne Dizy-Olliveaud';
+    const authorRole = article.author?.role || 'Formatrice Holistique';
 
     return (
         <>
@@ -68,7 +73,7 @@ export default function BlogShow() {
                         transition={{ duration: 0.5 }}
                         className="mb-10 text-center"
                     >
-                        <div className="mb-4 flex items-center justify-center gap-2">
+                        <div className="mb-4 flex flex-wrap items-center justify-center gap-2">
                             {article.categories.map((cat) => (
                                 <Badge
                                     key={cat}
@@ -80,13 +85,17 @@ export default function BlogShow() {
                             ))}
                         </div>
 
-                        <h1 className="mb-6 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                        <h1 className="mb-6 text-3xl font-bold tracking-tight text-foreground sm:text-4xl lg:text-5xl leading-tight">
                             {article.titre}
                         </h1>
 
-                        <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
+                        <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-muted-foreground">
                             <span className="flex items-center gap-1.5 font-medium text-foreground">
-                                Par Sophie Lefèvre
+                                Par {authorName}
+                            </span>
+                            <span>•</span>
+                            <span className="text-xs bg-primary/10 text-primary px-2.5 py-0.5 rounded-full font-medium">
+                                {authorRole}
                             </span>
                             <span>•</span>
                             <span className="flex items-center gap-1.5">
@@ -117,114 +126,149 @@ export default function BlogShow() {
                         {/* Direct Answer AEO Box */}
                         <div className="my-8 rounded-2xl border border-primary/30 bg-primary/5 p-6 backdrop-blur-sm">
                             <div className="mb-3 flex items-center gap-2 font-bold uppercase tracking-wider text-primary text-xs">
-                                <BookOpen className="h-4 w-4" />
-                                En résumé — Réponse directe
+                                <Sparkles className="h-4 w-4" />
+                                En résumé — Réponse directe AEO
                             </div>
                             <p className="m-0 text-base font-medium leading-relaxed text-foreground">
-                                {article.description} Pour un débutant, le pendule en laiton (métal) de 15 à 25g est le choix numéro 1 pour sa réactivité et sa neutralité. Le pendule amplifie vos propres réflexes inconscients (l'effet idéomoteur).
+                                {article.summaryAnswer || article.description}
                             </p>
                         </div>
 
-                        <h2 className="mt-12 mb-4 text-2xl font-bold tracking-tight text-foreground">
-                            Qu'est-ce qu'un Pendule Divinatoire et Comment Fonctionne-t-il ?
-                        </h2>
-                        <p className="text-base text-muted-foreground leading-relaxed">
-                            Un pendule divinatoire est un objet pesant suspendu à un fil ou une chaîne, utilisé en radiesthésie pour traduire les réponses de l'inconscient. Contrairement aux idées reçues, le pendule n'est pas un objet magique doté d'une conscience propre. En science et en radiesthésie moderne, son mouvement s'explique par la <strong>réponse idéomotrice</strong>.
-                        </p>
-                        <p className="text-base text-muted-foreground leading-relaxed">
-                            Lorsque vous posez une question dont votre subconscient ou votre intuition connaît la réponse, votre système nerveux périphérique génère des oscillations musculaires imperceptibles à l'œil nu. Le pendule agit simplement comme un <strong>amplificateur visuel de votre propre sensibilité vibratoire</strong>.
-                        </p>
+                        {/* Dynamic Structured Sections */}
+                        {article.sections && article.sections.length > 0 ? (
+                            article.sections.map((section, idx) => (
+                                <div key={idx} className="my-10">
+                                    {section.title && (
+                                        <h2 className="mt-8 mb-4 text-2xl font-bold tracking-tight text-foreground">
+                                            {section.title}
+                                        </h2>
+                                    )}
 
-                        <h2 className="mt-12 mb-4 text-2xl font-bold tracking-tight text-foreground">
-                            Bois, Métal ou Pierre : Quel Matériau Choisir pour Débuter ?
-                        </h2>
-                        <p className="text-base text-muted-foreground leading-relaxed">
-                            Pour un débutant, le laiton (métal) est le matériau idéal en raison de sa neutralité énergétique et de sa masse équilibrée. Les pendules en cristal de roche conviennent aux personnes sensibles aux minéraux, tandis que le bois est recommandé pour une utilisation en extérieur ou en géobiologie.
-                        </p>
+                                    {section.paragraphs?.map((p, pIdx) => (
+                                        <p key={pIdx} className="text-base text-muted-foreground leading-relaxed my-4">
+                                            {p}
+                                        </p>
+                                    ))}
 
-                        {/* Comparative Table */}
-                        <div className="my-8 overflow-x-auto rounded-xl border border-border/40 bg-card p-4">
-                            <table className="w-full text-left text-sm">
-                                <thead>
-                                    <tr className="border-b border-border/40 text-foreground font-semibold">
-                                        <th className="pb-3">Matériau</th>
-                                        <th className="pb-3">Poids</th>
-                                        <th className="pb-3">Sensibilité</th>
-                                        <th className="pb-3">Entretien</th>
-                                        <th className="pb-3">Utilisation Recommandée</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-border/20 text-muted-foreground">
-                                    <tr>
-                                        <td className="py-3 font-semibold text-foreground">Laiton (Métal)</td>
-                                        <td className="py-3">15g - 30g</td>
-                                        <td className="py-3 text-emerald-500 font-semibold">Très Réactif ⭐⭐⭐⭐⭐</td>
-                                        <td className="py-3">Aucun (Neutre)</td>
-                                        <td className="py-3 font-semibold text-primary">Débutants & Praticiens (#1)</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="py-3 font-semibold text-foreground">Bois (Buis)</td>
-                                        <td className="py-3">8g - 15g</td>
-                                        <td className="py-3">Doux ⭐⭐⭐</td>
-                                        <td className="py-3">Dépoussiérage</td>
-                                        <td className="py-3">Géobiologie, extérieur</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="py-3 font-semibold text-foreground">Cristal de Roche</td>
-                                        <td className="py-3">15g - 25g</td>
-                                        <td className="py-3">Amplificateur ⭐⭐⭐⭐</td>
-                                        <td className="py-3">Eau / Sauge</td>
-                                        <td className="py-3">Soin des chakras, énergie</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                                    {section.bulletPoints && (
+                                        <ul className="space-y-3 my-6 list-none p-0">
+                                            {section.bulletPoints.map((bp, bpIdx) => (
+                                                <li key={bpIdx} className="flex items-start gap-3 text-muted-foreground">
+                                                    <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                                                    <span>{bp}</span>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    )}
 
-                        <h2 className="mt-12 mb-4 text-2xl font-bold tracking-tight text-foreground">
-                            Protocole Pas-à-Pas : Activer et Calibrer son Pendule en 4 Étapes
-                        </h2>
-                        <ul className="space-y-3 my-6">
-                            <li className="flex items-start gap-3 text-muted-foreground">
-                                <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                <span><strong>Étape 1 : Purification & Remise à zéro :</strong> Passez votre pendule quelques secondes au-dessus de la fumée de sauge blanche ou de palo santo.</span>
-                            </li>
-                            <li className="flex items-start gap-3 text-muted-foreground">
-                                <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                <span><strong>Étape 2 : Posture et prise en main :</strong> Asseyez-vous, pieds à plat au sol. Tenez la chaîne entre pouce et index à 5-7 cm de la masse.</span>
-                            </li>
-                            <li className="flex items-start gap-3 text-muted-foreground">
-                                <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                <span><strong>Étape 3 : Convention mentale (Code OUI / NON) :</strong> Demandez *"Montre-moi un OUI"*, puis *"Montre-moi un NON"*, et notez le sens de rotation.</span>
-                            </li>
-                            <li className="flex items-start gap-3 text-muted-foreground">
-                                <CheckCircle2 className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                                <span><strong>Étape 4 : Première séance :</strong> Commencez par des questions fermées simples dont vous connaissez la réponse.</span>
-                            </li>
-                        </ul>
+                                    {section.table && (
+                                        <div className="my-8 overflow-x-auto rounded-xl border border-border/40 bg-card p-4">
+                                            <table className="w-full text-left text-sm">
+                                                <thead>
+                                                    <tr className="border-b border-border/40 text-foreground font-semibold">
+                                                        {section.table.headers.map((h, hIdx) => (
+                                                            <th key={hIdx} className="pb-3 px-3">{h}</th>
+                                                        ))}
+                                                    </tr>
+                                                </thead>
+                                                <tbody className="divide-y divide-border/20 text-muted-foreground">
+                                                    {section.table.rows.map((row, rIdx) => (
+                                                        <tr key={rIdx}>
+                                                            {row.map((cell, cIdx) => (
+                                                                <td key={cIdx} className={`py-3 px-3 ${cIdx === 0 ? 'font-semibold text-foreground' : ''}`}>
+                                                                    {cell}
+                                                                </td>
+                                                            ))}
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    )}
+
+                                    {section.callout && (
+                                        <div className={`my-6 rounded-xl border p-5 backdrop-blur-sm ${
+                                            section.callout.type === 'warning'
+                                                ? 'border-amber-500/30 bg-amber-500/10 text-amber-900 dark:text-amber-200'
+                                                : 'border-primary/30 bg-primary/5 text-foreground'
+                                        }`}>
+                                            <div className="mb-2 flex items-center gap-2 font-bold text-sm">
+                                                {section.callout.type === 'warning' ? (
+                                                    <AlertTriangle className="h-4 w-4 text-amber-500" />
+                                                ) : (
+                                                    <ShieldCheck className="h-4 w-4 text-primary" />
+                                                )}
+                                                {section.callout.title}
+                                            </div>
+                                            <p className="m-0 text-sm opacity-90 leading-relaxed">
+                                                {section.callout.text}
+                                            </p>
+                                        </div>
+                                    )}
+                                </div>
+                            ))
+                        ) : (
+                            <div className="my-8">
+                                <p className="text-base text-muted-foreground leading-relaxed">
+                                    {article.description}
+                                </p>
+                            </div>
+                        )}
+
+                        {/* FAQ Section (Indexable via Schema.org FAQPage) */}
+                        {article.faq && article.faq.length > 0 && (
+                            <div className="my-14 border-t border-border/40 pt-10">
+                                <div className="mb-6 flex items-center gap-2">
+                                    <HelpCircle className="h-5 w-5 text-primary" />
+                                    <h3 className="text-2xl font-bold tracking-tight text-foreground m-0">
+                                        Questions Fréquentes (FAQ)
+                                    </h3>
+                                </div>
+                                <div className="space-y-4">
+                                    {article.faq.map((item, fIdx) => (
+                                        <div key={fIdx} className="rounded-xl border border-border/40 bg-card/60 p-5 backdrop-blur-sm">
+                                            <h4 className="text-base font-semibold text-foreground mb-2 m-0">
+                                                {item.question}
+                                            </h4>
+                                            <p className="text-sm text-muted-foreground m-0 leading-relaxed">
+                                                {item.answer}
+                                            </p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
 
                         {/* Formation CTA Card */}
-                        <Card className="my-12 overflow-hidden border-primary/30 bg-gradient-to-br from-primary/10 via-background to-secondary/20 shadow-xl">
-                            <CardContent className="p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
-                                <div>
-                                    <div className="mb-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
-                                        <ShieldCheck className="h-4 w-4" />
-                                        Formation Certifiante
+                        {article.relatedCourse ? (
+                            <Card className="my-12 overflow-hidden border-primary/30 bg-gradient-to-br from-primary/10 via-background to-secondary/20 shadow-xl">
+                                <CardContent className="p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                                    <div>
+                                        <div className="mb-2 inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-primary">
+                                            <ShieldCheck className="h-4 w-4" />
+                                            {article.relatedCourse.badge}
+                                        </div>
+                                        <h3 className="text-2xl font-bold text-foreground mb-2">
+                                            {article.relatedCourse.title}
+                                        </h3>
+                                        <p className="text-sm text-muted-foreground max-w-lg mb-0">
+                                            {article.relatedCourse.description}
+                                        </p>
+                                        {article.relatedCourse.price && (
+                                            <p className="mt-3 text-lg font-bold text-primary">
+                                                Tarif : {article.relatedCourse.price}
+                                            </p>
+                                        )}
                                     </div>
-                                    <h3 className="text-2xl font-bold text-foreground mb-2">
-                                        Initiation au Pendule & Radiesthésie
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground max-w-lg mb-0">
-                                        Maîtrisez l'utilisation du pendule, apprenez à lire les cadrans de Bovis et équilibrez les énergies avec 4h de cours vidéo et fiches PDF imprimables.
-                                    </p>
-                                </div>
-                                <Button size="lg" className="rounded-full shrink-0 gap-2 font-semibold shadow-lg" asChild>
-                                    <Link href="/courses/1">
-                                        Découvrir la Formation
-                                        <ArrowRight className="h-4 w-4" />
-                                    </Link>
-                                </Button>
-                            </CardContent>
-                        </Card>
+                                    <Button size="lg" className="rounded-full shrink-0 gap-2 font-semibold shadow-lg" asChild>
+                                        <Link href={article.relatedCourse.href}>
+                                            Découvrir la Formation
+                                            <ArrowRight className="h-4 w-4" />
+                                        </Link>
+                                    </Button>
+                                </CardContent>
+                            </Card>
+                        ) : null}
                     </div>
 
                     {/* Back link bottom */}

@@ -122,68 +122,86 @@ export function generateArticleSchema(
         ? article.keywords.join(', ')
         : article.categories.join(', ');
 
+    const graph: any[] = [
+        {
+            '@type': 'Organization',
+            '@id': `${origin}/#organization`,
+            'name': ACADEMY_INFO.name,
+            'alternateName': ACADEMY_INFO.alternateName,
+            'url': origin,
+            'logo': {
+                '@type': 'ImageObject',
+                'url': `${origin}/assets/images/logo.png`,
+            },
+        },
+        {
+            '@type': 'Person',
+            '@id': `${origin}/#author-${encodeURIComponent(authorName)}`,
+            'name': authorName,
+            'jobTitle': authorRole,
+            'affiliation': {
+                '@id': `${origin}/#organization`,
+            },
+        },
+        {
+            '@type': 'BlogPosting',
+            '@id': `${articleUrl}#post`,
+            'mainEntityOfPage': {
+                '@type': 'WebPage',
+                '@id': articleUrl,
+            },
+            'headline': article.titre,
+            'name': article.titre,
+            'description': article.description,
+            'url': articleUrl,
+            'inLanguage': 'fr-FR',
+            'keywords': keywordsString,
+            'articleSection': article.articleSection || article.categories[0],
+            'datePublished': article.dateIso || article.date,
+            'dateModified': article.dateIso || article.date,
+            'timeRequired': `PT${parseInt(article.duree, 10) || 10}M`,
+            'image': {
+                '@type': 'ImageObject',
+                'url': imageUrl,
+            },
+            'author': {
+                '@id': `${origin}/#author-${encodeURIComponent(authorName)}`,
+            },
+            'publisher': {
+                '@id': `${origin}/#organization`,
+            },
+            'isPartOf': {
+                '@type': 'Blog',
+                '@id': `${origin}/blog#blog`,
+                'name': 'Blog FormationSession',
+                'url': `${origin}/blog`,
+            },
+        },
+        generateBreadcrumbSchema([
+            { name: 'Accueil', url: '/' },
+            { name: 'Blog', url: '/blog' },
+            { name: article.titre, url: `/blog/${article.slug}` },
+        ], origin),
+    ];
+
+    // Append FAQPage Schema if article has FAQ items
+    if (article.faq && article.faq.length > 0) {
+        graph.push({
+            '@type': 'FAQPage',
+            '@id': `${articleUrl}#faq`,
+            'mainEntity': article.faq.map((item) => ({
+                '@type': 'Question',
+                'name': item.question,
+                'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': item.answer,
+                },
+            })),
+        });
+    }
+
     return JSON.stringify({
         '@context': 'https://schema.org',
-        '@graph': [
-            {
-                '@type': 'Organization',
-                '@id': `${origin}/#organization`,
-                'name': ACADEMY_INFO.name,
-                'alternateName': ACADEMY_INFO.alternateName,
-                'url': origin,
-                'logo': {
-                    '@type': 'ImageObject',
-                    'url': `${origin}/assets/images/logo.png`,
-                },
-            },
-            {
-                '@type': 'Person',
-                '@id': `${origin}/#author-${encodeURIComponent(authorName)}`,
-                'name': authorName,
-                'jobTitle': authorRole,
-                'affiliation': {
-                    '@id': `${origin}/#organization`,
-                },
-            },
-            {
-                '@type': 'BlogPosting',
-                '@id': `${articleUrl}#post`,
-                'mainEntityOfPage': {
-                    '@type': 'WebPage',
-                    '@id': articleUrl,
-                },
-                'headline': article.titre,
-                'name': article.titre,
-                'description': article.description,
-                'url': articleUrl,
-                'inLanguage': 'fr-FR',
-                'keywords': keywordsString,
-                'articleSection': article.articleSection || article.categories[0],
-                'datePublished': article.dateIso || article.date,
-                'dateModified': article.dateIso || article.date,
-                'timeRequired': `PT${parseInt(article.duree, 10) || 10}M`,
-                'image': {
-                    '@type': 'ImageObject',
-                    'url': imageUrl,
-                },
-                'author': {
-                    '@id': `${origin}/#author-${encodeURIComponent(authorName)}`,
-                },
-                'publisher': {
-                    '@id': `${origin}/#organization`,
-                },
-                'isPartOf': {
-                    '@type': 'Blog',
-                    '@id': `${origin}/blog#blog`,
-                    'name': 'Blog FormationSession',
-                    'url': `${origin}/blog`,
-                },
-            },
-            generateBreadcrumbSchema([
-                { name: 'Accueil', url: '/' },
-                { name: 'Blog', url: '/blog' },
-                { name: article.titre, url: `/blog/${article.slug}` },
-            ], origin),
-        ],
+        '@graph': graph,
     });
 }
