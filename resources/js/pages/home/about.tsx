@@ -4,7 +4,10 @@ import {
     ShieldCheck,
     Eye,
     Heart,
-    Award
+    Award,
+    Users,
+    Globe,
+    Calendar,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -61,26 +64,26 @@ export default function About() {
         {
             nom: t('about_page.team1_name'),
             role: t('about_page.team1_role'),
+            avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop',
             bio: t('about_page.team1_bio'),
-            avatar: '/assets/images/service_chakras_lux.jpg'
         },
         {
             nom: t('about_page.team2_name'),
             role: t('about_page.team2_role'),
+            avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=300&auto=format&fit=crop',
             bio: t('about_page.team2_bio'),
-            avatar: '/assets/images/service_ia_lux.jpg'
         },
         {
             nom: t('about_page.team3_name'),
             role: t('about_page.team3_role'),
+            avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop',
             bio: t('about_page.team3_bio'),
-            avatar: '/assets/images/service_certif_lux.jpg'
         },
         {
             nom: t('about_page.team4_name'),
             role: t('about_page.team4_role'),
+            avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=300&auto=format&fit=crop',
             bio: t('about_page.team4_bio'),
-            avatar: '/assets/images/service_acces_lux.jpg'
         },
     ];
 
@@ -108,14 +111,15 @@ export default function About() {
     ];
 
     return (
-        <>
+        <div className="relative min-h-screen bg-background overflow-hidden selection:bg-primary/20">
             <SEOHead
-                title={t('seo.about_title')}
+                title={`${t('seo.about_title')} | FormationSession`}
                 description={t('seo.about_description')}
+                canonical={`${origin}/about`}
                 jsonLd={jsonLd}
             />
-            <div className="relative min-h-screen bg-background">
-            {/* Background Halo */}
+
+            {/* Subtle Aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.02] blur-[150px]" />
             </div>
@@ -154,23 +158,82 @@ export default function About() {
                         </p>
                     </div>
 
-                    {/* Quick Stats Grid */}
-                    <div className="grid grid-cols-2 gap-8 p-8 rounded-3xl border border-border/20 bg-secondary/10">
-                        <div>
-                            <span className="block text-3xl font-extrabold text-foreground">{t('about_page.stat1_val')}</span>
-                            <span className="text-xs text-foreground/50">{t('about_page.stat1_lbl')}</span>
+                    {/* Quick Stats Bento Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:shadow-lg dark:bg-card/40">
+                            <div className="mb-4 flex items-center justify-between">
+                                <span className="rounded-full border border-border/40 bg-secondary/80 px-2.5 py-0.5 text-[10px] font-mono font-semibold tracking-wider text-secondary-foreground uppercase">
+                                    (01)
+                                </span>
+                                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                                    <Users className="h-4 w-4" />
+                                </div>
+                            </div>
+                            <div className="space-y-1">
+                                <span className="block text-3xl md:text-4xl font-extrabold tracking-tight text-foreground font-sans">
+                                    {t('about_page.stat1_val')}
+                                </span>
+                                <span className="text-xs font-medium text-foreground/70 tracking-wide">
+                                    {t('about_page.stat1_lbl')}
+                                </span>
+                            </div>
                         </div>
-                        <div>
-                            <span className="block text-3xl font-extrabold text-foreground">{t('about_page.stat2_val')}</span>
-                            <span className="text-xs text-foreground/50">{t('about_page.stat2_lbl')}</span>
+
+                        <div className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:shadow-lg dark:bg-card/40">
+                            <div className="mb-4 flex items-center justify-between">
+                                <span className="rounded-full border border-border/40 bg-secondary/80 px-2.5 py-0.5 text-[10px] font-mono font-semibold tracking-wider text-secondary-foreground uppercase">
+                                    (02)
+                                </span>
+                                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                                    <Award className="h-4 w-4" />
+                                </div>
+                            </div>
+                            <div className="space-y-1">
+                                <span className="block text-3xl md:text-4xl font-extrabold tracking-tight text-foreground font-sans">
+                                    {t('about_page.stat2_val')}
+                                </span>
+                                <span className="text-xs font-medium text-foreground/70 tracking-wide">
+                                    {t('about_page.stat2_lbl')}
+                                </span>
+                            </div>
                         </div>
-                        <div>
-                            <span className="block text-3xl font-extrabold text-foreground">{t('about_page.stat3_val')}</span>
-                            <span className="text-xs text-foreground/50">{t('about_page.stat3_lbl')}</span>
+
+                        <div className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:shadow-lg dark:bg-card/40">
+                            <div className="mb-4 flex items-center justify-between">
+                                <span className="rounded-full border border-border/40 bg-secondary/80 px-2.5 py-0.5 text-[10px] font-mono font-semibold tracking-wider text-secondary-foreground uppercase">
+                                    (03)
+                                </span>
+                                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                                    <Globe className="h-4 w-4" />
+                                </div>
+                            </div>
+                            <div className="space-y-1">
+                                <span className="block text-3xl md:text-4xl font-extrabold tracking-tight text-foreground font-sans">
+                                    {t('about_page.stat3_val')}
+                                </span>
+                                <span className="text-xs font-medium text-foreground/70 tracking-wide">
+                                    {t('about_page.stat3_lbl')}
+                                </span>
+                            </div>
                         </div>
-                        <div>
-                            <span className="block text-3xl font-extrabold text-foreground">{t('about_page.stat4_val')}</span>
-                            <span className="text-xs text-foreground/50">{t('about_page.stat4_lbl')}</span>
+
+                        <div className="group relative overflow-hidden rounded-2xl border border-border/40 bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/40 hover:shadow-lg dark:bg-card/40">
+                            <div className="mb-4 flex items-center justify-between">
+                                <span className="rounded-full border border-border/40 bg-secondary/80 px-2.5 py-0.5 text-[10px] font-mono font-semibold tracking-wider text-secondary-foreground uppercase">
+                                    (04)
+                                </span>
+                                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
+                                    <Calendar className="h-4 w-4" />
+                                </div>
+                            </div>
+                            <div className="space-y-1">
+                                <span className="block text-3xl md:text-4xl font-extrabold tracking-tight text-foreground font-sans">
+                                    {t('about_page.stat4_val')}
+                                </span>
+                                <span className="text-xs font-medium text-foreground/70 tracking-wide">
+                                    {t('about_page.stat4_lbl')}
+                                </span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -275,6 +338,5 @@ export default function About() {
 
             </div>
         </div>
-    </>
-);
+    );
 }
