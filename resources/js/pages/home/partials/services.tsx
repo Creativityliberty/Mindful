@@ -142,7 +142,7 @@ export function Services() {
 
                                     {/* Partie Basse : Titre, Description & CTA */}
                                     <div className="relative z-10 p-6 md:p-8 space-y-3">
-                                        <h3 className="text-2xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-amber-200">
+                                        <h3 className="text-2xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-sky-300">
                                             {service.title}
                                         </h3>
 
@@ -150,7 +150,7 @@ export function Services() {
                                             {service.description}
                                         </p>
 
-                                        <div className="pt-2 flex items-center gap-2 text-xs font-semibold tracking-wider text-white uppercase group-hover:text-amber-300 transition-colors">
+                                        <div className="pt-2 flex items-center gap-2 text-xs font-semibold tracking-wider text-white uppercase group-hover:text-sky-400 transition-colors">
                                             <span>{t('services.join_learning')}</span>
                                             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1.5" />
                                         </div>
