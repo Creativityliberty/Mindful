@@ -29,23 +29,6 @@
     "stat3_label": "Approche pédagogique",
     "stat3_val": "100% Pratique"
   },
-  "connected_experience": {
-    "badge": "Plateforme d'Apprentissage Connectée",
-    "title": "Une expérience de cours en ligne immersive & en direct",
-    "subtitle": "Découvrez notre interface de cours interactive : vidéo HD, prise de notes synchronisée, ressources pratiques et accompagnement en direct.",
-    "live_indicator": "32 apprenants connectés en direct",
-    "tab_video": "Lecteur Vidéo HD",
-    "tab_notes": "Notes & Supports",
-    "tab_discussion": "Échanges & Q&A",
-    "tab_attestation": "Attestation",
-    "module_title": "Module 3 • Pratique d'Artisanat & Gestes Techniques",
-    "lesson_active": "Leçon 2 • Protocoles et maîtrise des outils d'excellence",
-    "duration": "24:18 / 35:00",
-    "note1": "Rappel : Maintenir la posture et les gestes de précision sans tension.",
-    "note2": "Consulter les fiches de synthèse certifiées avant la session pratique.",
-    "download_pdf": "Télécharger la fiche (PDF)",
-    "certified_badge": "Attestation numérique vérifiée & enregistrée"
-  },
   "services": {
     "badge": "VOS UNIVERS DE SAVOIR-FAIRE",
     "title": "Des formations concrètes pour révéler vos compétences",

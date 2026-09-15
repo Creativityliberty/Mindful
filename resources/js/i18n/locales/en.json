@@ -29,23 +29,6 @@
     "stat3_label": "Teaching Approach",
     "stat3_val": "100% Practical"
   },
-  "connected_experience": {
-    "badge": "Connected Learning Platform",
-    "title": "An immersive & live online course experience",
-    "subtitle": "Discover our interactive learning workspace: HD video player, synced note taking, practical resources, and live guidance.",
-    "live_indicator": "32 learners connected live",
-    "tab_video": "HD Video Player",
-    "tab_notes": "Notes & Resources",
-    "tab_discussion": "Q&A & Community",
-    "tab_attestation": "Certification",
-    "module_title": "Module 3 • Practical Craft & Technical Gestures",
-    "lesson_active": "Lesson 2 • Protocols and mastery of precision tools",
-    "duration": "24:18 / 35:00",
-    "note1": "Reminder: Maintain posture and precision gestures without tension.",
-    "note2": "Review certified summary sheets prior to practical session.",
-    "download_pdf": "Download Sheet (PDF)",
-    "certified_badge": "Verified & registered digital certificate"
-  },
   "services": {
     "badge": "OUR SKILL UNIVERSES",
     "title": "Practical training to unlock your skills",

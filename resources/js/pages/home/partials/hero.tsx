@@ -60,8 +60,8 @@ export function Hero() {
 
             <div className="absolute inset-y-0 right-0 z-[5] hidden w-[52%] lg:block">
                 <img
-                    src="/assets/images/hero_savoir_faire_8k.jpg"
-                    alt="Atelier d'exception & Savoir-faire"
+                    src="/assets/images/hero_connected_workspace_8k.jpg"
+                    alt="Espace de cours connecté & Masterclass en direct"
                     aria-hidden="true"
                     fetchPriority="high"
                     decoding="sync"

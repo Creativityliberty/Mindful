@@ -6,7 +6,6 @@ import FAQ from './partials/faq'
 import { Hero } from './partials/hero'
 import { Newsletter } from './partials/newsletter'
 import { Process } from './partials/process'
-import { ConnectedExperience } from './partials/connected-experience'
 import { Services } from './partials/services'
 import { Themes } from './partials/themes'
 import { Trainers } from './partials/trainers'
@@ -38,7 +37,6 @@ export default function Home({ seo }: HomeProps) {
       <Hero />
       <Services />
       <Process />
-      <ConnectedExperience />
       <Courses />
       <Themes />
       <Trainers />
