@@ -1,7 +1,9 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Search, UserPlus, PlayCircle, Award } from 'lucide-react';
+import { Search, UserPlus, PlayCircle, Award, ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from '@inertiajs/react';
+import { Button } from '@/components/ui/button';
 
 export function Process() {
     const { t } = useTranslation();
@@ -13,24 +15,32 @@ export function Process() {
             icon: Search,
             title: t('process.step1_title'),
             description: t('process.step1_desc'),
+            actionLabel: t('process.step1_btn', 'Explorer les formations'),
+            actionHref: '/courses',
         },
         {
             number: '02',
             icon: UserPlus,
             title: t('process.step2_title'),
             description: t('process.step2_desc'),
+            actionLabel: t('process.step2_btn', "S'inscrire gratuitement"),
+            actionHref: '/register',
         },
         {
             number: '03',
             icon: PlayCircle,
             title: t('process.step3_title'),
             description: t('process.step3_desc'),
+            actionLabel: t('process.step3_btn', 'Commencer ou se connecter'),
+            actionHref: '/login',
         },
         {
             number: '04',
             icon: Award,
             title: t('process.step4_title'),
             description: t('process.step4_desc'),
+            actionLabel: t('process.step4_btn', "Rejoindre l'aventure"),
+            actionHref: '/register',
         },
     ];
 
@@ -114,13 +124,21 @@ export function Process() {
                                         </span>
                                     </div>
 
-                                    <div className="space-y-3">
+                                    <div className="space-y-3 flex-1">
                                         <h4 className="text-2xl font-semibold tracking-tight text-foreground">
                                             {step.title}
                                         </h4>
                                         <p className="text-base leading-relaxed text-foreground/60">
                                             {step.description}
                                         </p>
+                                        <div className="pt-2">
+                                            <Button variant="outline" size="sm" asChild className="rounded-full gap-2 border-border/60 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
+                                                <Link href={step.actionHref}>
+                                                    <span>{step.actionLabel}</span>
+                                                    <ArrowRight className="h-3.5 w-3.5" />
+                                                </Link>
+                                            </Button>
+                                        </div>
                                     </div>
                                 </div>
                             </motion.div>

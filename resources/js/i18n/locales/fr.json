@@ -41,6 +41,7 @@
   "services": {
     "badge": "VOS UNIVERS DE SAVOIR-FAIRE",
     "title": "Des formations concrètes pour révéler vos compétences",
+    "title_main": "Des formations concrètes pour révéler vos compétences",
     "subtitle": "Explorez des univers pratiques enseignés par des professionnels passionnés : artisanat, beauté, métiers d'art, gastronomie et outils digitaux.",
     "focus": "Focus Univers",
     "universe": "Univers {{number}}",
@@ -61,17 +62,21 @@
   "process": {
     "badge": "Comment ça marche",
     "title": "Commencer votre formation est simple",
-    "subtitle": "En quelques étapes, accédez à des formations de qualité en radiesthésie et pratiques énergétiques, et progressez à votre rythme, pas à pas.",
+    "subtitle": "En quelques étapes simples, accédez à des formations de qualité en artisanat d'art, bien-être et savoir-faire manuels, et progressez à votre rythme.",
     "sidebar_badge": "Votre Parcours",
     "sidebar_title": "4 étapes simples vers l'autonomie",
     "step1_title": "Explorez les formations",
-    "step1_desc": "Parcourez notre catalogue de cours en radiesthésie, pendule et équilibrage des chakras, filtrés par thème et niveau.",
+    "step1_desc": "Parcourez notre catalogue complet : bougies artisanales, onglerie, céramique, pâtisserie, couture, outils digitaux et pratiques de bien-être.",
+    "step1_btn": "Explorer les formations",
     "step2_title": "Créez votre compte",
-    "step2_desc": "Inscrivez-vous gratuitement, choisissez votre formation et accédez à votre espace d’apprentissage personnalisé.",
+    "step2_desc": "Inscrivez-vous gratuitement, accédez à votre espace d'apprentissage personnalisé et commencez sans attendre.",
+    "step2_btn": "S'inscrire gratuitement",
     "step3_title": "Suivez votre cours",
-    "step3_desc": "Progressez à votre rythme avec des vidéos, exercices guidés et ressources proposés par votre formateur.",
+    "step3_desc": "Progressez pas à pas avec des vidéos haute définition, des fiches pratiques et les conseils de formateurs certifiés.",
+    "step3_btn": "Accéder ou se connecter",
     "step4_title": "Pratiquez au quotidien",
-    "step4_desc": "Appliquez les techniques dans votre quotidien et développez votre sensibilité énergétique pas à pas."
+    "step4_desc": "Appliquez les techniques concrètes chez vous ou dans votre atelier pour développer vos compétences professionnelles.",
+    "step4_btn": "Créer mon compte"
   },
   "featured_courses": {
     "badge": "Formations phares",
@@ -232,6 +237,7 @@
   "sidebar": {
     "platform": "Plateforme",
     "dashboard": "Tableau de bord",
+    "back_to_home": "Retour au site",
     "manage_courses": "Gestion des Cours",
     "trainer_plans": "Plans formateurs",
     "newsletter": "Newsletter (Brevo)",
@@ -443,10 +449,10 @@
   "become_trainer_page": {
     "badge": "Programme formateur",
     "title": "Devenez formateur sur FormationSession",
-    "subtitle": "Partagez votre expertise en radiesthésie, pendule ou équilibrage des chakras avec une communauté engagée. Publiez vos formations, développez votre activité et rejoignez nos formateurs experts.",
+    "subtitle": "Partagez vos savoir-faire d'excellence en artisanat, métiers d'art, bien-être et outils digitaux avec une communauté engagée. Publiez vos cours, développez vos revenus et rejoignez notre académie de mentors.",
     "join_badge": "Rejoindre l'académie",
     "main_heading": "Partagez votre savoir-faire.",
-    "main_desc": "Que vous soyez expert en bien-être, créateur de bougies artisanales ou formateur technique, transmettez vos compétences à des étudiants engagés.",
+    "main_desc": "Que vous soyez artisan d'art (bougies, céramique, couture, gastronomie), praticien bien-être ou formateur digital, transmettez vos compétences à des apprenants passionnés.",
     "stat1_lbl": "Étudiants actifs",
     "stat2_lbl": "Mentors certifiés",
     "stat3_lbl": "Note moyenne",
@@ -455,7 +461,7 @@
     "benefit1_title": "Développez votre activité",
     "benefit1_desc": "Publiez vos cours et touchez des milliers d'apprenants motivés partout dans le monde francophone.",
     "benefit2_title": "Une communauté engagée",
-    "benefit2_desc": "Rejoignez une plateforme dédiée aux pratiques énergétiques avec des étudiants investis.",
+    "benefit2_desc": "Rejoignez une plateforme dédiée aux savoir-faire concrets et aux passions créatives avec des apprenants investis.",
     "benefit3_title": "Outils simples et puissants",
     "benefit3_desc": "Créez et gérez vos formations facilement depuis votre dashboard dédié, sans technique.",
     "benefit4_title": "Support dédié",
@@ -525,7 +531,7 @@
     "btn_become_trainer": "Devenir formateur"
   },
   "courses_page": {
-    "search_placeholder": "Rechercher une formation, un formateur...",
+    "search_placeholder": "Tapez le nom d'une formation, d'un formateur...",
     "filter_all": "Toutes les catégories",
     "sort_popular": "Plus populaires",
     "sort_rating": "Mieux notés",

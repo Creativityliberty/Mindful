@@ -41,6 +41,7 @@
   "services": {
     "badge": "OUR SKILL UNIVERSES",
     "title": "Practical training to unlock your skills",
+    "title_main": "Practical training to unlock your skills",
     "subtitle": "Explore hands-on fields taught by passionate professionals: crafts, beauty, arts, gastronomy, and digital tools.",
     "focus": "Focus Field",
     "universe": "Universe {{number}}",
@@ -61,17 +62,21 @@
   "process": {
     "badge": "How it works",
     "title": "Starting your learning journey is easy",
-    "subtitle": "In just a few steps, access high-quality courses in dowsing and energy practices, and progress at your own pace, step by step.",
+    "subtitle": "In just a few steps, access high-quality courses in artisanal crafts, wellness, and practical skills, and progress at your own pace.",
     "sidebar_badge": "Your Journey",
     "sidebar_title": "4 simple steps to mastery",
     "step1_title": "Explore the courses",
-    "step1_desc": "Browse our catalog of courses in dowsing, pendulums and chakra balancing, filtered by topic and level.",
+    "step1_desc": "Browse our full catalog: handmade candles, nail design, pottery, baking, sewing, digital tools, and well-being practices.",
+    "step1_btn": "Explore courses",
     "step2_title": "Create your account",
-    "step2_desc": "Sign up for free, choose your training and access your personalized learning space.",
+    "step2_desc": "Sign up for free, access your personalized learning dashboard, and get started right away.",
+    "step2_btn": "Sign up for free",
     "step3_title": "Follow your course",
-    "step3_desc": "Learn at your own pace with videos, guided exercises and resources provided by your instructor.",
+    "step3_desc": "Learn step by step with HD video tutorials, practical guides, and expert instructor advice.",
+    "step3_btn": "Access or sign in",
     "step4_title": "Practice daily",
-    "step4_desc": "Apply the techniques in your daily routine and develop your energetic sensitivity step by step."
+    "step4_desc": "Apply hands-on techniques at home or in your workshop to grow your professional mastery.",
+    "step4_btn": "Create an account"
   },
   "featured_courses": {
     "badge": "Featured courses",
@@ -232,6 +237,7 @@
   "sidebar": {
     "platform": "Platform",
     "dashboard": "Dashboard",
+    "back_to_home": "Back to site",
     "manage_courses": "Course Management",
     "trainer_plans": "Trainer Plans",
     "newsletter": "Newsletter (Brevo)",

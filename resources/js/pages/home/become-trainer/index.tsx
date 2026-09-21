@@ -1,7 +1,9 @@
 import { Link, router, usePage } from '@inertiajs/react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check } from 'lucide-react';
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox';
 import type { Plan } from '@/types';
 import { BecomeTrainerHeader } from './partials/become-trainer-header';
 import { TrainerCard, type TrainerProfile } from './partials/trainer-card';
@@ -11,6 +13,7 @@ import { SEOHead } from '@/components/seo-head';
 export default function BecomeTrainer() {
     const { t } = useTranslation();
     const { auth, plans } = usePage<{ plans: Plan[] }>().props;
+    const [acceptedTerms, setAcceptedTerms] = useState(false);
 
     const origin = typeof window !== 'undefined' ? window.location.origin : 'https://formationsession.com';
     const jsonLd = JSON.stringify({
@@ -275,13 +278,35 @@ export default function BecomeTrainer() {
                                         ))}
                                     </ul>
                                 </div>
-                                <Button
-                                    className="w-full rounded-full h-11 tracking-wider font-semibold"
-                                    variant={plan.highlight ? 'default' : 'outline'}
-                                    onClick={() => handleCheckout(plan.slug)}
-                                >
-                                    {t('become_trainer_page.choose_plan')}
-                                </Button>
+                                <div className="space-y-4 pt-4 border-t border-border/20">
+                                    <div className="flex items-start gap-2.5 text-xs text-foreground/70 leading-relaxed bg-muted/40 p-3 rounded-xl border border-border/40">
+                                        <Checkbox
+                                            id={`terms-${plan.id}`}
+                                            checked={acceptedTerms}
+                                            onCheckedChange={(checked) => setAcceptedTerms(checked === true)}
+                                            className="mt-0.5"
+                                        />
+                                        <label
+                                            htmlFor={`terms-${plan.id}`}
+                                            className="cursor-pointer select-none text-[11px] leading-snug text-muted-foreground"
+                                        >
+                                            J'accepte les{' '}
+                                            <Link href="/legal/cgu" target="_blank" className="text-primary underline font-medium hover:text-primary/80">
+                                                CGV & Conditions Formateur
+                                            </Link>
+                                            . Je reconnais que les forfaits d'abonnement mensuel sont <strong>non remboursables</strong> et que mon engagement vaut signature électronique.
+                                        </label>
+                                    </div>
+
+                                    <Button
+                                        className="w-full rounded-full h-11 tracking-wider font-semibold disabled:opacity-50"
+                                        variant={plan.highlight ? 'default' : 'outline'}
+                                        disabled={!acceptedTerms}
+                                        onClick={() => handleCheckout(plan.slug)}
+                                    >
+                                        {t('become_trainer_page.choose_plan')}
+                                    </Button>
+                                </div>
                             </div>
                         ))}
                     </div>
