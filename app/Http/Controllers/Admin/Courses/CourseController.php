@@ -38,6 +38,15 @@ class CourseController extends Controller
             'courses' => $this->repository->paginate(10)->through(
                 fn (Course $course) => CourseResource::make($course)->resolve(),
             ),
+            'courseNavigation' => Course::query()
+                ->with('trainer:id,name')
+                ->orderBy('title')
+                ->get(['id', 'title', 'trainer_id'])
+                ->map(fn (Course $course) => [
+                    'id' => $course->id,
+                    'title' => $course->title,
+                    'trainer' => $course->trainer?->name,
+                ]),
         ]);
     }
 
