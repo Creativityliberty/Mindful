@@ -64,26 +64,14 @@ export default function About() {
         {
             nom: t('about_page.team1_name'),
             role: t('about_page.team1_role'),
-            avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=300&auto=format&fit=crop',
+            avatar: null,
             bio: t('about_page.team1_bio'),
         },
         {
             nom: t('about_page.team2_name'),
             role: t('about_page.team2_role'),
-            avatar: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=300&auto=format&fit=crop',
+            avatar: null,
             bio: t('about_page.team2_bio'),
-        },
-        {
-            nom: t('about_page.team3_name'),
-            role: t('about_page.team3_role'),
-            avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=300&auto=format&fit=crop',
-            bio: t('about_page.team3_bio'),
-        },
-        {
-            nom: t('about_page.team4_name'),
-            role: t('about_page.team4_role'),
-            avatar: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=300&auto=format&fit=crop',
-            bio: t('about_page.team4_bio'),
         },
     ];
 
@@ -275,11 +263,11 @@ export default function About() {
                         </h2>
                     </div>
 
-                    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                    <div className="grid max-w-3xl gap-8 sm:grid-cols-2">
                         {equipe.map((membre) => (
                             <div key={membre.nom} className="space-y-4 text-center sm:text-left">
-                                <div className="relative h-20 w-20 rounded-full border border-border/30 overflow-hidden mx-auto sm:mx-0 shadow-sm">
-                                    <img src={membre.avatar} alt={membre.nom} className="h-full w-full object-cover" />
+                                <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-border/30 bg-secondary text-lg font-semibold text-muted-foreground mx-auto sm:mx-0 shadow-sm">
+                                    {membre.avatar ? <img src={membre.avatar} alt={membre.nom} className="h-full w-full rounded-full object-cover" /> : membre.nom.split(' ').map((part) => part[0]).join('').slice(0, 2)}
                                 </div>
                                 <div className="space-y-1">
                                     <h3 className="font-bold text-foreground">{membre.nom}</h3>
