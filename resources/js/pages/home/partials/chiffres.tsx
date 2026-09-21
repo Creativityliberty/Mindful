@@ -199,27 +199,50 @@ export function Chiffres() {
                     </Swiper>
                 </div>
 
-                {/* 4 Trust Feature Points */}
-                <div className="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-6 pt-12 border-t border-border/40">
-                    {trustPoints.map((point, index) => (
-                        <div key={index} className="flex items-center gap-4">
-                            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary border border-border/40 text-primary">
-                                <svg
-                                    className="h-6 w-6"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5"
-                                >
-                                    <path strokeLinecap="round" strokeLinejoin="round" d={point.iconPath} />
-                                </svg>
-                            </div>
-                            <div>
-                                <h4 className="text-sm font-semibold text-foreground">{point.title}</h4>
-                                <p className="text-xs text-foreground/50">{point.subtitle}</p>
-                            </div>
-                        </div>
-                    ))}
+                {/* 4 Trust Feature Points - Modern Premium Layout */}
+                <div className="mt-20 pt-16 border-t border-border/40">
+                    <div className="mb-10 text-center max-w-xl mx-auto space-y-2">
+                        <span className="text-xs font-bold uppercase tracking-[0.25em] text-primary">
+                            Nos Engagements & Valeurs
+                        </span>
+                        <h3 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+                            Une formation d'excellence, conçue pour votre réussite
+                        </h3>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {trustPoints.map((point, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.5, delay: index * 0.08 }}
+                                className="group relative overflow-hidden rounded-3xl border border-border/50 bg-card/60 p-6 backdrop-blur-md transition-all duration-300 hover:border-primary/50 hover:bg-card hover:shadow-xl hover:shadow-primary/5"
+                            >
+                                <div className="pointer-events-none absolute -right-6 -bottom-6 h-28 w-28 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-all duration-500" />
+
+                                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl border border-primary/20 bg-primary/10 text-primary transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground group-hover:shadow-md group-hover:shadow-primary/20">
+                                    <svg
+                                        className="h-7 w-7"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        stroke="currentColor"
+                                        strokeWidth="1.8"
+                                    >
+                                        <path strokeLinecap="round" strokeLinejoin="round" d={point.iconPath} />
+                                    </svg>
+                                </div>
+
+                                <h4 className="text-lg font-bold text-foreground mb-1.5 tracking-tight group-hover:text-primary transition-colors">
+                                    {point.title}
+                                </h4>
+                                <p className="text-sm text-muted-foreground leading-relaxed">
+                                    {point.subtitle}
+                                </p>
+                            </motion.div>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

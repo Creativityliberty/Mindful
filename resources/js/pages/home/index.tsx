@@ -7,8 +7,6 @@ import { Hero } from './partials/hero'
 import { MarqueeTicker } from './partials/marquee-ticker'
 import { Newsletter } from './partials/newsletter'
 import { Process } from './partials/process'
-import { Services } from './partials/services'
-import { Themes } from './partials/themes'
 import { Trainers } from './partials/trainers'
 import { Chiffres } from './partials/chiffres'
 import Testimonials from './partials/testimonials'
@@ -37,12 +35,10 @@ export default function Home({ seo }: HomeProps) {
       />
       <Hero />
       <MarqueeTicker />
-      <Services />
       <Process />
       <Courses />
-      <Themes />
-      <Trainers />
       <Chiffres />
+      <Trainers />
       <Testimonials />
       <Engagements />
       <FAQ />
