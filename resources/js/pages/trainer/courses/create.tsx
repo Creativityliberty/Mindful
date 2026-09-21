@@ -16,6 +16,7 @@ import {
 } from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 import { Spinner } from '@/components/ui/spinner';
+import AlertError from '@/components/alert-error';
 import AppLayout from '@/layouts/app-layout';
 import type { Category } from '@/types/category';
 import type { Module } from '@/types/module';
@@ -112,6 +113,12 @@ export default function CourseCreate() {
                 <Form {...CourseController.store.form()} className="space-y-8">
                     {({ processing, errors, clearErrors }) => (
                         <>
+                            {Object.keys(errors).length > 0 && (
+                                <AlertError
+                                    title="Veuillez corriger les erreurs suivantes pour créer la formation :"
+                                    errors={Object.values(errors)}
+                                />
+                            )}
                             <input
                                 type="hidden"
                                 name="category_id"
@@ -334,10 +341,44 @@ export default function CourseCreate() {
                                                                         j !== i,
                                                                 ),
                                                             )
-                                                        }
-                                                    >
-                                                        <Trash2Icon className="size-4 text-destructive" />
-                                                    </Button>
+                                                    className="flex flex-col gap-1"
+                                                >
+                                                    <div className="flex min-w-0 gap-2">
+                                                        <Input
+                                                            value={b}
+                                                            className="min-w-0 flex-1"
+                                                            onChange={(e) =>
+                                                                setBenefits((p) =>
+                                                                    p.map((v, j) =>
+                                                                        j === i
+                                                                            ? e
+                                                                                  .target
+                                                                                  .value
+                                                                            : v,
+                                                                    ),
+                                                                )
+                                                            }
+                                                            placeholder={`Bénéfice ${i + 1} — Ex : Accès à vie`}
+                                                        />
+
+                                                        <Button
+                                                            type="button"
+                                                            variant="ghost"
+                                                            size="icon"
+                                                            className="shrink-0"
+                                                            onClick={() =>
+                                                                setBenefits((p) =>
+                                                                    p.filter(
+                                                                        (_, j) =>
+                                                                            j !== i,
+                                                                    ),
+                                                                )
+                                                            }
+                                                        >
+                                                            <Trash2Icon className="size-4 text-destructive" />
+                                                        </Button>
+                                                    </div>
+                                                    <InputError message={errors[`benefits.${i}`]} />
                                                 </div>
                                             ))}
                                         </div>
@@ -371,83 +412,87 @@ export default function CourseCreate() {
                                             {objectives.map((o, i) => (
                                                 <div
                                                     key={i}
-                                                    className="flex min-w-0 gap-2"
+                                                    className="flex flex-col gap-1 rounded-md border p-2"
                                                 >
-                                                    <div className="flex min-w-0 flex-1 flex-col gap-2">
-                                                        <p className="text-xs font-medium text-muted-foreground">
-                                                            Objectif {i + 1}
-                                                        </p>
+                                                    <div className="flex min-w-0 gap-2">
+                                                        <div className="flex min-w-0 flex-1 flex-col gap-2">
+                                                            <p className="text-xs font-medium text-muted-foreground">
+                                                                Objectif {i + 1}
+                                                            </p>
 
-                                                        <Input
-                                                            value={o.title}
-                                                            onChange={(e) =>
-                                                                setObjectives(
-                                                                    (p) =>
-                                                                        p.map(
-                                                                            (
-                                                                                v,
-                                                                                j,
-                                                                            ) =>
-                                                                                j ===
-                                                                                i
-                                                                                    ? {
-                                                                                          ...v,
-                                                                                          title: e
-                                                                                              .target
-                                                                                              .value,
-                                                                                      }
-                                                                                    : v,
-                                                                        ),
-                                                                )
-                                                            }
-                                                            placeholder="Ex : Renforcer corps et esprit"
-                                                        />
-
-                                                        <Input
-                                                            value={
-                                                                o.description
-                                                            }
-                                                            onChange={(e) =>
-                                                                setObjectives(
-                                                                    (p) =>
-                                                                        p.map(
-                                                                            (
-                                                                                v,
-                                                                                j,
-                                                                            ) =>
-                                                                                j ===
-                                                                                i
-                                                                                    ? {
-                                                                                          ...v,
-                                                                                          description:
-                                                                                              e
+                                                            <Input
+                                                                value={o.title}
+                                                                onChange={(e) =>
+                                                                    setObjectives(
+                                                                        (p) =>
+                                                                            p.map(
+                                                                                (
+                                                                                    v,
+                                                                                    j,
+                                                                                ) =>
+                                                                                    j ===
+                                                                                    i
+                                                                                        ? {
+                                                                                              ...v,
+                                                                                              title: e
                                                                                                   .target
                                                                                                   .value,
-                                                                                      }
-                                                                                    : v,
-                                                                        ),
+                                                                                          }
+                                                                                        : v,
+                                                                            ),
+                                                                    )
+                                                                }
+                                                                placeholder="Ex : Renforcer corps et esprit"
+                                                            />
+                                                            <InputError message={errors[`objectives.${i}.title`]} />
+
+                                                            <Input
+                                                                value={
+                                                                    o.description
+                                                                }
+                                                                onChange={(e) =>
+                                                                    setObjectives(
+                                                                        (p) =>
+                                                                            p.map(
+                                                                                (
+                                                                                    v,
+                                                                                    j,
+                                                                                ) =>
+                                                                                    j ===
+                                                                                    i
+                                                                                        ? {
+                                                                                              ...v,
+                                                                                              description:
+                                                                                                  e
+                                                                                                      .target
+                                                                                                      .value,
+                                                                                          }
+                                                                                        : v,
+                                                                            ),
+                                                                    )
+                                                                }
+                                                                placeholder="Ex : Développer force, souplesse et équilibre."
+                                                            />
+                                                            <InputError message={errors[`objectives.${i}.description`]} />
+                                                        </div>
+
+                                                        <Button
+                                                            type="button"
+                                                            variant="ghost"
+                                                            size="icon"
+                                                            className="mt-6 shrink-0"
+                                                            onClick={() =>
+                                                                setObjectives((p) =>
+                                                                    p.filter(
+                                                                        (_, j) =>
+                                                                            j !== i,
+                                                                    ),
                                                                 )
                                                             }
-                                                            placeholder="Ex : Développer force, souplesse et équilibre."
-                                                        />
+                                                        >
+                                                            <Trash2Icon className="size-4 text-destructive" />
+                                                        </Button>
                                                     </div>
-
-                                                    <Button
-                                                        type="button"
-                                                        variant="ghost"
-                                                        size="icon"
-                                                        className="mt-6 shrink-0"
-                                                        onClick={() =>
-                                                            setObjectives((p) =>
-                                                                p.filter(
-                                                                    (_, j) =>
-                                                                        j !== i,
-                                                                ),
-                                                            )
-                                                        }
-                                                    >
-                                                        <Trash2Icon className="size-4 text-destructive" />
-                                                    </Button>
                                                 </div>
                                             ))}
                                         </div>
@@ -476,54 +521,55 @@ export default function CourseCreate() {
 
                                         <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                                             {prerequisites.map((p, i) => (
-                                                <div
-                                                    key={i}
-                                                    className="flex min-w-0 gap-2"
-                                                >
-                                                    <Input
-                                                        value={p}
-                                                        className="min-w-0 flex-1"
-                                                        onChange={(e) =>
-                                                            setPrerequisites(
-                                                                (prev) =>
-                                                                    prev.map(
-                                                                        (
-                                                                            v,
-                                                                            j,
-                                                                        ) =>
-                                                                            j ===
-                                                                            i
-                                                                                ? e
-                                                                                      .target
-                                                                                      .value
-                                                                                : v,
-                                                                    ),
-                                                            )
-                                                        }
-                                                        placeholder={`Prérequis ${i + 1} — Ex : Tapis de yoga recommandé`}
-                                                    />
+                                                <div key={i} className="flex flex-col gap-1">
+                                                    <div className="flex min-w-0 gap-2">
+                                                        <Input
+                                                            value={p}
+                                                            className="min-w-0 flex-1"
+                                                            onChange={(e) =>
+                                                                setPrerequisites(
+                                                                    (prev) =>
+                                                                        prev.map(
+                                                                            (
+                                                                                v,
+                                                                                j,
+                                                                            ) =>
+                                                                                j ===
+                                                                                i
+                                                                                    ? e
+                                                                                          .target
+                                                                                          .value
+                                                                                    : v,
+                                                                        ),
+                                                                    )
+                                                                )
+                                                            }
+                                                            placeholder={`Prérequis ${i + 1} — Ex : Tapis de yoga recommandé`}
+                                                        />
 
-                                                    <Button
-                                                        type="button"
-                                                        variant="ghost"
-                                                        size="icon"
-                                                        className="shrink-0"
-                                                        onClick={() =>
-                                                            setPrerequisites(
-                                                                (prev) =>
-                                                                    prev.filter(
-                                                                        (
-                                                                            _,
-                                                                            j,
-                                                                        ) =>
-                                                                            j !==
-                                                                            i,
-                                                                    ),
-                                                            )
-                                                        }
-                                                    >
-                                                        <Trash2Icon className="size-4 text-destructive" />
-                                                    </Button>
+                                                        <Button
+                                                            type="button"
+                                                            variant="ghost"
+                                                            size="icon"
+                                                            className="shrink-0"
+                                                            onClick={() =>
+                                                                setPrerequisites(
+                                                                    (prev) =>
+                                                                        prev.filter(
+                                                                            (
+                                                                                _,
+                                                                                j,
+                                                                            ) =>
+                                                                                j !==
+                                                                                i,
+                                                                        ),
+                                                                )
+                                                            }
+                                                        >
+                                                            <Trash2Icon className="size-4 text-destructive" />
+                                                        </Button>
+                                                    </div>
+                                                    <InputError message={errors[`prerequisites.${i}`]} />
                                                 </div>
                                             ))}
                                         </div>
@@ -540,6 +586,7 @@ export default function CourseCreate() {
                                 </h2>
                                 <ModulesLessons
                                     modules={modules}
+                                    errors={errors}
                                     onAddModule={addModule}
                                     onRemoveModule={removeModule}
                                     onUpdateModule={updateModule}

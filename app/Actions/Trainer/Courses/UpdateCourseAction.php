@@ -35,25 +35,31 @@ class UpdateCourseAction
             $modulesData = $data['modules'] ?? [];
             unset($data['modules']);
 
-            Stripe::setApiKey(config('cashier.secret'));
+            try {
+                if (config('cashier.secret')) {
+                    Stripe::setApiKey((string) config('cashier.secret'));
 
-            $newPriceInCents = (int) round((float) $data['price'] * 100);
-            $oldPriceInCents = (int) round((float) $course->price * 100);
+                    $newPriceInCents = (int) round((float) $data['price'] * 100);
+                    $oldPriceInCents = (int) round((float) $course->price * 100);
 
-            if ($course->stripe_product_id) {
-                Product::update($course->stripe_product_id, ['name' => $data['title']]);
-            }
+                    if ($course->stripe_product_id) {
+                        Product::update($course->stripe_product_id, ['name' => $data['title']]);
+                    }
 
-            if ($course->stripe_price_id && $newPriceInCents !== $oldPriceInCents) {
-                Price::update($course->stripe_price_id, ['active' => false]);
+                    if ($course->stripe_price_id && $newPriceInCents !== $oldPriceInCents) {
+                        Price::update($course->stripe_price_id, ['active' => false]);
 
-                $newPrice = Price::create([
-                    'product' => $course->stripe_product_id,
-                    'unit_amount' => $newPriceInCents,
-                    'currency' => 'eur',
-                ]);
+                        $newPrice = Price::create([
+                            'product' => $course->stripe_product_id,
+                            'unit_amount' => $newPriceInCents,
+                            'currency' => 'eur',
+                        ]);
 
-                $data['stripe_price_id'] = $newPrice->id;
+                        $data['stripe_price_id'] = $newPrice->id;
+                    }
+                }
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning('Stripe product/price update failed: '.$e->getMessage());
             }
 
             $updated = $this->repository->update($course, $data);

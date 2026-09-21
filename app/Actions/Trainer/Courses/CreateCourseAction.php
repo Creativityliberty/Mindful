@@ -33,21 +33,27 @@ class CreateCourseAction
             $modules = $data['modules'] ?? [];
             unset($data['modules']);
 
-            Stripe::setApiKey(config('cashier.secret'));
+            try {
+                if (config('cashier.secret')) {
+                    Stripe::setApiKey((string) config('cashier.secret'));
 
-            $product = Product::create([
-                'name' => $data['title'],
-                'metadata' => ['type' => 'course', 'trainer_id' => $trainer->id],
-            ]);
+                    $product = Product::create([
+                        'name' => $data['title'],
+                        'metadata' => ['type' => 'course', 'trainer_id' => $trainer->id],
+                    ]);
 
-            $price = Price::create([
-                'product' => $product->id,
-                'unit_amount' => (int) round((float) $data['price'] * 100),
-                'currency' => 'eur',
-            ]);
+                    $price = Price::create([
+                        'product' => $product->id,
+                        'unit_amount' => (int) round((float) $data['price'] * 100),
+                        'currency' => 'eur',
+                    ]);
 
-            $data['stripe_product_id'] = $product->id;
-            $data['stripe_price_id'] = $price->id;
+                    $data['stripe_product_id'] = $product->id;
+                    $data['stripe_price_id'] = $price->id;
+                }
+            } catch (\Throwable $e) {
+                \Illuminate\Support\Facades\Log::warning('Stripe product/price creation skipped or failed: '.$e->getMessage());
+            }
 
             $course = $this->repository->create($data);
 

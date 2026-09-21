@@ -25,6 +25,10 @@ class VideoUrlRule implements ValidationRule
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
+        if (blank($value)) {
+            return;
+        }
+
         if (! filter_var($value, FILTER_VALIDATE_URL)) {
             $fail('L\'URL de la vidéo n\'est pas valide.');
 

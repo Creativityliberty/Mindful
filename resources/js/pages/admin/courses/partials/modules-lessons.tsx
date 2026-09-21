@@ -1,4 +1,5 @@
 import { FileAudioIcon, FileTextIcon, Link2Icon, PlusIcon, Trash2Icon } from 'lucide-react';
+import InputError from '@/components/input-error';
 import { MediaUpload } from '@/components/media-upload';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
@@ -15,6 +16,7 @@ import type { Lesson, LessonType, Module } from '@/types';
 
 type Props = {
     modules: Module[];
+    errors?: Record<string, string>;
     onAddModule: () => void;
     onRemoveModule: (mi: number) => void;
     onUpdateModule: (mi: number, field: 'title' | 'duration', value: string | number) => void;
@@ -31,6 +33,7 @@ const LESSON_TYPES: { value: LessonType; label: string; icon: React.ElementType 
 
 export function ModulesLessons({
     modules,
+    errors = {},
     onAddModule,
     onRemoveModule,
     onUpdateModule,
@@ -63,6 +66,7 @@ export function ModulesLessons({
                                 onChange={(e) => onUpdateModule(mi, 'title', e.target.value)}
                                 placeholder="Ex : Les bases de la méditation"
                             />
+                            <InputError message={errors[`modules.${mi}.title`]} />
                         </div>
                         <div className="space-y-2">
                             <Label>Durée (min) *</Label>
@@ -72,6 +76,7 @@ export function ModulesLessons({
                                 value={mod.duration}
                                 onChange={(e) => onUpdateModule(mi, 'duration', Number(e.target.value))}
                             />
+                            <InputError message={errors[`modules.${mi}.duration`]} />
                         </div>
                     </div>
 
@@ -82,6 +87,7 @@ export function ModulesLessons({
                                 lesson={lesson}
                                 moduleIndex={mi}
                                 lessonIndex={li}
+                                errors={errors}
                                 onUpdate={(field, value) => onUpdateLesson(mi, li, field, value)}
                                 onRemove={() => onRemoveLesson(mi, li)}
                             />
@@ -104,16 +110,19 @@ function LessonForm({
     lesson,
     moduleIndex,
     lessonIndex,
+    errors = {},
     onUpdate,
     onRemove,
 }: {
     lesson: Lesson;
     moduleIndex: number;
     lessonIndex: number;
+    errors?: Record<string, string>;
     onUpdate: (field: keyof Lesson, value: string | number | boolean | null) => void;
     onRemove: () => void;
 }) {
     const type = lesson.type ?? 'video_url';
+    const prefix = `modules.${moduleIndex}.lessons.${lessonIndex}`;
 
     return (
         <div className="space-y-3 rounded-md border border-border/40 bg-background/50 p-3">
@@ -135,6 +144,7 @@ function LessonForm({
                         onChange={(e) => onUpdate('title', e.target.value)}
                         placeholder="Titre de la leçon"
                     />
+                    <InputError message={errors[`${prefix}.title`]} />
                 </div>
                 <div className="w-24 space-y-1">
                     <Label className="text-xs">Min *</Label>
@@ -144,6 +154,7 @@ function LessonForm({
                         value={lesson.duration}
                         onChange={(e) => onUpdate('duration', Number(e.target.value))}
                     />
+                    <InputError message={errors[`${prefix}.duration`]} />
                 </div>
                 <div className="flex items-center gap-1.5 pb-2">
                     <Checkbox
@@ -178,6 +189,7 @@ function LessonForm({
                         ))}
                     </SelectContent>
                 </Select>
+                <InputError message={errors[`${prefix}.type`]} />
             </div>
 
             {/* Contenu conditionnel selon le type */}
@@ -190,6 +202,7 @@ function LessonForm({
                         placeholder="YouTube, Vimeo, DailyMotion, Loom…"
                         className="text-xs"
                     />
+                    <InputError message={errors[`${prefix}.video_url`]} />
                 </div>
             )}
 
@@ -201,6 +214,7 @@ function LessonForm({
                         name={`modules[${moduleIndex}][lessons][${lessonIndex}][audio_file]`}
                         existingUrl={lesson.audio_url}
                     />
+                    <InputError message={errors[`${prefix}.audio_file`]} />
                 </div>
             )}
 
@@ -212,6 +226,7 @@ function LessonForm({
                         name={`modules[${moduleIndex}][lessons][${lessonIndex}][pdf_file]`}
                         existingUrl={lesson.pdf_url}
                     />
+                    <InputError message={errors[`${prefix}.pdf_file`]} />
                 </div>
             )}
         </div>

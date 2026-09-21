@@ -564,6 +564,7 @@ export default function CourseEdit() {
 
                                 <ModulesLessons
                                     modules={modules}
+                                    errors={errors}
                                     onAddModule={addModule}
                                     onRemoveModule={removeModule}
                                     onUpdateModule={updateModule}
