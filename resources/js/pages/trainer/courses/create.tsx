@@ -510,7 +510,6 @@ export default function CourseCreate() {
                                                                                           .value
                                                                                     : v,
                                                                         ),
-                                                                    )
                                                                 )
                                                             }
                                                             placeholder={`Prérequis ${i + 1} — Ex : Tapis de yoga recommandé`}
