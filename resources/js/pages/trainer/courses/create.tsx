@@ -310,37 +310,6 @@ export default function CourseCreate() {
                                             {benefits.map((b, i) => (
                                                 <div
                                                     key={i}
-                                                    className="flex min-w-0 gap-2"
-                                                >
-                                                    <Input
-                                                        value={b}
-                                                        className="min-w-0 flex-1"
-                                                        onChange={(e) =>
-                                                            setBenefits((p) =>
-                                                                p.map((v, j) =>
-                                                                    j === i
-                                                                        ? e
-                                                                              .target
-                                                                              .value
-                                                                        : v,
-                                                                ),
-                                                            )
-                                                        }
-                                                        placeholder={`Bénéfice ${i + 1} — Ex : Accès à vie`}
-                                                    />
-
-                                                    <Button
-                                                        type="button"
-                                                        variant="ghost"
-                                                        size="icon"
-                                                        className="shrink-0"
-                                                        onClick={() =>
-                                                            setBenefits((p) =>
-                                                                p.filter(
-                                                                    (_, j) =>
-                                                                        j !== i,
-                                                                ),
-                                                            )
                                                     className="flex flex-col gap-1"
                                                 >
                                                     <div className="flex min-w-0 gap-2">
