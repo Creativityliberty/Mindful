@@ -1,5 +1,5 @@
 import { Head, usePage } from '@inertiajs/react';
-import AppLayout from '@/layouts/app-layout';
+import { CourseNavigation, type CourseNavigationItem } from '@/components/course-navigation';
 import type { Course } from '@/types/course';
 import type { Paginated } from '@/types/pagination';
 import CourseList from './partials/course-list';
@@ -7,10 +7,11 @@ import admin from '@/routes/admin';
 
 type Props = {
     courses: Paginated<Course>;
+    courseNavigation: CourseNavigationItem[];
 };
 
 export default function CourseIndex() {
-    const { courses } = usePage<Props>().props;
+    const { courses, courseNavigation } = usePage<Props>().props;
 
     return (
         <>
@@ -26,7 +27,10 @@ export default function CourseIndex() {
                     </p>
                 </div>
 
-                <CourseList courses={courses} />
+                <div className="grid min-w-0 gap-6 lg:grid-cols-[15rem_minmax(0,1fr)]">
+                    <CourseNavigation courses={courseNavigation} scope="admin" />
+                    <div className="min-w-0"><CourseList courses={courses} /></div>
+                </div>
             </div>
         </>
     );

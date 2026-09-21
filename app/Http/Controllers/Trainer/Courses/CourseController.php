@@ -33,11 +33,18 @@ class CourseController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
-
         return Inertia::render('trainer/courses/index', [
             'courses' => $this->repository->paginate($user, 10)->through(
                 fn (Course $course) => CourseResource::make($course)->resolve(),
             ),
+            'courseNavigation' => $user->courses()
+                ->orderBy('title')
+                ->get(['id', 'title', 'trainer_id'])
+                ->map(fn (Course $course) => [
+                    'id' => $course->id,
+                    'title' => $course->title,
+                    'trainer' => null,
+                ]),
         ]);
     }
 
