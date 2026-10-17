@@ -26,14 +26,12 @@ final class SitemapController extends Controller
             '/glossaire',
             '/contact',
             '/blog',
+            '/courses',
         ];
 
         foreach ($staticRoutes as $route) {
             $urls[] = [
                 'loc' => $baseUrl.$route,
-                'lastmod' => date('Y-m-d'),
-                'changefreq' => 'weekly',
-                'priority' => $route === '/' ? '1.0' : '0.8',
             ];
         }
 
@@ -43,8 +41,6 @@ final class SitemapController extends Controller
             $urls[] = [
                 'loc' => $baseUrl.'/courses/'.$course->slug,
                 'lastmod' => $course->updated_at->format('Y-m-d'),
-                'changefreq' => 'weekly',
-                'priority' => '0.9',
             ];
         }
 
@@ -64,26 +60,18 @@ final class SitemapController extends Controller
         foreach ($blogSlugs as $slug) {
             $urls[] = [
                 'loc' => $baseUrl.'/blog/'.$slug,
-                'lastmod' => date('Y-m-d'),
-                'changefreq' => 'monthly',
-                'priority' => '0.7',
             ];
         }
 
         $xml = '<?xml version="1.0" encoding="UTF-8"?>';
-        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ';
-        $xml .= 'xmlns:xhtml="http://www.w3.org/1999/xhtml">';
+        $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
 
         foreach ($urls as $url) {
             $xml .= '<url>';
             $xml .= '<loc>'.htmlspecialchars($url['loc']).'</loc>';
-            $xml .= '<lastmod>'.$url['lastmod'].'</lastmod>';
-            $xml .= '<changefreq>'.$url['changefreq'].'</changefreq>';
-            $xml .= '<priority>'.$url['priority'].'</priority>';
-            // Add multilingual alternates for search engines
-            $xml .= '<xhtml:link rel="alternate" hreflang="fr" href="'.htmlspecialchars($url['loc']).'?lng=fr"/>';
-            $xml .= '<xhtml:link rel="alternate" hreflang="en" href="'.htmlspecialchars($url['loc']).'?lng=en"/>';
-            $xml .= '<xhtml:link rel="alternate" hreflang="x-default" href="'.htmlspecialchars($url['loc']).'"/>';
+            if (isset($url['lastmod'])) {
+                $xml .= '<lastmod>'.$url['lastmod'].'</lastmod>';
+            }
             $xml .= '</url>';
         }
 

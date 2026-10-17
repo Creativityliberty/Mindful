@@ -1,6 +1,6 @@
-import { Head } from '@inertiajs/react';
-import { MessageSquare, Eye, Clock, Search, Filter, MessageCircle, Heart } from 'lucide-react';
+import { MessageSquare, Eye, Clock, Search, MessageCircle, Heart } from 'lucide-react';
 import React, { useState } from 'react';
+import { SEOHead } from '@/components/seo-head';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 
@@ -83,7 +83,11 @@ export default function Forum() {
 
     return (
         <>
-            <Head title="Forum d'échange & Entraide - Mindfulness & Bien-être Studio" />
+            <SEOHead
+                title="Forum d'échange et entraide"
+                description="Espace communautaire FormationSession réservé aux échanges entre apprenants."
+                noIndex
+            />
             
             <div className="relative min-h-screen pt-20">
                 {/* Background Decor */}

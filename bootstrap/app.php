@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\CanonicalizePublicUrl;
 use App\Http\Middleware\HandleAppearance;
 use App\Http\Middleware\HandleInertiaRequests;
 use Illuminate\Auth\AuthenticationException;
@@ -30,6 +31,10 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->preventRequestForgery(except: [
             'stripe/*',
+        ]);
+
+        $middleware->web(prepend: [
+            CanonicalizePublicUrl::class,
         ]);
 
         $middleware->web(append: [

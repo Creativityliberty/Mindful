@@ -12,6 +12,19 @@ interface SEOHeadProps {
   noIndex?: boolean
 }
 
+function metaDescription(description: string, maximumLength = 160): string {
+  const normalized = description.replace(/\s+/g, ' ').trim()
+
+  if (normalized.length <= maximumLength) {
+    return normalized
+  }
+
+  const breakPoint = normalized.lastIndexOf(' ', maximumLength - 1)
+  const truncated = normalized.slice(0, breakPoint > 100 ? breakPoint : maximumLength).trimEnd()
+
+  return `${truncated}…`
+}
+
 export function SEOHead({
   title,
   description,
@@ -35,36 +48,30 @@ export function SEOHead({
   const cleanPath = relativeUrl.split('?')[0]
   const absolutePath = `${SITE_URL}${cleanPath}`
   const baseUrl = canonical || absolutePath
-  const cleanBaseUrl = baseUrl.endsWith('/') ? baseUrl : `${baseUrl}/`
-  
-  const robots = noIndex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
-  const fullTitle = `${title} | ${SITE_NAME}`
+  const robots = noIndex ? 'noindex, follow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+  const fullTitle = title.endsWith(`| ${SITE_NAME}`) ? title : `${title} | ${SITE_NAME}`
+  const descriptionForMeta = metaDescription(description)
 
   return (
     <Head>
       <title>{fullTitle}</title>
-      <meta name="description" content={description} />
+      <meta name="description" content={descriptionForMeta} />
       <meta name="robots" content={robots} />
       <link rel="canonical" href={baseUrl} />
-
-      {/* Multilingual Hreflang Alternates */}
-      <link rel="alternate" hrefLang="fr" href={`${cleanBaseUrl}?lng=fr`} />
-      <link rel="alternate" hrefLang="en" href={`${cleanBaseUrl}?lng=en`} />
-      <link rel="alternate" hrefLang="x-default" href={baseUrl} />
 
       {/* Open Graph / Facebook */}
       <meta property="og:type" content="website" />
       <meta property="og:locale" content={locale} />
       <meta property="og:site_name" content={SITE_NAME} />
       <meta property="og:title" content={fullTitle} />
-      <meta property="og:description" content={description} />
+      <meta property="og:description" content={descriptionForMeta} />
       <meta property="og:url" content={baseUrl} />
       <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
-      <meta name="twitter:description" content={description} />
+      <meta name="twitter:description" content={descriptionForMeta} />
       <meta name="twitter:image" content={ogImage.startsWith('http') ? ogImage : `${SITE_URL}${ogImage}`} />
 
       {jsonLd && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: jsonLd }} />}

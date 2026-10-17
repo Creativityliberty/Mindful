@@ -4,7 +4,7 @@ export const ACADEMY_INFO = {
     name: 'FormationSession',
     alternateName: 'Spiritualité 1.618 & FormationSession',
     url: 'https://formationsession.com',
-    logo: 'https://formationsession.com/assets/images/logo.png',
+    logo: 'https://formationsession.com/apple-touch-icon.png',
     description: 'Plateforme et académie d\'apprentissage holistique et de développement personnel : Lithothérapie, Radiesthésie, LaHoChi, Chakras et Méthodes Contemplatives.',
     coEditor: 'Fabienne Dizy-Olliveaud',
     siret: '98200809600025',
@@ -63,7 +63,7 @@ export function generateBlogSchema(
                 'url': origin,
                 'logo': {
                     '@type': 'ImageObject',
-                    'url': `${origin}/assets/images/logo.png`,
+                'url': `${origin}/apple-touch-icon.png`,
                 },
                 'founder': {
                     '@type': 'Person',
@@ -131,7 +131,7 @@ export function generateArticleSchema(
             'url': origin,
             'logo': {
                 '@type': 'ImageObject',
-                'url': `${origin}/assets/images/logo.png`,
+                'url': `${origin}/apple-touch-icon.png`,
             },
         },
         {

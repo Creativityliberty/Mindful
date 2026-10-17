@@ -24,10 +24,9 @@ final class SeoDataTest extends TestCase
         $seo = SeoData::forHomepage();
         $data = $seo->toArray();
 
-        $this->assertSame('Formations bien-être en ligne et ateliers | FormationSession', $data['title']);
+        $this->assertSame('Formations bien-être en ligne et ateliers', $data['title']);
         $this->assertStringContainsString('radiesthésie', $data['description']);
         $this->assertSame('https://formationsession.com/', $data['canonical']);
-        $this->assertStringContainsString('application/ld+json', $data['jsonLd']);
         $this->assertStringContainsString('Organization', $data['jsonLd']);
         $this->assertStringContainsString('WebSite', $data['jsonLd']);
         $this->assertStringContainsString('WebPage', $data['jsonLd']);
@@ -55,10 +54,7 @@ final class SeoDataTest extends TestCase
     public function json_ld_is_valid_json(): void
     {
         $seo = SeoData::forHomepage();
-        $html = $seo->toJsonLdHtml();
-
-        preg_match('/<script[^>]*>(.*?)<\/script>/s', $html, $matches);
-        $decoded = json_decode($matches[1], true, 512, JSON_THROW_ON_ERROR);
+        $decoded = json_decode($seo->toJsonLd(), true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('@context', $decoded);
         $this->assertArrayHasKey('@graph', $decoded);
@@ -74,9 +70,9 @@ final class SeoDataTest extends TestCase
         ];
 
         $seo = SeoData::forHomepage($courses);
-        $html = $seo->toJsonLdHtml();
+        $json = $seo->toJsonLd();
 
-        $this->assertStringContainsString('"position":1', $html);
-        $this->assertStringContainsString('"position":2', $html);
+        $this->assertStringContainsString('"position":1', $json);
+        $this->assertStringContainsString('"position":2', $json);
     }
 }

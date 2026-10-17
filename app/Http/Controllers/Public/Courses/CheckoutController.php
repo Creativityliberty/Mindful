@@ -54,7 +54,7 @@ class CheckoutController extends Controller
                 'student_id' => $request->user()->id,
             ],
             'success_url' => route('courses.purchase.success'),
-            'cancel_url' => route('courses.show', $course->id),
+            'cancel_url' => route('courses.show', $course->slug),
         ]);
 
         return Inertia::location($session->url);

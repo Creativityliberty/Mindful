@@ -1,8 +1,8 @@
-import { Head } from '@inertiajs/react';
-import { Calendar, Clock, Video, MapPin, Users, ArrowRight } from 'lucide-react';
+import { Calendar, Clock, Video, Users, ArrowRight } from 'lucide-react';
 import React from 'react';
+import { SEOHead } from '@/components/seo-head';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
+import { Card } from '@/components/ui/card';
 
 const events = [
     {
@@ -58,7 +58,11 @@ const events = [
 export default function Events() {
     return (
         <>
-            <Head title="Ateliers en direct & Retraites - Mindfulness & Bien-être Studio" />
+            <SEOHead
+                title="Événements et ateliers"
+                description="Les événements FormationSession sont annoncés sur cette page lorsqu'ils sont ouverts à l'inscription."
+                noIndex
+            />
             
             <div className="relative min-h-screen pt-20">
                 {/* Background Decor */}

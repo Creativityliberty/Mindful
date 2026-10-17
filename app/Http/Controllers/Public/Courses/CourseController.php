@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\Public\CourseResource;
 use App\Repositories\Public\Categories\CategoryRepository;
 use App\Repositories\Public\Courses\CourseRepository;
+use Illuminate\Http\RedirectResponse;
 use Inertia\Inertia;
 use Inertia\Response;
 
@@ -31,9 +32,13 @@ class CourseController extends Controller
         ]);
     }
 
-    public function show(string|int $identifier): Response
+    public function show(string|int $identifier): Response|RedirectResponse
     {
         $course = $this->courses->findPublishedWithRelations($identifier);
+
+        if ((string) $identifier !== $course->slug) {
+            return redirect()->route('courses.show', $course->slug, 301);
+        }
 
         return Inertia::render('home/courses/show', [
             'course' => (new CourseResource($course))->resolve(),

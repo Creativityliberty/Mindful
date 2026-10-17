@@ -18,7 +18,7 @@ class FreeEnrollController extends Controller
 
         // Sécurité : ne fonctionne que pour les cours gratuits
         if ((float) $course->price > 0) {
-            return redirect()->route('courses.show', $course->id)
+            return redirect()->route('courses.show', $course->slug)
                 ->with('error', 'Ce cours n\'est pas gratuit. Veuillez procéder au paiement.');
         }
 

@@ -40,17 +40,17 @@ final readonly class SeoData
             'description' => $this->description,
             'canonical' => $this->canonical,
             'ogImage' => $this->ogImage,
-            'jsonLd' => $this->toJsonLdHtml(),
+            'jsonLd' => $this->toJsonLd(),
         ];
     }
 
-    public function toJsonLdHtml(): string
+    public function toJsonLd(): string
     {
         $graph = $this->buildGraph();
 
-        return sprintf(
-            '<script type="application/ld+json">%s</script>',
-            json_encode(['@context' => 'https://schema.org', '@graph' => $graph], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR),
+        return json_encode(
+            ['@context' => 'https://schema.org', '@graph' => $graph],
+            JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_THROW_ON_ERROR,
         );
     }
 

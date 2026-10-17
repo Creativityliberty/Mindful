@@ -24,7 +24,7 @@ class HomeController extends Controller
         $courseEntries = $courses->map(fn ($c) => [
             'name' => $c->title,
             'description' => $c->description,
-            'url' => route('courses.show', $c->id),
+            'url' => route('courses.show', $c->slug),
         ])->values()->toArray();
 
         return Inertia::render('home/index', [

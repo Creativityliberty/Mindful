@@ -170,7 +170,7 @@ export const allArticles: Article[] = [
       badge: "Formation Certifiante Complète",
       title: "Lithothérapie : Utilisation Consciente des Minéraux & Chakras",
       description: "Apprenez pas à pas l'art de la lithothérapie, les protocoles sécurisés de purification, l'harmonisation des 7 chakras et la création de votre bracelet chemin de vie.",
-      href: "/courses/10",
+      href: "/courses/lithotherapie-utilisation-consciente-des-mineraux-chakras",
       price: "89 €"
     }
   },
@@ -422,7 +422,7 @@ export const allArticles: Article[] = [
       badge: "Formation & Transmission Complète",
       title: "Initiation Complète au LaHoChi",
       description: "Formation individuelle en visioconférence avec livret pédagogique PDF original, transmission énergétique et suivi personnalisé durant vos 21 jours d'auto-soins.",
-      href: "/courses/2",
+      href: "/courses/initiation-au-lahochi",
       price: "150 €"
     }
   },

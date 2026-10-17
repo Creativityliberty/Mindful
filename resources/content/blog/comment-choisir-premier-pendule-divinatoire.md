@@ -128,7 +128,7 @@ Votre convention est le langage unique entre vous et votre pendule :
 
 Vous souhaitez dépasser le simple OUI/NON, apprendre à utiliser les **cadrans de Bovis**, mesurer le taux vibratoire des lieux ou rééquilibrer vos chakras au pendule ?
 
-👉 Découvrez notre **[Formation Initiation au Pendule & Radiesthésie (4h de cours vidéo + Cadrans PDF imprimables)](https://formationsession.com/courses/1)**, conçue par la formatrice experte **Sophie Lefèvre** pour vous guider pas à pas vers une pratique autonome et rigoureuse.
+👉 Découvrez le **[catalogue des formations FormationSession](https://formationsession.com/courses)** pour choisir un parcours adapté à votre pratique autonome et rigoureuse.
 
 ---
 

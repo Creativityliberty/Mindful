@@ -1,9 +1,9 @@
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
+import { initReactI18next } from 'react-i18next';
 
-import fr from './locales/fr.json';
 import en from './locales/en.json';
+import fr from './locales/fr.json';
 
 const resources = {
     fr: { translation: fr },
@@ -22,8 +22,9 @@ i18n
             escapeValue: false, // React already escapes values
         },
         detection: {
-            order: ['querystring', 'cookie', 'localStorage', 'navigator'],
-            lookupQuerystring: 'lng',
+            // SEO is French-first until translated server-rendered routes exist.
+            // A visitor may still explicitly choose a language in the UI.
+            order: ['cookie', 'localStorage'],
             caches: ['localStorage', 'cookie'],
         },
     });
