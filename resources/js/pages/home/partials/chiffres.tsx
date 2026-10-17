@@ -20,56 +20,64 @@ export function Chiffres() {
             eyebrow: t('chiffres.item1_eyebrow'),
             description: t('chiffres.item1_desc'),
             href: '/courses?category=bougies',
-            image: '/assets/images/theme_bougies.jpg',
+            image: '/assets/images/home-card-bougies.webp',
+            imagePosition: 'center',
         },
         {
             title: t('chiffres.item2_title'),
             eyebrow: t('chiffres.item2_eyebrow'),
             description: t('chiffres.item2_desc'),
             href: '/courses?category=onglerie',
-            image: '/assets/images/theme_onglerie.jpg',
+            image: '/assets/images/home-card-onglerie.webp',
+            imagePosition: 'center',
         },
         {
             title: t('chiffres.item3_title'),
             eyebrow: t('chiffres.item3_eyebrow'),
             description: t('chiffres.item3_desc'),
             href: '/courses?category=ceramique',
-            image: '/assets/images/theme_ceramique.jpg',
+            image: '/assets/images/home-card-ceramique.webp',
+            imagePosition: 'center',
         },
         {
             title: t('chiffres.item4_title'),
             eyebrow: t('chiffres.item4_eyebrow'),
             description: t('chiffres.item4_desc'),
             href: '/courses?category=patisserie',
-            image: '/assets/images/theme_patisserie.jpg',
+            image: '/assets/images/home-card-gastronomie.webp',
+            imagePosition: 'center',
         },
         {
             title: t('chiffres.item5_title'),
             eyebrow: t('chiffres.item5_eyebrow'),
             description: t('chiffres.item5_desc'),
             href: '/courses?category=couture',
-            image: '/assets/images/theme_couture.jpg',
+            image: '/assets/images/home-card-textile.webp',
+            imagePosition: 'center',
         },
         {
             title: t('chiffres.item6_title'),
             eyebrow: t('chiffres.item6_eyebrow'),
             description: t('chiffres.item6_desc'),
             href: '/courses?category=digital',
-            image: '/assets/images/theme_digital.jpg',
+            image: '/assets/images/home-card-digital.webp',
+            imagePosition: 'center',
         },
         {
             title: t('chiffres.item7_title'),
             eyebrow: t('chiffres.item7_eyebrow'),
             description: t('chiffres.item7_desc'),
             href: '/courses?category=radiesthesie',
-            image: '/assets/images/theme_radiesthesie.jpg',
+            image: '/assets/images/home-card-radiesthesie.webp',
+            imagePosition: '70% center',
         },
         {
             title: t('chiffres.item8_title'),
             eyebrow: t('chiffres.item8_eyebrow'),
             description: t('chiffres.item8_desc'),
             href: '/courses?category=bois',
-            image: '/assets/images/service_bois_lux.jpg',
+            image: '/assets/images/home-card-bois.webp',
+            imagePosition: '70% center',
         },
     ];
 
@@ -165,6 +173,7 @@ export function Chiffres() {
                                             alt={item.title}
                                             loading="lazy"
                                             decoding="async"
+                                            style={{ objectPosition: item.imagePosition }}
                                             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                                         />
 
