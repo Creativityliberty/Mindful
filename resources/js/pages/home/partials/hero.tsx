@@ -76,12 +76,12 @@ export function Hero() {
                 >
                     <picture>
                         <source
-                            srcSet="/assets/images/tableau_de_bord_formationsession_en_action.webp"
+                            srcSet="/assets/images/hero_vendez_vos_connaissances.webp"
                             type="image/webp"
                         />
                         <img
-                            src="/assets/images/tableau_de_bord_formationsession_en_action.png"
-                            alt="Tableau de bord FormationSession en action avec formatrice et métriques en temps réel"
+                            src="/assets/images/hero_vendez_vos_connaissances.png"
+                            alt="FormationSession : Vendez vos connaissances et compétences"
                             fetchPriority="high"
                             decoding="sync"
                             className="h-full w-full object-cover object-[70%_center] md:object-right-center"
