@@ -1,13 +1,14 @@
 import { Link } from '@inertiajs/react';
-import { motion, type Variants } from 'framer-motion';
+import { motion } from 'framer-motion';
 import {
     ShieldCheck,
     Eye,
     Heart,
     Award,
     Users,
-    Globe,
-    Calendar,
+    Sparkles,
+    CheckCircle2,
+    Compass,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useTranslation } from 'react-i18next';
@@ -32,31 +33,26 @@ export default function About() {
         }
     });
 
-    const timeline = [
+    const pillars = [
         {
-            annee: t('about_page.step1_year'),
-            titre: t('about_page.step1_title'),
+            badge: t('about_page.step1_year'),
+            title: t('about_page.step1_title'),
             description: t('about_page.step1_desc'),
         },
         {
-            annee: t('about_page.step2_year'),
-            titre: t('about_page.step2_title'),
+            badge: t('about_page.step2_year'),
+            title: t('about_page.step2_title'),
             description: t('about_page.step2_desc'),
         },
         {
-            annee: t('about_page.step3_year'),
-            titre: t('about_page.step3_title'),
+            badge: t('about_page.step3_year'),
+            title: t('about_page.step3_title'),
             description: t('about_page.step3_desc'),
         },
         {
-            annee: t('about_page.step4_year'),
-            titre: t('about_page.step4_title'),
+            badge: t('about_page.step4_year'),
+            title: t('about_page.step4_title'),
             description: t('about_page.step4_desc'),
-        },
-        {
-            annee: t('about_page.step5_year'),
-            titre: t('about_page.step5_title'),
-            description: t('about_page.step5_desc'),
         },
     ];
 
@@ -64,13 +60,13 @@ export default function About() {
         {
             nom: t('about_page.team1_name'),
             role: t('about_page.team1_role'),
-            avatar: null,
+            initials: 'FD',
             bio: t('about_page.team1_bio'),
         },
         {
             nom: t('about_page.team2_name'),
             role: t('about_page.team2_role'),
-            avatar: null,
+            initials: 'LT',
             bio: t('about_page.team2_bio'),
         },
     ];
@@ -113,7 +109,6 @@ export default function About() {
             </div>
 
             <div className="relative w-full px-6 py-12 md:px-10 lg:px-16 max-w-7xl mx-auto">
-                
                 {/* Header Section */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -138,7 +133,7 @@ export default function About() {
                         <h2 className="text-2xl md:text-4xl font-bold tracking-tight text-foreground font-sans leading-tight">
                             {t('about_page.main_heading')}
                         </h2>
-                        <p className="text-base md:text-lg text-foreground/60 leading-relaxed font-light">
+                        <p className="text-base md:text-lg text-foreground/70 leading-relaxed font-light">
                             {t('about_page.intro_p1')}
                         </p>
                         <p className="text-base text-foreground/60 leading-relaxed font-light">
@@ -191,12 +186,12 @@ export default function About() {
                                 <span className="rounded-full border border-border/40 bg-secondary/80 px-2.5 py-0.5 text-[10px] font-mono font-semibold tracking-wider text-secondary-foreground uppercase">
                                     (03)
                                 </span>
-                                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
-                                    <Globe className="h-4 w-4" />
+                                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500 transition-transform group-hover:scale-110">
+                                    <Sparkles className="h-4 w-4" />
                                 </div>
                             </div>
                             <div className="space-y-1">
-                                <span className="block text-3xl md:text-4xl font-extrabold tracking-tight text-foreground font-sans">
+                                <span className="block text-3xl md:text-4xl font-extrabold tracking-tight text-sky-500 font-sans">
                                     {t('about_page.stat3_val')}
                                 </span>
                                 <span className="text-xs font-medium text-foreground/70 tracking-wide">
@@ -211,7 +206,7 @@ export default function About() {
                                     (04)
                                 </span>
                                 <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary/10 text-primary transition-transform group-hover:scale-110">
-                                    <Calendar className="h-4 w-4" />
+                                    <CheckCircle2 className="h-4 w-4" />
                                 </div>
                             </div>
                             <div className="space-y-1">
@@ -226,10 +221,11 @@ export default function About() {
                     </div>
                 </div>
 
-                {/* Timeline / Notre Cheminement */}
+                {/* Les Piliers Fondateurs */}
                 <section className="py-20 border-b border-border/20">
-                    <div className="max-w-2xl mb-16 space-y-3">
+                    <div className="max-w-2xl mb-14 space-y-3">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
+                            <Compass className="h-3.5 w-3.5 text-sky-500" />
                             {t('about_page.evolution_badge')}
                         </div>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-sans">
@@ -237,24 +233,27 @@ export default function About() {
                         </h2>
                     </div>
 
-                    <div className="relative border-l border-border/30 pl-8 ml-4 space-y-12">
-                        {timeline.map((item) => (
-                            <div key={item.annee} className="relative group">
-                                <div className="absolute -left-[41px] top-1.5 h-4 w-4 rounded-full border-2 border-primary bg-background transition-colors group-hover:bg-sky-400 group-hover:border-sky-400" />
-                                
-                                <div className="space-y-1.5">
-                                    <span className="text-xs font-bold text-sky-400 tracking-wider uppercase">{item.annee}</span>
-                                    <h3 className="text-lg font-bold text-foreground">{item.titre}</h3>
-                                    <p className="text-sm text-foreground/60 leading-relaxed font-light max-w-3xl">{item.description}</p>
-                                </div>
+                    <div className="grid gap-6 sm:grid-cols-2">
+                        {pillars.map((item, idx) => (
+                            <div
+                                key={idx}
+                                className="p-8 rounded-3xl border border-border/20 bg-background/60 backdrop-blur-sm space-y-3 hover:border-sky-400/40 transition-colors"
+                            >
+                                <span className="text-xs font-bold text-sky-500 tracking-widest uppercase block">
+                                    {item.badge}
+                                </span>
+                                <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
+                                <p className="text-sm text-foreground/60 leading-relaxed font-light">
+                                    {item.description}
+                                </p>
                             </div>
                         ))}
                     </div>
                 </section>
 
-                {/* Équipe Section */}
+                {/* Équipe Fondatrice Section */}
                 <section className="py-20 border-b border-border/20">
-                    <div className="max-w-2xl mb-16 space-y-3">
+                    <div className="max-w-2xl mb-14 space-y-3">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             {t('about_page.team_badge')}
                         </div>
@@ -263,17 +262,26 @@ export default function About() {
                         </h2>
                     </div>
 
-                    <div className="grid max-w-3xl gap-8 sm:grid-cols-2">
+                    <div className="grid max-w-4xl gap-8 sm:grid-cols-2">
                         {equipe.map((membre) => (
-                            <div key={membre.nom} className="space-y-4 text-center sm:text-left">
-                                <div className="relative flex h-20 w-20 items-center justify-center rounded-full border border-border/30 bg-secondary text-lg font-semibold text-muted-foreground mx-auto sm:mx-0 shadow-sm">
-                                    {membre.avatar ? <img src={membre.avatar} alt={membre.nom} className="h-full w-full rounded-full object-cover" /> : membre.nom.split(' ').map((part) => part[0]).join('').slice(0, 2)}
+                            <div
+                                key={membre.nom}
+                                className="p-8 rounded-3xl border border-border/20 bg-background/50 backdrop-blur-sm space-y-5 hover:border-sky-400/30 transition-colors"
+                            >
+                                <div className="flex items-center gap-4">
+                                    <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-sky-500/10 text-sky-500 text-lg font-bold">
+                                        {membre.initials}
+                                    </div>
+                                    <div>
+                                        <h3 className="text-lg font-bold text-foreground">{membre.nom}</h3>
+                                        <span className="text-xs text-sky-500 font-semibold block leading-snug">
+                                            {membre.role}
+                                        </span>
+                                    </div>
                                 </div>
-                                <div className="space-y-1">
-                                    <h3 className="font-bold text-foreground">{membre.nom}</h3>
-                                    <span className="text-xs text-sky-400 font-semibold block">{membre.role}</span>
-                                    <p className="text-xs text-foreground/50 leading-relaxed font-light pt-2">{membre.bio}</p>
-                                </div>
+                                <p className="text-sm text-foreground/65 leading-relaxed font-light pt-1">
+                                    {membre.bio}
+                                </p>
                             </div>
                         ))}
                     </div>
@@ -281,7 +289,7 @@ export default function About() {
 
                 {/* Valeurs Section */}
                 <section className="py-20 border-b border-border/20">
-                    <div className="max-w-2xl mb-16 space-y-3">
+                    <div className="max-w-2xl mb-14 space-y-3">
                         <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-3 py-1 text-xs font-semibold tracking-wider text-secondary-foreground uppercase">
                             {t('about_page.values_badge')}
                         </div>
@@ -295,11 +303,13 @@ export default function About() {
                             const Icon = val.icon;
                             return (
                                 <div key={val.titre} className="space-y-3">
-                                    <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-sky-400/10 text-sky-400">
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-sky-500/10 text-sky-500">
                                         <Icon className="h-5 w-5" />
                                     </div>
-                                    <h3 className="font-bold text-foreground">{val.titre}</h3>
-                                    <p className="text-xs md:text-sm text-foreground/60 leading-relaxed font-light">{val.description}</p>
+                                    <h3 className="font-bold text-foreground text-base">{val.titre}</h3>
+                                    <p className="text-xs md:text-sm text-foreground/60 leading-relaxed font-light">
+                                        {val.description}
+                                    </p>
                                 </div>
                             );
                         })}
@@ -323,7 +333,6 @@ export default function About() {
                         </Button>
                     </div>
                 </section>
-
             </div>
         </div>
     );
