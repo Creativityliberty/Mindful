@@ -3,6 +3,7 @@ import { motion, type Variants } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
+import { HeroDashboardMockup } from './hero-dashboard-mockup';
 
 const containerVariants: Variants = {
     hidden: { opacity: 0, y: 24 },
@@ -60,24 +61,25 @@ export function Hero() {
 
             <div className="absolute inset-y-0 right-0 z-[5] hidden w-[52%] lg:block">
                 <img
-                    src="/assets/images/hero_connected_workspace_8k.webp"
-                    alt="Espace de cours connecté & Masterclass en direct"
+                    src="/assets/images/hero_mentor_glass_hologram.webp"
+                    alt="Mentor créateur tenant l'interface interactive FormationSession"
                     aria-hidden="true"
                     fetchPriority="high"
                     decoding="sync"
                     className="absolute inset-0 h-full w-full object-cover object-center"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-background via-background/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-r from-background via-background/30 to-transparent" />
             </div>
 
-            {/* contenu texte & CTA */}
+            {/* contenu texte & CTA + Mockup UI dynamique */}
             <div className="relative z-20 mx-auto w-full max-w-7xl px-6 py-24 md:px-8 lg:px-12">
-                <motion.div
-                    variants={containerVariants}
-                    initial="hidden"
-                    animate="visible"
-                    className="mx-auto max-w-4xl text-center lg:text-left lg:mx-0 lg:max-w-2xl"
-                >
+                <div className="grid gap-12 lg:grid-cols-[1.1fr_1fr] items-center">
+                    <motion.div
+                        variants={containerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        className="mx-auto max-w-2xl text-center lg:text-left lg:mx-0"
+                    >
                     <motion.div
                         variants={itemVariants}
                         className="mb-6 inline-flex items-center gap-2 rounded-full border border-border/40 bg-background/60 px-4 py-1.5 text-xs font-semibold tracking-wider text-foreground/70 uppercase backdrop-blur"
@@ -177,7 +179,13 @@ export function Hero() {
                         ))}
                     </motion.div>
                 </motion.div>
+
+                {/* Interactive Dynamic Mockup (Right Column) */}
+                <div className="hidden lg:flex items-center justify-center pl-6">
+                    <HeroDashboardMockup />
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
     );
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\NewsletterController;
+use App\Http\Controllers\Public\AgentMailWebhookController;
 use App\Http\Controllers\Public\BecomeTrainer\CheckoutController;
 use App\Http\Controllers\Public\BecomeTrainer\PaymentController;
 use App\Http\Controllers\Public\BecomeTrainer\TrainerPlanController;
@@ -56,4 +57,7 @@ Route::inertia('become-trainer/success', 'home/become-trainer/success')->name('b
 
 // Stripe / Cashier
 Route::post('stripe/webhook', [WebhookController::class, 'handleWebhook'])->name('cashier.webhook');
+
+// AgentMail Webhook
+Route::post('api/webhooks/agentmail', [AgentMailWebhookController::class, 'handle'])->name('agentmail.webhook');
 Route::get('stripe/payment/{payment}', [PaymentController::class, 'show'])->name('cashier.payment');
