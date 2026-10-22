@@ -7,28 +7,28 @@ export default function Testimonials() {
 
     const avis = [
         {
-            initiales: 'FD',
+            initiales: 'EP',
             nom: t('testimonials.rev1_name'),
             role: t('testimonials.rev1_role'),
             entreprise: '',
             contenu: t('testimonials.rev1_content'),
         },
         {
-            initiales: 'JR',
+            initiales: 'GF',
             nom: t('testimonials.rev2_name'),
             role: t('testimonials.rev2_role'),
             entreprise: '',
             contenu: t('testimonials.rev2_content'),
         },
         {
-            initiales: 'AL',
+            initiales: 'NT',
             nom: t('testimonials.rev3_name'),
             role: t('testimonials.rev3_role'),
             entreprise: '',
             contenu: t('testimonials.rev3_content'),
         },
         {
-            initiales: 'SM',
+            initiales: 'RD',
             nom: t('testimonials.rev4_name'),
             role: t('testimonials.rev4_role'),
             entreprise: '',

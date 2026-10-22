@@ -10,6 +10,7 @@ import {
 } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@/components/ui/button';
 
 export function Services() {
     const { t } = useTranslation();
@@ -17,68 +18,68 @@ export function Services() {
     const services = [
         {
             id: 0,
-            icon: Flame,
+            icon: Palette,
             title: t('services.item0_title'),
             description: t('services.item0_desc'),
-            href: '/courses?category=bougies',
-            color: 'from-amber-500 via-orange-500 to-rose-500',
+            href: '/courses?category=artisanat',
+            color: 'from-amber-600 via-orange-600 to-amber-800',
             badgeColor: 'bg-amber-500/20 text-amber-200 border-amber-400/30',
-            image: '/assets/images/theme_bougies.webp',
+            image: '/assets/images/service_bois_lux.webp',
         },
         {
             id: 1,
-            icon: Gem,
+            icon: Flame,
             title: t('services.item1_title'),
             description: t('services.item1_desc'),
-            href: '/courses?category=onglerie',
+            href: '/courses?category=creation',
             color: 'from-pink-500 via-rose-500 to-amber-400',
             badgeColor: 'bg-pink-500/20 text-pink-200 border-pink-400/30',
-            image: '/assets/images/theme_onglerie.webp',
+            image: '/assets/images/theme_bougies.webp',
         },
         {
             id: 2,
-            icon: Palette,
+            icon: Utensils,
             title: t('services.item2_title'),
             description: t('services.item2_desc'),
-            href: '/courses?category=ceramique',
-            color: 'from-emerald-500 via-teal-600 to-stone-600',
-            badgeColor: 'bg-emerald-500/20 text-emerald-200 border-emerald-400/30',
-            image: '/assets/images/theme_ceramique.webp',
-        },
-        {
-            id: 3,
-            icon: Utensils,
-            title: t('services.item3_title'),
-            description: t('services.item3_desc'),
-            href: '/courses?category=patisserie',
-            color: 'from-amber-600 via-yellow-600 to-orange-700',
+            href: '/courses?category=gastronomie',
+            color: 'from-amber-700 via-yellow-600 to-orange-800',
             badgeColor: 'bg-orange-500/20 text-orange-200 border-orange-400/30',
             image: '/assets/images/theme_patisserie.webp',
         },
         {
-            id: 4,
-            icon: Scissors,
-            title: t('services.item4_title'),
-            description: t('services.item4_desc'),
-            href: '/courses?category=couture',
-            color: 'from-purple-500 via-indigo-600 to-blue-600',
-            badgeColor: 'bg-purple-500/20 text-purple-200 border-purple-400/30',
-            image: '/assets/images/theme_couture.webp',
+            id: 3,
+            icon: Gem,
+            title: t('services.item3_title'),
+            description: t('services.item3_desc'),
+            href: '/courses?category=bien-etre',
+            color: 'from-emerald-500 via-teal-600 to-stone-600',
+            badgeColor: 'bg-emerald-500/20 text-emerald-200 border-emerald-400/30',
+            image: '/assets/images/service_chakras_lux.webp',
         },
         {
-            id: 5,
+            id: 4,
             icon: Brain,
-            title: t('services.item5_title'),
-            description: t('services.item5_desc'),
+            title: t('services.item4_title'),
+            description: t('services.item4_desc'),
             href: '/courses?category=digital',
             color: 'from-sky-500 via-blue-600 to-cyan-500',
             badgeColor: 'bg-sky-500/20 text-sky-200 border-sky-400/30',
             image: '/assets/images/theme_digital.webp',
         },
+        {
+            id: 5,
+            icon: Scissors,
+            title: t('services.item5_title'),
+            description: t('services.item5_desc'),
+            href: '/become-trainer',
+            color: 'from-purple-500 via-indigo-600 to-blue-600',
+            badgeColor: 'bg-purple-500/20 text-purple-200 border-purple-400/30',
+            image: '/assets/images/theme_couture.webp',
+        },
     ];
 
     return (
-        <section className="relative py-24 md:py-36 overflow-hidden bg-background">
+        <section id="univers" className="relative py-24 md:py-36 overflow-hidden bg-background">
             {/* Ambient Background Aura */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute top-1/4 left-1/2 h-[600px] w-[800px] -translate-x-1/2 rounded-full bg-sky-400/[0.015] blur-[160px]" />
@@ -116,6 +117,31 @@ export function Services() {
                         {t('services.subtitle')}
                     </motion.p>
                 </div>
+
+                {/* Banner Expansion / Vision Ouverte */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="mb-12 rounded-3xl border border-primary/30 bg-gradient-to-r from-primary/10 via-background to-secondary/30 p-6 md:p-8 backdrop-blur-md flex flex-col md:flex-row items-center justify-between gap-6"
+                >
+                    <div className="space-y-1 text-center md:text-left">
+                        <span className="text-xs font-bold uppercase tracking-widest text-primary">Catalogue en expansion continue</span>
+                        <h3 className="text-xl md:text-2xl font-bold text-foreground">
+                            {t('services.more_title')}
+                        </h3>
+                        <p className="text-sm text-muted-foreground max-w-xl">
+                            {t('services.more_desc')}
+                        </p>
+                    </div>
+                    <Button asChild size="lg" className="rounded-full shrink-0 shadow-md">
+                        <Link href="/become-trainer">
+                            {t('services.propose_btn')}
+                            <ArrowRight className="h-4 w-4 ml-2" />
+                        </Link>
+                    </Button>
+                </motion.div>
 
                 {/* Services Bento Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">

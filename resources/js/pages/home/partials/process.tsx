@@ -1,48 +1,57 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Search, UserPlus, PlayCircle, Award, ArrowRight } from 'lucide-react';
-import { useRef } from 'react';
+import { Search, UserPlus, PlayCircle, Award, Video, UploadCloud, DollarSign } from 'lucide-react';
+import { useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from '@inertiajs/react';
 import { Button } from '@/components/ui/button';
 
 export function Process() {
     const { t } = useTranslation();
     const containerRef = useRef<HTMLDivElement>(null);
+    const [targetTab, setTargetTab] = useState<'students' | 'trainers'>('students');
     
-    const steps = [
+    const studentSteps = [
         {
             number: '01',
             icon: Search,
             title: t('process.step1_title'),
             description: t('process.step1_desc'),
-            actionLabel: t('process.step1_btn', 'Explorer les formations'),
-            actionHref: '/courses',
         },
         {
             number: '02',
-            icon: UserPlus,
+            icon: PlayCircle,
             title: t('process.step2_title'),
             description: t('process.step2_desc'),
-            actionLabel: t('process.step2_btn', "S'inscrire gratuitement"),
-            actionHref: '/register',
         },
         {
             number: '03',
-            icon: PlayCircle,
+            icon: Award,
             title: t('process.step3_title'),
             description: t('process.step3_desc'),
-            actionLabel: t('process.step3_btn', 'Commencer ou se connecter'),
-            actionHref: '/login',
-        },
-        {
-            number: '04',
-            icon: Award,
-            title: t('process.step4_title'),
-            description: t('process.step4_desc'),
-            actionLabel: t('process.step4_btn', "Rejoindre l'aventure"),
-            actionHref: '/register',
         },
     ];
+
+    const trainerSteps = [
+        {
+            number: '01',
+            icon: UploadCloud,
+            title: t('process.trainer_step1_title'),
+            description: t('process.trainer_step1_desc'),
+        },
+        {
+            number: '02',
+            icon: Video,
+            title: t('process.trainer_step2_title'),
+            description: t('process.trainer_step2_desc'),
+        },
+        {
+            number: '03',
+            icon: DollarSign,
+            title: t('process.trainer_step3_title'),
+            description: t('process.trainer_step3_desc'),
+        },
+    ];
+
+    const activeSteps = targetTab === 'students' ? studentSteps : trainerSteps;
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -64,7 +73,7 @@ export function Process() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
-                    className="mb-24 text-center"
+                    className="mb-14 text-center"
                 >
                     <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-2 text-xs font-semibold tracking-[0.25em] text-secondary-foreground uppercase backdrop-blur dark:border-border/60 dark:bg-secondary">
                         {t('process.badge')}
@@ -74,9 +83,35 @@ export function Process() {
                         {t('process.title')}
                     </h2>
 
-                    <p className="mx-auto max-w-2xl text-lg text-foreground/60">
+                    <p className="mx-auto max-w-2xl text-lg text-foreground/60 mb-8">
                         {t('process.subtitle')}
                     </p>
+
+                    {/* Toggle Bilatéral Apprenants / Formateurs */}
+                    <div className="inline-flex items-center rounded-full border border-border/60 bg-background/80 p-1.5 shadow-sm backdrop-blur-md">
+                        <button
+                            type="button"
+                            onClick={() => setTargetTab('students')}
+                            className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                                targetTab === 'students'
+                                    ? 'bg-primary text-primary-foreground shadow-md'
+                                    : 'text-foreground/70 hover:text-foreground'
+                            }`}
+                        >
+                            {t('process.tab_students')}
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => setTargetTab('trainers')}
+                            className={`rounded-full px-6 py-2.5 text-sm font-semibold transition-all duration-300 ${
+                                targetTab === 'trainers'
+                                    ? 'bg-primary text-primary-foreground shadow-md'
+                                    : 'text-foreground/70 hover:text-foreground'
+                            }`}
+                        >
+                            {t('process.tab_trainers')}
+                        </button>
+                    </div>
                 </motion.div>
 
                 {/* Sticky layout on large screens */}
@@ -87,7 +122,7 @@ export function Process() {
                         <div className="sticky top-40 flex h-fit flex-col justify-start">
                             <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary mb-4">{t('process.sidebar_badge')}</p>
                             <h3 className="text-3xl font-semibold text-foreground mb-8 max-w-xs">
-                                {t('process.sidebar_title')}
+                                {targetTab === 'students' ? '3 étapes pour apprendre et pratiquer' : '3 étapes pour créer et monétiser'}
                             </h3>
                             
                             <div className="relative flex flex-col gap-6 pl-4 border-l border-border/50">
@@ -95,8 +130,8 @@ export function Process() {
                                     className="absolute left-0 top-0 w-[2px] bg-gradient-to-b from-primary via-amber-400 to-primary origin-top"
                                     style={{ height: heightTransform }}
                                 />
-                                {steps.map((step) => (
-                                    <div key={`left-${step.number}`} className="flex items-center gap-4 py-1">
+                                {activeSteps.map((step) => (
+                                    <div key={`left-${targetTab}-${step.number}`} className="flex items-center gap-4 py-1">
                                         <div className="text-sm font-bold text-foreground/40">{step.number}</div>
                                         <div className="text-sm font-medium text-foreground/80">{step.title}</div>
                                     </div>
@@ -107,9 +142,9 @@ export function Process() {
 
                     {/* Colonne de droite (Cartes empilées) */}
                     <div className="flex flex-col gap-8">
-                        {steps.map((step, index) => (
+                        {activeSteps.map((step, index) => (
                             <motion.div
-                                key={step.number}
+                                key={`${targetTab}-${step.number}`}
                                 initial={{ opacity: 0, y: 30 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true, margin: '-100px' }}
@@ -124,21 +159,13 @@ export function Process() {
                                         </span>
                                     </div>
 
-                                    <div className="space-y-3 flex-1">
+                                    <div className="space-y-3">
                                         <h4 className="text-2xl font-semibold tracking-tight text-foreground">
                                             {step.title}
                                         </h4>
                                         <p className="text-base leading-relaxed text-foreground/60">
                                             {step.description}
                                         </p>
-                                        <div className="pt-2">
-                                            <Button variant="outline" size="sm" asChild className="rounded-full gap-2 border-border/60 hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all">
-                                                <Link href={step.actionHref}>
-                                                    <span>{step.actionLabel}</span>
-                                                    <ArrowRight className="h-3.5 w-3.5" />
-                                                </Link>
-                                            </Button>
-                                        </div>
                                     </div>
                                 </div>
                             </motion.div>

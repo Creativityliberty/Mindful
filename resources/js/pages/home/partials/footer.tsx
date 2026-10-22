@@ -27,30 +27,32 @@ export function Footer() {
 
     const footerLinks = [
         {
-            title: t('footer.group_formations'),
+            title: 'Formations',
             links: [
-                { label: 'Radiesthésie', href: '/courses?category=radiesthesie' },
-                { label: 'Pendule', href: '/courses?category=pendule' },
-                { label: 'Chakras', href: '/courses?category=chakras' },
-                { label: 'Énergétique', href: '/courses?category=energetique' },
+                { label: 'Artisanat & Matière', href: '/courses?category=artisanat' },
+                { label: 'Création & Fait-main', href: '/courses?category=creation' },
+                { label: 'Gastronomie & Terroir', href: '/courses?category=gastronomie' },
+                { label: 'Bien-être & Thérapies', href: '/courses?category=bien-etre' },
+                { label: 'Outils Digitaux & IA', href: '/courses?category=digital' },
+                { label: 'Toutes les formations', href: '/courses' },
             ],
         },
         {
-            title: t('footer.group_platform'),
+            title: 'Formateurs',
+            links: [
+                { label: 'Pourquoi enseigner ici', href: '/become-trainer' },
+                { label: 'Espace formateur', href: '/login' },
+                { label: 'Critères de sélection', href: '/become-trainer#criteres' },
+                { label: 'Modèle de rémunération', href: '/tarifs' },
+            ],
+        },
+        {
+            title: 'Plateforme',
             links: [
                 { label: t('footer.link_how_it_works'), href: '/comment-ca-marche' },
-                { label: t('footer.link_become_trainer'), href: '/become-trainer' },
                 { label: t('footer.link_blog'), href: '/blog' },
-                { label: t('footer.link_contact'), href: '/contact' },
-            ],
-        },
-        {
-            title: t('footer.group_resources'),
-            links: [
                 { label: t('footer.link_guides'), href: '/guides' },
-                { label: t('footer.link_glossary'), href: '/glossaire' },
-                { label: t('footer.link_faq'), href: '/#faq' },
-                { label: t('footer.link_newsletter'), href: '#newsletter' },
+                { label: t('footer.link_contact'), href: '/contact' },
             ],
         },
         {
