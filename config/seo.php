@@ -10,5 +10,5 @@ return [
     'default_title' => 'FormationSession — L\'académie des savoir-faire et compétences pratiques',
     'default_description' => 'Plateforme d\'apprentissage immersif et de transmission : artisanat d\'art, création manuelle, gastronomie, bien-être et outils digitaux. Maîtrisez des compétences concrètes ou monétisez votre savoir-faire.',
     'logo' => '/apple-touch-icon.png',
-    'social_image' => '/assets/images/hero_meditation.webp',
+    'social_image' => '/assets/images/og_formationsession.jpg',
 ];
