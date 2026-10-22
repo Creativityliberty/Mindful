@@ -1,0 +1,42 @@
+# FormationSession
+
+> FormationSession est l'académie en ligne des savoir-faire d'excellence et des compétences pratiques : artisanat d'art, création manuelle, gastronomie du terroir, bien-être & thérapies douces, et outils digitaux.
+
+FormationSession permet à chaque passionné d'apprendre à son rythme grâce à des vidéos haute définition filmées en gros plan sur les gestes et techniques, complétées par des livrets pédagogiques PDF téléchargeables. Pour les professionnels et artisans, la plateforme offre un studio tout-en-un avec 0 % de commission sur les ventes, hébergement vidéo illimité et encaissements automatisés via Stripe Connect.
+
+Site officiel : https://formationsession.com
+Fondateurs : Fabienne Dizy-Olliveaud & Lionel Tagne
+Contact direct : formationsession@agentmail.to
+
+## Univers de Compétences & Pôles de Formation
+
+- [Artisanat d'Art & Matière](https://formationsession.com/courses) : Ébénisterie, tournage sur bois, céramique, poterie au tour, maroquinerie d'art et travail de la matière brute.
+- [Création & Fait-main](https://formationsession.com/courses) : Fabrication de bougies végétales et fondants aux normes CLP, stylisme ongulaire et nail art, couture sur-mesure.
+- [Gastronomie & Terroir](https://formationsession.com/courses) : Panification vivante au levain naturel, fermentation lente, chocolaterie artisanale et cuissons de tradition.
+- [Bien-être & Thérapies Douces](https://formationsession.com/courses) : Radiesthésie appliquée, pendule divinatoire, harmonisation des chakras, LaHoChi et lithothérapie.
+- [Digital, IA & Outils Modernes](https://formationsession.com/courses) : Automatisation no-code, création de contenus pédagogiques assistée par IA, structuration d'activité indépendante.
+- [Catalogue Complet des Formations](https://formationsession.com/courses) : Explorez l'intégralité des modules, avec filtres par catégorie, niveau et avis vérifiés.
+
+## Espace Formateur & Modèle Économique
+
+- [Devenir Formateur](https://formationsession.com/become-trainer) : Présentation de l'académie formateurs, studio de cours intuitif, lecteur vidéo sécurisé et accompagnement pédagogique.
+- [Tarifs & Formules d'Hébergement](https://formationsession.com/tarifs) : Forfaits mensuels ou annuels clairs (Solo, Multi, Pro) avec 0 % de commission prélevée sur la vente de vos cours. Vous conservez 100 % de vos revenus élèves.
+
+## Guides, Ressources & Pédagogie
+
+- [Comment ça marche](https://formationsession.com/comment-ca-marche) : Guide pas-à-pas pour les apprenants (accès à vie, lecteur responsive, attestation de fin de parcours) et pour les formateurs.
+- [Blog & Conseils Pratiques](https://formationsession.com/blog) : Articles approfondis, tutoriels et analyses d'experts sur la radiesthésie, le LaHoChi, les énergies et l'artisanat.
+- [Guides Téléchargeables & E-books](https://formationsession.com/guides) : Fiches techniques, planches de mesure Bovis et manuels illustrés en libre accès.
+- [Glossaire des Savoir-Faire](https://formationsession.com/glossaire) : Dictionnaire exhaustif des concepts, techniques manuelles et énergétiques.
+
+## À Propos & Gouvernance
+
+- [À Propos de FormationSession](https://formationsession.com/about) : Histoire de la plateforme, vision de Fabienne Dizy-Olliveaud et Lionel Tagne, les 4 piliers d'engagement (Indépendance, Accessibilité, Partage & Bienveillance, Authenticité du terrain).
+- [Contact & Support](https://formationsession.com/contact) : Formulaire d'échange et assistance pédagogique directe via formationsession@agentmail.to.
+
+## Informations Légales & Sécurité
+
+- [Mentions Légales](https://formationsession.com/legal/mentions-legales) : Éditeur et déclarations administratives.
+- [Politique de Confidentialité](https://formationsession.com/legal/confidentialite) : Protection des données RGPD, hébergement sécurisé en France.
+- [Conditions Générales d'Utilisation](https://formationsession.com/legal/cgu) : Modalités d'accès, garantie satisfait ou remboursé 14 jours.
+- [Fichier d'Indexation Complet pour LLMs](https://formationsession.com/llms-full.txt) : Corpus exhaustif avec programmes détaillés de cours, profils formateurs et FAQ intégrale.

@@ -1,9 +1,50 @@
+# robots.txt for FormationSession (https://formationsession.com)
+
 User-agent: *
+# Protected areas & checkouts
 Disallow: /admin/
 Disallow: /dashboard/
 Disallow: /trainer/
 Disallow: /student/
 Disallow: /become-trainer/checkout/
 Disallow: /courses/*/checkout
+Disallow: /storage/local/
 
+# Crawl parameter optimization (prevent duplicate indexing of client queries)
+Disallow: /*?*search=*
+Disallow: /*?*filter=*
+Disallow: /*?lng=*
+
+# AI & LLM Search Agents (SearchGPT, Claude, Perplexity, Gemini)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /trainer/
+Disallow: /student/
+Disallow: /courses/*/checkout
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /trainer/
+Disallow: /student/
+Disallow: /courses/*/checkout
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin/
+Disallow: /dashboard/
+Disallow: /trainer/
+Disallow: /student/
+Disallow: /courses/*/checkout
+
+User-agent: Google-Extended
+Allow: /
+
+# LLM context file for generative search engines
+# See: https://formationsession.com/llms.txt
+
+# Sitemaps
 Sitemap: https://formationsession.com/sitemap.xml

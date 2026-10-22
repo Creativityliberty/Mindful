@@ -33,15 +33,6 @@ import {
     NavigationMenuList,
 } from '@/components/ui/navigation-menu';
 
-const simpleLinks = [
-    { label: 'Explorer les formations', href: publicCourses.index.url() },
-    { label: 'Pôles de compétences', href: '/#univers' },
-    { label: 'Devenir formateur', href: becomeTrainer.index.url() },
-    { label: 'Blog', href: '/blog' },
-    { label: 'À propos', href: about.url() },
-    { label: 'Contact', href: contact.url() },
-];
-
 function initials(name: string): string {
     return name
         .split(' ')

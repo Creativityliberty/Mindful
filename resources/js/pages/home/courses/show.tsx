@@ -11,28 +11,56 @@ export default function CourseShowPage() {
     
     const jsonLd = JSON.stringify({
         "@context": "https://schema.org",
-        "@type": "Course",
-        "@id": `${origin}/courses/${course.slug}#course`,
-        "name": course.title,
-        "description": course.description,
-        "provider": {
-            "@type": "Organization",
-            "name": "FormationSession",
-            "url": origin
-        },
-        "offers": {
-            "@type": "Offer",
-            "price": numericPrice,
-            "priceCurrency": "EUR",
-            "category": "Education"
-        },
-        "aggregateRating": course.rating ? {
-            "@type": "AggregateRating",
-            "ratingValue": course.rating,
-            "bestRating": "5",
-            "worstRating": "1",
-            "ratingCount": course.studentCount || 10
-        } : undefined
+        "@graph": [
+            {
+                "@type": "Course",
+                "@id": `${origin}/courses/${course.slug}#course`,
+                "name": course.title,
+                "description": course.description,
+                "provider": {
+                    "@type": "Organization",
+                    "name": "FormationSession",
+                    "url": origin
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "price": numericPrice,
+                    "priceCurrency": "EUR",
+                    "category": "Education"
+                },
+                "aggregateRating": course.rating ? {
+                    "@type": "AggregateRating",
+                    "ratingValue": course.rating,
+                    "bestRating": "5",
+                    "worstRating": "1",
+                    "ratingCount": course.studentCount || 10
+                } : undefined
+            },
+            {
+                "@type": "BreadcrumbList",
+                "@id": `${origin}/courses/${course.slug}#breadcrumbs`,
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Accueil",
+                        "item": origin
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Formations",
+                        "item": `${origin}/courses`
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": course.title,
+                        "item": `${origin}/courses/${course.slug}`
+                    }
+                ]
+            }
+        ]
     });
 
     return (

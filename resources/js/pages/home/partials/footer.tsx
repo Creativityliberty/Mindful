@@ -27,27 +27,27 @@ export function Footer() {
 
     const footerLinks = [
         {
-            title: 'Formations',
+            title: t('footer.group_formations'),
             links: [
-                { label: 'Artisanat & Matière', href: '/courses?category=artisanat' },
-                { label: 'Création & Fait-main', href: '/courses?category=creation' },
-                { label: 'Gastronomie & Terroir', href: '/courses?category=gastronomie' },
-                { label: 'Bien-être & Thérapies', href: '/courses?category=bien-etre' },
-                { label: 'Outils Digitaux & IA', href: '/courses?category=digital' },
-                { label: 'Toutes les formations', href: '/courses' },
+                { label: t('footer.cat_crafts'), href: '/courses?category=artisanat' },
+                { label: t('footer.cat_creation'), href: '/courses?category=creation' },
+                { label: t('footer.cat_gastronomy'), href: '/courses?category=gastronomie' },
+                { label: t('footer.cat_wellness'), href: '/courses?category=bien-etre' },
+                { label: t('footer.cat_digital'), href: '/courses?category=digital' },
+                { label: t('footer.link_all_courses'), href: '/courses' },
             ],
         },
         {
-            title: 'Formateurs',
+            title: t('footer.group_trainers'),
             links: [
-                { label: 'Pourquoi enseigner ici', href: '/become-trainer' },
-                { label: 'Espace formateur', href: '/login' },
-                { label: 'Critères de sélection', href: '/become-trainer#criteres' },
-                { label: 'Modèle de rémunération', href: '/tarifs' },
+                { label: t('footer.link_why_teach'), href: '/become-trainer' },
+                { label: t('footer.link_trainer_space'), href: '/login' },
+                { label: t('footer.link_selection_criteria'), href: '/become-trainer#criteres' },
+                { label: t('footer.link_remuneration'), href: '/tarifs' },
             ],
         },
         {
-            title: 'Plateforme',
+            title: t('footer.group_platform'),
             links: [
                 { label: t('footer.link_how_it_works'), href: '/comment-ca-marche' },
                 { label: t('footer.link_blog'), href: '/blog' },

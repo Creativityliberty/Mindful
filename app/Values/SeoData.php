@@ -120,6 +120,25 @@ final readonly class SeoData
 
         $graph[] = $webPage;
 
+        // SiteNavigationElement for Google Sitelinks
+        $navigationElements = [
+            ['name' => 'Nos Formations', 'url' => "{$url}/courses"],
+            ['name' => 'Devenir Formateur', 'url' => "{$url}/become-trainer"],
+            ['name' => 'Comment ça marche', 'url' => "{$url}/comment-ca-marche"],
+            ['name' => 'Tarifs Formateurs', 'url' => "{$url}/tarifs"],
+            ['name' => 'Blog & Conseils', 'url' => "{$url}/blog"],
+            ['name' => 'À propos', 'url' => "{$url}/about"],
+        ];
+
+        foreach ($navigationElements as $nav) {
+            $graph[] = [
+                '@type' => 'SiteNavigationElement',
+                '@id' => "{$nav['url']}#navigation",
+                'name' => $nav['name'],
+                'url' => $nav['url'],
+            ];
+        }
+
         if ($this->courses !== []) {
             $items = [];
             foreach ($this->courses as $i => $course) {
@@ -141,7 +160,7 @@ final readonly class SeoData
             $graph[] = [
                 '@type' => 'ItemList',
                 '@id' => "{$url}#formations",
-                'name' => 'Formations bien-être proposées par FormationSession',
+                'name' => 'Formations et ateliers pratiques proposés par FormationSession',
                 'numberOfItems' => count($items),
                 'itemListOrder' => 'https://schema.org/ItemListOrderAscending',
                 'itemListElement' => $items,

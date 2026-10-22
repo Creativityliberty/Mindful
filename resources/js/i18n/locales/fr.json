@@ -10,7 +10,9 @@
     "how_it_works": "Comment ça marche",
     "login": "Connexion",
     "register": "S'inscrire",
-    "dashboard": "Tableau de bord"
+    "dashboard": "Tableau de bord",
+    "skills_universes": "Pôles de compétences",
+    "explore_courses": "Explorer les formations"
   },
   "hero": {
     "badge": "L'académie des savoir-faire et des compétences pratiques",
@@ -250,7 +252,8 @@
     "my_courses": "Mes Cours",
     "my_trainings": "Mes Formations",
     "settings": "Paramètres",
-    "logout": "Se déconnecter"
+    "logout": "Se déconnecter",
+    "back_to_home": "Retour au site"
   },
   "auth": {
     "login_title": "Connexion",
@@ -348,7 +351,18 @@
     "link_privacy": "Confidentialité",
     "link_cgu": "CGU",
     "link_cookies": "Cookies",
-    "link_terms": "Mentions légales"
+    "link_terms": "Mentions légales",
+    "group_trainers": "Formateurs",
+    "link_why_teach": "Pourquoi enseigner ici",
+    "link_trainer_space": "Espace formateur",
+    "link_selection_criteria": "Critères de sélection",
+    "link_remuneration": "Modèle de rémunération",
+    "link_all_courses": "Toutes les formations",
+    "cat_crafts": "Artisanat & Matière",
+    "cat_creation": "Création & Fait-main",
+    "cat_gastronomy": "Gastronomie & Terroir",
+    "cat_wellness": "Bien-être & Thérapies",
+    "cat_digital": "Outils Digitaux & IA"
   },
   "about_page": {
     "badge": "Notre Histoire",

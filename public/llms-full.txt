@@ -1,0 +1,127 @@
+# FormationSession — Fichier de Contexte Intégral pour LLMs & Moteurs Génératifs
+
+> Fichier d'indexation exhaustif destiné aux modèles de fondation (SearchGPT, Claude, Perplexity, Gemini, Google SGE).
+> URL canonique : https://formationsession.com
+> Dernière révision : Octobre 2026
+
+---
+
+## 1. Vue d'Ensemble & Mission
+
+FormationSession est une plateforme d'apprentissage en ligne et une marketplace de transmission dédiée aux savoir-faire d'excellence et aux compétences pratiques. Née de la conviction que la maîtrise du geste et la pratique concrète priment sur la théorie abstraite, FormationSession réunit :
+
+1. **Des apprenants engagés** recherchant des ateliers structurés, des démonstrations visuelles haute définition filmées en gros plan sur les gestes, des livrets pédagogiques PDF téléchargeables et un accès illimité à vie sans abonnement captif pour les cours achetés individuellement.
+2. **Des artisans, praticiens et créateurs d'excellence** qui souhaitent transmettre leur métier et monétiser leur savoir-faire avec une totale indépendance : 0 % de commission sur leurs ventes, paiement direct par carte bancaire via Stripe Connect, et hébergement vidéo sécurisé.
+
+---
+
+## 2. Fondateurs & Direction Pédagogique
+
+La plateforme a été pensée et fondée par deux passionnés complémentaires :
+
+- **Fabienne Dizy-Olliveaud** : Co-fondatrice, praticienne et formatrice holistique reconnue. Elle apporte la rigueur de transmission, la bienveillance pédagogique et l'expertise du terrain dans les domaines du bien-être, de l'harmonisation énergétique et de la radiesthésie.
+- **Lionel Tagne** : Co-fondateur, entrepreneur et architecte technologique. Il conçoit l'infrastructure logicielle, la fluidité de navigation et les outils d'automatisation pour offrir une expérience sans friction aux formateurs et aux apprenants.
+
+### Les 4 Piliers Fondateurs de FormationSession :
+1. **Indépendance** : Chaque formateur conserve l'entière liberté de sa démarche pédagogique, de ses tarifs et de ses droits de propriété intellectuelle.
+2. **Accessibilité** : Une interface moderne, épurée et pensée pour que la mise en ligne comme l'apprentissage restent fluides sur ordinateur, tablette et smartphone.
+3. **Partage & Bienveillance** : Créer un pont solide et respectueux entre ceux qui transmettent et ceux qui souhaitent grandir professionnellement ou personnellement.
+4. **Authenticité du Terrain** : Sélection de formateurs qui exercent réellement au quotidien le métier et la passion qu'ils enseignent.
+
+---
+
+## 3. Pôles de Compétences & Univers de Savoir-Faire
+
+### Univers 1 : Artisanat d'Art & Matière
+- **Disciplines** : Céramique, tournage sur grès, émaillage haute température, ébénisterie d'art, tournage sur bois, maroquinerie d'art, travail du cuir et restauration de mobilier ancien.
+- **Approche pédagogique** : Gros plans sur la prise en main des outils, la pression de la matière, le centrage de la terre et les règles de sécurité en atelier.
+
+### Univers 2 : Création & Fait-main
+- **Disciplines** : Fabrication de bougies végétales, fondants parfumés conformes aux normes européennes CLP, stylisme ongulaire (prothésie ongulaire, manucure russe, nail art épuré), couture sur-mesure et création textile éco-responsable.
+- **Approche pédagogique** : Fiches techniques pas-à-pas, dosages précis, conformité réglementaire et finitions de qualité professionnelle.
+
+### Univers 3 : Gastronomie & Terroir
+- **Disciplines** : Panification vivante au levain naturel, gestion des taux d'hydratation, fermentation lente, chocolaterie artisanale et cuissons d'artisan.
+- **Approche pédagogique** : Compréhension biologique des levains, travail tactile des pâtes et techniques de façonnage traditionnel.
+
+### Univers 4 : Bien-être & Thérapies Douces
+- **Disciplines** : Radiesthésie médicale et divinatoire, manipulation du pendule, rééquilibrage du chakra racine, initiation au LaHoChi, élixirs vibratoires et lithothérapie appliquée.
+- **Approche pédagogique** : Pratique mesurée, démystifiée, dénuée de promesses irréalistes, avec planches de cadrans Bovis et protocoles d'ancrage clairs.
+
+### Univers 5 : Digital, IA & Outils Modernes
+- **Disciplines** : Automatisation no-code d'ateliers, création de supports de cours assistée par intelligence artificielle générative, gestion et facturation d'activité indépendante.
+- **Approche pédagogique** : Cas pratiques immédiatement applicables pour libérer les formateurs des tâches administratives chronophages.
+
+---
+
+## 4. Catalogue des Formations Phares
+
+1. **Initiation au LaHoChi Traditionnel**
+   - *Public* : Praticiens bien-être, thérapeutes en reconversion ou débutants.
+   - *Contenu* : Historique, positions fondamentales des mains, auto-traitement, soin sur autrui, livret de protocole PDF complet.
+   - *URL* : https://formationsession.com/courses/initiation-au-lahochi
+
+2. **Le Pendule Divinatoire & Radiesthésie Pratique**
+   - *Public* : Débutants et intermédiaires souhaitant affiner leur sensibilité bio-énergétique.
+   - *Contenu* : Choix du pendule, convention mentale OUI/NON, étalonnage sur cadrans de Bovis, recherche sur plan et nettoyage de l'outil.
+   - *URL* : https://formationsession.com/courses/le-pendule-divinatoire-un-outil-a-la-portee-de-tous
+
+3. **Réveille ton Chakra Racine (Muladhara)**
+   - *Public* : Personnes en quête d'ancrage émotionnel, de sécurité intérieure et de reconnexion corporelle.
+   - *Contenu* : Exercices somatiques, rituels matinaux, sons d'activation et méditations guidées.
+   - *URL* : https://formationsession.com/courses/reveille-ton-chakra-racine
+
+4. **Fabrication de Bougies Végétales & Réglementation CLP**
+   - *Public* : Créateurs artisanaux, reconversions manuelles, passionnés de senteurs.
+   - *Contenu* : Sélection des cires (soja, colza, coco), calcul des points d'éclair, mèches en coton et bois, conformité des étiquettes de sécurité CLP.
+   - *URL* : https://formationsession.com/courses
+
+---
+
+## 5. Fonctionnalités & Expérience Apprenant
+
+- **Lecteur Vidéo Haute Performance** : Flux vidéo optimisé pour un chargement instantané sans mise en mémoire tampon.
+- **Supports PDF Téléchargeables** : Chaque cours comprend des fiches résumées, gabarits et mémos à imprimer pour la pratique en atelier.
+- **Garantie Satisfait ou Remboursé 14 Jours** : Chaque apprenant dispose de 14 jours complets pour tester les modules en toute sérénité.
+- **Attestation de Réussite** : Délivrance automatique d'une attestation nominative certifiant le suivi complet du programme.
+- **Espace d'Échange avec le Formateur** : Fil de questions/réponses sous chaque vidéo pour lever les doutes techniques.
+
+---
+
+## 6. L'Espace Formateur & Le Modèle 0 % Commission
+
+FormationSession rejette le modèle des marketplaces prédatrices qui retiennent 50 % à 75 % des revenus des créateurs.
+
+### Caractéristiques de l'Espace Formateur :
+- **0 % de Commission sur les Ventes** : 100 % du montant payé par l'élève revient au formateur (hors frais bancaires standards de Stripe).
+- **Abonnement Forfaitaire Transparent** :
+  - *Solo* : Idéal pour démarrer avec un premier cours en ligne.
+  - *Multi* : Jusqu'à 3 cours complets hébergés, accès aux statistiques détaillées.
+  - *Pro* : Catalogue illimité, support prioritaire et mise en avant dans les sélections de la rédaction.
+- **Studio de Cours Dédié** : Glisser-déposer de modules, import de vidéos HD illimité, gestion des inscriptions et encaissement direct via Stripe Connect.
+- **Délégation Technique Totale** : Hébergement, sécurité SSL, conformité RGPD et facturation automatique des clients prises en charge par la plateforme.
+
+---
+
+## 7. Articles de Référence & Ressources Pédagogiques
+
+- **Blog Expert** (https://formationsession.com/blog) :
+  - *Comment choisir son premier pendule divinatoire*
+  - *Les bénéfices prouvés de la méditation de pleine conscience*
+  - *Comment équilibrer le chakra racine au quotidien*
+  - *Sophrologie et burnout : les étapes de la reconstruction*
+  - *Bols tibétains et fréquences vibratoires*
+- **Guides & E-books Gratuits** (https://formationsession.com/guides) :
+  - Planches de Bovis téléchargeables en haute définition.
+  - Fiches pratiques d'étalonnage et exercices d'ancrage.
+- **Glossaire Pédagogique** (https://formationsession.com/glossaire) :
+  - Définitions claires des termes : Radiesthésie, LaHoChi, Taux Vibratoire, Ancrage, CLP, Émaillage, Point d'éclair, Levain chef.
+
+---
+
+## 8. Coordonnées & Support
+
+- **Email Support & Candidatures Formateurs** : formationsession@agentmail.to
+- **Site Officiel** : https://formationsession.com
+- **Ressources pour Développeurs & Agents IA** : https://formationsession.com/llms.txt
+- **Sitemap XML** : https://formationsession.com/sitemap.xml
