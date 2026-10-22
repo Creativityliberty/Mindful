@@ -9,45 +9,43 @@ export function Hero() {
     const { t } = useTranslation();
     const heroRef = useRef<HTMLDivElement>(null);
 
-    // Progression du scroll sur la section Hero étendue
+    // Progression du scroll sur la section Hero
     const { scrollYProgress } = useScroll({
         target: heroRef,
-        offset: ['start start', 'end start'],
+        offset: ['start start', 'end end'],
     });
 
-    // 1. Image : Net et éclatante au départ, légère amplification d'immersion
-    const imageScale = useTransform(scrollYProgress, [0, 0.75], [1, 1.05]);
-    
-    // Voile qui commence doux pour apprécier le tableau de bord, puis s'intensifie pour contraster les textes
-    const overlayDarkness = useTransform(scrollYProgress, [0, 0.2, 0.65], [0.25, 0.55, 0.88]);
+    // 1. Image : Net au départ, s'assombrit progressivement quand le texte monte
+    const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+    const overlayDarkness = useTransform(scrollYProgress, [0, 0.25, 0.7], [0.3, 0.65, 0.9]);
 
-    // 2. Disparition du hint de scroll
-    const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+    // 2. Disparition rapide du hint de scroll
+    const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.08], [1, 0]);
 
-    // 3. Apparition progressive élément par élément (Staggered Storytelling)
-    // Badge
-    const badgeOpacity = useTransform(scrollYProgress, [0.08, 0.22], [0, 1]);
-    const badgeY = useTransform(scrollYProgress, [0.08, 0.22], [25, 0]);
+    // 3. Apparition séquentielle immédiate et réactive (dès les premiers pixels de scroll)
+    // 3.1 Badge (très tôt : 3% à 12%)
+    const badgeOpacity = useTransform(scrollYProgress, [0.03, 0.12], [0, 1]);
+    const badgeY = useTransform(scrollYProgress, [0.03, 0.12], [24, 0]);
 
-    // Titre principal
-    const titleOpacity = useTransform(scrollYProgress, [0.18, 0.34], [0, 1]);
-    const titleY = useTransform(scrollYProgress, [0.18, 0.34], [30, 0]);
+    // 3.2 Titre principal (10% à 22%)
+    const titleOpacity = useTransform(scrollYProgress, [0.10, 0.22], [0, 1]);
+    const titleY = useTransform(scrollYProgress, [0.10, 0.22], [28, 0]);
 
-    // Description
-    const descOpacity = useTransform(scrollYProgress, [0.30, 0.46], [0, 1]);
-    const descY = useTransform(scrollYProgress, [0.30, 0.46], [30, 0]);
+    // 3.3 Description (20% à 34%)
+    const descOpacity = useTransform(scrollYProgress, [0.20, 0.34], [0, 1]);
+    const descY = useTransform(scrollYProgress, [0.20, 0.34], [28, 0]);
 
-    // Boutons d'action CTA
-    const ctaOpacity = useTransform(scrollYProgress, [0.42, 0.58], [0, 1]);
-    const ctaY = useTransform(scrollYProgress, [0.42, 0.58], [30, 0]);
+    // 3.4 Boutons d'Action CTA (32% à 46%)
+    const ctaOpacity = useTransform(scrollYProgress, [0.32, 0.46], [0, 1]);
+    const ctaY = useTransform(scrollYProgress, [0.32, 0.46], [28, 0]);
 
-    // Pilules de compétences
-    const pillsOpacity = useTransform(scrollYProgress, [0.52, 0.68], [0, 1]);
-    const pillsY = useTransform(scrollYProgress, [0.52, 0.68], [25, 0]);
+    // 3.5 Pilules réassurance (44% à 58%)
+    const pillsOpacity = useTransform(scrollYProgress, [0.44, 0.58], [0, 1]);
+    const pillsY = useTransform(scrollYProgress, [0.44, 0.58], [24, 0]);
 
-    // Carte des statistiques
-    const statsOpacity = useTransform(scrollYProgress, [0.62, 0.82], [0, 1]);
-    const statsY = useTransform(scrollYProgress, [0.62, 0.82], [30, 0]);
+    // 3.6 Statistiques en verre (56% à 72%)
+    const statsOpacity = useTransform(scrollYProgress, [0.56, 0.72], [0, 1]);
+    const statsY = useTransform(scrollYProgress, [0.56, 0.72], [28, 0]);
 
     const highlightPills = [
         t('hero.pill1'),
@@ -62,8 +60,8 @@ export function Hero() {
     ];
 
     return (
-        <div ref={heroRef} className="relative h-[280vh] w-full bg-slate-950">
-            {/* Scène épinglée (Sticky) pendant toute la découverte */}
+        <div ref={heroRef} className="relative h-[220vh] w-full bg-slate-950">
+            {/* Scène épinglée (Sticky) pendant la séquence de scroll */}
             <section
                 className="sticky top-0 flex h-screen w-full items-center overflow-hidden text-white"
                 role="region"
