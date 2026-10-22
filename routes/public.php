@@ -5,6 +5,7 @@ use App\Http\Controllers\Public\BecomeTrainer\CheckoutController;
 use App\Http\Controllers\Public\BecomeTrainer\PaymentController;
 use App\Http\Controllers\Public\BecomeTrainer\TrainerPlanController;
 use App\Http\Controllers\Public\Blog\BlogController;
+use App\Http\Controllers\Public\ContactController;
 use App\Http\Controllers\Public\Courses\CheckoutController as CourseCheckoutController;
 use App\Http\Controllers\Public\Courses\CourseController;
 use App\Http\Controllers\Public\Courses\FreeEnrollController;
@@ -22,7 +23,8 @@ Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::inertia('glossaire', 'home/glossary')->name('glossary');
 Route::inertia('guides', 'home/guides')->name('guides');
-Route::inertia('contact', 'home/contact')->name('contact');
+Route::get('contact', [ContactController::class, 'index'])->name('contact');
+Route::post('contact', [ContactController::class, 'submit'])->name('contact.submit');
 Route::inertia('realisations', 'home/realisations/index')->name('realisations');
 Route::post('newsletter/subscribe', [NewsletterController::class, 'subscribe'])->name('newsletter.subscribe');
 

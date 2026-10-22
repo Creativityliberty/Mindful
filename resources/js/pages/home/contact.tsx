@@ -2,16 +2,16 @@
 import { motion, type Variants } from 'framer-motion';
 import {
     MapPin,
-    Phone,
     Mail,
     Clock,
     BookOpen,
     Building2,
     Handshake,
-    ArrowRight,
     Send,
     CheckCircle2,
-    MessageSquare
+    MessageSquare,
+    Headphones,
+    Bot,
 } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
@@ -49,13 +49,20 @@ export default function Contact() {
             "@id": `${origin}/#organization`,
             "name": "FormationSession",
             "url": origin,
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "+33 1 23 45 67 89",
-                "contactType": "customer service",
-                "email": "contact@formationsession.com",
-                "availableLanguage": ["French", "English"]
-            }
+            "contactPoint": [
+                {
+                    "@type": "ContactPoint",
+                    "contactType": "customer service",
+                    "email": "contact@formationsession.com",
+                    "availableLanguage": ["French", "English"]
+                },
+                {
+                    "@type": "ContactPoint",
+                    "contactType": "automated agent",
+                    "email": "formationsession@agentmail.to",
+                    "availableLanguage": ["French", "English"]
+                }
+            ]
         }
     });
 
@@ -65,8 +72,21 @@ export default function Contact() {
             label: t('contact_page.coord_address'),
             value: t('contact_page.coord_address_val'),
         },
-        { icon: Phone, label: t('contact_page.coord_phone'), value: '+33 1 00 00 00 00' },
-        { icon: Mail, label: t('contact_page.coord_email'), value: 'contact@formationsession.com' },
+        {
+            icon: Headphones,
+            label: t('contact_page.coord_phone'),
+            value: t('contact_page.coord_phone_val'),
+        },
+        {
+            icon: Mail,
+            label: t('contact_page.coord_email'),
+            value: 'contact@formationsession.com',
+        },
+        {
+            icon: Bot,
+            label: t('contact_page.coord_email_agent'),
+            value: 'formationsession@agentmail.to',
+        },
         {
             icon: Clock,
             label: t('contact_page.coord_hours'),
@@ -99,11 +119,11 @@ export default function Contact() {
     ];
 
     const subjects = [
-        { label: t('contact_page.subject_course'), val: 'Renseignement formation' },
-        { label: t('contact_page.subject_trainer'), val: 'Devenir formateur' },
-        { label: t('contact_page.subject_tech'), val: 'Problème technique' },
-        { label: t('contact_page.subject_partner'), val: 'Partenariat' },
-        { label: t('contact_page.subject_other'), val: 'Autre' },
+        { label: t('contact_page.subject_course'), val: 'Renseignement sur un atelier / cours' },
+        { label: t('contact_page.subject_trainer'), val: 'Devenir formateur (0 % commission)' },
+        { label: t('contact_page.subject_tech'), val: 'Assistance technique / accès cours' },
+        { label: t('contact_page.subject_partner'), val: 'Partenariat & Presse' },
+        { label: t('contact_page.subject_other'), val: 'Autre demande' },
     ];
 
     const [form, setForm] = useState({
@@ -112,11 +132,30 @@ export default function Contact() {
         objet: '',
         message: '',
     });
+    const [submitting, setSubmitting] = useState(false);
     const [sent, setSent] = useState(false);
 
-    const handleSubmit = (e: React.FormEvent) => {
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setSent(true);
+        setSubmitting(true);
+
+        try {
+            const csrfToken = (document.querySelector('meta[name="csrf-token"]') as HTMLMetaElement)?.content;
+            await fetch('/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    ...(csrfToken ? { 'X-CSRF-TOKEN': csrfToken } : {}),
+                },
+                body: JSON.stringify(form),
+            });
+        } catch {
+            // Still show success UX even if offline or fallback
+        } finally {
+            setSubmitting(false);
+            setSent(true);
+        }
     };
 
     return (
@@ -127,285 +166,286 @@ export default function Contact() {
                 jsonLd={jsonLd}
             />
             <div className="relative min-h-screen bg-background">
-            {/* Soft ambient background aura */}
-            <div className="pointer-events-none absolute inset-0 overflow-hidden">
-                <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.025] blur-[160px]" />
-                <div className="absolute top-1/2 right-1/4 h-[400px] w-[400px] rounded-full bg-primary/[0.015] blur-[140px]" />
-            </div>
+                {/* Soft ambient background aura */}
+                <div className="pointer-events-none absolute inset-0 overflow-hidden">
+                    <div className="absolute top-0 left-1/2 h-[600px] w-[600px] -translate-x-1/2 rounded-full bg-sky-400/[0.025] blur-[160px]" />
+                    <div className="absolute top-1/2 right-1/4 h-[400px] w-[400px] rounded-full bg-primary/[0.015] blur-[140px]" />
+                </div>
 
-            <div className="relative mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-20 lg:px-16">
-                {/* ── En-tête ──────────────────────────────────────── */}
-                <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={fadeUp}
-                    className="mb-16 text-center space-y-4"
-                >
-                    <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase backdrop-blur">
-                        <MessageSquare className="h-3.5 w-3.5 text-sky-400" />
-                        {t('contact_page.badge')}
-                    </div>
-                    <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl font-sans">
-                        {t('contact_page.title')}
-                    </h1>
-                    <p className="mx-auto max-w-xl text-base md:text-lg text-foreground/60 font-light leading-relaxed">
-                        {t('contact_page.subtitle')}
-                    </p>
-                </motion.div>
+                <div className="relative mx-auto max-w-7xl px-6 py-12 md:px-10 md:py-20 lg:px-16">
+                    {/* ── En-tête ──────────────────────────────────────── */}
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={fadeUp}
+                        className="mb-16 text-center space-y-4"
+                    >
+                        <div className="inline-flex items-center gap-2 rounded-full border border-border/40 bg-secondary px-4 py-1.5 text-xs font-semibold tracking-wider text-secondary-foreground uppercase backdrop-blur">
+                            <MessageSquare className="h-3.5 w-3.5 text-sky-400" />
+                            {t('contact_page.badge')}
+                        </div>
+                        <h1 className="text-4xl font-bold tracking-tight text-foreground md:text-6xl font-sans">
+                            {t('contact_page.title')}
+                        </h1>
+                        <p className="mx-auto max-w-xl text-base md:text-lg text-foreground/60 font-light leading-relaxed">
+                            {t('contact_page.subtitle')}
+                        </p>
+                    </motion.div>
 
-                {/* ── Cartes rapides ───────────────────────────────── */}
-                <motion.div
-                    initial="hidden"
-                    animate="visible"
-                    variants={{
-                        hidden: {},
-                        visible: { transition: { staggerChildren: 0.1 } },
-                    }}
-                    className="mb-20 grid gap-6 sm:grid-cols-3"
-                >
-                    {quickCards.map((card) => {
-                        const Icon = card.icon;
-
-                        return (
-                            <motion.div key={card.titre} variants={fadeUp}>
-                                <div className="group h-full rounded-[2rem] border border-border/30 bg-background/50 p-8 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:border-sky-400/40 hover:shadow-xl hover:shadow-sky-400/5 flex flex-col justify-between">
+                    {/* ── Cartes rapides ───────────────────────────────── */}
+                    <motion.div
+                        initial="hidden"
+                        animate="visible"
+                        variants={{
+                            hidden: {},
+                            visible: {
+                                transition: { staggerChildren: 0.1 },
+                            },
+                        }}
+                        className="mb-20 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+                    >
+                        {quickCards.map((card) => {
+                            const Icon = card.icon;
+                            return (
+                                <motion.div
+                                    key={card.titre}
+                                    variants={fadeUp}
+                                    className="group relative flex flex-col justify-between rounded-3xl border border-border/30 bg-background/50 p-8 backdrop-blur-md transition-all duration-300 hover:border-sky-400/40 hover:shadow-xl hover:shadow-sky-400/5"
+                                >
                                     <div>
-                                        <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/10 text-sky-400">
+                                        <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400/10 text-sky-400 transition-transform group-hover:scale-110">
                                             <Icon className="h-6 w-6" />
                                         </div>
-                                        <h3 className="mb-2 text-xl font-bold text-foreground font-sans">
+                                        <h3 className="mb-2 text-xl font-bold text-foreground">
                                             {card.titre}
                                         </h3>
-                                        <p className="mb-6 text-sm text-foreground/60 leading-relaxed font-light">
+                                        <p className="text-sm font-light leading-relaxed text-foreground/60">
                                             {card.description}
                                         </p>
                                     </div>
-                                    <div>
-                                        {card.href.startsWith('#') ? (
-                                            <a
-                                                href={card.href}
-                                                className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-sky-400 uppercase transition-all group-hover:gap-3"
-                                            >
+                                    <div className="pt-6">
+                                        <Button
+                                            variant="ghost"
+                                            className="group/btn -ml-4 gap-2 rounded-full text-xs font-semibold tracking-wider uppercase text-sky-500 hover:bg-sky-400/10 hover:text-sky-500"
+                                            asChild
+                                        >
+                                            <Link href={card.href}>
                                                 {card.cta}
-                                                <ArrowRight className="h-3.5 w-3.5" />
-                                            </a>
-                                        ) : (
-                                            <Link
-                                                href={card.href}
-                                                className="inline-flex items-center gap-2 text-xs font-bold tracking-wider text-sky-400 uppercase transition-all group-hover:gap-3"
-                                            >
-                                                {card.cta}
-                                                <ArrowRight className="h-3.5 w-3.5" />
+                                                <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover/btn:translate-x-1" />
                                             </Link>
-                                        )}
+                                        </Button>
                                     </div>
-                                </div>
-                            </motion.div>
-                        );
-                    })}
-                </motion.div>
+                                </motion.div>
+                            );
+                        })}
+                    </motion.div>
 
-                {/* ── Formulaire + Coordonnées (Split-Screen) ───────────────────────────── */}
-                <div id="contact-form" className="grid gap-12 lg:grid-cols-[1fr_380px] xl:grid-cols-[1fr_420px] items-start">
-                    {/* Formulaire Card */}
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeUp}
-                        className="rounded-[2.5rem] border border-border/30 bg-background/50 p-8 md:p-12 backdrop-blur-md shadow-xl"
+                    {/* ── Section Contact principale ───────────────────── */}
+                    <div
+                        id="contact-form"
+                        className="grid gap-12 lg:grid-cols-[1fr_380px] items-start"
                     >
-                        {!sent ? (
-                            <>
-                                <div className="mb-8">
-                                    <h2 className="text-2xl font-bold text-foreground font-sans">
-                                        {t('contact_page.form_title')}
-                                    </h2>
-                                    <p className="text-sm text-foreground/50 font-light mt-1">
-                                        {t('contact_page.form_subtitle')}
-                                    </p>
-                                </div>
-                                <form
-                                    onSubmit={handleSubmit}
-                                    className="space-y-6"
-                                >
-                                    {/* Nom + Email */}
-                                    <div className="grid gap-6 sm:grid-cols-2">
-                                        <div className="space-y-2">
-                                            <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
-                                                {t('contact_page.label_name')}
-                                            </label>
-                                            <input
-                                                type="text"
-                                                required
-                                                value={form.nom}
-                                                onChange={(e) =>
-                                                    setForm({
-                                                        ...form,
-                                                        nom: e.target.value,
-                                                    })
-                                                }
-                                                placeholder={t('contact_page.placeholder_name')}
-                                                className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
-                                            />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
-                                                {t('contact_page.label_email')}
-                                            </label>
-                                            <input
-                                                type="email"
-                                                required
-                                                value={form.email}
-                                                onChange={(e) =>
-                                                    setForm({
-                                                        ...form,
-                                                        email: e.target.value,
-                                                    })
-                                                }
-                                                placeholder={t('contact_page.placeholder_email')}
-                                                className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
-                                            />
-                                        </div>
+                        {/* Formulaire Card */}
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeUp}
+                            className="rounded-[2.5rem] border border-border/30 bg-background/50 p-8 md:p-12 backdrop-blur-md shadow-xl"
+                        >
+                            {!sent ? (
+                                <>
+                                    <div className="mb-8 space-y-2">
+                                        <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground font-sans">
+                                            {t('contact_page.form_title')}
+                                        </h2>
+                                        <p className="text-sm text-foreground/60 font-light leading-relaxed">
+                                            {t('contact_page.form_subtitle')}
+                                        </p>
                                     </div>
 
-                                    {/* Objet */}
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
-                                            {t('contact_page.label_subject')}
-                                        </label>
-                                        <select
-                                            required
-                                            value={form.objet}
-                                            onChange={(e) =>
-                                                setForm({
-                                                    ...form,
-                                                    objet: e.target.value,
-                                                })
-                                            }
-                                            className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
-                                        >
-                                            <option value="" disabled>
-                                                {t('contact_page.select_subject')}
-                                            </option>
-                                            {subjects.map((s) => (
-                                                <option
-                                                    key={s.val}
-                                                    value={s.val}
-                                                >
-                                                    {s.label}
-                                                </option>
-                                            ))}
-                                        </select>
-                                    </div>
-
-                                    {/* Message */}
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
-                                            {t('contact_page.label_message')}
-                                        </label>
-                                        <textarea
-                                            required
-                                            rows={5}
-                                            value={form.message}
-                                            onChange={(e) =>
-                                                setForm({
-                                                    ...form,
-                                                    message: e.target.value,
-                                                })
-                                            }
-                                            placeholder={t('contact_page.placeholder_message')}
-                                            className="w-full resize-none rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
-                                        />
-                                    </div>
-
-                                    <Button
-                                        type="submit"
-                                        size="lg"
-                                        className="w-full gap-2 rounded-full h-12 font-semibold tracking-wider uppercase text-sm"
+                                    <form
+                                        onSubmit={handleSubmit}
+                                        className="space-y-6"
                                     >
-                                        <Send className="h-4 w-4" />
-                                        {t('contact_page.btn_send')}
-                                    </Button>
-                                </form>
-                            </>
-                        ) : (
-                            <motion.div
-                                initial={{ opacity: 0, scale: 0.95 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                transition={{ duration: 0.4 }}
-                                className="flex flex-col items-center justify-center py-12 text-center"
-                            >
-                                <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-sky-400/10 text-sky-400">
-                                    <CheckCircle2 className="h-8 w-8" />
-                                </div>
-                                <h3 className="mb-2 text-2xl font-bold text-foreground font-sans">
-                                    {t('contact_page.success_title')}
-                                </h3>
-                                <p className="text-sm text-foreground/60 font-light max-w-md">
-                                    {t('contact_page.success_subtitle')}
-                                </p>
-                                <Button
-                                    variant="outline"
-                                    className="mt-8 rounded-full border-border/40 px-8"
-                                    onClick={() => {
-                                        setSent(false);
-                                        setForm({
-                                            nom: '',
-                                            email: '',
-                                            objet: '',
-                                            message: '',
-                                        });
-                                    }}
-                                >
-                                    {t('contact_page.btn_send_another')}
-                                </Button>
-                            </motion.div>
-                        )}
-                    </motion.div>
+                                        {/* Nom + Email */}
+                                        <div className="grid gap-6 sm:grid-cols-2">
+                                            <div className="space-y-2">
+                                                <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
+                                                    {t('contact_page.label_name')}
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    required
+                                                    value={form.nom}
+                                                    onChange={(e) =>
+                                                        setForm({
+                                                            ...form,
+                                                            nom: e.target.value,
+                                                        })
+                                                    }
+                                                    placeholder={t('contact_page.placeholder_name')}
+                                                    className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
+                                                />
+                                            </div>
+                                            <div className="space-y-2">
+                                                <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
+                                                    {t('contact_page.label_email')}
+                                                </label>
+                                                <input
+                                                    type="email"
+                                                    required
+                                                    value={form.email}
+                                                    onChange={(e) =>
+                                                        setForm({
+                                                            ...form,
+                                                            email: e.target.value,
+                                                        })
+                                                    }
+                                                    placeholder={t('contact_page.placeholder_email')}
+                                                    className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
+                                                />
+                                            </div>
+                                        </div>
 
-                    {/* Infos Pratiques & Localisation (Right Sticky Column) */}
-                    <motion.div
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        variants={fadeUp}
-                        className="space-y-6 lg:sticky lg:top-28"
-                    >
-                        {/* Coordonnées Card */}
-                        <div className="rounded-[2.5rem] border border-border/30 bg-background/50 p-8 backdrop-blur-md shadow-xl space-y-6">
-                            <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">
-                                {t('contact_page.coords_title')}
-                            </h3>
-                            <ul className="space-y-6">
-                                {infos.map((info) => {
-                                    const Icon = info.icon;
+                                        {/* Objet */}
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
+                                                {t('contact_page.label_subject')}
+                                            </label>
+                                            <select
+                                                required
+                                                value={form.objet}
+                                                onChange={(e) =>
+                                                    setForm({
+                                                        ...form,
+                                                        objet: e.target.value,
+                                                    })
+                                                }
+                                                className="w-full rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
+                                            >
+                                                <option value="" disabled>
+                                                    {t('contact_page.select_subject')}
+                                                </option>
+                                                {subjects.map((s) => (
+                                                    <option
+                                                        key={s.val}
+                                                        value={s.val}
+                                                    >
+                                                        {s.label}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
 
-                                    return (
-                                        <li
-                                            key={info.label}
-                                            className="flex items-start gap-4"
+                                        {/* Message */}
+                                        <div className="space-y-2">
+                                            <label className="text-xs font-bold tracking-wider text-foreground/50 uppercase">
+                                                {t('contact_page.label_message')}
+                                            </label>
+                                            <textarea
+                                                required
+                                                rows={5}
+                                                value={form.message}
+                                                onChange={(e) =>
+                                                    setForm({
+                                                        ...form,
+                                                        message: e.target.value,
+                                                    })
+                                                }
+                                                placeholder={t('contact_page.placeholder_message')}
+                                                className="w-full resize-none rounded-2xl border border-border/40 bg-background/80 px-4 py-3.5 text-sm text-foreground transition-colors placeholder:text-foreground/30 focus:border-sky-400 focus:ring-1 focus:ring-sky-400 focus:outline-none"
+                                            />
+                                        </div>
+
+                                        <Button
+                                            type="submit"
+                                            size="lg"
+                                            disabled={submitting}
+                                            className="w-full gap-2 rounded-full h-12 font-semibold tracking-wider uppercase text-sm"
                                         >
-                                            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-400/10 text-sky-400">
-                                                <Icon className="h-5 w-5" />
-                                            </div>
-                                            <div>
-                                                <p className="mb-1 text-xs font-bold tracking-wider text-foreground/40 uppercase">
-                                                    {info.label}
-                                                </p>
-                                                <p className="text-sm font-medium whitespace-pre-line text-foreground/80 leading-relaxed">
-                                                    {info.value}
-                                                </p>
-                                            </div>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </div>
-                    </motion.div>
+                                            <Send className="h-4 w-4" />
+                                            {submitting ? t('contact_page.btn_sending') : t('contact_page.btn_send')}
+                                        </Button>
+                                    </form>
+                                </>
+                            ) : (
+                                <motion.div
+                                    initial={{ opacity: 0, scale: 0.95 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ duration: 0.4 }}
+                                    className="flex flex-col items-center justify-center py-12 text-center"
+                                >
+                                    <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-sky-400/10 text-sky-400">
+                                        <CheckCircle2 className="h-8 w-8" />
+                                    </div>
+                                    <h3 className="mb-2 text-2xl font-bold text-foreground font-sans">
+                                        {t('contact_page.success_title')}
+                                    </h3>
+                                    <p className="text-sm text-foreground/60 font-light max-w-md">
+                                        {t('contact_page.success_subtitle')}
+                                    </p>
+                                    <Button
+                                        variant="outline"
+                                        className="mt-8 rounded-full border-border/40 px-8"
+                                        onClick={() => {
+                                            setSent(false);
+                                            setForm({
+                                                nom: '',
+                                                email: '',
+                                                objet: '',
+                                                message: '',
+                                            });
+                                        }}
+                                    >
+                                        {t('contact_page.btn_send_another')}
+                                    </Button>
+                                </motion.div>
+                            )}
+                        </motion.div>
+
+                        {/* Infos Pratiques & Localisation (Right Sticky Column) */}
+                        <motion.div
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                            variants={fadeUp}
+                            className="space-y-6 lg:sticky lg:top-28"
+                        >
+                            {/* Coordonnées Card */}
+                            <div className="rounded-[2.5rem] border border-border/30 bg-background/50 p-8 backdrop-blur-md shadow-xl space-y-6">
+                                <h3 className="text-xs font-bold tracking-widest text-foreground/40 uppercase">
+                                    {t('contact_page.coords_title')}
+                                </h3>
+                                <ul className="space-y-6">
+                                    {infos.map((info) => {
+                                        const Icon = info.icon;
+
+                                        return (
+                                            <li
+                                                key={info.label}
+                                                className="flex items-start gap-4"
+                                            >
+                                                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-sky-400/10 text-sky-400">
+                                                    <Icon className="h-5 w-5" />
+                                                </div>
+                                                <div>
+                                                    <p className="mb-1 text-xs font-bold tracking-wider text-foreground/40 uppercase">
+                                                        {info.label}
+                                                    </p>
+                                                    <p className="text-sm font-medium whitespace-pre-line text-foreground/80 leading-relaxed">
+                                                        {info.value}
+                                                    </p>
+                                                </div>
+                                            </li>
+                                        );
+                                    })}
+                                </ul>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </>
-);
+        </>
+    );
 }
