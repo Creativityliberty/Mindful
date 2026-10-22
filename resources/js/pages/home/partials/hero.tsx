@@ -170,8 +170,8 @@ export function Hero() {
 
                         <div className="relative overflow-hidden rounded-3xl border border-border/40 bg-card shadow-2xl shadow-sky-500/10 group">
                             <img
-                                src="/assets/images/hero_mentor_formationsession_glass.webp"
-                                alt="Studio Formateur FormationSession : tableau de bord holographique en verre avec métriques en direct"
+                                src="/assets/images/hero_formatrice_dashboard_glass.webp"
+                                alt="Formatrice FormationSession : tableau de bord holographique en verre avec métriques et gestion en direct"
                                 fetchPriority="high"
                                 decoding="sync"
                                 className="w-full h-auto object-cover object-center transition-transform duration-700 group-hover:scale-105"
