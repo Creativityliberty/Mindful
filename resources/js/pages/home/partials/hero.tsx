@@ -1,38 +1,30 @@
+import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
-import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ArrowRight, Sparkles, ChevronDown } from 'lucide-react';
 import { Link } from '@inertiajs/react';
 import { useTranslation } from 'react-i18next';
 
-const containerVariants: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.8, staggerChildren: 0.12 },
-    },
-};
-
-const itemVariants: Variants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.6, ease: 'easeOut' },
-    },
-};
-
-const statsVariants: Variants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-        opacity: 1,
-        scale: 1,
-        transition: { duration: 0.6, ease: 'easeOut', staggerChildren: 0.08 },
-    },
-};
-
 export function Hero() {
     const { t } = useTranslation();
+    const heroRef = useRef<HTMLDivElement>(null);
+
+    // Écoute de la progression du scroll sur la section Hero
+    const { scrollYProgress } = useScroll({
+        target: heroRef,
+        offset: ['start start', 'end start'],
+    });
+
+    // 1. L'image de fond s'assombrit et zoome très subtilement au scroll
+    const imageScale = useTransform(scrollYProgress, [0, 0.7], [1, 1.08]);
+    const overlayDarkness = useTransform(scrollYProgress, [0, 0.45], [0.35, 0.88]);
+
+    // 2. Le texte et les éléments de gauche apparaissent progressivement avec le scroll
+    const textOpacity = useTransform(scrollYProgress, [0.05, 0.35], [0, 1]);
+    const textY = useTransform(scrollYProgress, [0.05, 0.35], [40, 0]);
+
+    // 3. L'indicateur "Défiler" disparaît dès qu'on commence à scroller
+    const scrollHintOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
 
     const highlightPills = [
         t('hero.pill1'),
@@ -47,45 +39,65 @@ export function Hero() {
     ];
 
     return (
-        <section
-            className="relative isolate flex min-h-[90vh] md:min-h-[94vh] w-full items-center overflow-hidden bg-slate-950 text-white"
-            role="region"
-            aria-label="Hero FormationSession"
-        >
-            {/* Background Image Hero Immersif */}
-            <div className="absolute inset-0 z-0 select-none">
-                <img
-                    src="/assets/images/hero_formatrice_dashboard_glass.webp"
-                    alt="Formatrice FormationSession : tableau de bord holographique en verre avec métriques et gestion en direct"
-                    fetchPriority="high"
-                    decoding="sync"
-                    className="h-full w-full object-cover object-[72%_center] md:object-right-center"
+        <div ref={heroRef} className="relative h-[220vh] w-full bg-slate-950">
+            {/* Scène épinglée (Sticky) sur toute la hauteur de la fenêtre */}
+            <section
+                className="sticky top-0 flex h-screen w-full items-center overflow-hidden text-white"
+                role="region"
+                aria-label="Hero FormationSession"
+            >
+                {/* 1. L'Image en fond : visible et majestueuse dès le départ */}
+                <motion.div
+                    style={{ scale: imageScale }}
+                    className="absolute inset-0 z-0 select-none will-change-transform"
+                >
+                    <img
+                        src="/assets/images/hero_formatrice_dashboard_glass.webp"
+                        alt="Formatrice FormationSession : tableau de bord holographique en verre avec métriques et gestion en direct"
+                        fetchPriority="high"
+                        decoding="sync"
+                        className="h-full w-full object-cover object-[72%_center] md:object-right-center"
+                    />
+                </motion.div>
+
+                {/* 2. Le voile sombre qui s'intensifie au scroll pour révéler le texte */}
+                <motion.div
+                    style={{ opacity: overlayDarkness }}
+                    className="absolute inset-0 z-[1] bg-gradient-to-r from-slate-950 via-slate-950/90 to-slate-950/30 backdrop-blur-[2px]"
                 />
 
-                {/* Dégradé cinématique pour lisibilité parfaite du texte à gauche et transition douce */}
-                <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent md:to-slate-950/20" />
-                
-                {/* Dégradés haut et bas pour s'intégrer harmonieusement avec la navbar et la section suivante */}
-                <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-slate-950/90 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-background via-slate-950/60 to-transparent" />
-            </div>
+                {/* Dégradés d'intégration haut et bas */}
+                <div className="pointer-events-none absolute inset-x-0 top-0 z-[2] h-28 bg-gradient-to-b from-slate-950/80 to-transparent" />
+                <div className="pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-32 bg-gradient-to-t from-background via-slate-950/60 to-transparent" />
 
-            <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-20 md:px-8 lg:px-12">
-                <div className="max-w-2xl text-left">
+                {/* Petit badge incitatif au départ : "Défilez pour découvrir" */}
+                <motion.div
+                    style={{ opacity: scrollHintOpacity }}
+                    className="pointer-events-none absolute bottom-8 left-1/2 z-20 -translate-x-1/2 flex flex-col items-center gap-2 text-slate-300/80"
+                >
+                    <span className="text-xs font-semibold tracking-widest uppercase bg-slate-950/60 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/10">
+                        Scrollez pour entrer dans l'académie
+                    </span>
                     <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate="visible"
+                        animate={{ y: [0, 6, 0] }}
+                        transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
                     >
-                        <motion.div
-                            variants={itemVariants}
-                            className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-950/60 px-4 py-1.5 text-xs font-semibold tracking-wider text-sky-300 uppercase backdrop-blur-md shadow-sm"
-                        >
+                        <ChevronDown className="h-5 w-5 text-sky-400" />
+                    </motion.div>
+                </motion.div>
+
+                {/* 3. Contenu textuel : émerge au fur et à mesure du scroll */}
+                <motion.div
+                    style={{ opacity: textOpacity, y: textY }}
+                    className="relative z-10 mx-auto w-full max-w-7xl px-6 py-20 md:px-8 lg:px-12 will-change-transform"
+                >
+                    <div className="max-w-2xl text-left">
+                        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-950/60 px-4 py-1.5 text-xs font-semibold tracking-wider text-sky-300 uppercase backdrop-blur-md shadow-sm">
                             <Sparkles className="h-3.5 w-3.5 text-sky-400" />
                             {t('hero.badge')}
-                        </motion.div>
+                        </div>
 
-                        <motion.div variants={itemVariants}>
+                        <div>
                             <h1 className="mb-6 text-4xl font-extrabold tracking-tight text-white md:text-5xl lg:text-6xl font-sans leading-[1.12] drop-shadow-md">
                                 {t('hero.title_part1')}
                                 <br />
@@ -93,19 +105,13 @@ export function Hero() {
                                     {t('hero.title_part2')}
                                 </span>
                             </h1>
-                        </motion.div>
+                        </div>
 
-                        <motion.p
-                            variants={itemVariants}
-                            className="mb-8 max-w-xl text-base md:text-lg text-slate-200 font-light leading-relaxed drop-shadow-sm"
-                        >
+                        <p className="mb-8 max-w-xl text-base md:text-lg text-slate-200 font-light leading-relaxed drop-shadow-sm">
                             {t('hero.description')}
-                        </motion.p>
+                        </p>
 
-                        <motion.div
-                            variants={itemVariants}
-                            className="mb-8 flex flex-col items-stretch sm:items-center gap-4 sm:flex-row sm:justify-start"
-                        >
+                        <div className="mb-8 flex flex-col items-stretch sm:items-center gap-4 sm:flex-row sm:justify-start">
                             <Button
                                 size="lg"
                                 className="group gap-2 rounded-full px-8 text-sm tracking-wider uppercase font-semibold h-12 bg-sky-500 hover:bg-sky-400 text-slate-950 shadow-lg shadow-sky-500/25 transition-all"
@@ -130,12 +136,9 @@ export function Hero() {
                                     {t('hero.become_trainer_btn')}
                                 </Link>
                             </Button>
-                        </motion.div>
+                        </div>
 
-                        <motion.ul
-                            variants={itemVariants}
-                            className="mb-10 flex flex-wrap items-center justify-start gap-2.5 text-xs font-medium text-slate-300"
-                        >
+                        <ul className="mb-10 flex flex-wrap items-center justify-start gap-2.5 text-xs font-medium text-slate-300">
                             {highlightPills.map((pill) => (
                                 <li
                                     key={pill}
@@ -144,16 +147,12 @@ export function Hero() {
                                     {pill}
                                 </li>
                             ))}
-                        </motion.ul>
+                        </ul>
 
-                        <motion.div
-                            variants={statsVariants}
-                            className="grid gap-4 rounded-3xl border border-white/15 bg-slate-900/60 p-5 backdrop-blur-md sm:grid-cols-3 shadow-xl"
-                        >
+                        <div className="grid gap-4 rounded-3xl border border-white/15 bg-slate-900/60 p-5 backdrop-blur-md sm:grid-cols-3 shadow-xl">
                             {heroStats.map((stat) => (
-                                <motion.div
+                                <div
                                     key={stat.label}
-                                    variants={itemVariants}
                                     className="space-y-1 text-left"
                                 >
                                     <div className="text-[10px] tracking-wider md:text-xs text-slate-400 uppercase font-semibold">
@@ -162,12 +161,12 @@ export function Hero() {
                                     <div className="text-xl md:text-2xl font-extrabold text-white tracking-tight">
                                         {stat.value}
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
-                        </motion.div>
-                    </motion.div>
-                </div>
-            </div>
-        </section>
+                        </div>
+                    </div>
+                </motion.div>
+            </section>
+        </div>
     );
 }
